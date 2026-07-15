@@ -1,0 +1,25 @@
+# Farrukh Abdullah — Semantic SEO & Generative Engine Optimization
+
+> Farrukh Abdullah is a Semantic SEO and Generative Engine Optimization (GEO) strategist based in Faisalabad, Pakistan, working with growth-stage brands, B2B companies, and local service businesses globally. Services include Semantic SEO & Topical Authority, Generative Engine Optimization (GEO), and Local SEO Services. Certified by IBM, Moz, and BrightLocal, with completed training through Anthropic Academy's Claude 101 course.
+
+## Services
+
+- [Semantic SEO & Topical Authority](/services/semantic-seo): Entity mapping, topical authority architecture, and content restructuring for search engines and AI models.
+- [Generative Engine Optimization (GEO)](/services/geo): Structuring content and technical signals to secure citations in ChatGPT Search, Perplexity, and Google AI Overviews.
+- [Local SEO Services](/services/local-seo): Local map pack visibility, Google Business Profile optimization, and localized landing page systems for service businesses.
+
+## Case Studies
+
+- [Semantic SEO structuring & entity clustering — Windcave](/case-studies/windcave): +112% organic lead registrations within 9 months through entity-based topical authority restructuring for a global payment gateway.
+- [Local SEO systems for competitive service niches](/case-studies/local-seo-systems): 1,200+ inbound calls and 340% average ROI across a local SEO site portfolio in competitive US service niches.
+
+## Insights
+
+- [Generative Engine Optimization: How to Secure Brand Citations in ChatGPT Search and Perplexity](/insights/geo-citations)
+- [Understanding Entity-Based Content Architecture: Moving Beyond Simple Keyword Density](/insights/entity-based-architecture)
+- [A Schema Strategy for Growth Brands: Structuring Your Site for Google's Knowledge Graph](/insights/schema-strategy)
+
+## About
+
+- [About Farrukh Abdullah](/about): Background in semantic SEO, GEO, and 11+ years in sales and data analytics.
+- [Contact / Book a Strategy Call](/contact)

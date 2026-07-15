@@ -1,0 +1,35 @@
+{
+  "name": "semantic-seo-portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "clean": "rm -rf .next out",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "@portabletext/react": "^6.2.0",
+    "@sanity/client": "^7.23.1",
+    "@sanity/image-url": "^2.1.1",
+    "@tailwindcss/postcss": "^4.3.2",
+    "dotenv": "^17.2.3",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "next": "^16.2.10",
+    "next-sanity": "^13.1.1",
+    "postcss": "^8.5.17",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.21",
+    "tailwindcss": "^4.1.14",
+    "typescript": "~5.8.2"
+  }
+}
