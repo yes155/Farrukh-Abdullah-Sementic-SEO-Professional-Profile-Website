@@ -5,9 +5,41 @@ import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { PERSON_SCHEMA, ORGANIZATION_SCHEMA, WEBSITE_SCHEMA } from "@/lib/schemas";
 
+const SITE_URL = "https://farrukh.top";
+const SITE_TITLE = "Farrukh Abdullah | Semantic SEO & GEO Strategist";
+const SITE_DESCRIPTION =
+  "Semantic SEO specialist helping growing brands and local businesses get found — and cited — by Google, AI Overviews, ChatGPT Search, and Perplexity.";
+
 export const metadata: Metadata = {
-  title: "Professional SEO Portfolio | Farrukh Abdullah",
-  description: "Semantic SEO and Data Analytics Portfolio",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: "%s | Farrukh Abdullah",
+  },
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Farrukh Abdullah — Semantic SEO & GEO",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 export default function RootLayout({

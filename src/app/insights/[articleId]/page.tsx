@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, ArrowUpRight } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import { STRATEGIST_NAME } from "@/data";
 import { getInsightsArticles } from "@/sanity/posts";
@@ -28,12 +28,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
-    alternates: article.canonicalUrl ? { canonical: article.canonicalUrl } : undefined,
+    alternates: { canonical: article.canonicalUrl || `/insights/${articleId}` },
     robots: article.noIndex ? { index: false, follow: false } : undefined,
     openGraph: {
       title,
       description,
+      url: `/insights/${articleId}`,
+      type: "article",
       images: article.featuredImageUrl ? [{ url: article.featuredImageUrl }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: article.featuredImageUrl ? [article.featuredImageUrl] : undefined,
     },
   };
 }
@@ -231,6 +239,76 @@ export default async function InsightDetailPage({ params }: PageProps) {
       <div className="bg-white border-2 border-black p-6 md:p-8 relative shadow-[4px_4px_0px_rgba(0,0,0,1)] prose prose-neutral max-w-none">
         {activeArticle.contentMarkdown && renderSimpleMarkdown(activeArticle.contentMarkdown)}
       </div>
+
+      {/* Related content — internal linking to keep topical clusters connected */}
+      {(() => {
+        const relatedArticles = (activeArticle.relatedArticleIds || [])
+          .map((id) => articles.find((a) => a.id === id))
+          .filter((a): a is NonNullable<typeof a> => Boolean(a));
+
+        const hasRelated =
+          relatedArticles.length > 0 ||
+          activeArticle.relatedServicePath ||
+          activeArticle.relatedCaseStudyPath;
+
+        if (!hasRelated) return null;
+
+        return (
+          <div className="bg-neutral-50 border-2 border-black p-6 md:p-8 shadow-[4px_4px_0px_rgba(0,0,0,1)] space-y-6">
+            <h2 className="text-sm font-black font-sans text-black uppercase tracking-wider border-b border-neutral-200 pb-3">
+              Continue Reading
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {activeArticle.relatedServicePath && (
+                <Link
+                  href={activeArticle.relatedServicePath}
+                  className="group block p-4 border border-neutral-200 hover:border-black bg-white transition-all"
+                >
+                  <span className="block text-[9px] font-mono font-bold text-cyan-600 uppercase tracking-widest mb-1">
+                    Related Service
+                  </span>
+                  <span className="flex items-center gap-1 text-xs font-bold text-black uppercase leading-tight group-hover:underline">
+                    {activeArticle.relatedServiceName || "View Service"}
+                    <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
+                  </span>
+                </Link>
+              )}
+
+              {activeArticle.relatedCaseStudyPath && (
+                <Link
+                  href={activeArticle.relatedCaseStudyPath}
+                  className="group block p-4 border border-neutral-200 hover:border-black bg-white transition-all"
+                >
+                  <span className="block text-[9px] font-mono font-bold text-cyan-600 uppercase tracking-widest mb-1">
+                    Related Case Study
+                  </span>
+                  <span className="flex items-center gap-1 text-xs font-bold text-black uppercase leading-tight group-hover:underline">
+                    {activeArticle.relatedCaseStudyName || "View Case Study"}
+                    <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
+                  </span>
+                </Link>
+              )}
+
+              {relatedArticles.map((article) => (
+                <Link
+                  key={article.id}
+                  href={`/insights/${article.id}`}
+                  className="group block p-4 border border-neutral-200 hover:border-black bg-white transition-all"
+                >
+                  <span className="block text-[9px] font-mono font-bold text-cyan-600 uppercase tracking-widest mb-1">
+                    {article.category}
+                  </span>
+                  <span className="flex items-center gap-1 text-xs font-bold text-black uppercase leading-tight group-hover:underline">
+                    {article.title}
+                    <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Bottom Back Button */}
       <div className="flex justify-center pt-4">

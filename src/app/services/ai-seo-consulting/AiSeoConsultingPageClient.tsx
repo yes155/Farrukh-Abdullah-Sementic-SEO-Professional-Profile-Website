@@ -5,11 +5,11 @@ import { ArrowRight, Check, HelpCircle, ArrowUpRight, BrainCircuit, Sparkles } f
 import { motion } from "motion/react";
 import JsonLd from "@/components/JsonLd";
 import { 
-  GEO_SERVICE_SCHEMA, 
+  AI_SEO_SERVICE_SCHEMA, 
   getBreadcrumbSchema 
 } from "@/lib/schemas";
 
-export default function GeoPage() {
+export default function AiSeoConsultingPage() {
   const faqItems = [
     {
       q: "How does Generative Engine Optimization (GEO) help brands get cited by AI search engines?",
@@ -24,13 +24,13 @@ export default function GeoPage() {
   const breadcrumbs = getBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Services", url: "/services" },
-    { name: "Generative Engine Optimization", url: "/services/geo" }
+    { name: "AI SEO Consulting", url: "/services/ai-seo-consulting" }
   ]);
 
   return (
     <div className="pt-12 pb-20 px-6 max-w-7xl mx-auto space-y-16">
-      <JsonLd id="schema-service-geo" data={GEO_SERVICE_SCHEMA} />
-      <JsonLd id="schema-breadcrumb-geo" data={breadcrumbs} />
+      <JsonLd id="schema-service-ai-seo" data={AI_SEO_SERVICE_SCHEMA} />
+      <JsonLd id="schema-breadcrumb-ai-seo" data={breadcrumbs} />
 
       {/* Header Block */}
       <div className="border-b-2 border-black pb-12">
@@ -38,10 +38,10 @@ export default function GeoPage() {
           AI & Generative Search Engineering
         </span>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-sans text-black tracking-tight uppercase leading-[1.1]">
-          Generative Engine Optimization
+          AI SEO Consulting
         </h1>
         <p className="text-sm md:text-base text-neutral-600 mt-4 max-w-3xl font-semibold leading-relaxed">
-          AI-driven search engines do not just link pages — they summarize them and cite sources. I optimize your content's structure, syntax, and schema signatures to establish your brand as the primary cited answer in ChatGPT Search, Perplexity, and Google AI Overviews.
+          AI-driven search engines do not just link pages — they summarize them and cite sources. This service covers <strong>Generative Engine Optimization (GEO)</strong> and technical AI-crawler accessibility: optimizing your content's structure, syntax, and schema signatures to establish your brand as the primary cited answer in ChatGPT Search, Perplexity, and Google AI Overviews.
         </p>
       </div>
 
@@ -120,14 +120,14 @@ export default function GeoPage() {
                 Proof of Concept
               </span>
               <h3 className="text-base font-black font-sans text-black uppercase">
-                Case Study: Windcave (+112% Organic Lead Growth)
+                Case Study: Azuno (+120% Organic Traffic in 4 Months)
               </h3>
               <p className="text-[11px] text-neutral-600 font-medium mt-1">
-                Learn how we successfully deployed entity-based SEO and structured semantic grids for an enterprise-level global payment processor.
+                Learn how semantic structuring and AI/LLM content alignment drove a San Francisco SaaS analytics platform to top 3 local rankings and stronger AI-search discoverability.
               </p>
             </div>
             <Link
-              href="/case-studies/windcave"
+              href="/case-studies/azuno"
               className="flex items-center gap-1 text-xs font-mono font-bold bg-white text-black border-2 border-black py-2.5 px-4 uppercase hover:bg-neutral-50 shrink-0 shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
             >
               <span>Review Case Study</span>
@@ -171,6 +171,15 @@ export default function GeoPage() {
                 <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">Article</span>
                 <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
                   Secure Brand Citations in ChatGPT & Perplexity
+                </span>
+              </Link>
+              <Link
+                href="/insights/ins-03"
+                className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+              >
+                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">Article</span>
+                <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                  A Schema Strategy for Growth Brands
                 </span>
               </Link>
               <Link
