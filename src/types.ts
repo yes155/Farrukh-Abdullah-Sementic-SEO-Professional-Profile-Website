@@ -78,4 +78,18 @@ export interface Insight {
   metaDescription?: string;
   canonicalUrl?: string;
   noIndex?: boolean;
+  relatedArticleIds?: string[];
+  relatedServicePath?: string;
+  relatedServiceName?: string;
+  relatedCaseStudyPath?: string;
+  relatedCaseStudyName?: string;
+}
+
+export interface Testimonial {
+  id: string;
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+  linkedCaseStudyPath?: string;
 }

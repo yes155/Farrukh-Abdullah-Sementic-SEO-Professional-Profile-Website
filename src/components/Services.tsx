@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import JsonLd from "./JsonLd";
 import { 
   SEMANTIC_SEO_SERVICE_SCHEMA, 
-  GEO_SERVICE_SCHEMA
+  AI_SEO_SERVICE_SCHEMA
 } from "../lib/schemas";
 
 interface ServicesProps {
@@ -16,9 +16,9 @@ interface ServicesProps {
 export default function Services({ onServiceClick }: ServicesProps) {
   return (
     <section id="services" className="py-20 px-6 max-w-7xl mx-auto border-t border-neutral-200">
-      {/* Dynamic SEO/GEO Service Schemas Injection */}
+      {/* Dynamic SEO/AI SEO Service Schemas Injection */}
       <JsonLd id="schema-service-semantic" data={SEMANTIC_SEO_SERVICE_SCHEMA} />
-      <JsonLd id="schema-service-geo" data={GEO_SERVICE_SCHEMA} />
+      <JsonLd id="schema-service-ai-seo" data={AI_SEO_SERVICE_SCHEMA} />
 
       {/* Title block */}
       <div className="mb-12">

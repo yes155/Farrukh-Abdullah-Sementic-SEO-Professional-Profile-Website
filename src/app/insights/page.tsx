@@ -1,9 +1,30 @@
+import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import InsightsGrid from "@/components/InsightsGrid";
 import { getInsightsArticles } from "@/sanity/posts";
 import { getBreadcrumbSchema } from "@/lib/schemas";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Insights",
+  description:
+    "Articles on semantic SEO, Generative Engine Optimization (GEO), entity-based content architecture, and schema strategy for growing brands.",
+  alternates: {
+    canonical: "/insights",
+  },
+  openGraph: {
+    title: "Insights | Semantic SEO, GEO & Entity SEO Articles",
+    description:
+      "Articles on semantic SEO, Generative Engine Optimization (GEO), entity-based content architecture, and schema strategy for growing brands.",
+    url: "/insights",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Insights | Semantic SEO, GEO & Entity SEO Articles",
+    description: "Articles on semantic SEO, Generative Engine Optimization (GEO), entity-based content architecture, and schema strategy for growing brands.",
+  },
+};
 
 export default async function InsightsIndex() {
   const articles = await getInsightsArticles();
