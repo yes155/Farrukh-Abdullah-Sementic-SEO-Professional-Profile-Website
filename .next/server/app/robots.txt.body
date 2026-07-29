@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /studio
+
+Host: https://farrukh.top
+Sitemap: https://farrukh.top/sitemap.xml
