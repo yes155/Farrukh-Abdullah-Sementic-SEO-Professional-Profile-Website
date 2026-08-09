@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { PERSON_SCHEMA, ORGANIZATION_SCHEMA, WEBSITE_SCHEMA } from "@/lib/schemas";
+import { Analytics } from '@vercel/analytics/next';
 
 const SITE_URL = "https://farrukh.top";
 const SITE_TITLE = "Farrukh Abdullah | Semantic SEO & GEO Strategist";
@@ -64,6 +65,7 @@ export default function RootLayout({
 
         {/* Compact Corporate Footer */}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
