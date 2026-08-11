@@ -137,13 +137,14 @@ export default function ServicesIndex() {
             Dedicated local search systems for service businesses that need map pack rankings, phone calls, and booked appointments — not blog posts.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
             { name: "Dentists", path: "/services/seo-for-dentists" },
             { name: "Plumbers", path: "/services/seo-for-plumbers" },
             { name: "Salons", path: "/services/seo-for-salons" },
             { name: "Pest Control", path: "/services/seo-for-pest-control" },
-            { name: "Roofers", path: "/services/seo-for-roofers" }
+            { name: "Roofers", path: "/services/seo-for-roofers" },
+            { name: "HVAC", path: "/services/seo-for-hvac" }
           ].map((n) => (
             <Link
               key={n.path}

@@ -116,13 +116,14 @@ export default function Page() {
             Map pack visibility, Google Business Profile systems, and service-area landing pages for the industries where local search wins the call.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {[
             { name: "Dentists", path: "/services/seo-for-dentists" },
             { name: "Plumbers", path: "/services/seo-for-plumbers" },
             { name: "Salons", path: "/services/seo-for-salons" },
             { name: "Pest Control", path: "/services/seo-for-pest-control" },
-            { name: "Roofers", path: "/services/seo-for-roofers" }
+            { name: "Roofers", path: "/services/seo-for-roofers" },
+            { name: "HVAC", path: "/services/seo-for-hvac" }
           ].map((n, idx) => (
             <motion.div
               key={n.path}

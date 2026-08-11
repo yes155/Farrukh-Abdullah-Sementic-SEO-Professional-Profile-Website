@@ -8,6 +8,11 @@ export interface NicheStrategy {
   body: string;
 }
 
+export interface NicheKeyword {
+  question: string;
+  answer: string;
+}
+
 export interface Niche {
   slug: string;
   industry: string;
@@ -19,6 +24,7 @@ export interface Niche {
   deliverables: string[];
   strategies: NicheStrategy[];
   faqs: NicheFaq[];
+  keywords: NicheKeyword[];
 }
 
 export const LOCAL_NICHES: Niche[] = [
@@ -58,6 +64,16 @@ export const LOCAL_NICHES: Niche[] = [
         q: "Can you help a multi-location dental group?",
         a: "Yes. Multi-location dental groups need a nested schema strategy that keeps each location a separate, verifiable entity while linking them to one parent brand. That prevents the internal cannibalization that makes location pages compete against each other in local results."
       }
+    ],
+    keywords: [
+      {
+        question: "What does local SEO for dentists involve?",
+        answer: "Local SEO for dentists combines Google Business Profile optimization with dental categories and booking links, Dentist schema markup, treatment-led pages for emergency, cosmetic, orthodontics, and implants, and consistent NAP across directories like Healthgrades and Zocdoc — so new patients find you for the treatment they're searching, not just 'dentist near me.'"
+      },
+      {
+        question: "How do dental practices rank in AI search results?",
+        answer: "AI answer engines recommend dentists they can verify as consistent local entities. I keep your profile, website schema, and citation network aligned into one unambiguous practice entity, so generative search reliably identifies your practice as the trusted provider in each neighborhood you serve."
+      }
     ]
   },
   {
@@ -95,6 +111,24 @@ export const LOCAL_NICHES: Niche[] = [
       {
         q: "Do you handle plumbers who serve multiple cities?",
         a: "Yes. For multi-city plumbing companies I build a parent-brand entity with per-city service pages, each with its own LocalBusiness schema and citation profile, so you rank in every market you actually dispatch to without cannibalizing your own pages."
+      }
+    ],
+    keywords: [
+      {
+        question: "What should a plumber SEO company do for your business?",
+        answer: "A plumber SEO company builds the systems that get your company into the Google map pack and AI search results when homeowners search 'plumber near me,' 'emergency plumber,' or specific services like water heater replacement. That means Google Business Profile optimization, Plumber schema markup, service-area landing pages, citation consistency, and call tracking that proves where every lead came from — not a generic 'we do SEO' retainer."
+      },
+      {
+        question: "What does a full plumber SEO service include?",
+        answer: "A complete plumber SEO service covers Google Business Profile optimization tuned to 24/7 emergency availability, Plumber schema.org markup across service pages, service-area landing pages for each zone you dispatch to, plumbing-industry citations, review velocity, and per-page call tracking so every booked job is attributable to the page that generated it."
+      },
+      {
+        question: "How does plumber local SEO differ from standard SEO?",
+        answer: "Plumber local SEO is focused on winning map pack and 'near me' rankings for the specific service areas you serve. Where standard SEO chases broad keywords, local plumbing SEO builds one consistent local entity — matching name, address, and phone across your profile, site, and citations — so Google and AI assistants confidently recommend your company for time-critical plumbing jobs in your city."
+      },
+      {
+        question: "How does content marketing for plumbers work?",
+        answer: "Content marketing for plumbers turns high-intent searches into structured pages: water heater repair, sewer line replacement, emergency plumbing in specific neighborhoods. Each service becomes a distinct, geo-targeted entity with its own schema and local relevance signals, so you capture the steady stream of homeowners researching plumbing problems before they call."
       }
     ]
   },
@@ -134,6 +168,16 @@ export const LOCAL_NICHES: Niche[] = [
         q: "Do you work with single-stylist and small salons?",
         a: "Yes. A single-stylist suite competes against chains by owning its niche — the specific services, style, and neighborhood it serves. The same entity and schema discipline that wins for multi-location groups applies, scaled to one precise local brand."
       }
+    ],
+    keywords: [
+      {
+        question: "What does local SEO for salons include?",
+        answer: "Local SEO for salons covers Google Business Profile optimization with service categories and booking integration, BeautySalon schema markup, service-led pages for haircuts, color, extensions, brows, and bridal, and a review-generation strategy timed to appointments — so you show up for how customers actually search: 'balayage near me,' 'best lash tech,' 'bridal hair and makeup.'"
+      },
+      {
+        question: "How do salons get booked from Google search?",
+        answer: "Salon customers shortlist from the map pack, then check prices and reviews before booking. I make your services, prices, and stylists explicit, consistent facts across your site, profile, and booking links, and pair it with appointment-timed review requests so search systems trust you as the local choice."
+      }
     ]
   },
   {
@@ -172,6 +216,16 @@ export const LOCAL_NICHES: Niche[] = [
         q: "Can you handle a pest control company in multiple states?",
         a: "Yes. I build a parent brand entity with per-location and per-service-area entities, each with its own schema and citation profile, so each branch ranks in its own market without the locations competing against one another."
       }
+    ],
+    keywords: [
+      {
+        question: "What does local SEO for pest control companies include?",
+        answer: "Local SEO for pest control covers Google Business Profile optimization with pest control categories, LocalBusiness schema for each pest you handle, pest-by-pest landing pages mapped to service zones, and citations across Angi, HomeAdvisor, and BBB — so you rank for 'termite treatment near me,' not just a generic 'pest control' page."
+      },
+      {
+        question: "How do pest control companies win seasonal demand?",
+        answer: "Pest demand swings with the seasons, and national call centers chase the same searches. I align your site architecture, service-area pages, and profile freshness so you're positioned before each seasonal spike, capturing the surge when it hits instead of playing catch-up."
+      }
     ]
   },
   {
@@ -209,6 +263,64 @@ export const LOCAL_NICHES: Niche[] = [
       {
         q: "Can you help a roofer targeting multiple counties?",
         a: "Yes. I map each county and service area to its own landing page with local schema and citation signals, so you rank across the full region you cover while keeping the parent brand entity unified and authoritative."
+      }
+    ],
+    keywords: [
+      {
+        question: "What does local SEO for roofing companies include?",
+        answer: "Local SEO for roofing companies centers on the map pack and AI recommendations: Google Business Profile optimization with roofing categories, RoofingContractor schema markup, service-area pages for every county you cover, storm and repair content, roofing directory citations, and call tracking that attributes each estimate request to the area and service that drove it."
+      },
+      {
+        question: "How do roofing companies win after a storm?",
+        answer: "When hail or wind damage hits a neighborhood, roofing demand surges overnight. Roofing companies that already have warm service-area pages, up-to-date profiles, and verified schema get recommended first — so I keep those signals always current, letting you capture surge demand the moment it appears instead of scrambling after competitors do."
+      }
+    ]
+  },
+  {
+    slug: "seo-for-hvac",
+    industry: "HVAC Companies",
+    singular: "HVAC Company",
+    schemaType: "HVACBusiness",
+    eyebrow: "Local SEO for HVAC Contractors",
+    headline: "SEO for HVAC",
+    intro:
+      "Heating and cooling is the most seasonal home-services category on the map — demand spikes when temperatures do, and it's a repair homeowners can't defer. I build local SEO systems for HVAC companies that rank in the map pack and AI search for repair, replacement, and tune-up queries, keep your service-area and after-hours facts consistent, and convert seasonal search surges into booked service calls.",
+    deliverables: [
+      "Google Business Profile optimization with HVAC categories, service areas, and seasonal availability",
+      "HVACBusiness schema.org markup across service and financing pages",
+      "Service-area landing pages for every city and county your technicians actually cover",
+      "Service-led content for repairs, replacements, tune-ups, and seasonal readiness (AC, furnace, heat pump)",
+      "HVAC directory and citation alignment for consistent local entity trust",
+      "Call tracking so every service request is attributed to the season, service, and area that generated it"
+    ],
+    strategies: [
+      {
+        title: "Be positioned before the season flips",
+        body: "AC demand spikes in June, furnace demand in November — and search engines start recommending providers weeks earlier. I align your site architecture, service-area pages, and profile freshness so you're the recommended local HVAC company as each seasonal surge builds, not after it peaks."
+      },
+      {
+        title: "Win tune-up and replacement intent separately",
+        body: "'AC tune-up cost' and 'furnace replacement near me' are different jobs at different price points searched at different times. I structure each as its own geo-targeted entity with its own page and schema, so you capture both the steady maintenance demand and the high-ticket replacement demand in every market you serve."
+      }
+    ],
+    faqs: [
+      {
+        q: "How is HVAC SEO different from other home services?",
+        a: "HVAC demand is tightly seasonal and split between two major systems (heating and cooling). Winning consistently means structuring the site around both seasonal cycles, keeping service-area and availability facts machine-readable, and building entity trust through citations and reviews so you're recommended before and during each peak."
+      },
+      {
+        q: "Can you help an HVAC company with multiple service areas?",
+        a: "Yes. I build a parent brand entity with per-city and per-county service pages, each carrying its own LocalBusiness schema and citation profile, so each market you dispatch to ranks independently without your own pages competing."
+      }
+    ],
+    keywords: [
+      {
+        question: "What does local SEO for HVAC contractors cover?",
+        answer: "Local SEO for HVAC contractors covers Google Business Profile optimization, HVACBusiness schema markup, service-area landing pages for every zone your technicians cover, seasonal content for AC and furnace demand, industry citations, and call tracking that attributes every service request to the page and season that drove it."
+      },
+      {
+        question: "How do HVAC companies rank for seasonal search spikes?",
+        answer: "Cooling demand peaks in late spring and heating demand in late fall. HVAC companies that keep service-area pages, profiles, and schema warm through the off-season get recommended first when the spike hits — so I structure the site to be always-current rather than scrambling during peak weeks."
       }
     ]
   }

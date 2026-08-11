@@ -86,6 +86,7 @@ export default function Footer() {
                 { name: "For Salons", path: "/services/seo-for-salons" },
                 { name: "For Pest Control", path: "/services/seo-for-pest-control" },
                 { name: "For Roofers", path: "/services/seo-for-roofers" },
+                { name: "For HVAC", path: "/services/seo-for-hvac" },
                 { name: "All Locations", path: "/locations" }
               ].map((item) => (
                 <li key={item.path}>

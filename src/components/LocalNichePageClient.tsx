@@ -44,14 +44,24 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": niche.faqs.map((item) => ({
-      "@type": "Question",
-      "name": item.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.a
-      }
-    }))
+    "mainEntity": [
+      ...niche.faqs.map((item) => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
+        }
+      })),
+      ...niche.keywords.map((item) => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer
+        }
+      }))
+    ]
   };
 
   return (
@@ -111,7 +121,25 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
             </div>
           </section>
 
-          {/* Section 3: Proof / Case Study Link */}
+          {/* Section 3: Long-tail keyword cluster */}
+          <section className="space-y-4">
+            <h2 className="text-xl md:text-2xl font-black font-sans text-black uppercase tracking-tight flex items-center gap-2">
+              <MapPin className="w-5 h-5 text-emerald-600" />
+              <span>What {niche.industry} SEO Actually Covers</span>
+            </h2>
+            <div className="space-y-4">
+              {niche.keywords.map((k, idx) => (
+                <div key={idx} className="bg-white border-2 border-black p-6 shadow-[3px_3px_0px_rgba(0,0,0,1)]">
+                  <h3 className="font-sans font-black text-sm text-black uppercase tracking-tight mb-2">
+                    {k.question}
+                  </h3>
+                  <p className="text-xs text-neutral-600 font-medium leading-relaxed">{k.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Section 4: Proof / Case Study Link */}
           <section className="bg-emerald-50 border-2 border-black p-6 shadow-[3px_3px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
               <span className="text-[8px] font-mono tracking-wider bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 border border-emerald-300 uppercase block w-max mb-1.5">
@@ -133,7 +161,7 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
             </Link>
           </section>
 
-          {/* Section 4: FAQs */}
+          {/* Section 5: FAQs */}
           <section className="space-y-4 border-t border-neutral-200 pt-8">
             <h2 className="text-xl font-black font-sans text-black uppercase tracking-tight flex items-center gap-1.5">
               <HelpCircle className="w-5 h-5 text-emerald-600" />

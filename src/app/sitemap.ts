@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getInsightsArticles } from "@/sanity/posts";
+import { LOCAL_NICHES } from "@/lib/localNiches";
 
 const SITE_URL = "https://farrukh.top";
 
@@ -23,11 +24,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/services/semantic-seo`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/services/ai-seo-consulting`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/services/local-seo`, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/services/seo-for-dentists`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/services/seo-for-plumbers`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/services/seo-for-salons`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/services/seo-for-pest-control`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/services/seo-for-roofers`, changeFrequency: "monthly", priority: 0.8 },
+    ...LOCAL_NICHES.map((n) => ({
+      url: `${SITE_URL}/services/${n.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
     { url: `${SITE_URL}/case-studies`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/case-studies/windcave`, changeFrequency: "yearly", priority: 0.6 },
     { url: `${SITE_URL}/case-studies/local-seo-systems`, changeFrequency: "yearly", priority: 0.6 },

@@ -112,7 +112,8 @@ export default function LocationsPage() {
             { name: "SEO for Plumbers", path: "/services/seo-for-plumbers" },
             { name: "SEO for Salons", path: "/services/seo-for-salons" },
             { name: "SEO for Pest Control", path: "/services/seo-for-pest-control" },
-            { name: "SEO for Roofers", path: "/services/seo-for-roofers" }
+            { name: "SEO for Roofers", path: "/services/seo-for-roofers" },
+            { name: "SEO for HVAC", path: "/services/seo-for-hvac" }
           ].map((n) => (
             <Link
               key={n.path}

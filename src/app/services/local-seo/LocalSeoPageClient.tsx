@@ -201,7 +201,8 @@ export default function LocalSeoPage() {
                 { name: "Plumbers", path: "/services/seo-for-plumbers" },
                 { name: "Salons", path: "/services/seo-for-salons" },
                 { name: "Pest Control", path: "/services/seo-for-pest-control" },
-                { name: "Roofers", path: "/services/seo-for-roofers" }
+                { name: "Roofers", path: "/services/seo-for-roofers" },
+                { name: "HVAC", path: "/services/seo-for-hvac" }
               ].map((n) => (
                 <Link
                   key={n.path}
