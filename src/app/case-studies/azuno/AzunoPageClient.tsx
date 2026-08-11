@@ -16,6 +16,10 @@ export default function AzunoPage() {
     { name: "Azuno", url: "/case-studies/azuno" }
   ]);
 
+  // Real client feedback for this engagement — displayed as editorial proof on
+  // this page. Not wrapped in Review markup: Google's structured data policy
+  // forbids "self-serving reviews" (reviews a business publishes about its own
+  // work), even when the markup sits beside the visible quote.
   const caseStudySchema = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
@@ -33,22 +37,10 @@ export default function AzunoPage() {
     }
   };
 
-  // Real client feedback for this engagement — displayed on this page,
-  // so the Review markup lives alongside the visible quote it describes.
-  const reviewSchema = {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "itemReviewed": { "@type": "TechArticle", "name": "Semantic SEO Case Study: Azuno" },
-    "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-    "author": { "@type": "Person", "name": "Margaret Genet" },
-    "reviewBody": "Farrukh showed us how semantic SEO and geo-targeting could work hand-in-hand with the way AI and language models interpret search intent. His strategy didn't just boost our rankings, it made our content future-proof in an AI-first world."
-  };
-
   return (
     <div className="pt-12 pb-20 px-6 max-w-5xl mx-auto space-y-12">
       <JsonLd id="schema-breadcrumb-azuno" data={breadcrumbs} />
       <JsonLd id="schema-case-azuno" data={caseStudySchema} />
-      <JsonLd id="schema-review-azuno" data={reviewSchema} />
 
       {/* Back button */}
       <div>

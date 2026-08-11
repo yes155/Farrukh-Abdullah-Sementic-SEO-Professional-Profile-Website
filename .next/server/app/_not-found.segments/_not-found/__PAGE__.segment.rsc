@@ -1,6 +1,0 @@
-1:"$Sreact.fragment"
-2:I[522016,["/_next/static/chunks/400-nbi430gyh.js","/_next/static/chunks/3ec0c3nzzfxf4.js"],""]
-3:I[897367,["/_next/static/chunks/2yl1jv4w6po1z.js","/_next/static/chunks/1ntn7efqc-iiw.js"],"OutletBoundary"]
-4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"flex flex-col items-center justify-center min-h-[60vh] px-6 text-center","children":[["$","h1",null,{"className":"text-4xl font-black font-sans text-black uppercase tracking-tight","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-sm text-neutral-600 mt-2 max-w-md font-semibold","children":"The page you are looking for does not exist or has been moved to a different location."}],["$","$L2",null,{"href":"/","className":"mt-6 inline-flex items-center justify-center bg-cyan-400 hover:bg-cyan-300 text-black font-sans text-xs font-bold uppercase tracking-wider py-3 px-6 border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all cursor-pointer","children":"Go Back Home"}]]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"H325F0o6NN1TUo6hroHIk"}
-5:null

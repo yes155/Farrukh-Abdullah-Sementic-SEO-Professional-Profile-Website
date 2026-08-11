@@ -12,9 +12,6 @@ import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
 import Scheduler from "@/components/Scheduler";
 import SEOAnalyzer from "@/components/SEOAnalyzer";
-import JsonLd from "@/components/JsonLd";
-import { ORGANIZATION_REVIEWS_SCHEMA } from "@/lib/schemas";
-import { TESTIMONIALS } from "@/data";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function Page() {
@@ -42,9 +39,6 @@ export default function Page() {
 
   return (
     <div className="space-y-4">
-      {TESTIMONIALS.length > 0 && (
-        <JsonLd id="schema-organization-reviews" data={ORGANIZATION_REVIEWS_SCHEMA} />
-      )}
       {/* Hero Section */}
       <Hero 
         onBookClick={() => setIsBookModalOpen(true)} 
@@ -104,6 +98,54 @@ export default function Page() {
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Local SEO by Industry */}
+      <section className="py-16 px-6 max-w-7xl mx-auto border-t border-neutral-200">
+        <div className="mb-8">
+          <span className="text-[10px] font-mono tracking-widest text-emerald-600 uppercase block mb-2 font-bold">
+            Local SEO Systems
+          </span>
+          <h2 className="text-2xl md:text-3xl font-black font-sans text-black tracking-tight uppercase">
+            Built for Service Businesses
+          </h2>
+          <p className="text-xs md:text-sm text-neutral-600 mt-2 max-w-2xl font-semibold">
+            Map pack visibility, Google Business Profile systems, and service-area landing pages for the industries where local search wins the call.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {[
+            { name: "Dentists", path: "/services/seo-for-dentists" },
+            { name: "Plumbers", path: "/services/seo-for-plumbers" },
+            { name: "Salons", path: "/services/seo-for-salons" },
+            { name: "Pest Control", path: "/services/seo-for-pest-control" },
+            { name: "Roofers", path: "/services/seo-for-roofers" }
+          ].map((n, idx) => (
+            <motion.div
+              key={n.path}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: idx * 0.05 }}
+            >
+              <Link
+                href={n.path}
+                className="group flex flex-col bg-white border-2 border-black p-5 h-full shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+              >
+                <span className="text-[8px] font-mono tracking-widest text-neutral-400 font-bold block uppercase mb-1.5">
+                  SEO for
+                </span>
+                <span className="block text-sm font-black font-sans text-black uppercase tracking-tight group-hover:text-emerald-600 transition-colors">
+                  {n.name}
+                </span>
+                <span className="mt-3 inline-flex items-center gap-1 text-[10px] font-mono font-bold text-emerald-600 uppercase">
+                  <span>Explore</span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                </span>
+              </Link>
             </motion.div>
           ))}
         </div>

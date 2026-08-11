@@ -123,6 +123,47 @@ export default function ServicesIndex() {
           </motion.div>
         ))}
       </div>
+
+      {/* Local SEO by Industry */}
+      <section className="border-t border-neutral-200 pt-12">
+        <div className="mb-8">
+          <span className="text-[10px] font-mono tracking-widest text-emerald-600 font-bold block uppercase mb-2">
+            Local Lead Generation
+          </span>
+          <h2 className="text-2xl md:text-3xl font-black font-sans text-black tracking-tight uppercase">
+            Local SEO by Industry
+          </h2>
+          <p className="text-xs md:text-sm text-neutral-600 mt-2 max-w-2xl font-semibold">
+            Dedicated local search systems for service businesses that need map pack rankings, phone calls, and booked appointments — not blog posts.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {[
+            { name: "Dentists", path: "/services/seo-for-dentists" },
+            { name: "Plumbers", path: "/services/seo-for-plumbers" },
+            { name: "Salons", path: "/services/seo-for-salons" },
+            { name: "Pest Control", path: "/services/seo-for-pest-control" },
+            { name: "Roofers", path: "/services/seo-for-roofers" }
+          ].map((n) => (
+            <Link
+              key={n.path}
+              href={n.path}
+              className="group bg-white border-2 border-black p-5 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+            >
+              <span className="text-[8px] font-mono tracking-widest text-neutral-400 font-bold block uppercase mb-1.5">
+                SEO for
+              </span>
+              <span className="block text-sm font-black font-sans text-black uppercase tracking-tight group-hover:text-emerald-600 transition-colors">
+                {n.name}
+              </span>
+              <span className="inline-flex items-center gap-1 mt-3 text-[10px] font-mono font-bold text-emerald-600 uppercase">
+                <span>Explore</span>
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

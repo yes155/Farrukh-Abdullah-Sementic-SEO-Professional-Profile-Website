@@ -111,68 +111,12 @@ export const ORGANIZATION_SCHEMA = {
   "telephone": "+923346536393"
 };
 
-// 2b. Homepage-only review/aggregateRating fragment, linked to the
-// Organization entity via matching @id. Inject this ONLY on the homepage,
-// alongside ORGANIZATION_SCHEMA — the Testimonials section there is the
-// one place these reviews are actually visible. Google's structured data
-// guidelines require review markup to appear on the page where the
-// reviews themselves are visible, not site-wide.
-export const ORGANIZATION_REVIEWS_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": ORGANIZATION_ID,
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "reviewCount": "7",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "author": { "@type": "Person", "name": "Sarah M." },
-      "reviewBody": "Farrukh helped us show up in the local pack within weeks. Now new customers literally tell us they found us online."
-    },
-    {
-      "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "author": { "@type": "Person", "name": "David R." },
-      "reviewBody": "Farrukh rebuilt our SEO strategy from the ground up. Calls from local leads have doubled, and our site finally feels professional."
-    },
-    {
-      "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "author": { "@type": "Person", "name": "Elena P." },
-      "reviewBody": "Farrukh's geo-targeted SEO gave us visibility in exactly the neighborhoods we wanted. Bookings through organic search are up 35%."
-    },
-    {
-      "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "author": { "@type": "Person", "name": "Mark T." },
-      "reviewBody": "Farrukh spotted technical issues and optimized our product pages with semantic SEO. Within three months, organic sales became our main revenue stream."
-    },
-    {
-      "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "author": { "@type": "Person", "name": "Jessica L." },
-      "reviewBody": "Farrukh helped us dominate local search. We're now consistently in the top three results, which brought in a steady stream of new members."
-    },
-    {
-      "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "author": { "@type": "Person", "name": "Michael K." },
-      "reviewBody": "Farrukh showed us how search engines increasingly rely on language models to interpret intent, then tailored our content to align with those signals."
-    },
-    {
-      "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "author": { "@type": "Person", "name": "Margaret Genet" },
-      "reviewBody": "Farrukh showed us how semantic SEO and geo-targeting could work hand-in-hand with the way AI and language models interpret search intent. His strategy made our content future-proof in an AI-first world."
-    }
-  ]
-};
+// NOTE: Removed ORGANIZATION_REVIEWS_SCHEMA (self-serving Review + AggregateRating
+// markup over in-house testimonials). Google's structured data policy forbids
+// "self-serving reviews" — review/rating markup about your own organization — and
+// such markup can trigger a manual action stripping rich results. Testimonials
+// remain visible in the UI as editorial proof; they are not eligible for Review
+// rich results and should not be marked up as such.
 
 // 3. WEBSITE SCHEMA
 export const WEBSITE_SCHEMA = {

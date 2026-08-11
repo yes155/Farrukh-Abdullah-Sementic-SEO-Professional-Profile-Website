@@ -190,6 +190,42 @@ export default function LocalSeoPage() {
             </div>
           </div>
 
+          <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+            <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block mb-2 uppercase">
+              LOCAL INDUSTRIES
+            </span>
+            <h3 className="text-xs font-black uppercase text-black mb-4">SEO by Industry</h3>
+            <div className="space-y-3">
+              {[
+                { name: "Dentists", path: "/services/seo-for-dentists" },
+                { name: "Plumbers", path: "/services/seo-for-plumbers" },
+                { name: "Salons", path: "/services/seo-for-salons" },
+                { name: "Pest Control", path: "/services/seo-for-pest-control" },
+                { name: "Roofers", path: "/services/seo-for-roofers" }
+              ].map((n) => (
+                <Link
+                  key={n.path}
+                  href={n.path}
+                  className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+                >
+                  <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">Local Niche</span>
+                  <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                    SEO for {n.name}
+                  </span>
+                </Link>
+              ))}
+              <Link
+                href="/locations"
+                className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+              >
+                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">Service Areas</span>
+                <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                  All Local SEO Locations
+                </span>
+              </Link>
+            </div>
+          </div>
+
           <div className="bg-black text-white p-6 border-2 border-black shadow-[4px_4px_0px_rgba(52,211,153,1)]">
             <span className="text-[9px] font-mono tracking-widest text-emerald-400 font-bold block mb-1 uppercase">
               BOOST PHONE CALLS

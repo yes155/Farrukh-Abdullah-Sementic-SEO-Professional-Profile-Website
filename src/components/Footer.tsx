@@ -36,7 +36,7 @@ export default function Footer() {
         </div>
 
         {/* Lower Grid: Link Columns & Details */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-xs font-sans">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-xs font-sans">
           {/* Business Details */}
           <div className="space-y-3 col-span-2 md:col-span-1">
             <span className="text-[9px] font-mono text-neutral-500 font-bold uppercase tracking-wider block">
@@ -61,6 +61,32 @@ export default function Footer() {
                 { name: "Services", path: "/services" },
                 { name: "Case studies", path: "/case-studies" },
                 { name: "Insights", path: "/insights" }
+              ].map((item) => (
+                <li key={item.path}>
+                  <Link
+                    href={item.path}
+                    className="text-neutral-600 hover:text-black transition-colors cursor-pointer uppercase tracking-tight text-[11px] font-black"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Local SEO */}
+          <div className="space-y-3">
+            <span className="text-[9px] font-mono text-neutral-500 font-bold uppercase tracking-wider block">
+              Local SEO
+            </span>
+            <ul className="space-y-1.5">
+              {[
+                { name: "For Dentists", path: "/services/seo-for-dentists" },
+                { name: "For Plumbers", path: "/services/seo-for-plumbers" },
+                { name: "For Salons", path: "/services/seo-for-salons" },
+                { name: "For Pest Control", path: "/services/seo-for-pest-control" },
+                { name: "For Roofers", path: "/services/seo-for-roofers" },
+                { name: "All Locations", path: "/locations" }
               ].map((item) => (
                 <li key={item.path}>
                   <Link
