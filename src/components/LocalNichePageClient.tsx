@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Check, HelpCircle, MapPin, ArrowUpRight } from "lucide-react";
+import { ArrowRight, Check, HelpCircle, MapPin, ArrowUpRight, Home } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema, ORGANIZATION_ID, CANONICAL_DOMAIN } from "@/lib/schemas";
 import type { Niche } from "@/lib/localNiches";
 import { LOCAL_NICHES } from "@/lib/localNiches";
+import { CITIES } from "@/lib/locations";
 
 export default function LocalNichePageClient({ niche }: { niche: Niche }) {
   const breadcrumbs = getBreadcrumbSchema([
@@ -14,6 +15,19 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
     { name: "Local SEO", url: "/services/local-seo" },
     { name: niche.industry, url: `/services/${niche.slug}` }
   ]);
+
+  const costKeywords: { question: string; answer: string }[] = [
+    {
+      question: `How much does local SEO for ${niche.industry.toLowerCase()} cost?`,
+      answer: `Local SEO for ${niche.industry.toLowerCase()} is priced by market and scope, not by the number of keywords. A complete system — Google Business Profile optimization, ${niche.singular.toLowerCase()} schema, service-area landing pages, citations, and call tracking — typically runs in the low-to-mid four figures per month. The biggest cost driver is your market: a dense metro with established incumbents costs more than an underserved area where the fundamentals alone move rankings. I scope to the market you compete in, so you're not paying for work the local bar doesn't require.`
+    },
+    {
+      question: `Where can I find affordable local SEO services near me for ${niche.industry.toLowerCase()}?`,
+      answer: `Affordable local SEO for ${niche.industry.toLowerCase()} starts with the fundamentals competitors skip: a complete Google Business Profile, consistent NAP data, and service-area pages. Most businesses pay for "affordable local SEO services near me" and get a retainer for work that never moves the map pack. I keep the scope tight — the deliverables that actually rank a ${niche.singular.toLowerCase()} in your service areas — so the monthly investment stays proportional to what your market requires, and you can see calls come in before scaling.`
+    }
+  ];
+
+  const extendedKeywords = [...niche.keywords, ...costKeywords];
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -54,6 +68,14 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
         }
       })),
       ...niche.keywords.map((item) => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer
+        }
+      })),
+      ...costKeywords.map((item) => ({
         "@type": "Question",
         "name": item.question,
         "acceptedAnswer": {
@@ -128,7 +150,7 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
               <span>What {niche.industry} SEO Actually Covers</span>
             </h2>
             <div className="space-y-4">
-              {niche.keywords.map((k, idx) => (
+              {extendedKeywords.map((k, idx) => (
                 <div key={idx} className="bg-white border-2 border-black p-6 shadow-[3px_3px_0px_rgba(0,0,0,1)]">
                   <h3 className="font-sans font-black text-sm text-black uppercase tracking-tight mb-2">
                     {k.question}
@@ -205,6 +227,45 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
                 <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">All Local SEO</span>
                 <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
                   Local SEO Services Overview
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+            <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block mb-2 uppercase">
+              US MARKETS
+            </span>
+            <h3 className="text-xs font-black uppercase text-black mb-4">Local SEO by City</h3>
+            <div className="space-y-3">
+              <Link
+                href="/"
+                className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+              >
+                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">Home</span>
+                <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                  <span className="inline-flex items-center gap-1"><Home className="w-3 h-3" /> Farrukh Abdullah</span>
+                </span>
+              </Link>
+              {CITIES.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/locations/${c.slug}`}
+                  className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+                >
+                  <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">{c.stateName}</span>
+                  <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                    {c.name}, {c.state}
+                  </span>
+                </Link>
+              ))}
+              <Link
+                href="/locations"
+                className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+              >
+                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">All Markets</span>
+                <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                  All Locations
                 </span>
               </Link>
             </div>

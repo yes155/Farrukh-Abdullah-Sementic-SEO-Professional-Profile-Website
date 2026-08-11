@@ -3,6 +3,7 @@
 import { Mail, Linkedin, ArrowUp } from "lucide-react";
 import Link from "next/link";
 import { STRATEGIST_NAME, STRATEGIST_TITLE } from "../data";
+import { LOCAL_NICHES } from "@/lib/localNiches";
 
 export default function Footer() {
   const handleBackToTop = () => {
@@ -80,24 +81,24 @@ export default function Footer() {
               Local SEO
             </span>
             <ul className="space-y-1.5">
-              {[
-                { name: "For Dentists", path: "/services/seo-for-dentists" },
-                { name: "For Plumbers", path: "/services/seo-for-plumbers" },
-                { name: "For Salons", path: "/services/seo-for-salons" },
-                { name: "For Pest Control", path: "/services/seo-for-pest-control" },
-                { name: "For Roofers", path: "/services/seo-for-roofers" },
-                { name: "For HVAC", path: "/services/seo-for-hvac" },
-                { name: "All Locations", path: "/locations" }
-              ].map((item) => (
-                <li key={item.path}>
+              {LOCAL_NICHES.map((n) => (
+                <li key={n.slug}>
                   <Link
-                    href={item.path}
+                    href={`/services/${n.slug}`}
                     className="text-neutral-600 hover:text-black transition-colors cursor-pointer uppercase tracking-tight text-[11px] font-black"
                   >
-                    {item.name}
+                    For {n.industry}
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/locations"
+                  className="text-neutral-600 hover:text-black transition-colors cursor-pointer uppercase tracking-tight text-[11px] font-black"
+                >
+                  All Locations
+                </Link>
+              </li>
             </ul>
           </div>
 

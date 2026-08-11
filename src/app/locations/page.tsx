@@ -4,11 +4,12 @@ import { ArrowRight, MapPin } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/schemas";
 import { CITIES } from "@/lib/locations";
+import { LOCAL_NICHES } from "@/lib/localNiches";
 
 export const metadata: Metadata = {
   title: "Local SEO Locations | Service Areas & Markets",
   description:
-    "Local SEO service markets served remotely from Faisalabad, Pakistan — dedicated local SEO systems for businesses in Lahore, Austin, Chicago, Denver, Houston, Dallas, Phoenix, Miami, Seattle, and San Francisco.",
+    "Local SEO service markets served remotely from Faisalabad, Pakistan — dedicated local SEO systems for businesses in Lahore, Austin, Chicago, Denver, Houston, Dallas, Phoenix, Miami, Seattle, and San Francisco, across 16 service industries.",
   alternates: {
     canonical: "/locations",
   },
@@ -107,22 +108,39 @@ export default function LocationsPage() {
           Local SEO by Industry
         </h2>
         <div className="flex flex-wrap gap-3">
-          {[
-            { name: "SEO for Dentists", path: "/services/seo-for-dentists" },
-            { name: "SEO for Plumbers", path: "/services/seo-for-plumbers" },
-            { name: "SEO for Salons", path: "/services/seo-for-salons" },
-            { name: "SEO for Pest Control", path: "/services/seo-for-pest-control" },
-            { name: "SEO for Roofers", path: "/services/seo-for-roofers" },
-            { name: "SEO for HVAC", path: "/services/seo-for-hvac" }
-          ].map((n) => (
+          {LOCAL_NICHES.map((n) => (
             <Link
-              key={n.path}
-              href={n.path}
+              key={n.slug}
+              href={`/services/${n.slug}`}
               className="text-xs font-mono font-bold bg-neutral-50 text-black border-2 border-black px-4 py-2 uppercase hover:bg-cyan-400 transition-colors"
             >
-              {n.name}
+              SEO for {n.industry}
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* Research link */}
+      <section className="border-t border-neutral-200 pt-10">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white border-2 border-black p-6 shadow-[3px_3px_0px_rgba(0,0,0,1)]">
+          <div>
+            <span className="text-[9px] font-mono tracking-widest text-cyan-600 font-bold block uppercase mb-1.5">
+              Market Research
+            </span>
+            <h2 className="text-lg font-black font-sans text-black uppercase tracking-tight">
+              Where Local SEO Opportunity Actually Sits in US Cities
+            </h2>
+            <p className="text-xs text-neutral-600 font-medium mt-2 max-w-2xl leading-relaxed">
+              Competition density, map pack benchmarks, and the AI-answer layer across the nine US markets we cover — with the data behind every city page.
+            </p>
+          </div>
+          <Link
+            href="/insights/us-cities-local-seo-opportunity"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold bg-cyan-400 text-black border-2 border-black py-2.5 px-4 uppercase shrink-0 shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+          >
+            <span>Read the Research</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </section>
     </div>

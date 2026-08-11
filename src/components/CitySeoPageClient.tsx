@@ -17,6 +17,14 @@ export default function CitySeoPageClient({ city }: { city: City }) {
     {
       q: `Can you compete with local agencies already ranking in ${city.name}?`,
       a: `Yes. Most ${city.name} agencies sell generic monthly packages. I build entity-based local systems — nested LocalBusiness schema, per-neighborhood landing pages, and verified citation networks — which are the signals both Google's map pack and AI answer engines weight most heavily for local trust.`
+    },
+    {
+      q: `How much does local SEO cost for a ${city.name} business?`,
+      a: `Local SEO is priced by market and scope, not by keyword count. A complete system — Google Business Profile optimization, local schema, service-area landing pages for ${city.neighborhoods.join(", ")}, citations, and call tracking — typically runs in the low-to-mid four figures per month. ${city.name}'s competitive position sets the bar: the fundamentals matter most in less crowded markets, while denser markets require more review and citation work.`
+    },
+    {
+      q: `Are there affordable local SEO services near me in ${city.name}?`,
+      a: `Yes — affordable local SEO services start with the fundamentals competitors skip: a complete Google Business Profile, consistent NAP data, and service-area pages. I keep the scope tight and proportional to what the ${city.name} market actually requires, so you see calls come in before scaling the investment.`
     }
   ];
 
@@ -198,6 +206,15 @@ export default function CitySeoPageClient({ city }: { city: City }) {
                 <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">All Markets</span>
                 <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
                   All Locations
+                </span>
+              </Link>
+              <Link
+                href="/insights/us-cities-local-seo-opportunity"
+                className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+              >
+                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">Local SEO Research</span>
+                <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                  US Cities: 2026 Opportunity Data
                 </span>
               </Link>
             </div>

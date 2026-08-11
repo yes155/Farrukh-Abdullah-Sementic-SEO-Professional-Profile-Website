@@ -78,6 +78,31 @@ export default async function InsightDetailPage({ params }: PageProps) {
   const activeArticleSchema = articleId ? ARTICLE_SCHEMAS[articleId] : null;
 
   // Helper to format text with simple HTML-like structures (basic markdown renderer)
+  const renderInline = (text: string) => {
+    // Tokenize **bold** and [text](url) into ordered React nodes.
+    const tokenPattern = /(\*\*.*?\*\*|\[[^\]]*?\]\([^)]*?\))/g;
+    const tokens = text.split(tokenPattern).filter(Boolean);
+    return tokens.map((tok, idx) => {
+      if (tok.startsWith("**") && tok.endsWith("**")) {
+        return <strong key={idx} className="text-black font-extrabold">{tok.slice(2, -2)}</strong>;
+      }
+      const linkMatch = tok.match(/^\[([^\]]*?)\]\(([^)]*?)\)$/);
+      if (linkMatch) {
+        const [, label, href] = linkMatch;
+        return (
+          <Link
+            key={idx}
+            href={href}
+            className="text-cyan-700 font-bold underline decoration-2 underline-offset-2 hover:text-black transition-colors"
+          >
+            {label}
+          </Link>
+        );
+      }
+      return <span key={idx}>{tok}</span>;
+    });
+  };
+
   const renderSimpleMarkdown = (text: string) => {
     return text.split("\n\n").map((para, idx) => {
       if (para.startsWith("## ")) {
@@ -108,10 +133,9 @@ export default async function InsightDetailPage({ params }: PageProps) {
             {items.map((li, liIdx) => {
               // Highlight bold items inside list
               const cleanLi = li.replace("- ", "");
-              const parts = cleanLi.split("**");
               return (
                 <li key={liIdx} className="text-xs md:text-sm leading-relaxed font-medium">
-                  {parts.map((part, pIdx) => pIdx % 2 === 1 ? <strong key={pIdx} className="text-black font-extrabold">{part}</strong> : part)}
+                  {renderInline(cleanLi)}
                 </li>
               );
             })}
@@ -175,7 +199,7 @@ export default async function InsightDetailPage({ params }: PageProps) {
                   <tr key={rIdx} className="border-t border-neutral-200 even:bg-neutral-50">
                     {parseCells(row).map((cell, cIdx) => (
                       <td key={cIdx} className="px-3 py-2 text-neutral-700 font-medium border-r border-neutral-100 last:border-r-0">
-                        {cell}
+                        {renderInline(cell)}
                       </td>
                     ))}
                   </tr>
@@ -187,10 +211,9 @@ export default async function InsightDetailPage({ params }: PageProps) {
       }
 
       // Default paragraph handling for bolds
-      const parts = para.split("**");
       return (
         <p key={idx} className="text-xs md:text-sm leading-relaxed text-neutral-700 mb-4 font-sans font-normal">
-          {parts.map((part, pIdx) => pIdx % 2 === 1 ? <strong key={pIdx} className="text-black font-extrabold">{part}</strong> : part)}
+          {renderInline(para)}
         </p>
       );
     });

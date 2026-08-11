@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Check, HelpCircle, ArrowUpRight, MapPin, PhoneCall } from "lucide-react";
 import { motion } from "motion/react";
 import JsonLd from "@/components/JsonLd";
+import { LOCAL_NICHES } from "@/lib/localNiches";
 import { 
   LOCAL_SEO_SERVICE_SCHEMA, 
   getBreadcrumbSchema 
@@ -14,6 +15,14 @@ export default function LocalSeoPage() {
     {
       q: "Do you provide Local SEO services for regional brands?",
       a: "Yes. Local SEO Services is a separate offering focused on local map pack visibility, Google Business Profile optimization, and localized landing page architecture — built for service businesses that need calls and form-fills, not enterprise knowledge graph work."
+    },
+    {
+      q: "How much does local SEO cost?",
+      a: "Local SEO is priced by market and scope, not by keyword count. A complete system — Google Business Profile optimization, local schema markup, service-area landing pages, citations, and call tracking — typically runs in the low-to-mid four figures per month. The biggest cost driver is your market: a dense metro with established incumbents costs more than an underserved area where the fundamentals alone move rankings."
+    },
+    {
+      q: "Are there affordable local SEO services near me?",
+      a: "Yes — affordable local SEO services start with the fundamentals competitors skip: a complete Google Business Profile, consistent NAP data, and service-area pages. Most agencies charge for a retainer that never moves the map pack. I keep the scope tight and proportional to what your market actually requires, so you see calls come in before scaling the investment."
     }
   ];
 
@@ -23,10 +32,24 @@ export default function LocalSeoPage() {
     { name: "Local SEO", url: "/services/local-seo" }
   ]);
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  };
+
   return (
     <div className="pt-12 pb-20 px-6 max-w-7xl mx-auto space-y-16">
       <JsonLd id="schema-service-local" data={LOCAL_SEO_SERVICE_SCHEMA} />
       <JsonLd id="schema-breadcrumb-local" data={breadcrumbs} />
+      <JsonLd id="schema-faq-local" data={faqSchema} />
 
       {/* Header Block */}
       <div className="border-b-2 border-black pb-12">
@@ -196,22 +219,15 @@ export default function LocalSeoPage() {
             </span>
             <h3 className="text-xs font-black uppercase text-black mb-4">SEO by Industry</h3>
             <div className="space-y-3">
-              {[
-                { name: "Dentists", path: "/services/seo-for-dentists" },
-                { name: "Plumbers", path: "/services/seo-for-plumbers" },
-                { name: "Salons", path: "/services/seo-for-salons" },
-                { name: "Pest Control", path: "/services/seo-for-pest-control" },
-                { name: "Roofers", path: "/services/seo-for-roofers" },
-                { name: "HVAC", path: "/services/seo-for-hvac" }
-              ].map((n) => (
+              {LOCAL_NICHES.map((n) => (
                 <Link
-                  key={n.path}
-                  href={n.path}
+                  key={n.slug}
+                  href={`/services/${n.slug}`}
                   className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
                 >
                   <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">Local Niche</span>
                   <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
-                    SEO for {n.name}
+                    SEO for {n.industry}
                   </span>
                 </Link>
               ))}

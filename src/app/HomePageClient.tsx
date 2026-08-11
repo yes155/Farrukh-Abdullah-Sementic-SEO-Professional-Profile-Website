@@ -10,6 +10,7 @@ import Philosophy from "@/components/Philosophy";
 import Certifications from "@/components/Certifications";
 import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
+import { LOCAL_NICHES } from "@/lib/localNiches";
 import Scheduler from "@/components/Scheduler";
 import SEOAnalyzer from "@/components/SEOAnalyzer";
 import { motion, AnimatePresence } from "motion/react";
@@ -116,31 +117,24 @@ export default function Page() {
             Map pack visibility, Google Business Profile systems, and service-area landing pages for the industries where local search wins the call.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {[
-            { name: "Dentists", path: "/services/seo-for-dentists" },
-            { name: "Plumbers", path: "/services/seo-for-plumbers" },
-            { name: "Salons", path: "/services/seo-for-salons" },
-            { name: "Pest Control", path: "/services/seo-for-pest-control" },
-            { name: "Roofers", path: "/services/seo-for-roofers" },
-            { name: "HVAC", path: "/services/seo-for-hvac" }
-          ].map((n, idx) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {LOCAL_NICHES.map((n, idx) => (
             <motion.div
-              key={n.path}
+              key={n.slug}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: idx * 0.05 }}
+              transition={{ duration: 0.3, delay: (idx % 8) * 0.05 }}
             >
               <Link
-                href={n.path}
+                href={`/services/${n.slug}`}
                 className="group flex flex-col bg-white border-2 border-black p-5 h-full shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
               >
                 <span className="text-[8px] font-mono tracking-widest text-neutral-400 font-bold block uppercase mb-1.5">
                   SEO for
                 </span>
                 <span className="block text-sm font-black font-sans text-black uppercase tracking-tight group-hover:text-emerald-600 transition-colors">
-                  {n.name}
+                  {n.industry}
                 </span>
                 <span className="mt-3 inline-flex items-center gap-1 text-[10px] font-mono font-bold text-emerald-600 uppercase">
                   <span>Explore</span>

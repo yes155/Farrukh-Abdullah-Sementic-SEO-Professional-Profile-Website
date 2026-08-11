@@ -624,6 +624,25 @@ export const ARTICLE_SCHEMAS: Record<string, any> = {
     ],
     "wordCount": 930,
     "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/geo-measurement-stack`
+  },
+  "us-cities-local-seo-opportunity": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/us-cities-local-seo-opportunity/#article`,
+    "headline": "Local SEO Opportunity by US City: Where Service Businesses Win in 2026",
+    "datePublished": "2026-08-11T08:00:00Z",
+    "dateModified": "2026-08-11T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "Which US cities have soft local SERPs, which are locked down, and what it takes to win the map pack and AI answers in each market — backed by 2026 data on competition density and AI Overviews.",
+    "about": [
+      { "@type": "Thing", "name": "Local SEO" },
+      { "@type": "Thing", "name": "US Cities" },
+      { "@type": "Thing", "name": "Map Pack" },
+      { "@type": "Thing", "name": "AI Overviews" }
+    ],
+    "wordCount": 1100,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/us-cities-local-seo-opportunity`
   }
 };
 

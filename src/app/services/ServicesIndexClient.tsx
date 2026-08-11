@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { motion } from "motion/react";
 import JsonLd from "@/components/JsonLd";
+import { LOCAL_NICHES } from "@/lib/localNiches";
 import { 
   SEMANTIC_SEO_SERVICE_SCHEMA, 
   AI_SEO_SERVICE_SCHEMA,
@@ -134,28 +135,24 @@ export default function ServicesIndex() {
             Local SEO by Industry
           </h2>
           <p className="text-xs md:text-sm text-neutral-600 mt-2 max-w-2xl font-semibold">
-            Dedicated local search systems for service businesses that need map pack rankings, phone calls, and booked appointments — not blog posts.
+            Dedicated local search systems for service businesses that need map pack rankings, phone calls, and booked appointments — not blog posts. Priced by market and scope, so affordable local SEO services near you stay proportional to what your city actually requires.
+          </p>
+          <p className="text-[11px] md:text-xs text-neutral-500 mt-2 max-w-2xl font-medium">
+            Every industry page below explains what local SEO includes and what it costs in your market — no retainer for work the local bar doesn't require.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[
-            { name: "Dentists", path: "/services/seo-for-dentists" },
-            { name: "Plumbers", path: "/services/seo-for-plumbers" },
-            { name: "Salons", path: "/services/seo-for-salons" },
-            { name: "Pest Control", path: "/services/seo-for-pest-control" },
-            { name: "Roofers", path: "/services/seo-for-roofers" },
-            { name: "HVAC", path: "/services/seo-for-hvac" }
-          ].map((n) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {LOCAL_NICHES.map((n) => (
             <Link
-              key={n.path}
-              href={n.path}
+              key={n.slug}
+              href={`/services/${n.slug}`}
               className="group bg-white border-2 border-black p-5 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
             >
               <span className="text-[8px] font-mono tracking-widest text-neutral-400 font-bold block uppercase mb-1.5">
                 SEO for
               </span>
               <span className="block text-sm font-black font-sans text-black uppercase tracking-tight group-hover:text-emerald-600 transition-colors">
-                {n.name}
+                {n.industry}
               </span>
               <span className="inline-flex items-center gap-1 mt-3 text-[10px] font-mono font-bold text-emerald-600 uppercase">
                 <span>Explore</span>
