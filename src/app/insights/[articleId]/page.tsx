@@ -242,7 +242,14 @@ export default async function InsightDetailPage({ params }: PageProps) {
 
       {/* Related content — internal linking to keep topical clusters connected */}
       {(() => {
-        const relatedArticles = (activeArticle.relatedArticleIds || [])
+        const relatedIds = activeArticle.relatedArticleIds && activeArticle.relatedArticleIds.length > 0
+          ? activeArticle.relatedArticleIds
+          : articles
+              .filter((a) => a.id !== activeArticle.id && a.category === activeArticle.category)
+              .slice(0, 3)
+              .map((a) => a.id);
+
+        const relatedArticles = relatedIds
           .map((id) => articles.find((a) => a.id === id))
           .filter((a): a is NonNullable<typeof a> => Boolean(a));
 

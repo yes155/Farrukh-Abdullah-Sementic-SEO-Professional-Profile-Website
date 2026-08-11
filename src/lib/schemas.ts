@@ -434,6 +434,196 @@ export const ARTICLE_SCHEMAS: Record<string, any> = {
     ],
     "wordCount": 720,
     "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/ins-05`
+  },
+  "entity-first-geo": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/entity-first-geo/#article`,
+    "headline": "Entity-First GEO: The Semantic SEO Foundation That Decides AI Citations",
+    "datePublished": "2026-08-03T08:00:00Z",
+    "dateModified": "2026-08-03T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "An entity-first GEO framework: why entity clarity decides AI citations, the four entity signals AI engines check, and a practical audit workflow.",
+    "about": [
+      { "@type": "Thing", "name": "Generative Engine Optimization" },
+      { "@type": "Thing", "name": "Entity SEO" },
+      { "@type": "Thing", "name": "Semantic SEO" },
+      { "@type": "Thing", "name": "AI Citations" }
+    ],
+    "wordCount": 1101,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/entity-first-geo`
+  },
+  "answer-capsules-ai-extraction": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/answer-capsules-ai-extraction/#article`,
+    "headline": "The 120–150 Word Answer Capsule: The Exact Passage Structure AI Engines Extract",
+    "datePublished": "2026-08-04T08:00:00Z",
+    "dateModified": "2026-08-04T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "The answer capsule: the 120-150 word self-contained passage structure that boosted GEO visibility by 40% in Princeton's study, with templates and rewrites.",
+    "about": [
+      { "@type": "Thing", "name": "Answer Engine Optimization" },
+      { "@type": "Thing", "name": "Generative Engine Optimization" },
+      { "@type": "Thing", "name": "AI Overviews" },
+      { "@type": "Thing", "name": "Content Structure" }
+    ],
+    "wordCount": 983,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/answer-capsules-ai-extraction`
+  },
+  "ai-mode-search-language": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/ai-mode-search-language/#article`,
+    "headline": "AI Mode Rewrote Search Language: How to Write Content for Conversation, Not Keywords",
+    "datePublished": "2026-08-05T08:00:00Z",
+    "dateModified": "2026-08-05T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "How Google AI Mode data rewrote search language: conversational prompts, follow-up queries, multimodal input, and a page rewrite methodology.",
+    "about": [
+      { "@type": "Thing", "name": "AI Mode" },
+      { "@type": "Thing", "name": "Search Intent" },
+      { "@type": "Thing", "name": "Conversational Search" },
+      { "@type": "Thing", "name": "Content Optimization" }
+    ],
+    "wordCount": 885,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/ai-mode-search-language`
+  },
+  "schema-as-citation-signal": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/schema-as-citation-signal/#article`,
+    "headline": "Schema as a Citation Signal: Resolving What the Conflicting Studies Actually Mean",
+    "datePublished": "2026-08-06T08:00:00Z",
+    "dateModified": "2026-08-06T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "Reconciling the conflicting studies on schema markup and AI citations: Ahrefs, Princeton, and Google's 2026 guidance, plus a schema priority list.",
+    "about": [
+      { "@type": "Thing", "name": "Schema Markup" },
+      { "@type": "Thing", "name": "JSON-LD" },
+      { "@type": "Thing", "name": "AI Citations" },
+      { "@type": "Thing", "name": "Structured Data" }
+    ],
+    "wordCount": 902,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/schema-as-citation-signal`
+  },
+  "content-freshness-ai-search": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/content-freshness-ai-search/#article`,
+    "headline": "The Freshness Advantage: Why AI Systems Prefer Newer Content and How to Build a Refresh Pipeline",
+    "datePublished": "2026-08-07T08:00:00Z",
+    "dateModified": "2026-08-07T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "The freshness advantage in AI search: Ahrefs' 25.7% recency finding, Koray's momentum concept, and a four-column refresh pipeline tied to a topical map.",
+    "about": [
+      { "@type": "Thing", "name": "Content Freshness" },
+      { "@type": "Thing", "name": "Topical Authority" },
+      { "@type": "Thing", "name": "AI Search" },
+      { "@type": "Thing", "name": "Content Refresh" }
+    ],
+    "wordCount": 828,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/content-freshness-ai-search`
+  },
+  "topical-authority-core-update": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/topical-authority-core-update/#article`,
+    "headline": "Topical Authority vs. the October 2025 Core Update: What Koray's Model Predicted and Why It Held",
+    "datePublished": "2026-08-08T08:00:00Z",
+    "dateModified": "2026-08-08T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "How the October 2025 Google core update validated Koray Tuğberk Gübür's Topical Authority formula, with the framework's practical application for AI search.",
+    "about": [
+      { "@type": "Thing", "name": "Topical Authority" },
+      { "@type": "Thing", "name": "Google Core Update" },
+      { "@type": "Thing", "name": "Semantic SEO" },
+      { "@type": "Thing", "name": "Entity SEO" }
+    ],
+    "wordCount": 925,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/topical-authority-core-update`
+  },
+  "reddit-youtube-co-citation-geo": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/reddit-youtube-co-citation-geo/#article`,
+    "headline": "Reddit, YouTube, and the Co-Citation Web: Off-Site Signals That Get You Cited by AI",
+    "datePublished": "2026-08-09T08:00:00Z",
+    "dateModified": "2026-08-09T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "The co-citation web in AI search: why Reddit, YouTube, LinkedIn, and other off-site platforms drive AI citations, with a 90-day playbook for solo operators.",
+    "about": [
+      { "@type": "Thing", "name": "Generative Engine Optimization" },
+      { "@type": "Thing", "name": "Co-Citation" },
+      { "@type": "Thing", "name": "Reddit" },
+      { "@type": "Thing", "name": "Brand Mentions" }
+    ],
+    "wordCount": 804,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/reddit-youtube-co-citation-geo`
+  },
+  "original-data-solo-seo": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/original-data-solo-seo/#article`,
+    "headline": "Original Data Without a Data Team: How Solo SEOs and Small Brands Get Cited as Primary Sources",
+    "datePublished": "2026-08-10T08:00:00Z",
+    "dateModified": "2026-08-10T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "How solo SEOs and small brands produce original, citable data: the 4.1x data table signal, realistic data sources, and a repeatable five-step research sprint.",
+    "about": [
+      { "@type": "Thing", "name": "Original Research" },
+      { "@type": "Thing", "name": "Content Marketing" },
+      { "@type": "Thing", "name": "AI Citations" },
+      { "@type": "Thing", "name": "Data-Driven SEO" }
+    ],
+    "wordCount": 852,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/original-data-solo-seo`
+  },
+  "local-businesses-ai-search": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/local-businesses-ai-search/#article`,
+    "headline": "Local Businesses in AI Search: Being the Entity AI Names for 'Best Plumber Near Me'",
+    "datePublished": "2026-08-11T08:00:00Z",
+    "dateModified": "2026-08-11T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "How local businesses get named in AI answers: Google's 2026 guidance on Google Business Profile, the local entity signals, and a local GEO checklist.",
+    "about": [
+      { "@type": "Thing", "name": "Local SEO" },
+      { "@type": "Thing", "name": "Google Business Profile" },
+      { "@type": "Thing", "name": "AI Overviews" },
+      { "@type": "Thing", "name": "Generative Engine Optimization" }
+    ],
+    "wordCount": 812,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/local-businesses-ai-search`
+  },
+  "geo-measurement-stack": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/geo-measurement-stack/#article`,
+    "headline": "The GEO Measurement Stack: Citation SOV, Answer Share, and the 50-Run Method",
+    "datePublished": "2026-08-11T08:00:00Z",
+    "dateModified": "2026-08-11T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "A practical GEO measurement stack: citation rate, share of voice, sentiment framing, and the statistically valid 50-run sampling method — free and repeatable.",
+    "about": [
+      { "@type": "Thing", "name": "Generative Engine Optimization" },
+      { "@type": "Thing", "name": "AI Search Metrics" },
+      { "@type": "Thing", "name": "Share of Voice" },
+      { "@type": "Thing", "name": "Measurement" }
+    ],
+    "wordCount": 930,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/geo-measurement-stack`
   }
 };
 
