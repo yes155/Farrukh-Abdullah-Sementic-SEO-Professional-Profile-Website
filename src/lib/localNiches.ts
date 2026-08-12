@@ -25,6 +25,11 @@ export interface Niche {
   strategies: NicheStrategy[];
   faqs: NicheFaq[];
   keywords: NicheKeyword[];
+  focusKeywords: string[];
+  relatedCities: string[];
+  relatedInsight: string;
+  relatedCaseStudyPath: string;
+  relatedCaseStudyName: string;
 }
 
 export const LOCAL_NICHES: Niche[] = [
@@ -35,6 +40,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "Dentist",
     eyebrow: "Local SEO for Dental Practices",
     headline: "SEO for Dentists",
+    focusKeywords: [
+      "local seo for dentists",
+      "dentist seo services",
+      "emergency dentist near me",
+      "Invisalign provider near me",
+      "dental practice marketing"
+    ],
+    relatedCities: ["austin", "chicago", "miami", "san-francisco"],
+    relatedInsight: "ins-04",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Dental searches are overwhelmingly local — new patients look for a dentist near them with availability today or this week. I build local search systems for dental practices that rank in the Google map pack, appear in AI answers about local dentists, and convert searchers into booked appointments.",
     deliverables: [
@@ -83,6 +99,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "Plumber",
     eyebrow: "Local SEO for Plumbing Businesses",
     headline: "SEO for Plumbers",
+    focusKeywords: [
+      "local seo for plumbers",
+      "plumber seo services",
+      "emergency plumber near me",
+      "water heater replacement near me",
+      "plumbing lead generation"
+    ],
+    relatedCities: ["chicago", "houston", "dallas", "seattle"],
+    relatedInsight: "local-businesses-ai-search",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Plumbing leads are time-critical — when a pipe bursts, the customer searches for whoever is open and nearby right now. I build local SEO systems for plumbing companies that win the map pack for emergency and service queries, keep NAP data consistent across the web, and turn local searches into answered phones.",
     deliverables: [
@@ -139,6 +166,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "BeautySalon",
     eyebrow: "Local SEO for Salons",
     headline: "SEO for Salons",
+    focusKeywords: [
+      "local seo for salons",
+      "salon seo services",
+      "balayage near me",
+      "hair salon marketing",
+      "salon booking seo"
+    ],
+    relatedCities: ["chicago", "miami", "phoenix", "san-francisco"],
+    relatedInsight: "ins-04",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Salon customers book by browsing — they compare stylists, prices, and availability before picking up the phone or clicking book. I build local search visibility for hair and beauty salons that puts you in front of high-intent local searchers, syncs your Google Business Profile with real-time booking, and turns Google searches into chairs filled.",
     deliverables: [
@@ -187,6 +225,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "LocalBusiness",
     eyebrow: "Local SEO for Pest Control",
     headline: "SEO for Pest Control",
+    focusKeywords: [
+      "local seo for pest control",
+      "pest control seo services",
+      "termite treatment near me",
+      "rodent control near me",
+      "pest control lead generation"
+    ],
+    relatedCities: ["phoenix", "houston", "austin", "denver"],
+    relatedInsight: "us-cities-local-seo-opportunity",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Pest control is one of the most seasonal and competitive local niches on the map. I build local SEO systems for pest control companies that win recurring and emergency demand — termites, rodents, ants, bed bugs — with service-area precision, strong local schema, and call tracking that proves where every job came from.",
     deliverables: [
@@ -235,6 +284,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "RoofingContractor",
     eyebrow: "Local SEO for Roofing Contractors",
     headline: "SEO for Roofers",
+    focusKeywords: [
+      "local seo for roofers",
+      "roofing seo services",
+      "roof repair near me",
+      "storm damage roof replacement",
+      "roofing lead generation"
+    ],
+    relatedCities: ["austin", "denver", "dallas", "seattle"],
+    relatedInsight: "ins-04",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Roofing is a high-ticket, high-trust purchase — homeowners research, compare contractors, and only call the few they trust. I build local SEO systems for roofing companies that rank for storm and repair demand, present you as the credible local contractor in Google and AI search, and generate calls worth thousands each.",
     deliverables: [
@@ -283,6 +343,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "HVACBusiness",
     eyebrow: "Local SEO for HVAC Contractors",
     headline: "SEO for HVAC",
+    focusKeywords: [
+      "local seo for hvac",
+      "hvac seo services",
+      "ac repair near me",
+      "furnace replacement near me",
+      "hvac lead generation"
+    ],
+    relatedCities: ["houston", "chicago", "phoenix", "denver"],
+    relatedInsight: "local-businesses-ai-search",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Heating and cooling is the most seasonal home-services category on the map — demand spikes when temperatures do, and it's a repair homeowners can't defer. I build local SEO systems for HVAC companies that rank in the map pack and AI search for repair, replacement, and tune-up queries, keep your service-area and after-hours facts consistent, and convert seasonal search surges into booked service calls.",
     deliverables: [
@@ -331,6 +402,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "Electrician",
     eyebrow: "Local SEO for Electricians",
     headline: "SEO for Electricians",
+    focusKeywords: [
+      "local seo for electricians",
+      "electrician seo services",
+      "electrician near me",
+      "emergency electrician open now",
+      "electrical lead generation"
+    ],
+    relatedCities: ["chicago", "denver", "houston", "seattle"],
+    relatedInsight: "us-cities-local-seo-opportunity",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Electrical work is urgent, licensed, and trust-sensitive — homeowners call for a licensed electrician nearby, not a national brand. I build local SEO systems for electricians that rank in the map pack and AI search for service and emergency queries, keep your license and service-area facts consistent, and turn local searches into dispatched jobs.",
     deliverables: [
@@ -379,6 +461,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "GeneralContractor",
     eyebrow: "Local SEO for General Contractors",
     headline: "SEO for Contractors",
+    focusKeywords: [
+      "local seo for contractors",
+      "contractor seo services",
+      "kitchen remodel contractor",
+      "deck builder near me",
+      "contractor lead generation"
+    ],
+    relatedCities: ["dallas", "seattle", "austin", "houston"],
+    relatedInsight: "ins-04",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "General contractors win jobs through reputation and reach — homeowners research remodels, additions, and repairs before inviting anyone to their home. I build local SEO systems for contractors that rank in the map pack and AI search across the full scope of your services and service areas, and generate high-value calls worth thousands each.",
     deliverables: [
@@ -427,6 +520,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "MedicalBusiness",
     eyebrow: "Local SEO for Therapists",
     headline: "SEO for Therapists",
+    focusKeywords: [
+      "local seo for therapists",
+      "therapist seo services",
+      "anxiety therapist near me",
+      "couples counseling near me",
+      "therapy practice marketing"
+    ],
+    relatedCities: ["san-francisco", "chicago", "seattle", "miami"],
+    relatedInsight: "ins-04",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Choosing a therapist is deeply personal and deeply local — people search for specialists, availability, insurance, and a practice that feels right nearby. I build local SEO systems for therapy practices that rank in the map pack and AI search for the conditions and approaches clients actually search, with a private, trust-first online presence.",
     deliverables: [
@@ -475,6 +579,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "RealEstateAgent",
     eyebrow: "Local SEO for Real Estate Agents",
     headline: "SEO for Real Estate Agents",
+    focusKeywords: [
+      "local seo for real estate agents",
+      "real estate seo services",
+      "houses for sale in [city]",
+      "realtor near me",
+      "neighborhood seo for agents"
+    ],
+    relatedCities: ["dallas", "miami", "houston", "austin"],
+    relatedInsight: "us-cities-local-seo-opportunity",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Buying and selling is decided by neighborhood trust — clients search for agents, market data, and 'homes near me' before committing. I build local SEO systems for real estate agents that rank in the map pack and AI search for the areas you serve, position you as the neighborhood authority, and turn local search into listing appointments.",
     deliverables: [
@@ -523,6 +638,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "HomeAndConstructionBusiness",
     eyebrow: "Local SEO for Landscaping Businesses",
     headline: "SEO for Landscapers",
+    focusKeywords: [
+      "local seo for landscapers",
+      "landscaping seo services",
+      "landscaper near me",
+      "hardscaping contractor near me",
+      "lawn care lead generation"
+    ],
+    relatedCities: ["denver", "austin", "dallas", "phoenix"],
+    relatedInsight: "ins-04",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Landscaping demand is seasonal, visual, and neighborhood-driven — clients want to see your work before they call. I build local SEO systems for landscapers that rank in the map pack and AI search for design, install, and maintenance services, showcase your portfolio where it counts, and turn local searches into quoted projects.",
     deliverables: [
@@ -571,6 +697,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "Dentist",
     eyebrow: "Local SEO for Orthodontic Practices",
     headline: "SEO for Orthodontists",
+    focusKeywords: [
+      "local seo for orthodontists",
+      "orthodontist seo services",
+      "Invisalign near me",
+      "braces cost near me",
+      "orthodontic practice marketing"
+    ],
+    relatedCities: ["austin", "miami", "chicago", "dallas"],
+    relatedInsight: "ins-04",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Orthodontic patients compare options for months — braces, clear aligners, cost, and convenience — before committing to a provider. I build local SEO systems for orthodontic practices that rank in the map pack and AI search for the treatments and financing questions patients search, and convert research into consultations.",
     deliverables: [
@@ -619,6 +756,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "RealEstateAgent",
     eyebrow: "Local SEO for Estate Agents",
     headline: "SEO for Estate Agents",
+    focusKeywords: [
+      "local seo for estate agents",
+      "estate agent seo services",
+      "houses for sale in [area]",
+      "estate agents near me",
+      "property seo for agencies"
+    ],
+    relatedCities: ["miami", "dallas", "seattle", "chicago"],
+    relatedInsight: "ins-04",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Estate agency is neighborhood business — sellers pick the agent who knows their street and buyers search by area and price. I build local SEO systems for estate agents that rank in the map pack and AI search for the areas you cover, position you as the local property expert, and turn local searches into viewings and valuations.",
     deliverables: [
@@ -667,6 +815,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "Dermatology",
     eyebrow: "Local SEO for Dermatology Practices",
     headline: "SEO for Dermatologists",
+    focusKeywords: [
+      "local seo for dermatologists",
+      "dermatologist seo services",
+      "acne treatment near me",
+      "mole check near me",
+      "dermatology practice marketing"
+    ],
+    relatedCities: ["miami", "san-francisco", "austin", "dallas"],
+    relatedInsight: "ins-04",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Dermatology patients search by condition and treatment — acne, skin cancer screenings, cosmetic procedures — and they need a provider they trust nearby. I build local SEO systems for dermatology practices that rank in the map pack and AI search for the conditions and treatments you treat, and convert medical searches into scheduled appointments.",
     deliverables: [
@@ -715,6 +874,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "HomeAndConstructionBusiness",
     eyebrow: "Local SEO for Trades Businesses",
     headline: "SEO for Tradies",
+    focusKeywords: [
+      "local seo for tradies",
+      "trades seo services",
+      "carpenter near me",
+      "builder near me",
+      "trades business lead generation"
+    ],
+    relatedCities: ["houston", "dallas", "chicago", "denver"],
+    relatedInsight: "ins-04",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Tradespeople — builders, carpenters, electricians, plumbers, and the whole home-services spectrum — win work through local trust and a booked calendar. I build local SEO systems for trades businesses that rank in the map pack and AI search across the services and areas you cover, and turn local searches into quoted jobs.",
     deliverables: [
@@ -763,6 +933,17 @@ export const LOCAL_NICHES: Niche[] = [
     schemaType: "HomeAndConstructionBusiness",
     eyebrow: "Local SEO for Fence Contractors",
     headline: "SEO for Fence Contractors",
+    focusKeywords: [
+      "local seo for fence contractors",
+      "fence contractor seo services",
+      "vinyl fence installer near me",
+      "wood fence cost",
+      "fence company lead generation"
+    ],
+    relatedCities: ["austin", "houston", "dallas", "denver"],
+    relatedInsight: "ins-04",
+    relatedCaseStudyPath: "/case-studies/local-seo-systems",
+    relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
       "Fencing is a defined, local purchase — homeowners search for fence types, costs, and installers in their area before requesting quotes. I build local SEO systems for fence contractors that rank in the map pack and AI search for the fence styles and services you install, and turn local searches into quoted projects.",
     deliverables: [

@@ -11,6 +11,8 @@ import Certifications from "@/components/Certifications";
 import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
 import { LOCAL_NICHES } from "@/lib/localNiches";
+import { CITIES } from "@/lib/locations";
+import { INSIGHTS_ARTICLES, FEATURED_PROJECTS } from "@/data";
 import Scheduler from "@/components/Scheduler";
 import SEOAnalyzer from "@/components/SEOAnalyzer";
 import { motion, AnimatePresence } from "motion/react";
@@ -143,6 +145,110 @@ export default function Page() {
               </Link>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Markets, Proof & Research distribution */}
+      <section className="py-16 px-6 max-w-7xl mx-auto border-t border-neutral-200">
+        <div className="mb-8">
+          <span className="text-[10px] font-mono tracking-widest text-cyan-600 uppercase block mb-2 font-bold">
+            Markets, Proof & Research
+          </span>
+          <h2 className="text-2xl md:text-3xl font-black font-sans text-black tracking-tight uppercase">
+            Local SEO Everywhere You Compete
+          </h2>
+          <p className="text-xs md:text-sm text-neutral-600 mt-2 max-w-2xl font-semibold">
+            Service-area systems built for real US metros — with verified results, market research, and the entity strategy that wins both the map pack and AI answers.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Featured Cities */}
+          <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+            <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block mb-2 uppercase">
+              Featured Markets
+            </span>
+            <div className="space-y-2.5">
+              {CITIES.slice(0, 5).map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/locations/${c.slug}`}
+                  className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+                >
+                  <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">{c.stateName}</span>
+                  <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                    SEO Services in {c.name}, {c.state}
+                  </span>
+                </Link>
+              ))}
+              <Link
+                href="/locations"
+                className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+              >
+                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">All Markets</span>
+                <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                  All Local SEO Locations
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Featured Case Study */}
+          <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)] flex flex-col">
+            <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block mb-2 uppercase">
+              Verified Results
+            </span>
+            <div className="flex-1">
+              <span className="block text-sm font-black font-sans text-black uppercase tracking-tight mb-2">
+                {FEATURED_PROJECTS[1].title}
+              </span>
+              <ul className="space-y-1.5 mb-4">
+                {FEATURED_PROJECTS[1].results.map((r) => (
+                  <li key={r} className="flex items-start gap-2 text-[11px] text-neutral-700 font-semibold leading-snug">
+                    <span className="w-1.5 h-1.5 bg-emerald-500 shrink-0 mt-1" />
+                    {r}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Link
+              href="/case-studies/local-seo-systems"
+              className="inline-flex items-center justify-center gap-1.5 bg-neutral-900 hover:bg-black text-white font-sans text-xs font-bold uppercase tracking-wider py-3 border-2 border-black transition-all"
+            >
+              <span>Review Case Study</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          {/* Featured Insights */}
+          <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+            <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block mb-2 uppercase">
+              Latest Research
+            </span>
+            <div className="space-y-2.5">
+              {INSIGHTS_ARTICLES.filter((a) => a.category === "Local SEO").slice(0, 3).map((a) => (
+                <Link
+                  key={a.id}
+                  href={`/insights/${a.id}`}
+                  className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+                >
+                  <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">{a.category} · {a.readTime}</span>
+                  <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                    {a.title}
+                  </span>
+                </Link>
+              ))}
+              <Link
+                href="/insights"
+                className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+              >
+                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">All Insights</span>
+                <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                  Browse All Strategy Articles
+                </span>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import AiSeoConsultingPageClient from "./AiSeoConsultingPageClient";
 
 export const metadata: Metadata = {
-  title: "AI SEO Consulting | Generative Engine Optimization (GEO)",
+  title: "AI SEO & GEO Consulting",
   description:
     "AI SEO consulting covering Generative Engine Optimization (GEO) and technical AI-crawler accessibility. Get cited by ChatGPT Search, Perplexity AI, and Google AI Overviews.",
   alternates: {

@@ -14,12 +14,14 @@ export async function generateMetadata({ params }: { params: Promise<{ industry:
   const niche = getNicheBySlug(industry);
   if (!niche) return { title: "Service Not Found" };
 
-  const title = `Local SEO for ${niche.industry} | Map Pack & Google Business Profile`;
-  const description = `Local SEO systems for ${niche.industry.toLowerCase()} — Google Business Profile optimization, ${niche.singular.toLowerCase()} schema markup, service-area landing pages, and call tracking built to win map pack rankings and new customers in your market.`;
+  const title = `Local SEO for ${niche.industry}`;
+  const primaryKeyword = niche.focusKeywords[0] || `local seo for ${niche.industry.toLowerCase()}`;
+  const description = `${primaryKeyword.charAt(0).toUpperCase() + primaryKeyword.slice(1)} — Google Business Profile optimization, ${niche.singular.toLowerCase()} schema markup, service-area landing pages, and call tracking built to win map pack rankings and new customers in your market.`;
 
   return {
     title,
     description,
+    keywords: niche.focusKeywords.join(", "),
     alternates: {
       canonical: `/services/${niche.slug}`,
     },

@@ -163,13 +163,13 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <span>© 2026 {STRATEGIST_NAME}. ALL RIGHTS RESERVED.</span>
             <span>•</span>
-            <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-black transition-colors">
+            <Link href="/privacy" className="hover:text-black transition-colors">
               Privacy Policy
-            </a>
+            </Link>
             <span>•</span>
-            <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-black transition-colors">
+            <Link href="/terms" className="hover:text-black transition-colors">
               Terms of Advisory
-            </a>
+            </Link>
           </div>
 
           <button

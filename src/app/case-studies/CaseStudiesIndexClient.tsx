@@ -4,8 +4,24 @@ import Link from "next/link";
 import { ArrowUpRight, TrendingUp } from "lucide-react";
 import { motion } from "motion/react";
 import { FEATURED_PROJECTS } from "@/data";
+import { getPublishedNicheCaseStudies } from "@/lib/caseStudies";
+import { getNicheBySlug } from "@/lib/localNiches";
 
 export default function CaseStudiesIndex() {
+  const nicheStudies = getPublishedNicheCaseStudies().map((s, i) => {
+    const niche = getNicheBySlug(s.nicheSlug);
+    return {
+      id: s.slug,
+      title: `${niche ? `Local SEO for ${niche.industry}` : s.headline} — ${s.city}`,
+      industry: niche ? niche.industry : "Local SEO",
+      challenge: s.challenge || `${s.city}, ${s.state} service-area local SEO system.`,
+      results: s.results,
+      imageSrc: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+      path: `/case-studies/${s.slug}`,
+      technologies: s.technologies
+    };
+  });
+
   const caseStudies = [
     {
       id: "windcave",
@@ -36,7 +52,8 @@ export default function CaseStudiesIndex() {
       imageSrc: FEATURED_PROJECTS[2].imageSrc,
       path: "/case-studies/azuno",
       technologies: FEATURED_PROJECTS[2].technologies
-    }
+    },
+    ...nicheStudies
   ];
 
   return (

@@ -7,7 +7,7 @@ import { CITIES } from "@/lib/locations";
 import { LOCAL_NICHES } from "@/lib/localNiches";
 
 export const metadata: Metadata = {
-  title: "Local SEO Locations | Service Areas & Markets",
+  title: "Local SEO Locations",
   description:
     "Local SEO service markets served remotely from Faisalabad, Pakistan — dedicated local SEO systems for businesses in Lahore, Austin, Chicago, Denver, Houston, Dallas, Phoenix, Miami, Seattle, and San Francisco, across 16 service industries.",
   alternates: {

@@ -119,6 +119,40 @@ export default function AzunoPage() {
             </ul>
           </section>
 
+          {project.methodology && (
+            <section className="space-y-3">
+              <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
+                The Methodology
+              </h2>
+              <ol className="space-y-3 pt-1">
+                {project.methodology.map((step, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-xs md:text-sm text-neutral-800 leading-normal">
+                    <span className="w-5 h-5 bg-black text-cyan-400 font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+                      {i + 1}
+                    </span>
+                    <span className="font-medium">{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+
+          {project.keyLearnings && (
+            <section className="space-y-3">
+              <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
+                Key Learnings
+              </h2>
+              <ul className="space-y-3 pt-1">
+                {project.keyLearnings.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-neutral-800 leading-normal font-medium">
+                    <span className="w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 mt-1.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {/* Client Feedback */}
           <section className="space-y-3 bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
             <Quote className="w-7 h-7 text-cyan-500" />

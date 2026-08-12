@@ -28,6 +28,8 @@ export interface Project {
   technologies: string[];
   imageSrc: string;
   ctaText: string;
+  methodology?: string[];
+  keyLearnings?: string[];
 }
 
 export interface Service {

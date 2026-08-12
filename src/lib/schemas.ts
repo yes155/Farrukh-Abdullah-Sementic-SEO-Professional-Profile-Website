@@ -643,6 +643,44 @@ export const ARTICLE_SCHEMAS: Record<string, any> = {
     ],
     "wordCount": 1100,
     "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/us-cities-local-seo-opportunity`
+  },
+  "chatgpt-seo-optimization": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/chatgpt-seo-optimization/#article`,
+    "headline": "ChatGPT SEO: How to Get Cited and Ranked in ChatGPT Search",
+    "datePublished": "2026-08-12T08:00:00Z",
+    "dateModified": "2026-08-12T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "ChatGPT Search is a ranking surface with its own rules. The citation and entity signals that matter, plus a repeatable ChatGPT SEO audit to get your pages cited.",
+    "about": [
+      { "@type": "Thing", "name": "Generative Engine Optimization" },
+      { "@type": "Thing", "name": "ChatGPT Search" },
+      { "@type": "Thing", "name": "AI Citations" },
+      { "@type": "Thing", "name": "ChatGPT SEO" }
+    ],
+    "wordCount": 950,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/chatgpt-seo-optimization`
+  },
+  "llms-txt-ai-crawlers": {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${CANONICAL_DOMAIN}/insights/llms-txt-ai-crawlers/#article`,
+    "headline": "llms.txt for SEO: The File That Makes AI Crawlers Read Your Site",
+    "datePublished": "2026-08-12T08:00:00Z",
+    "dateModified": "2026-08-12T08:00:00Z",
+    "author": { "@id": PERSON_ID },
+    "publisher": { "@id": ORGANIZATION_ID },
+    "description": "A practical guide to llms.txt: the plain-text file that gives AI crawlers a prioritized map of your site — and why it helps, but never replaces, semantic SEO.",
+    "about": [
+      { "@type": "Thing", "name": "llms.txt" },
+      { "@type": "Thing", "name": "AI Crawlers" },
+      { "@type": "Thing", "name": "Generative Engine Optimization" },
+      { "@type": "Thing", "name": "Technical SEO" }
+    ],
+    "wordCount": 750,
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/llms-txt-ai-crawlers`
   }
 };
 

@@ -93,7 +93,20 @@ export const FEATURED_PROJECTS: Project[] = [
     ],
     technologies: ["Wikidata", "JSON-LD Schema", "Semantic SEO", "Ahrefs", "Google Search Console"],
     imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    ctaText: "Examine semantic strategy"
+    ctaText: "Examine semantic strategy",
+    methodology: [
+      "Audited the full domain against Wikidata and Wikipedia entity graphs to isolate which payment entities the brand already owned and where its topical coverage had gaps.",
+      "Mapped every product and developer resource to a primary entity coordinate, then designed a parent-child cluster structure that let crawlers trace relationships between payment methods, gateways, and acquiring use cases.",
+      "Rewrote and consolidated thin category pages into single authoritative nodes, redirecting fragmented URLs so equity pooled into one entity-aligned target per cluster.",
+      "Injected nested JSON-LD (Product, Service, Organization, FAQPage) bound to the entity coordinates so both Google and AI crawlers could resolve meaning without guessing.",
+      "Set up quarterly re-audits comparing index coverage against entity graph changes, with Ahrefs and Search Console feeding the gap analysis."
+    ],
+    keyLearnings: [
+      "Entity-linked schema alone moves rankings: the domain recovered queries where it had strong content but weak entity association.",
+      "Cannibalization was the quiet killer — five near-identical payment pages were splitting authority until consolidation pointed every signal at one node.",
+      "Developer-facing documentation earned the strongest AI-citation lift because it is written in unambiguous, assertion-style language that LLMs parse cleanly.",
+      "Topical authority compounds: once the entity map was stable, new content ranked faster because the cluster already carried credibility."
+    ]
   },
   {
     id: "case-02",
@@ -114,7 +127,20 @@ export const FEATURED_PROJECTS: Project[] = [
     ],
     technologies: ["Google Business Profile", "Local Citation Building", "Nested Schemas", "Analytics Mapping", "Local SEO Systems"],
     imageSrc: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
-    ctaText: "Review local lead architecture"
+    ctaText: "Review local lead architecture",
+    methodology: [
+      "Profiled each service territory (Junk Removal, RV Repair) to map neighborhood-level demand and the exact map pack competitors already occupying top 3 slots.",
+      "Built a multi-location site architecture where every franchise location owned a dedicated, citation-backed service page instead of competing on one home page.",
+      "Configured Google Business Profiles with service-area settings, categories, and booking CTAs, then synced them to geo-specific landing pages so signals reinforced each other.",
+      "Constructed hyper-local nested citation schemas (LocalBusiness + areaServed + geo coordinates) across directories to trigger the local map pack.",
+      "Attached call tracking and attribution to every regional asset so pipeline value could be measured per market, not guessed."
+    ],
+    keyLearnings: [
+      "Location pages that share a template but vary on real neighborhood data outrank generic city pages that repeat the same boilerplate.",
+      "Map pack visibility is won in the first three weeks of GBP + citation consistency — the window is short and the compounding is fast.",
+      "Call tracking paid for the program: 1,200+ attributed calls proved each regional asset's ROI instead of relying on vanity impressions.",
+      "Nested geo schema separates winning assets from noise — crawlers resolved exact service areas rather than a single vague city boundary."
+    ]
   },
   {
     id: "case-03",
@@ -136,7 +162,20 @@ export const FEATURED_PROJECTS: Project[] = [
     ],
     technologies: ["Semantic SEO", "Entity Optimization", "Local SEO", "Google Business Profile", "LLM Content Alignment"],
     imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    ctaText: "Explore the semantic + AI alignment strategy"
+    ctaText: "Explore the semantic + AI alignment strategy",
+    methodology: [
+      "Ran a semantic audit of Azuno's content library against how LLMs interpret intent — product pages read as marketing copy, not machine-parseable assertions.",
+      "Reorganized content into entity-centered clusters (capabilities, integrations, use cases) so each page answered one unambiguous question an LLM or human would ask.",
+      "Built San Francisco–targeted landing pages and optimized the Google Business Profile to capture the local tech market the brand was entirely missing.",
+      "Structured every page with clean headings, direct assertions, and JSON-LD so both Google and AI search experiences could extract answers without inference.",
+      "Instrumented 4 months of continuous monitoring across Search Console, ranking positions, and AI-citation checks to prove which clusters compounded fastest."
+    ],
+    keyLearnings: [
+      "Local + semantic is a compound play: geo-targeted pages captured immediate high-intent demand while entity clusters built long-tail authority in parallel.",
+      "AI platforms surface pages that make unambiguous claims with clean structure — Azuno's answer-first content started appearing in AI-generated summaries within months.",
+      "The 4-month window was enough to show signal: +120% organic traffic and top 3 local rankings for \"AI analytics San Francisco.\"",
+      "Future-proofing isn't theoretical — content structured for entity relationships continues ranking as search engines shift from keyword matching to understanding."
+    ]
   }
 ];
 
@@ -1413,6 +1452,149 @@ City choice decides how hard a local SEO campaign is before a single page is wri
     relatedServiceName: "Local SEO Services",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches"
+  },
+  {
+    id: "chatgpt-seo-optimization",
+    title: "ChatGPT SEO: How to Get Cited and Ranked in ChatGPT Search",
+    category: "AI Search",
+    readTime: "8 min read",
+    date: "August 12, 2026",
+    summary: "ChatGPT Search is a ranking surface with its own rules. This guide covers how ChatGPT chooses sources, the citation and entity signals that matter, and a repeatable audit you can run this week to get your pages cited — not just crawled.",
+    metaTitle: "ChatGPT SEO: Get Cited in ChatGPT Search",
+    metaDescription: "ChatGPT Search ranks sources differently than Google. Learn the citation and entity signals that matter, plus a repeatable ChatGPT SEO audit to get your pages cited by the answer engine.",
+    contentMarkdown: `## ChatGPT Is a Ranking Surface, Not a Crawl Report
+
+"ChatGPT SEO" is not a buzzword — it is the discipline of making your content the source ChatGPT Search names when someone asks a question. And it works differently from classic SEO. Google ranks pages by relevance, links, and domain authority. ChatGPT Search ranks sources by how well they answer, how clearly the entity behind them is defined, and how often they are independently cited across the web.
+
+That distinction changes what you optimize. A page can rank #1 in Google and never appear in ChatGPT Search, because the answer engine is not looking for the best ranking page — it is looking for the cleanest, most verifiable answer. The businesses winning ChatGPT Search visibility are not spending on links; they are restructuring their pages to be machine-extractable.
+
+### What ChatGPT Search Actually Ranks
+
+ChatGPT Search retrieves candidate pages, then synthesizes an answer with citations. The retrieval step looks for three signals:
+
+- **Answer completeness.** Does the page answer the full query in one place, or is the answer split across five pages?
+- **Entity clarity.** Can the model resolve who wrote the page, what the page is about, and whether the author is a credible source for that topic?
+- **Co-citation density.** How often is this source referenced by other authoritative pages when the same question is asked?
+
+## The Five Signals That Get You Cited
+
+Run a page through these five checks before you expect a ChatGPT Search citation:
+
+#### 1. Answer-First Structure
+The most cited sources answer the query in the first 120–150 words, in direct assertion form. If your page buries the answer behind an intro paragraph, three CTAs, and a form, the model will cite a competitor who answered in sentence two. Structure: question as the heading, the direct answer immediately after, then the supporting evidence.
+
+#### 2. A Resolvable Author Entity
+ChatGPT Search checks who is behind the information. Pages with a clear author byline, an author bio that matches the topic, and schema.org Person markup connecting that author to the site's Organization resolve as trustworthy. Anonymous, byline-less corporate content gets cited less because the model cannot attribute it.
+
+#### 3. Unambiguous Assertions
+Language models prefer high-precision claims they can quote directly. "Our platform processes payments for 40,000 merchants across 30 countries" is citable. "Our platform is one of the industry's most trusted solutions" is not. Audit every marketing sentence: if it cannot be verified or quoted, replace it with a measurable claim.
+
+#### 4. Nested Structured Data
+JSON-LD that connects the page to its entities (Product, Service, Organization, Person) reduces the model's inference load. The faster ChatGPT can resolve what the page is about and who it belongs to, the more likely it is to be selected. This mirrors the [schema-as-citation-signal research](/insights/schema-as-citation-signal) — the signal matters most when the schema connects to real entities, not when it is decorative.
+
+#### 5. Co-Citation Footprint
+LLMs learn source quality from the web graph. If your brand appears alongside your topic on industry roundups, podcasts, and directories, the model's association weights shift in your favor. For local businesses this means [complete, consistent Google Business Profile data](/insights/local-businesses-ai-search) — the profile is the most-cited local source in AI answers.
+
+## The ChatGPT SEO Audit (Run This Week)
+
+A practical, repeatable check you can run without paid tools:
+
+1. **Query yourself in ChatGPT Search.** Ask the questions your buyers ask and note whether your brand appears, and how. Do this five times per query — answers vary run to run.
+2. **Test extraction.** Paste your top pages into ChatGPT and ask "What does this page claim about X?" If the model cannot summarize cleanly, the page is not machine-extractable.
+3. **Check your answer capsules.** Your top pages should each contain at least one 120–150 word standalone answer block that answers the page's core question without external context. This is the [answer-capsule structure AI engines extract](/insights/answer-capsules-ai-extraction).
+4. **Audit entity resolution.** Open your page source and confirm Person, Organization, and Service schema exist and reference stable \`@id\` URIs. If the schema is missing or generic, ChatGPT is guessing who you are.
+5. **Watch freshness.** AI engines prefer recent content — a page updated last month out-cites an identical page from two years ago. Set a refresh cadence for your money pages. The [freshness advantage](/insights/content-freshness-ai-search) applies directly here.
+
+## What Counts as a Win
+
+ChatGPT SEO is measured in citations, not rankings. Track three numbers weekly:
+
+| Metric | Definition | Good baseline |
+|---|---|---|
+| Citation rate | % of relevant queries that name your brand | 20%+ |
+| Citation share of voice | Your citations vs. top 3 competitors | Trending up |
+| Answer share | % of queries where your content is used, not just linked | 10%+ |
+
+## The Bottom Line
+
+ChatGPT Search is not Google. It is a ranking surface that rewards pages which answer directly, resolve as entities, and get independently cited. The businesses getting named are not gaming a keyword list — they are restructuring their pages to be the cleanest, most verifiable answer in the retrieval set. Run the audit above, fix the answer capsule and entity resolution on your three highest-intent pages, and measure citation rate for a month. That is the entire strategy, minus the fluff.`,
+    relatedArticleIds: ["ins-01","answer-capsules-ai-extraction","entity-first-geo"],
+    relatedServicePath: "/services/ai-seo-consulting",
+    relatedServiceName: "AI SEO Consulting",
+    relatedCaseStudyPath: "/case-studies/azuno",
+    relatedCaseStudyName: "Azuno: Semantic SEO & AI/LLM Alignment"
+  },
+  {
+    id: "llms-txt-ai-crawlers",
+    title: "llms.txt for SEO: The File That Makes AI Crawlers Read Your Site",
+    category: "AI Search",
+    readTime: "6 min read",
+    date: "August 12, 2026",
+    summary: "llms.txt is a plain-text file that tells AI crawlers which pages matter most and how to read them. It will not replace your SEO — but it is the cheapest, most direct signal you can send to ChatGPT, Perplexity, and other LLM crawlers today.",
+    metaTitle: "llms.txt for SEO: A Practical Guide",
+    metaDescription: "llms.txt gives AI crawlers a prioritized map of your site in plain text. A practical guide to the format, what to include, and why it helps — but never replaces — semantic SEO.",
+    contentMarkdown: `## What Is llms.txt?
+
+llms.txt is a proposed convention that puts a plain-text file at the root of your site (for example \`https://yourdomain.com/llms.txt\`) that describes what your site is and points AI crawlers to your most important pages. It is the AI-crawler equivalent of a sitemap — except it is designed to be read by language models, not search spiders.
+
+The format is deliberately simple: a title, optional blocks, and a flat list of links with one-line summaries. Because it is plain text, any LLM can parse it without JavaScript, CSS, or HTML. That is the entire point — a crawler that cannot render your site can still read the file and know exactly where your authority lives.
+
+### Why It Matters for AI Visibility
+
+AI search engines crawl differently than Googlebot. Many LLM crawlers (GPTBot, PerplexityBot, and similar) are lightweight and do not render JavaScript. If your site is a client-side React app, or if your most important pages sit behind heavy JS or authentication, an AI crawler may only see a blank shell. llms.txt gives those crawlers a direct, structured map of your content without asking them to render anything.
+
+It is also a prioritization signal. The order of links in the file communicates what you consider most important. When a model retrieves candidate sources, a well-ordered llms.txt helps it find your money pages instead of your blog footer.
+
+## The Format, With an Example
+
+The full spec (by Jeremy Howard) uses a simple structure. A minimal, production-ready example for an SEO consulting site:
+
+\`\`\`text
+# Farrukh Abdullah | Semantic SEO & GEO
+
+> Semantic SEO consulting, Generative Engine Optimization, and local lead-generation systems for growing brands.
+
+## Services
+
+- [Semantic SEO](https://farrukh.top/services/semantic-seo): Entity-based content architecture, topical authority, and schema strategy.
+- [AI SEO / GEO](https://farrukh.top/services/ai-seo-consulting): Get cited by ChatGPT Search, Perplexity, and AI Overviews.
+- [Local SEO](https://farrukh.top/services/local-seo): Map pack visibility, GBP optimization, and service-area landing pages.
+
+## Insights
+
+- [ChatGPT SEO](https://farrukh.top/insights/chatgpt-seo-optimization): How to get cited in ChatGPT Search.
+- [Local SEO Opportunity by City](https://farrukh.top/insights/us-cities-local-seo-opportunity): Where US service businesses win in 2026.
+\`\`\`
+
+## What to Include and What to Skip
+
+Use llms.txt to point crawlers at your highest-value pages with one-line descriptions that state what the page answers. Prioritize:
+
+- **Service pages** with clear descriptions of what you offer and who it is for.
+- **Authoritative articles** that directly answer your industry's most-asked questions.
+- **Case studies** that demonstrate measurable outcomes (models cite proof).
+- **Pricing or FAQ pages** if they contain direct, quotable answers.
+
+Skip anything that does not add retrieval value: login gates, utility pages, thank-you pages, and duplicate regional variants. The file should be a map of your authority, not a crawl of your URL inventory.
+
+## It Does Not Replace SEO
+
+The honest framing: llms.txt is a low-cost enhancement, not a ranking strategy. It helps lightweight crawlers find your content and understand your priorities, but it does not create authority, citations, or entity resolution. Those still come from the fundamentals:
+
+- **Structured data** that connects your pages to [verifiable entities](/insights/entity-first-geo).
+- **Answer-first content** that can be extracted and quoted ([answer capsules](/insights/answer-capsules-ai-extraction)).
+- **Co-citation** — your brand being referenced across the web on the same topics ([the co-citation web](/insights/reddit-youtube-co-citation-geo)).
+
+Think of llms.txt as the table of contents for the file an AI engine is most likely to read. If the content behind it is thin, the table of contents changes nothing. If the content is structured, entity-resolved, and answer-first, the file makes sure it is found.
+
+## The Bottom Line
+
+Ship \`/llms.txt\` this week: it takes ten minutes, it cannot hurt you, and it gives every AI crawler a direct, plain-text map of your best pages. Then get back to the work that actually moves citations — answer-first structure, clean schema, entity resolution, and co-citation. llms.txt opens the door; the content has to walk through it.`,
+    relatedArticleIds: ["ins-01","chatgpt-seo-optimization","entity-first-geo"],
+    relatedServicePath: "/services/ai-seo-consulting",
+    relatedServiceName: "AI SEO Consulting",
+    relatedCaseStudyPath: "/case-studies/azuno",
+    relatedCaseStudyName: "Azuno: Semantic SEO & AI/LLM Alignment"
   }
 ];
 

@@ -6,9 +6,23 @@ import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema, ORGANIZATION_ID, CANONICAL_DOMAIN } from "@/lib/schemas";
 import type { Niche } from "@/lib/localNiches";
 import { LOCAL_NICHES } from "@/lib/localNiches";
-import { CITIES } from "@/lib/locations";
+import { CITIES, getCityBySlug } from "@/lib/locations";
 
 export default function LocalNichePageClient({ niche }: { niche: Niche }) {
+  const relatedCities = niche.relatedCities
+    .map((slug) => getCityBySlug(slug))
+    .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
+  const INSIGHT_LABELS: Record<string, string> = {
+    "ins-04": "Local Entity SEO: How AI Search Understands Local Businesses",
+    "local-businesses-ai-search": "Local Businesses in AI Search: Being the Entity AI Names",
+    "us-cities-local-seo-opportunity": "Local SEO Opportunity by US City — 2026 Data",
+    "entity-first-geo": "Entity-First GEO: How Semantic SEO Wins AI Citations",
+    "geo-measurement-stack": "The GEO Measurement Stack: Citation SOV & Answer Share"
+  };
+
+  const insightLabel = INSIGHT_LABELS[niche.relatedInsight] ?? "Local SEO Strategy";
+
   const breadcrumbs = getBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Services", url: "/services" },
@@ -168,18 +182,61 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
                 Local Results
               </span>
               <h3 className="text-base font-black font-sans text-black uppercase">
-                Case Study: 1,200+ Calls from Local Service Niches
+                {niche.relatedCaseStudyName || "Case Study: 1,200+ Calls from Local Service Niches"}
               </h3>
               <p className="text-[11px] text-neutral-600 font-medium mt-1">
-                How a localized SEO system ranked 12 separate assets inside map packs and captured verified inbound calls in competitive US service niches.
+                How a localized SEO system ranked 12 separate assets inside map packs and captured verified inbound calls in competitive US service niches — the same architecture I apply to {niche.industry.toLowerCase()} businesses.
               </p>
             </div>
             <Link
-              href="/case-studies/local-seo-systems"
+              href={niche.relatedCaseStudyPath || "/case-studies/local-seo-systems"}
               className="flex items-center gap-1 text-xs font-mono font-bold bg-white text-black border-2 border-black py-2.5 px-4 uppercase hover:bg-neutral-50 shrink-0 shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
             >
               <span>Explore Case Study</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+          </section>
+
+          {/* Section 4b: City Bridge */}
+          <section className="space-y-4 border-t border-neutral-200 pt-8">
+            <h2 className="text-xl font-black font-sans text-black uppercase tracking-tight flex items-center gap-2">
+              <MapPin className="w-5 h-5 text-emerald-600" />
+              <span>SEO for {niche.industry} by City</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {relatedCities.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/locations/${c.slug}`}
+                  className="bg-white p-5 border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:border-emerald-500 transition-colors"
+                >
+                  <span className="font-mono text-xs font-bold text-emerald-600 block mb-1 uppercase">{c.stateName}</span>
+                  <span className="font-sans font-black text-xs text-black uppercase block mb-1.5">
+                    {niche.industry} SEO in {c.name}
+                  </span>
+                  <p className="text-[10px] text-neutral-600 font-medium leading-relaxed line-clamp-2">
+                    {c.blurb.split(".")[0]}.
+                  </p>
+                </Link>
+              ))}
+              <Link
+                href="/locations"
+                className="bg-neutral-50 p-5 border-2 border-black hover:border-emerald-500 transition-colors flex flex-col justify-center"
+              >
+                <span className="font-mono text-xs font-bold text-emerald-600 block mb-1 uppercase">All Markets</span>
+                <span className="font-sans font-black text-xs text-black uppercase block mb-1.5">
+                  {niche.industry} SEO in Every City We Serve
+                </span>
+                <span className="text-[10px] text-neutral-600 font-medium leading-relaxed">
+                  Service-area systems in {CITIES.length} US markets, each mapped to real neighborhoods, ZIP codes, and citation directories.
+                </span>
+              </Link>
+            </div>
+            <Link
+              href={`/insights/${niche.relatedInsight}`}
+              className="text-xs font-bold text-emerald-700 underline decoration-2 underline-offset-2 hover:text-black transition-colors"
+            >
+              Read: {insightLabel} &rarr;
             </Link>
           </section>
 

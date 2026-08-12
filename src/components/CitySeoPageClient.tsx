@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Check, HelpCircle, MapPin, Building } from "lucide-react";
+import { ArrowRight, Check, HelpCircle, MapPin, Building, Landmark, Crosshair } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema, CANONICAL_DOMAIN } from "@/lib/schemas";
 import type { City } from "@/lib/locations";
-import { CITIES } from "@/lib/locations";
-import { LOCAL_NICHES } from "@/lib/localNiches";
+import { CITIES, getCityBySlug } from "@/lib/locations";
+import { getNicheBySlug } from "@/lib/localNiches";
 
 export default function CitySeoPageClient({ city }: { city: City }) {
   const faqItems = [
@@ -30,14 +30,17 @@ export default function CitySeoPageClient({ city }: { city: City }) {
 
   const breadcrumbs = getBreadcrumbSchema([
     { name: "Home", url: "/" },
-    { name: "Locations", url: "/locations" },
+    { name: "Services", url: "/services" },
+    { name: "Local SEO", url: "/services/local-seo" },
     { name: city.name, url: `/locations/${city.slug}` }
   ]);
 
   const citySchema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["ProfessionalService", "LocalBusiness"],
+    "@id": `${CANONICAL_DOMAIN}/locations/${city.slug}#localbusiness`,
     "name": `Farrukh Abdullah SEO Consulting ${city.name}`,
+    "description": `Local SEO services for businesses in ${city.name}, ${city.stateName} — Google Business Profile optimization, service-area landing pages for ${city.neighborhoods.slice(0, 3).join(", ")}, ${city.state}-specific citations, and call tracking.`,
     "image": `${CANONICAL_DOMAIN}/farrukh-photo-final.jpg`,
     "telephone": "+923346536393",
     "email": "f.abdullah79@gmail.com",
@@ -52,19 +55,43 @@ export default function CitySeoPageClient({ city }: { city: City }) {
       "latitude": city.latitude,
       "longitude": city.longitude
     },
+    "hasMap": `https://www.google.com/maps?q=${city.latitude},${city.longitude}`,
     "url": `${CANONICAL_DOMAIN}/locations/${city.slug}`,
     "priceRange": "$$",
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": `${city.name}, ${city.stateName}`
-    }
+    "sameAs": ["https://www.linkedin.com/in/farrukh-abdullah-5a218424/"],
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": `${city.name}, ${city.stateName}`
+      },
+      ...city.neighborhoods.map((neighborhood) => ({
+        "@type": "AdministrativeArea",
+        "name": `${neighborhood}, ${city.name}`
+      }))
+    ]
   };
 
-  const highlighted = LOCAL_NICHES.filter((n) =>
-    city.industries.some((i) => n.industry === i)
+  const highlighted = city.relatedNiches
+    .map((slug) => getNicheBySlug(slug))
+    .filter((n): n is NonNullable<typeof n> => Boolean(n));
+
+  const siblingCities = city.relatedCities
+    .map((slug) => getCityBySlug(slug))
+    .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
+  const remainingCities = CITIES.filter(
+    (c) => c.slug !== city.slug && !city.relatedCities.includes(c.slug)
   );
 
-  const otherCities = CITIES.filter((c) => c.slug !== city.slug);
+  const INSIGHT_LABELS: Record<string, { label: string }> = {
+    "ins-04": { label: "Local Entity SEO: How AI Search Understands Local Businesses" },
+    "local-businesses-ai-search": { label: "Local Businesses in AI Search: Being the Entity AI Names" },
+    "us-cities-local-seo-opportunity": { label: "Local SEO Opportunity by US City — 2026 Data" },
+    "entity-first-geo": { label: "Entity-First GEO: How Semantic SEO Wins AI Citations" },
+    "geo-measurement-stack": { label: "The GEO Measurement Stack: Citation SOV & Answer Share" }
+  };
+
+  const insightLabel = INSIGHT_LABELS[city.relatedInsight]?.label ?? "Local SEO Strategy";
 
   return (
     <div className="pt-12 pb-20 px-6 max-w-7xl mx-auto space-y-16">
@@ -94,6 +121,13 @@ export default function CitySeoPageClient({ city }: { city: City }) {
         <p className="text-sm md:text-base text-neutral-600 mt-4 max-w-3xl font-semibold leading-relaxed">
           {city.blurb}
         </p>
+        <div className="flex flex-wrap gap-2 mt-6">
+          {city.zipCodes.map((zip) => (
+            <span key={zip} className="text-[9px] font-mono bg-neutral-100 text-neutral-600 border border-neutral-200 px-2 py-0.5 uppercase font-bold">
+              ZIP {zip}
+            </span>
+          ))}
+        </div>
       </div>
 
       {/* Core Grid */}
@@ -138,7 +172,85 @@ export default function CitySeoPageClient({ city }: { city: City }) {
             </div>
           </section>
 
-          {/* Section 3: Deliverables */}
+          {/* Section 3: Local Market Intelligence */}
+          <section className="space-y-4 bg-white border-2 border-black p-6 md:p-8 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+            <h2 className="text-lg md:text-xl font-black font-sans text-black uppercase tracking-tight flex items-center gap-2 border-b border-neutral-100 pb-3">
+              <Crosshair className="w-5 h-5 text-cyan-600" />
+              <span>{city.name} Local Market Intelligence</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+              <div className="space-y-3">
+                <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block uppercase">
+                  Service-Area ZIP Codes
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {city.zipCodes.map((zip) => (
+                    <span key={zip} className="text-[10px] font-mono font-bold bg-cyan-50 border border-cyan-200 text-cyan-700 px-2 py-1 uppercase">
+                      {zip}
+                    </span>
+                  ))}
+                </div>
+
+                <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block uppercase pt-3">
+                  Landmarks & Districts
+                </span>
+                <ul className="space-y-1.5">
+                  {city.landmarks.map((lm) => (
+                    <li key={lm} className="flex items-start gap-2 text-xs text-neutral-700 font-semibold">
+                      <Landmark className="w-3.5 h-3.5 text-cyan-600 shrink-0 mt-0.5" />
+                      {lm}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="space-y-3">
+                <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block uppercase">
+                  Key Streets & Corridors
+                </span>
+                <ul className="space-y-1.5">
+                  {city.streets.map((st) => (
+                    <li key={st} className="flex items-start gap-2 text-xs text-neutral-700 font-semibold">
+                      <MapPin className="w-3.5 h-3.5 text-cyan-600 shrink-0 mt-0.5" />
+                      {st}
+                    </li>
+                  ))}
+                </ul>
+
+                <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block uppercase pt-3">
+                  Citation Directories
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {city.directories.map((d) => (
+                    <span key={d} className="text-[10px] font-mono font-bold bg-neutral-50 border border-neutral-200 text-neutral-700 px-2 py-1 uppercase">
+                      {d}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 4: Verified Local Facts */}
+          <section className="space-y-4">
+            <h2 className="text-xl md:text-2xl font-black font-sans text-black uppercase tracking-tight flex items-center gap-2">
+              <Landmark className="w-5 h-5 text-cyan-600" />
+              <span>Verified {city.name} Service-Area Facts</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {city.localFacts.map((fact) => (
+                <div key={fact.label} className="bg-neutral-50 p-5 border-2 border-black">
+                  <span className="font-mono text-xs font-bold text-cyan-600 block mb-1 uppercase">{fact.label}</span>
+                  <p className="text-[11px] text-neutral-600 font-medium leading-relaxed">{fact.detail}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-[10px] font-mono text-neutral-400 font-bold uppercase">
+              Operational detail like this is what Google&apos;s local algorithm and AI answer engines extract to verify a real {city.name} business — boilerplate never matches it.
+            </p>
+          </section>
+
+          {/* Section 5: Deliverables */}
           <section className="space-y-4 bg-white border-2 border-black p-6 md:p-8 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
             <h2 className="text-lg md:text-xl font-black font-sans text-black uppercase tracking-tight border-b border-neutral-100 pb-3">
               Included {city.name} Local SEO Deliverables
@@ -149,7 +261,7 @@ export default function CitySeoPageClient({ city }: { city: City }) {
                 "Nested schema.org LocalBusiness markups with geo-coordinates",
                 `Service-area landing pages for ${city.neighborhoods.join(", ")}`,
                 `${city.state}-specific citation and directory alignment`,
-                "Neighborhood-level content structured for AI and map pack extraction",
+                `Neighborhood-level content structured for ${city.zipCodes.join(", ")} and ${city.landmarks[0].toLowerCase()}`,
                 "Inbound call and form lead-generation tracking"
               ].map((item) => (
                 <div key={item} className="flex items-start gap-2 text-xs text-neutral-700">
@@ -162,7 +274,39 @@ export default function CitySeoPageClient({ city }: { city: City }) {
             </div>
           </section>
 
-          {/* Section 4: FAQs */}
+          {/* Section 6: Case Study + Article Bridge */}
+          <section className="bg-cyan-50 border-2 border-black p-6 shadow-[3px_3px_0px_rgba(0,0,0,1)] space-y-3">
+            <span className="text-[8px] font-mono tracking-wider bg-cyan-100 text-cyan-800 font-bold px-2 py-0.5 border border-cyan-300 uppercase block w-max">
+              Local Results
+            </span>
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div>
+                <h3 className="text-base font-black font-sans text-black uppercase">
+                  Case Study: 1,200+ Calls from Local Service Niches
+                </h3>
+                <p className="text-[11px] text-neutral-600 font-medium mt-1">
+                  The same localized system architecture I apply to {city.name} ranked 12 separate assets inside map packs and captured verified inbound calls in competitive US service niches.
+                </p>
+              </div>
+              <Link
+                href={city.relatedCaseStudyPath}
+                className="flex items-center gap-1 text-xs font-mono font-bold bg-white text-black border-2 border-black py-2.5 px-4 uppercase hover:bg-neutral-50 shrink-0 shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
+              >
+                <span>Explore Case Study</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+            <div className="border-t border-cyan-200 pt-3 mt-1">
+              <Link
+                href={`/insights/${city.relatedInsight}`}
+                className="text-xs font-bold text-cyan-800 underline decoration-2 underline-offset-2 hover:text-black transition-colors"
+              >
+                Read: {insightLabel} &rarr;
+              </Link>
+            </div>
+          </section>
+
+          {/* Section 7: FAQs */}
           <section className="space-y-4 border-t border-neutral-200 pt-8">
             <h2 className="text-xl font-black font-sans text-black uppercase tracking-tight flex items-center gap-1.5">
               <HelpCircle className="w-5 h-5 text-cyan-600" />
@@ -183,11 +327,23 @@ export default function CitySeoPageClient({ city }: { city: City }) {
         <div className="lg:col-span-4 space-y-6">
           <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
             <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block mb-2 uppercase">
-              MORE MARKETS
+              NEARBY MARKETS
             </span>
             <h3 className="text-xs font-black uppercase text-black mb-4">Local SEO Locations</h3>
             <div className="space-y-3">
-              {otherCities.slice(0, 5).map((c) => (
+              {siblingCities.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/locations/${c.slug}`}
+                  className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+                >
+                  <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">{c.stateName}</span>
+                  <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                    SEO Services in {c.name}, {c.state}
+                  </span>
+                </Link>
+              ))}
+              {remainingCities.slice(0, 2).map((c) => (
                 <Link
                   key={c.slug}
                   href={`/locations/${c.slug}`}
@@ -209,12 +365,42 @@ export default function CitySeoPageClient({ city }: { city: City }) {
                 </span>
               </Link>
               <Link
-                href="/insights/us-cities-local-seo-opportunity"
+                href="/services/local-seo"
                 className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
               >
-                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">Local SEO Research</span>
+                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">Service Hub</span>
                 <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
-                  US Cities: 2026 Opportunity Data
+                  Local SEO Services Overview
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+            <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block mb-2 uppercase">
+              LOCAL INDUSTRIES
+            </span>
+            <h3 className="text-xs font-black uppercase text-black mb-4">SEO by Industry</h3>
+            <div className="space-y-3">
+              {highlighted.map((n) => (
+                <Link
+                  key={n.slug}
+                  href={`/services/${n.slug}`}
+                  className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+                >
+                  <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">Local Niche</span>
+                  <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                    SEO for {n.industry}
+                  </span>
+                </Link>
+              ))}
+              <Link
+                href="/services/local-seo"
+                className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+              >
+                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">Service Hub</span>
+                <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                  All Local SEO Services
                 </span>
               </Link>
             </div>

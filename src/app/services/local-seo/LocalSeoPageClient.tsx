@@ -5,12 +5,15 @@ import { ArrowRight, Check, HelpCircle, ArrowUpRight, MapPin, PhoneCall } from "
 import { motion } from "motion/react";
 import JsonLd from "@/components/JsonLd";
 import { LOCAL_NICHES } from "@/lib/localNiches";
+import { CITIES, getCityBySlug } from "@/lib/locations";
 import { 
   LOCAL_SEO_SERVICE_SCHEMA, 
   getBreadcrumbSchema 
 } from "@/lib/schemas";
 
 export default function LocalSeoPage() {
+  const usCities = CITIES;
+
   const faqItems = [
     {
       q: "Do you provide Local SEO services for regional brands?",
@@ -179,15 +182,27 @@ export default function LocalSeoPage() {
         <div className="lg:col-span-4 space-y-6">
           <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
             <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block mb-2 uppercase">
-              LOCAL CONNECTIONS
+              TARGET MARKETS
             </span>
-            <h3 className="text-xs font-black uppercase text-black mb-4">Target Markets</h3>
+            <h3 className="text-xs font-black uppercase text-black mb-4">Local SEO by City</h3>
             <div className="space-y-3">
+              {usCities.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/locations/${c.slug}`}
+                  className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
+                >
+                  <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">{c.stateName}</span>
+                  <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
+                    SEO Services in {c.name}, {c.state}
+                  </span>
+                </Link>
+              ))}
               <Link
                 href="/locations/lahore"
                 className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
               >
-                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">Dedicated City</span>
+                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">Punjab, Pakistan</span>
                 <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
                   SEO Services in Lahore, Pakistan
                 </span>

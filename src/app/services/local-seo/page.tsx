@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import LocalSeoPageClient from "./LocalSeoPageClient";
 
 export const metadata: Metadata = {
-  title: "Local SEO Services | Map Pack Visibility & GBP Optimization",
+  title: "Local SEO Services | Map Pack & GBP",
   description:
-    "Design and build localized search systems focused on local map pack visibility, localized landing page architecture, Google Business Profile optimization, nested local schema, and call/lead tracking.",
+    "Local SEO services — map pack visibility, Google Business Profile optimization, service-area landing pages, nested local schema, and call tracking. For service businesses in Austin, Chicago, Houston, Dallas, Phoenix, Miami, Denver, Seattle, and San Francisco.",
+  keywords:
+    "local seo services, local seo for plumbers, local seo for dentists, local seo for roofers, map pack optimization, google business profile optimization, service area landing pages, local lead generation",
   alternates: {
     canonical: "/services/local-seo",
   },

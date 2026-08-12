@@ -16,11 +16,23 @@
 
 ## Insights
 
+- [ChatGPT SEO: How to Get Cited and Ranked in ChatGPT Search](/insights/chatgpt-seo-optimization): The citation and entity signals ChatGPT Search ranks on, plus a repeatable audit to get your pages cited.
+- [llms.txt for SEO: The File That Makes AI Crawlers Read Your Site](/insights/llms-txt-ai-crawlers): A practical guide to the llms.txt format and why it helps — but never replaces — semantic SEO.
 - [Generative Engine Optimization: How to Secure Brand Citations in ChatGPT Search and Perplexity](/insights/ins-01)
 - [Understanding Entity-Based Content Architecture: Moving Beyond Simple Keyword Density](/insights/ins-02)
 - [A Schema Strategy for Growth Brands: Structuring Your Site for Google's Knowledge Graph](/insights/ins-03)
 - [Local Entity SEO: How AI Search Engines Understand Location-Based Businesses](/insights/ins-04)
 - [How to Build a Topical Map: The Semantic SEO Framework for Topical Authority](/insights/ins-05)
+- [Entity-First GEO: The Semantic SEO Foundation That Decides AI Citations](/insights/entity-first-geo)
+- [The 120–150 Word Answer Capsule: The Exact Passage Structure AI Engines Extract](/insights/answer-capsules-ai-extraction)
+- [Schema as a Citation Signal: Resolving What the Conflicting Studies Actually Mean](/insights/schema-as-citation-signal)
+- [The Freshness Advantage: Why AI Systems Prefer Newer Content](/insights/content-freshness-ai-search)
+- [Topical Authority vs. the October 2025 Core Update](/insights/topical-authority-core-update)
+- [Reddit, YouTube, and the Co-Citation Web](/insights/reddit-youtube-co-citation-geo)
+- [Original Data Without a Data Team](/insights/original-data-solo-seo)
+- [Local Businesses in AI Search: Being the Entity AI Names for 'Best Plumber Near Me'](/insights/local-businesses-ai-search)
+- [The GEO Measurement Stack: Citation SOV, Answer Share, and the 50-Run Method](/insights/geo-measurement-stack)
+- [Local SEO Opportunity by US City: Where Service Businesses Win in 2026](/insights/us-cities-local-seo-opportunity)
 
 ## About
 

@@ -1,44 +1,53 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Cpu, TrendingUp, ArrowRight } from "lucide-react";
-import { motion } from "motion/react";
+import { ArrowLeft, Cpu, TrendingUp, ArrowRight, MapPin } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
-import { FEATURED_PROJECTS } from "@/data";
 import { getBreadcrumbSchema } from "@/lib/schemas";
+import type { NicheCaseStudy } from "@/lib/caseStudies";
+import { getNicheBySlug } from "@/lib/localNiches";
+import { getCityBySlug } from "@/lib/locations";
 
-export default function LocalSeoSystemsPage() {
-  const project = FEATURED_PROJECTS[1];
+export default function NicheCaseStudyPageClient({ study }: { study: NicheCaseStudy }) {
+  const niche = getNicheBySlug(study.nicheSlug);
+  const citySlug =
+    study.city.toLowerCase() === "austin" ? "austin" :
+    study.city.toLowerCase() === "chicago" ? "chicago" :
+    study.city.toLowerCase() === "denver" ? "denver" :
+    study.city.toLowerCase() === "phoenix" ? "phoenix" :
+    study.city.toLowerCase() === "houston" ? "houston" :
+    study.city.toLowerCase() === "miami" ? "miami" :
+    study.city.toLowerCase() === "dallas" ? "dallas" :
+    study.city.toLowerCase() === "seattle" ? "seattle" :
+    study.city.toLowerCase() === "san francisco" ? "san-francisco" : undefined;
+  const city = citySlug ? getCityBySlug(citySlug) : undefined;
 
   const breadcrumbs = getBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Case Studies", url: "/case-studies" },
-    { name: "Local SEO Systems", url: "/case-studies/local-seo-systems" }
+    { name: study.headline, url: `/case-studies/${study.slug}` }
   ]);
 
   const caseStudySchema = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": "Local SEO Case Study: Competitive Service Niches | 1,200+ Inbound Calls",
-    "description": "How deploying customized localized search systems, map pack listings, and nested geographic schemas led to 1,200+ inbound calls.",
+    "headline": study.headline,
+    "description": study.challenge,
     "about": [
-      { "@type": "Thing", "name": "Local SEO" },
-      { "@type": "Thing", "name": "Lead Generation" }
+      { "@type": "Thing", "name": niche ? niche.industry : "Local SEO" },
+      { "@type": "Thing", "name": "Local Lead Generation" }
     ],
-    "author": {
-      "@type": "Person",
-      "name": "Farrukh Abdullah"
-    }
+    "author": { "@type": "Person", "name": "Farrukh Abdullah" }
   };
 
   return (
     <div className="pt-12 pb-20 px-6 max-w-5xl mx-auto space-y-12">
-      <JsonLd id="schema-breadcrumb-local-systems" data={breadcrumbs} />
-      <JsonLd id="schema-case-local-systems" data={caseStudySchema} />
+      <JsonLd id={`schema-breadcrumb-${study.slug}`} data={breadcrumbs} />
+      <JsonLd id={`schema-case-${study.slug}`} data={caseStudySchema} />
 
       {/* Back button */}
       <div>
-        <Link 
+        <Link
           href="/case-studies"
           className="inline-flex items-center gap-1 text-xs font-mono font-bold uppercase text-neutral-500 hover:text-black transition-colors"
         >
@@ -50,13 +59,13 @@ export default function LocalSeoSystemsPage() {
       {/* Title block */}
       <div className="border-b-2 border-black pb-8">
         <span className="text-[10px] font-mono tracking-widest text-emerald-600 font-bold block uppercase mb-1.5">
-          LOCAL LEAD GENERATION & ACQUISITION
+          {study.eyebrow}
         </span>
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black font-sans text-black uppercase tracking-tight leading-tight">
-          Local SEO Systems Case Study
+          {study.headline}
         </h1>
         <div className="flex flex-wrap gap-2 mt-4">
-          {project.technologies.map((tech) => (
+          {study.technologies.map((tech) => (
             <span key={tech} className="text-[9px] font-mono bg-neutral-100 text-neutral-600 border border-neutral-200 px-2 py-0.5 uppercase font-bold">
               {tech}
             </span>
@@ -64,14 +73,44 @@ export default function LocalSeoSystemsPage() {
         </div>
       </div>
 
-      {/* Main Image */}
-      <div className="border-2 border-black overflow-hidden relative aspect-video shadow-[4px_4px_0px_rgba(0,0,0,1)] bg-neutral-100">
-        <img
-          src={project.imageSrc}
-          alt="Local SEO Systems Case Study"
-          className="w-full h-full object-cover grayscale"
-          referrerPolicy="no-referrer"
-        />
+      {/* Client / Market block */}
+      <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block uppercase mb-1">
+              Market
+            </span>
+            <span className="block text-sm font-black uppercase text-black">
+              {study.city}, {study.state}
+            </span>
+            <span className="block text-[11px] font-mono font-bold text-neutral-500 uppercase mt-0.5">
+              ZIP {study.zipCode}
+            </span>
+          </div>
+          {study.clientName && (
+            <div>
+              <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block uppercase mb-1">
+                Client
+              </span>
+              <span className="block text-sm font-black uppercase text-black">
+                {study.clientName}
+              </span>
+              {study.ownerName && (
+                <span className="block text-[11px] font-mono font-bold text-neutral-500 uppercase mt-0.5">
+                  {study.ownerName}
+                </span>
+              )}
+            </div>
+          )}
+          <div>
+            <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block uppercase mb-1">
+              Service Areas
+            </span>
+            <span className="block text-xs font-bold text-black uppercase leading-relaxed">
+              {study.neighborhoods.join(", ")}
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Core Breakdown */}
@@ -82,14 +121,14 @@ export default function LocalSeoSystemsPage() {
             <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
               The Client Challenge
             </h2>
-            <p>{project.challenge}</p>
+            <p>{study.challenge}</p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
               Localized SEO Strategy
             </h2>
-            <p>{project.strategy}</p>
+            <p>{study.strategy}</p>
           </section>
 
           <section className="space-y-3 bg-neutral-50 border-2 border-black p-6 shadow-[3px_3px_0px_rgba(0,0,0,1)]">
@@ -97,7 +136,7 @@ export default function LocalSeoSystemsPage() {
               Tactical Execution Plan
             </h3>
             <ul className="space-y-3 pt-2">
-              {project.execution.map((exc, i) => (
+              {study.execution.map((exc, i) => (
                 <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-neutral-800 leading-normal font-semibold">
                   <Cpu className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                   <span>{exc}</span>
@@ -105,40 +144,6 @@ export default function LocalSeoSystemsPage() {
               ))}
             </ul>
           </section>
-
-          {project.methodology && (
-            <section className="space-y-3">
-              <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
-                The Methodology
-              </h2>
-              <ol className="space-y-3 pt-1">
-                {project.methodology.map((step, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-xs md:text-sm text-neutral-800 leading-normal">
-                    <span className="w-5 h-5 bg-black text-emerald-400 font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
-                      {i + 1}
-                    </span>
-                    <span className="font-medium">{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </section>
-          )}
-
-          {project.keyLearnings && (
-            <section className="space-y-3">
-              <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
-                Key Learnings
-              </h2>
-              <ul className="space-y-3 pt-1">
-                {project.keyLearnings.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-neutral-800 leading-normal font-medium">
-                    <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0 mt-1.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
         </div>
 
         {/* Right: Results Box */}
@@ -151,7 +156,7 @@ export default function LocalSeoSystemsPage() {
               Campaign Returns
             </h3>
             <div className="space-y-4">
-              {project.results.map((res, i) => (
+              {study.results.map((res, i) => (
                 <div key={i} className="flex items-start gap-2.5">
                   <div className="w-5 h-5 bg-emerald-50 border border-emerald-250 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5 rounded-full">
                     <TrendingUp className="w-3.5 h-3.5" />
@@ -169,31 +174,35 @@ export default function LocalSeoSystemsPage() {
               STRATEGIC ALIGNMENT
             </span>
             <h4 className="text-xs font-black uppercase text-white mb-2 font-sans">
-              Local lead scale
+              {niche ? `SEO for ${niche.industry}` : "Local lead scale"}
             </h4>
             <p className="text-[11px] text-neutral-400 leading-normal mb-5 font-medium">
-              This case study proves that ranking multi-location service landing pages alongside optimized Google profiles produces highly-profitable pipelines.
+              {niche?.intro.split(".")[0]}.
             </p>
             <div className="space-y-2.5">
+              {niche && (
+                <Link
+                  href={`/services/${niche.slug}`}
+                  className="w-full inline-flex items-center justify-center gap-1.5 bg-emerald-400 hover:bg-emerald-300 text-black font-sans text-[10px] font-bold uppercase tracking-wider py-2.5 border-2 border-black"
+                >
+                  <span>{niche.industry} SEO Services</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              )}
+              {city && (
+                <Link
+                  href={`/locations/${city.slug}`}
+                  className="w-full inline-flex items-center justify-center gap-1.5 bg-neutral-900 hover:bg-neutral-800 text-white font-sans text-[10px] font-bold uppercase tracking-wider py-2.5 border border-white"
+                >
+                  <span className="inline-flex items-center gap-1"><MapPin className="w-3.5 h-3.5" /> SEO in {city.name}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              )}
               <Link
-                href="/services/local-seo"
-                className="w-full inline-flex items-center justify-center gap-1.5 bg-emerald-400 hover:bg-emerald-300 text-black font-sans text-[10px] font-bold uppercase tracking-wider py-2.5 border-2 border-black"
-              >
-                <span>Local SEO Services</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-              <Link
-                href="/locations/lahore"
-                className="w-full inline-flex items-center justify-center gap-1.5 bg-neutral-900 hover:bg-neutral-800 text-white font-sans text-[10px] font-bold uppercase tracking-wider py-2.5 border border-white"
-              >
-                <span>Lahore SEO Solutions</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-              <Link
-                href="/insights/ins-04"
+                href="/insights/local-businesses-ai-search"
                 className="w-full inline-flex items-center justify-center gap-1.5 bg-transparent hover:bg-neutral-900 text-white font-sans text-[10px] font-bold uppercase tracking-wider py-2.5 border border-neutral-600"
               >
-                <span>Read: Local Entity SEO</span>
+                <span>Read: Local Businesses in AI Search</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>

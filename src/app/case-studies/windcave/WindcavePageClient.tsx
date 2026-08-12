@@ -106,6 +106,40 @@ export default function WindcavePage() {
               ))}
             </ul>
           </section>
+
+          {project.methodology && (
+            <section className="space-y-3">
+              <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
+                The Methodology
+              </h2>
+              <ol className="space-y-3 pt-1">
+                {project.methodology.map((step, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-xs md:text-sm text-neutral-800 leading-normal">
+                    <span className="w-5 h-5 bg-black text-cyan-400 font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+                      {i + 1}
+                    </span>
+                    <span className="font-medium">{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+
+          {project.keyLearnings && (
+            <section className="space-y-3">
+              <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
+                Key Learnings
+              </h2>
+              <ul className="space-y-3 pt-1">
+                {project.keyLearnings.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-neutral-800 leading-normal font-medium">
+                    <span className="w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 mt-1.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
 
         {/* Right: Results Box */}

@@ -6,6 +6,8 @@ import JsonLd from "@/components/JsonLd";
 import { STRATEGIST_NAME } from "@/data";
 import { getInsightsArticles } from "@/sanity/posts";
 import { ARTICLE_SCHEMAS, getBreadcrumbSchema } from "@/lib/schemas";
+import { CITIES } from "@/lib/locations";
+import { LOCAL_NICHES } from "@/lib/localNiches";
 
 interface PageProps {
   params: Promise<{ articleId: string }>;
@@ -107,23 +109,23 @@ export default async function InsightDetailPage({ params }: PageProps) {
     return text.split("\n\n").map((para, idx) => {
       if (para.startsWith("## ")) {
         return (
-          <h3 key={idx} className="text-lg md:text-xl font-black font-sans text-black uppercase tracking-tight mt-8 mb-4 border-b border-neutral-200 pb-2">
+          <h2 key={idx} className="text-lg md:text-xl font-black font-sans text-black uppercase tracking-tight mt-8 mb-4 border-b border-neutral-200 pb-2">
             {para.replace("## ", "")}
-          </h3>
+          </h2>
         );
       }
       if (para.startsWith("### ")) {
         return (
-          <h4 key={idx} className="text-sm md:text-base font-black font-sans text-cyan-600 uppercase tracking-wider mt-6 mb-3">
+          <h3 key={idx} className="text-sm md:text-base font-black font-sans text-cyan-600 uppercase tracking-wider mt-6 mb-3">
             {para.replace("### ", "")}
-          </h4>
+          </h3>
         );
       }
       if (para.startsWith("#### ")) {
         return (
-          <h5 key={idx} className="text-xs md:text-sm font-extrabold font-mono text-black uppercase tracking-widest mt-4 mb-2">
+          <h4 key={idx} className="text-xs md:text-sm font-extrabold font-mono text-black uppercase tracking-widest mt-4 mb-2">
             {para.replace("#### ", "")}
-          </h5>
+          </h4>
         );
       }
       if (para.startsWith("- ")) {
@@ -262,6 +264,42 @@ export default async function InsightDetailPage({ params }: PageProps) {
       <div className="bg-white border-2 border-black p-6 md:p-8 relative shadow-[4px_4px_0px_rgba(0,0,0,1)] prose prose-neutral max-w-none">
         {activeArticle.contentMarkdown && renderSimpleMarkdown(activeArticle.contentMarkdown)}
       </div>
+
+      {/* Contextual bridges for local SEO topics */}
+      {activeArticle.category === "Local SEO" && (
+        <div className="bg-white border-2 border-black p-6 md:p-8 shadow-[4px_4px_0px_rgba(0,0,0,1)] space-y-6">
+          <h2 className="text-sm font-black font-sans text-black uppercase tracking-wider border-b border-neutral-200 pb-3">
+            Apply This to Your Market
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {CITIES.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/locations/${c.slug}`}
+                className="block group p-3 border border-neutral-200 hover:border-black bg-neutral-50 transition-all"
+              >
+                <span className="block text-[9px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase tracking-widest mb-0.5">
+                  {c.stateName}
+                </span>
+                <span className="block text-[11px] font-bold text-black uppercase leading-tight group-hover:underline">
+                  SEO Services in {c.name}, {c.state}
+                </span>
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-2 pt-1 border-t border-neutral-100">
+            {LOCAL_NICHES.slice(0, 8).map((n) => (
+              <Link
+                key={n.slug}
+                href={`/services/${n.slug}`}
+                className="text-[10px] font-mono font-bold bg-neutral-50 text-black border border-neutral-200 px-2.5 py-1 uppercase hover:bg-cyan-50 hover:border-cyan-500 transition-colors"
+              >
+                SEO for {n.industry}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Related content — internal linking to keep topical clusters connected */}
       {(() => {

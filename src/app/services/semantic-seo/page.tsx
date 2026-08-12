@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import SemanticSeoPageClient from "./SemanticSeoPageClient";
 
 export const metadata: Metadata = {
-  title: "Semantic SEO & Topical Authority Consulting",
+  title: "Semantic SEO Consulting",
   description:
     "Turn scattered web pages into a fully-connected topical authority structure that search engines can't ignore, mapped to verified knowledge graphs and Wikidata coordinates.",
   alternates: {

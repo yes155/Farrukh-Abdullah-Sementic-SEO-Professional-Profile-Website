@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import LocalSeoSystemsPageClient from "./LocalSeoSystemsPageClient";
 
 export const metadata: Metadata = {
-  title: "Local SEO Systems Case Study | US Service Niches",
+  title: "Local SEO Systems Case Study",
   description:
-    "How a localized SEO system delivered rapid map pack traction and 1,200+ inbound calls for new brand entrants in hyper-competitive local service niches.",
+    "How a localized SEO system delivered rapid map pack traction and 1,200+ inbound calls for new brand entrants in hyper-competitive local service niches — with 340% ROI and 12 map pack rankings.",
+  keywords:
+    "local seo case study, map pack case study, local seo systems, local lead generation case study, service niche seo results",
   alternates: {
     canonical: "/case-studies/local-seo-systems",
   },

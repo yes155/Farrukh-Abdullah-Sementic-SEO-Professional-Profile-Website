@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import WindcavePageClient from "./WindcavePageClient";
 
 export const metadata: Metadata = {
-  title: "Windcave Case Study | Semantic SEO for FinTech & Payments",
+  title: "Windcave Case Study: Semantic SEO for FinTech",
   description:
     "How semantic SEO structuring and entity clustering resolved a search visibility plateau and fragmented domain equity for payment platform Windcave.",
   alternates: {
