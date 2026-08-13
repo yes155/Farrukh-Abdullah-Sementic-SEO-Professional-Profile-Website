@@ -20,6 +20,10 @@ export default function LocalSeoPage() {
       a: "Yes. Local SEO Services is a separate offering focused on local map pack visibility, Google Business Profile optimization, and localized landing page architecture — built for service businesses that need calls and form-fills, not enterprise knowledge graph work."
     },
     {
+      q: "Do you work with businesses in any US state or city?",
+      a: "Yes. I work remotely with service businesses in any US city or state — the system is the same whether you're a dentist in Austin, a plumber in Chicago, or an HVAC company in a small town in Ohio. The only thing that changes is the market research, competitive signals, and citation sources specific to your service area."
+    },
+    {
       q: "How much does local SEO cost?",
       a: "Local SEO is priced by market and scope, not by keyword count. A complete system — Google Business Profile optimization, local schema markup, service-area landing pages, citations, and call tracking — typically runs in the low-to-mid four figures per month. The biggest cost driver is your market: a dense metro with established incumbents costs more than an underserved area where the fundamentals alone move rankings."
     },
@@ -57,13 +61,13 @@ export default function LocalSeoPage() {
       {/* Header Block */}
       <div className="border-b-2 border-black pb-12">
         <span className="text-[10px] font-mono tracking-widest text-emerald-600 font-bold block uppercase mb-2">
-          Local Lead Generation & Map Pack Optimization
+          National Local Lead Generation & Map Pack Optimization
         </span>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-sans text-black tracking-tight uppercase leading-[1.1]">
           Local SEO Services
         </h1>
         <p className="text-sm md:text-base text-neutral-600 mt-4 max-w-3xl font-semibold leading-relaxed">
-          I design and build localized search networks focusing on Google Business Profile optimization, local map pack visibility, and custom localized landing page systems engineered to turn organic traffic into phone calls and form-fills.
+          I design and build localized search networks for service businesses anywhere in the United States — Google Business Profile optimization, local map pack visibility, and custom service-area landing page systems engineered to turn organic traffic into phone calls and form-fills in your city, county, or state.
         </p>
       </div>
 
@@ -208,7 +212,7 @@ export default function LocalSeoPage() {
                 </span>
               </Link>
               <Link
-                href="/insights/ins-04"
+                href="/insights/local-entity-seo-ai-search"
                 className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
               >
                 <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">Article</span>

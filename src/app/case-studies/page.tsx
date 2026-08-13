@@ -4,22 +4,22 @@ import CaseStudiesIndexClient from "./CaseStudiesIndexClient";
 export const metadata: Metadata = {
   title: "SEO Case Studies",
   description:
-    "Verified SEO case studies: semantic SEO entity structuring, AI-search alignment, and a localized SEO system that generated 1,200+ inbound calls and 340% ROI across US service niches.",
+    "Real client case studies across semantic SEO, AI-search alignment, and localized local SEO systems — from an Austin coffee roaster to a YC-backed AI startup.",
   keywords:
-    "seo case studies, local seo case study, semantic seo results, map pack results, local seo systems, ai search optimization case study",
+    "seo case studies, local seo case study, semantic seo results, map pack results, local seo systems, ai search optimization case study, law firm seo, hotel seo, ecommerce seo",
   alternates: {
     canonical: "/case-studies",
   },
   openGraph: {
     title: "Case Studies | Farrukh Abdullah",
     description:
-      "Real results from semantic SEO and local SEO engagements, including a fintech organic lead-growth turnaround and a localized SEO system generating 1,200+ inbound calls.",
+      "Real results from semantic SEO and local SEO engagements across coffee, law, hospitality, merchandising, fitness, and AI-native SaaS — with named clients and measured outcomes.",
     url: "/case-studies",
   },
   twitter: {
     card: "summary_large_image",
     title: "Case Studies | Farrukh Abdullah",
-    description: "Real results from semantic SEO and local SEO engagements, including a fintech organic lead-growth turnaround and a localized SEO system generating 1,200+ inbound calls.",
+    description: "Real results from semantic SEO and local SEO engagements across coffee, law, hospitality, merchandising, fitness, and AI-native SaaS.",
   },
 };
 

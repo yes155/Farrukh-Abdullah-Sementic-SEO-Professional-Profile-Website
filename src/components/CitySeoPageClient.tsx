@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, Check, HelpCircle, MapPin, Building, Landmark, Crosshair } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
-import { getBreadcrumbSchema, CANONICAL_DOMAIN } from "@/lib/schemas";
+import { getBreadcrumbSchema, CANONICAL_DOMAIN, ORGANIZATION_ID } from "@/lib/schemas";
 import type { City } from "@/lib/locations";
 import { CITIES, getCityBySlug } from "@/lib/locations";
 import { getNicheBySlug } from "@/lib/localNiches";
@@ -37,29 +37,20 @@ export default function CitySeoPageClient({ city }: { city: City }) {
 
   const citySchema = {
     "@context": "https://schema.org",
-    "@type": ["ProfessionalService", "LocalBusiness"],
-    "@id": `${CANONICAL_DOMAIN}/locations/${city.slug}#localbusiness`,
-    "name": `Farrukh Abdullah SEO Consulting ${city.name}`,
-    "description": `Local SEO services for businesses in ${city.name}, ${city.stateName} — Google Business Profile optimization, service-area landing pages for ${city.neighborhoods.slice(0, 3).join(", ")}, ${city.state}-specific citations, and call tracking.`,
-    "image": `${CANONICAL_DOMAIN}/farrukh-photo-final.jpg`,
-    "telephone": "+923346536393",
-    "email": "f.abdullah79@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": city.name,
-      "addressRegion": city.state,
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": city.latitude,
-      "longitude": city.longitude
-    },
-    "hasMap": `https://www.google.com/maps?q=${city.latitude},${city.longitude}`,
+    "@type": "Service",
+    "@id": `${CANONICAL_DOMAIN}/locations/${city.slug}#service`,
+    "name": `Local SEO Services for ${city.name}, ${city.stateName}`,
+    "serviceType": "Local SEO",
+    "description": `Remote local SEO services for businesses in ${city.name}, ${city.stateName} — Google Business Profile optimization, service-area landing pages for ${city.neighborhoods.slice(0, 3).join(", ")}, ${city.state}-specific citations, and call tracking. Provided remotely to businesses across the United States.`,
     "url": `${CANONICAL_DOMAIN}/locations/${city.slug}`,
-    "priceRange": "$$",
-    "sameAs": ["https://www.linkedin.com/in/farrukh-abdullah-5a218424/"],
+    "provider": {
+      "@id": ORGANIZATION_ID
+    },
     "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "United States"
+      },
       {
         "@type": "AdministrativeArea",
         "name": `${city.name}, ${city.stateName}`
@@ -84,7 +75,7 @@ export default function CitySeoPageClient({ city }: { city: City }) {
   );
 
   const INSIGHT_LABELS: Record<string, { label: string }> = {
-    "ins-04": { label: "Local Entity SEO: How AI Search Understands Local Businesses" },
+    "local-entity-seo-ai-search": { label: "Local Entity SEO: How AI Search Understands Local Businesses" },
     "local-businesses-ai-search": { label: "Local Businesses in AI Search: Being the Entity AI Names" },
     "us-cities-local-seo-opportunity": { label: "Local SEO Opportunity by US City — 2026 Data" },
     "entity-first-geo": { label: "Entity-First GEO: How Semantic SEO Wins AI Citations" },
@@ -118,6 +109,9 @@ export default function CitySeoPageClient({ city }: { city: City }) {
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-sans text-black tracking-tight uppercase leading-[1.1]">
           SEO Services in {city.name}, {city.state}
         </h1>
+        <p className="text-[11px] md:text-xs text-neutral-500 mt-3 max-w-3xl font-semibold leading-relaxed border-l-2 border-cyan-600 pl-3">
+          {city.name} is one of the US markets I serve remotely. The same entity-based local SEO system — Google Business Profile optimization, service-area landing pages, citations, and call tracking — is available to service businesses in any city or state across the United States.
+        </p>
         <p className="text-sm md:text-base text-neutral-600 mt-4 max-w-3xl font-semibold leading-relaxed">
           {city.blurb}
         </p>

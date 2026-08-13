@@ -52,6 +52,7 @@ export interface Certification {
   title: string;
   organization: string;
   year: string;
+  credentialId?: string;
   credentialUrl?: string;
   iconColor?: string;
   isSelfDirected?: boolean;

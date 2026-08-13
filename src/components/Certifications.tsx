@@ -53,20 +53,30 @@ export default function Certifications() {
             </div>
 
             {/* Bottom confirmation line */}
-            <div className="mt-6 pt-3 border-t border-neutral-100 flex items-center justify-between">
+            <div className="mt-6 pt-3 border-t border-neutral-100">
               {cert.isSelfDirected ? (
                 <span className="text-[8px] font-mono text-neutral-500 uppercase font-bold">
                   Independent study program
                 </span>
+              ) : cert.credentialUrl ? (
+                <a
+                  href={cert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/verify flex items-center justify-between gap-1 text-[8px] font-mono text-neutral-500 hover:text-cyan-600 transition-colors font-bold uppercase"
+                >
+                  <span className="truncate">
+                    {cert.credentialId ? `ID: ${cert.credentialId.slice(0, 16)}` : "Registry Verified"}
+                  </span>
+                  <ArrowUpRight className="w-2.5 h-2.5 shrink-0" />
+                </a>
               ) : (
-                <>
-                  <span className="text-[8px] font-mono text-neutral-500 uppercase">
-                    ID: {cert.id.toUpperCase()}-STABLE
+                <div className="flex items-center justify-between gap-1 text-[8px] font-mono text-neutral-500 uppercase font-bold">
+                  <span className="truncate">
+                    {cert.credentialId ? `ID: ${cert.credentialId.slice(0, 16)}` : "Registry Verified"}
                   </span>
-                  <span className="text-[8px] font-mono text-neutral-500 group-hover:text-cyan-600 flex items-center gap-1 transition-colors font-bold">
-                    Registry Active <ArrowUpRight className="w-2.5 h-2.5" />
-                  </span>
-                </>
+                  <span className="shrink-0">Credential Active</span>
+                </div>
               )}
             </div>
           </motion.div>

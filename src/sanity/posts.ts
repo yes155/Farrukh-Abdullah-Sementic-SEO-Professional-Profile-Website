@@ -50,11 +50,22 @@ interface SanityPost {
  * local INSIGHTS_ARTICLES array. Sanity posts take priority if an
  * id/slug collides with a local article. Falls back silently to
  * local-only articles if Sanity isn't configured yet or the fetch fails.
+ * The merged list is sorted newest-first by date.
  */
+function sortByDateDesc(articles: Insight[]): Insight[] {
+  return [...articles].sort((a, b) => {
+    const ta = Date.parse(a.date);
+    const tb = Date.parse(b.date);
+    if (Number.isNaN(ta)) return 1;
+    if (Number.isNaN(tb)) return -1;
+    return tb - ta;
+  });
+}
+
 export async function getInsightsArticles(): Promise<Insight[]> {
   const client = getSanityClient();
   if (!client) {
-    return INSIGHTS_ARTICLES;
+    return sortByDateDesc(INSIGHTS_ARTICLES);
   }
 
   try {
@@ -82,9 +93,9 @@ export async function getInsightsArticles(): Promise<Insight[]> {
     const sanityIds = new Set(formatted.map((a) => a.id));
     const localOnly = INSIGHTS_ARTICLES.filter((a) => !sanityIds.has(a.id));
 
-    return [...formatted, ...localOnly];
+    return sortByDateDesc([...formatted, ...localOnly]);
   } catch (err) {
     console.error("Sanity fetch failed, falling back to local articles:", err);
-    return INSIGHTS_ARTICLES;
+    return sortByDateDesc(INSIGHTS_ARTICLES);
   }
 }

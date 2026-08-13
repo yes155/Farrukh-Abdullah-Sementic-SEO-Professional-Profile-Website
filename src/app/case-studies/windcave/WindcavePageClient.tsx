@@ -191,7 +191,7 @@ export default function WindcavePage() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link
-                href="/insights/ins-02"
+                href="/insights/entity-based-content-architecture"
                 className="w-full inline-flex items-center justify-center gap-1.5 bg-transparent hover:bg-neutral-900 text-white font-sans text-[10px] font-bold uppercase tracking-wider py-2.5 border border-neutral-600"
               >
                 <span>Read: Entity-Based Architecture</span>

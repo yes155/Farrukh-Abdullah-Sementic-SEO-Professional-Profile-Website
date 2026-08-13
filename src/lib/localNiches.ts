@@ -48,7 +48,7 @@ export const LOCAL_NICHES: Niche[] = [
       "dental practice marketing"
     ],
     relatedCities: ["austin", "chicago", "miami", "san-francisco"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
@@ -174,7 +174,7 @@ export const LOCAL_NICHES: Niche[] = [
       "salon booking seo"
     ],
     relatedCities: ["chicago", "miami", "phoenix", "san-francisco"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
@@ -292,7 +292,7 @@ export const LOCAL_NICHES: Niche[] = [
       "roofing lead generation"
     ],
     relatedCities: ["austin", "denver", "dallas", "seattle"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
@@ -469,7 +469,7 @@ export const LOCAL_NICHES: Niche[] = [
       "contractor lead generation"
     ],
     relatedCities: ["dallas", "seattle", "austin", "houston"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
@@ -528,7 +528,7 @@ export const LOCAL_NICHES: Niche[] = [
       "therapy practice marketing"
     ],
     relatedCities: ["san-francisco", "chicago", "seattle", "miami"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
@@ -646,7 +646,7 @@ export const LOCAL_NICHES: Niche[] = [
       "lawn care lead generation"
     ],
     relatedCities: ["denver", "austin", "dallas", "phoenix"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
@@ -705,7 +705,7 @@ export const LOCAL_NICHES: Niche[] = [
       "orthodontic practice marketing"
     ],
     relatedCities: ["austin", "miami", "chicago", "dallas"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
@@ -764,7 +764,7 @@ export const LOCAL_NICHES: Niche[] = [
       "property seo for agencies"
     ],
     relatedCities: ["miami", "dallas", "seattle", "chicago"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
@@ -823,7 +823,7 @@ export const LOCAL_NICHES: Niche[] = [
       "dermatology practice marketing"
     ],
     relatedCities: ["miami", "san-francisco", "austin", "dallas"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
@@ -882,7 +882,7 @@ export const LOCAL_NICHES: Niche[] = [
       "trades business lead generation"
     ],
     relatedCities: ["houston", "dallas", "chicago", "denver"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:
@@ -941,7 +941,7 @@ export const LOCAL_NICHES: Niche[] = [
       "fence company lead generation"
     ],
     relatedCities: ["austin", "houston", "dallas", "denver"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches",
     intro:

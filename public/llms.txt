@@ -1,6 +1,6 @@
 # Farrukh Abdullah — Semantic SEO & Generative Engine Optimization
 
-> Farrukh Abdullah is a Semantic SEO and Generative Engine Optimization (GEO) strategist based in Faisalabad, Pakistan, working with growth-stage brands, B2B companies, and local service businesses globally. Services include Semantic SEO & Topical Authority, Generative Engine Optimization (GEO), and Local SEO Services. Certified by IBM, Moz, and BrightLocal, with completed training through Anthropic Academy's Claude 101 course.
+> Farrukh Abdullah is a Semantic SEO and Generative Engine Optimization (GEO) strategist based in Faisalabad, Pakistan, working with growth-stage brands, B2B companies, and local service businesses globally. Services include Semantic SEO & Topical Authority, Generative Engine Optimization (GEO), and Local SEO Services. Certified by IBM, Moz, and BrightLocal.
 
 ## Services
 
@@ -13,16 +13,22 @@
 - [Semantic SEO structuring & entity clustering — Windcave](/case-studies/windcave): +112% organic lead registrations within 9 months through entity-based topical authority restructuring for a global payment gateway.
 - [Local SEO systems for competitive service niches](/case-studies/local-seo-systems): 1,200+ inbound calls and 340% average ROI across a local SEO site portfolio in competitive US service niches.
 - [Semantic SEO & AI/LLM alignment — Azuno](/case-studies/azuno): +120% organic traffic in 4 months and top 3 local rankings for a San Francisco SaaS analytics platform through semantic content structuring and AI/LLM alignment.
+- [Local SEO — Armadillo Coffee Roasters](/case-studies/armadillo-coffee-roasters): An Austin, TX specialty roaster moved from page three of Google to the local map pack with Google Business Profile optimization, CoffeeShop schema, and neighborhood service-area pages.
+- [Local SEO — The Reese Law Centre LLC](/case-studies/reese-law-centre): A Homewood, IL law firm doubled local-lead calls with LegalService schema, practice-area pages, and consistent directory citations.
+- [Geo-targeted Local SEO — Hotel Circa 39](/case-studies/hotel-circa-39): A Miami Beach boutique hotel gained visibility in exactly the neighborhoods it targeted, with organic bookings up 35%.
+- [Semantic & E-Commerce SEO — Swag Pro](/case-studies/swag-pro): Technical fixes and entity-based product architecture made organic sales a Denver merchandise business's main revenue stream within three months.
+- [Local SEO — South Seattle Women's Fitness](/case-studies/south-seattle-womens-fitness): A Seattle fitness studio reached consistent top-three local rankings and a steady stream of new members with neighborhood-precise local SEO.
+- [Semantic SEO — Simulithic](/case-studies/simulithic): Entity-based semantic architecture and LLM-aligned content give a YC-backed AI product a machine-readable edge in a category without established search vocabulary.
 
 ## Insights
 
 - [ChatGPT SEO: How to Get Cited and Ranked in ChatGPT Search](/insights/chatgpt-seo-optimization): The citation and entity signals ChatGPT Search ranks on, plus a repeatable audit to get your pages cited.
 - [llms.txt for SEO: The File That Makes AI Crawlers Read Your Site](/insights/llms-txt-ai-crawlers): A practical guide to the llms.txt format and why it helps — but never replaces — semantic SEO.
-- [Generative Engine Optimization: How to Secure Brand Citations in ChatGPT Search and Perplexity](/insights/ins-01)
-- [Understanding Entity-Based Content Architecture: Moving Beyond Simple Keyword Density](/insights/ins-02)
-- [A Schema Strategy for Growth Brands: Structuring Your Site for Google's Knowledge Graph](/insights/ins-03)
-- [Local Entity SEO: How AI Search Engines Understand Location-Based Businesses](/insights/ins-04)
-- [How to Build a Topical Map: The Semantic SEO Framework for Topical Authority](/insights/ins-05)
+- [Generative Engine Optimization: How to Secure Brand Citations in ChatGPT Search and Perplexity](/insights/geo-chatgpt-search-perplexity)
+- [Understanding Entity-Based Content Architecture: Moving Beyond Simple Keyword Density](/insights/entity-based-content-architecture)
+- [A Schema Strategy for Growth Brands: Structuring Your Site for Google's Knowledge Graph](/insights/schema-strategy-growth-brands)
+- [Local Entity SEO: How AI Search Engines Understand Location-Based Businesses](/insights/local-entity-seo-ai-search)
+- [How to Build a Topical Map: The Semantic SEO Framework for Topical Authority](/insights/topical-map-framework)
 - [Entity-First GEO: The Semantic SEO Foundation That Decides AI Citations](/insights/entity-first-geo)
 - [The 120–150 Word Answer Capsule: The Exact Passage Structure AI Engines Extract](/insights/answer-capsules-ai-extraction)
 - [Schema as a Citation Signal: Resolving What the Conflicting Studies Actually Mean](/insights/schema-as-citation-signal)

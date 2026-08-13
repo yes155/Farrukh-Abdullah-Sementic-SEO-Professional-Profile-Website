@@ -33,6 +33,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/case-studies/windcave`, changeFrequency: "yearly", priority: 0.6 },
     { url: `${SITE_URL}/case-studies/local-seo-systems`, changeFrequency: "yearly", priority: 0.6 },
     { url: `${SITE_URL}/case-studies/azuno`, changeFrequency: "yearly", priority: 0.6 },
+    { url: `${SITE_URL}/case-studies/armadillo-coffee-roasters`, changeFrequency: "yearly", priority: 0.6 },
+    { url: `${SITE_URL}/case-studies/reese-law-centre`, changeFrequency: "yearly", priority: 0.6 },
+    { url: `${SITE_URL}/case-studies/hotel-circa-39`, changeFrequency: "yearly", priority: 0.6 },
+    { url: `${SITE_URL}/case-studies/swag-pro`, changeFrequency: "yearly", priority: 0.6 },
+    { url: `${SITE_URL}/case-studies/south-seattle-womens-fitness`, changeFrequency: "yearly", priority: 0.6 },
+    { url: `${SITE_URL}/case-studies/simulithic`, changeFrequency: "yearly", priority: 0.6 },
     { url: `${SITE_URL}/locations`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/locations/lahore`, changeFrequency: "monthly", priority: 0.7 },
     ...US_CITIES.map((city) => ({

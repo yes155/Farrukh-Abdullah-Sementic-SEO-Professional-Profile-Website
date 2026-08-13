@@ -155,10 +155,10 @@ export default function Page() {
             Markets, Proof & Research
           </span>
           <h2 className="text-2xl md:text-3xl font-black font-sans text-black tracking-tight uppercase">
-            Local SEO Everywhere You Compete
+            Local SEO Systems Built for Any US Market
           </h2>
           <p className="text-xs md:text-sm text-neutral-600 mt-2 max-w-2xl font-semibold">
-            Service-area systems built for real US metros — with verified results, market research, and the entity strategy that wins both the map pack and AI answers.
+            I build the same entity-based local SEO system for service businesses in any US city or state. The metros below are examples I've worked in — with verified results, market research, and the strategy that wins both the map pack and AI answers.
           </p>
         </div>
 
@@ -166,7 +166,7 @@ export default function Page() {
           {/* Featured Cities */}
           <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
             <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block mb-2 uppercase">
-              Featured Markets
+              Example Markets I've Worked In
             </span>
             <div className="space-y-2.5">
               {CITIES.slice(0, 5).map((c) => (
@@ -185,9 +185,9 @@ export default function Page() {
                 href="/locations"
                 className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
               >
-                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">All Markets</span>
+                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">More Markets</span>
                 <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
-                  All Local SEO Locations
+                  More Cities I've Worked In
                 </span>
               </Link>
             </div>

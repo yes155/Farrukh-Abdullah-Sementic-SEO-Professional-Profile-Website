@@ -14,7 +14,7 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
     .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
   const INSIGHT_LABELS: Record<string, string> = {
-    "ins-04": "Local Entity SEO: How AI Search Understands Local Businesses",
+    "local-entity-seo-ai-search": "Local Entity SEO: How AI Search Understands Local Businesses",
     "local-businesses-ai-search": "Local Businesses in AI Search: Being the Entity AI Names",
     "us-cities-local-seo-opportunity": "Local SEO Opportunity by US City — 2026 Data",
     "entity-first-geo": "Entity-First GEO: How Semantic SEO Wins AI Citations",
@@ -203,6 +203,12 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
               <MapPin className="w-5 h-5 text-emerald-600" />
               <span>SEO for {niche.industry} by City</span>
             </h2>
+            <p className="text-xs text-neutral-600 font-medium leading-relaxed">
+              These are example markets I've worked in. The same local SEO system for {niche.industry.toLowerCase()} businesses applies anywhere in the US — see the full offering at{" "}
+              <Link href="/services/local-seo" className="font-bold text-emerald-700 underline decoration-2 underline-offset-2 hover:text-black transition-colors">
+                Local SEO Services
+              </Link>.
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {relatedCities.map((c) => (
                 <Link
@@ -223,9 +229,9 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
                 href="/locations"
                 className="bg-neutral-50 p-5 border-2 border-black hover:border-emerald-500 transition-colors flex flex-col justify-center"
               >
-                <span className="font-mono text-xs font-bold text-emerald-600 block mb-1 uppercase">All Markets</span>
+                <span className="font-mono text-xs font-bold text-emerald-600 block mb-1 uppercase">More Markets</span>
                 <span className="font-sans font-black text-xs text-black uppercase block mb-1.5">
-                  {niche.industry} SEO in Every City We Serve
+                  More Example Cities
                 </span>
                 <span className="text-[10px] text-neutral-600 font-medium leading-relaxed">
                   Service-area systems in {CITIES.length} US markets, each mapped to real neighborhoods, ZIP codes, and citation directories.
@@ -293,7 +299,7 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
             <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block mb-2 uppercase">
               US MARKETS
             </span>
-            <h3 className="text-xs font-black uppercase text-black mb-4">Local SEO by City</h3>
+            <h3 className="text-xs font-black uppercase text-black mb-4">Local SEO by Example City</h3>
             <div className="space-y-3">
               <Link
                 href="/"
@@ -320,9 +326,9 @@ export default function LocalNichePageClient({ niche }: { niche: Niche }) {
                 href="/locations"
                 className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
               >
-                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">All Markets</span>
+                <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-emerald-600 uppercase">All Locations</span>
                 <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
-                  All Locations
+                  All Example Markets
                 </span>
               </Link>
             </div>

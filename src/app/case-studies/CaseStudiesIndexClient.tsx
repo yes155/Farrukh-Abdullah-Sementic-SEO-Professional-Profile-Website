@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { FEATURED_PROJECTS } from "@/data";
 import { getPublishedNicheCaseStudies } from "@/lib/caseStudies";
 import { getNicheBySlug } from "@/lib/localNiches";
+import { CLIENT_CASE_STUDIES } from "@/lib/clientCaseStudies";
 
 export default function CaseStudiesIndex() {
   const nicheStudies = getPublishedNicheCaseStudies().map((s, i) => {
@@ -22,7 +23,18 @@ export default function CaseStudiesIndex() {
     };
   });
 
-  const caseStudies = [
+  const clientStudies = CLIENT_CASE_STUDIES.map((c) => ({
+    id: c.slug,
+    title: `${c.headline} — ${c.location}`,
+    industry: c.industry,
+    challenge: c.challengeShort,
+    results: c.results,
+    imageSrc: c.imageSrc,
+    path: `/case-studies/${c.slug}`,
+    technologies: c.technologies
+  }));
+
+  const caseStudies = [...clientStudies,
     {
       id: "windcave",
       title: "Semantic SEO structuring & entity clustering — Windcave",

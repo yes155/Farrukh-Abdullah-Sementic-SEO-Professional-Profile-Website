@@ -24,9 +24,8 @@ export const CREDIBILITY_CARDS: CredibilityCard[] = [
   { label: "2+ Years in Semantic SEO", iconName: "Database", badge: "GEO Era" },
   { label: "11+ Years Sales & Analytics", iconName: "TrendingUp", badge: "Data-Driven" },
   { label: "IBM Content Certified", iconName: "Award", badge: "IBM" },
-  { label: "Moz Advanced Certified", iconName: "ShieldCheck", badge: "Moz" },
-  { label: "BrightLocal Certified", iconName: "MapPin", badge: "Local" },
-  { label: "Claude101 Certified", iconName: "BrainCircuit", badge: "Anthropic" }
+  { label: "Moz SEO Certified", iconName: "ShieldCheck", badge: "Moz" },
+  { label: "BrightLocal Certified", iconName: "MapPin", badge: "Local" }
 ];
 
 export const EXPERTISE_TAGS: string[] = [
@@ -259,31 +258,37 @@ export const WORKING_PROCESS: ProcessStep[] = [
 export const CERTIFICATIONS: Certification[] = [
   {
     id: "cert-01",
-    title: "SEO and Content Strategy Professional Certificate",
-    organization: "IBM",
-    year: "2023",
+    title: "Search Engine Optimization and Content Marketing",
+    organization: "IBM (Coursera)",
+    year: "2026",
+    credentialId: "7JIZ8N7TW3JB",
+    credentialUrl: "https://coursera.org/share/73cfe74f0d961e405bd0e6c291fa266d",
     iconColor: "#0f62fe"
   },
   {
     id: "cert-02",
     title: "Search Engine Optimization Professional Certificate",
-    organization: "Moz",
-    year: "2021",
+    organization: "Moz (LinkedIn Learning)",
+    year: "2026",
+    credentialId: "cabd29ba74e5629692dc3e1e1bfb454a64d01860cef7360594fb6fa7f8fee16d",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/cabd29ba74e5629692dc3e1e1bfb454a64d01860cef7360594fb6fa7f8fee16d",
     iconColor: "#328aff"
   },
   {
     id: "cert-03",
-    title: "Local SEO Certificate",
-    organization: "BrightLocal",
-    year: "2022",
-    iconColor: "#e6194b"
+    title: "Marketing Strategy: SEO Content Writing",
+    organization: "Moz (LinkedIn Learning)",
+    year: "2026",
+    credentialId: "82eede6ecba75e8604bd67e9b49d2ccc2b63c52f651379c54679f72cbbcde50a",
+    iconColor: "#328aff"
   },
   {
     id: "cert-04",
-    title: "Claude101 Certificate",
-    organization: "Anthropic",
-    year: "2024",
-    iconColor: "#cc9900"
+    title: "How to Create, Optimize, and Manage Google Business Profiles",
+    organization: "BrightLocal",
+    year: "2025",
+    credentialUrl: "https://academy.brightlocal.com/certificate_v2/66ab42287074f2d15d09e088/user/693af0d22a6d366ba9029353",
+    iconColor: "#e6194b"
   }
 ];
 
@@ -305,7 +310,7 @@ export const EXPERIENCE_TIMELINE: ExperienceItem[] = [
 
 export const INSIGHTS_ARTICLES: Insight[] = [
   {
-    id: "ins-01",
+    id: "geo-chatgpt-search-perplexity",
     title: "Generative Engine Optimization: How to Secure Brand Citations in ChatGPT Search and Perplexity",
     category: "AI Search",
     readTime: "6 min read",
@@ -339,14 +344,14 @@ LLMs are trained on massive web corpora. If your brand is continuously mentioned
 
 #### 5. Brand Authority Anchors
 Make sure your founder, key executives, and physical locations are verified entities across the web. Connect your personal LinkedIn, Google Business Profile, and industry memberships with Schema markup to create an solid circle of trust.`,
-    relatedArticleIds: ["ins-03", "ins-05"],
+    relatedArticleIds: ["schema-strategy-growth-brands", "topical-map-framework"],
     relatedServicePath: "/services/ai-seo-consulting",
     relatedServiceName: "AI SEO Consulting",
     relatedCaseStudyPath: "/case-studies/azuno",
     relatedCaseStudyName: "Azuno: Semantic SEO & AI/LLM Alignment"
   },
   {
-    id: "ins-02",
+    id: "entity-based-content-architecture",
     title: "Understanding Entity-Based Content Architecture: Moving Beyond Simple Keyword Density",
     category: "Semantic SEO",
     readTime: "8 min read",
@@ -379,14 +384,14 @@ Anchor texts should denote relationship pathways. Instead of generic 'click here
 
 #### 4. Ground Your Content in Verified Facts
 Google's Quality Rater Guidelines (E-E-A-T) prioritize factual accuracy. Ground your claims with external links pointing to authoritative, established knowledge nodes (such as official university papers, governmental websites, or recognized industry standards).`,
-    relatedArticleIds: ["ins-05", "ins-03"],
+    relatedArticleIds: ["topical-map-framework", "schema-strategy-growth-brands"],
     relatedServicePath: "/services/semantic-seo",
     relatedServiceName: "Semantic SEO & Topical Authority",
     relatedCaseStudyPath: "/case-studies/windcave",
     relatedCaseStudyName: "Windcave: Semantic SEO Structuring & Entity Clustering"
   },
   {
-    id: "ins-03",
+    id: "schema-strategy-growth-brands",
     title: "A Schema Strategy for Growth Brands: Structuring Your Site for Google's Knowledge Graph",
     category: "Entity SEO",
     readTime: "5 min read",
@@ -434,14 +439,14 @@ Using the \`@graph\` array in JSON-LD, you can link all properties together in a
 1. **Eliminates Entity Ambiguity:** Directly informs Google that the organization that publishes the website is the exact same entity listed in the Wikidata database.
 2. **Accelerates Indexing Speed:** Google's crawlers can trace the entire organizational topology in a single, well-structured pass.
 3. **Protects Brand SERP Real Estate:** Directly correlates your brand's properties to guarantee a rich Knowledge Panel with clean social profiles, logos, and executive names.`,
-    relatedArticleIds: ["ins-01", "ins-02"],
+    relatedArticleIds: ["geo-chatgpt-search-perplexity", "entity-based-content-architecture"],
     relatedServicePath: "/services/semantic-seo",
     relatedServiceName: "Semantic SEO & Topical Authority",
     relatedCaseStudyPath: "/case-studies/windcave",
     relatedCaseStudyName: "Windcave: Semantic SEO Structuring & Entity Clustering"
   },
   {
-    id: "ins-04",
+    id: "local-entity-seo-ai-search",
     title: "Local Entity SEO: How AI Search Engines Understand Location-Based Businesses",
     category: "Local SEO",
     readTime: "6 min read",
@@ -472,14 +477,14 @@ Google Business Profile reviews, industry-specific directories, and local citati
 When someone asks an AI assistant 'who's a reliable electrician near me,' the model isn't crawling live map results. It's drawing on whatever structured, consistent local entity data it has already encountered and trusts. A business with clean schema, consistent NAP, and dense verified citations has a real chance of being surfaced. A business relying on keyword-stuffed city names in body text is, for practical purposes, invisible to these systems.
 
 Local SEO hasn't gotten more complicated. It's gotten more literal: search systems now expect you to state your entity properties plainly and consistently, rather than implying them through repetition.`,
-    relatedArticleIds: ["ins-02", "ins-05"],
+    relatedArticleIds: ["entity-based-content-architecture", "topical-map-framework"],
     relatedServicePath: "/services/local-seo",
     relatedServiceName: "Local SEO Services",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
     relatedCaseStudyName: "Local SEO Systems: US Service Niches"
   },
   {
-    id: "ins-05",
+    id: "topical-map-framework",
     title: "How to Build a Topical Map: The Semantic SEO Framework for Topical Authority",
     category: "Topical Authority",
     readTime: "7 min read",
@@ -541,7 +546,7 @@ A page with zero inbound or outbound contextual bridges is an orphan. Orphan pag
 7. **Plan contextual bridges** between pages at map-design time, not as an afterthought during editing.
 
 Skipping straight to step 7 — writing content and linking it after the fact — is the most common reason topical authority efforts stall: the map gets built backwards, from content to structure, instead of from structure to content.`,
-    relatedArticleIds: ["ins-02", "ins-03"],
+    relatedArticleIds: ["entity-based-content-architecture", "schema-strategy-growth-brands"],
     relatedServicePath: "/services/semantic-seo",
     relatedServiceName: "Semantic SEO & Topical Authority",
     relatedCaseStudyPath: "/case-studies/windcave",
@@ -629,7 +634,7 @@ Entity-first GEO is the citation layer on top of a topical map. The topical map 
 ## The Bottom Line
 
 GEO tactics move the needle a few percentage points. Entity clarity is the difference between being eligible for citation and being invisible to the retrieval system. Define the entity, cover its attributes, corroborate it externally, and every other GEO technique finally has something to compound on.`,
-    relatedArticleIds: ["ins-05","ins-02","schema-as-citation-signal"],
+    relatedArticleIds: ["topical-map-framework","entity-based-content-architecture","schema-as-citation-signal"],
     relatedServicePath: "/services/ai-seo-consulting",
     relatedServiceName: "AI SEO Consulting",
     relatedCaseStudyPath: "/case-studies/windcave",
@@ -731,7 +736,7 @@ Answer capsules and FAQ markup serve the same goal from different directions: bo
 ## The Bottom Line
 
 Answer capsules are the cheapest extractability upgrade available to any site. They require no design, no schema, and no tooling — only a stricter way of writing sections. Structure every heading as a question, answer it in 120–150 words in the first block, and you have built the exact passage shape retrieval systems are looking for.`,
-    relatedArticleIds: ["entity-first-geo","geo-measurement-stack","ins-01"],
+    relatedArticleIds: ["entity-first-geo","geo-measurement-stack","geo-chatgpt-search-perplexity"],
     relatedServicePath: "/services/ai-seo-consulting",
     relatedServiceName: "AI SEO Consulting",
     relatedCaseStudyPath: "/case-studies/azuno",
@@ -808,7 +813,7 @@ With image input the fastest-growing query type, alt text is no longer just acce
 ## The Bottom Line
 
 The searcher changed; the keywords did not stop existing, but they stopped being the primary shape of demand. If you write content that answers the conversational version of your topic — plus the follow-ups and the decision questions — you are aligned with how AI Mode users actually search in 2026. Keyword pages are still indexed; conversational coverage is what gets cited.`,
-    relatedArticleIds: ["geo-measurement-stack","answer-capsules-ai-extraction","ins-01"],
+    relatedArticleIds: ["geo-measurement-stack","answer-capsules-ai-extraction","geo-chatgpt-search-perplexity"],
     relatedServicePath: "/services/ai-seo-consulting",
     relatedServiceName: "AI SEO Consulting",
     relatedCaseStudyPath: "/case-studies/azuno",
@@ -877,7 +882,7 @@ Build schema at the same time you build the page, tie every node back to a stabl
 ## The Bottom Line
 
 The contradiction dissolves once you separate eligibility from ranking. Schema makes your content resolvable and your entity trustworthy — it earns you a seat at the citation table. It does not decide whether you are chosen. Build it correctly, tie it to a connected graph, and let content quality do the rest. For the entity-graph blueprint behind this, the schema strategy for growth brands covers the full pattern.`,
-    relatedArticleIds: ["ins-03","entity-first-geo","ins-05"],
+    relatedArticleIds: ["schema-strategy-growth-brands","entity-first-geo","topical-map-framework"],
     relatedServicePath: "/services/semantic-seo",
     relatedServiceName: "Semantic SEO & Topical Authority",
     relatedCaseStudyPath: "/case-studies/windcave",
@@ -955,7 +960,7 @@ A refresh is not changing a date. It is a material update a search engine can de
 ## The Bottom Line
 
 Freshness is a measured, repeatable advantage — a 25.7% recency edge over organic results that you control entirely. Put your core nodes on a cadence, tie triggers to real signals, and treat a refresh as a content event, not a date change. The site that keeps its authority nodes current is the site AI engines keep selecting.`,
-    relatedArticleIds: ["topical-authority-core-update","ins-05","geo-measurement-stack"],
+    relatedArticleIds: ["topical-authority-core-update","topical-map-framework","geo-measurement-stack"],
     relatedServicePath: "/services/semantic-seo",
     relatedServiceName: "Semantic SEO & Topical Authority",
     relatedCaseStudyPath: "/case-studies/windcave",
@@ -1027,7 +1032,7 @@ Before any content work, write a single paragraph that answers: what is this sit
 ## The Bottom Line
 
 The October 2025 core update did not invent topical authority — it enforced it. Coverage plus history, structure over volume, entity over keyword. The sites that survive algorithm updates and win AI citations are the ones organized as networks. Sort the foundation first: central entity, source context, core and outer sections. Then every page you publish compounds instead of competing.`,
-    relatedArticleIds: ["ins-05","content-freshness-ai-search","ins-02"],
+    relatedArticleIds: ["topical-map-framework","content-freshness-ai-search","entity-based-content-architecture"],
     relatedServicePath: "/services/semantic-seo",
     relatedServiceName: "Semantic SEO & Topical Authority",
     relatedCaseStudyPath: "/case-studies/windcave",
@@ -1089,7 +1094,7 @@ Keep a simple mention log: platform, date, what you said, and which platform cat
 ## The Bottom Line
 
 Your website is one source among many in an AI answer. Reddit, YouTube, LinkedIn, podcasts, and forums are where the association weights get built. A solo consultant does not need a PR budget — they need consistent, genuinely useful presence on the two platforms their audience already uses. That presence is the co-citation footprint that makes AI name you, and it compounds exactly like topical authority does on-site.`,
-    relatedArticleIds: ["entity-first-geo","ins-01","original-data-solo-seo"],
+    relatedArticleIds: ["entity-first-geo","geo-chatgpt-search-perplexity","original-data-solo-seo"],
     relatedServicePath: "/services/ai-seo-consulting",
     relatedServiceName: "AI SEO Consulting",
     relatedCaseStudyPath: "/case-studies/azuno",
@@ -1237,7 +1242,7 @@ For every service and area you cover, write the content as an answer to the ques
 ## The Bottom Line
 
 The local search surface has expanded from the map pack to the AI answer, and the input data is largely the same: a complete, consistent, schema-clean entity profile. Google's own guidance now says the Google Business Profile affects AI responses for local queries. Fix the entity, structure the content as direct answers, and a local business can be the name an AI engine gives to a neighbor who asks which plumber to call.`,
-    relatedArticleIds: ["ins-04","schema-as-citation-signal","ins-05"],
+    relatedArticleIds: ["local-entity-seo-ai-search","schema-as-citation-signal","topical-map-framework"],
     relatedServicePath: "/services/local-seo",
     relatedServiceName: "Local SEO Services",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
@@ -1327,7 +1332,7 @@ Report monthly, engine by engine, with three lines per query: citation rate, SOV
 ## The Bottom Line
 
 GEO cannot be optimized until it is measured, and the measurement standard is higher than most teams assume — 50 runs per query per engine to beat the volatility. The entire stack fits in a spreadsheet. Name ten queries, sample them fifty times a month on three engines, and turn every gap into a work item. That is the discipline that turns GEO from a vague ambition into a tracked, compounding channel.`,
-    relatedArticleIds: ["entity-first-geo","answer-capsules-ai-extraction","ins-01"],
+    relatedArticleIds: ["entity-first-geo","answer-capsules-ai-extraction","geo-chatgpt-search-perplexity"],
     relatedServicePath: "/services/ai-seo-consulting",
     relatedServiceName: "AI SEO Consulting",
     relatedCaseStudyPath: "/case-studies/azuno",
@@ -1447,7 +1452,7 @@ Three patterns from the 2026 data point to where the wins actually are:
 ## The Bottom Line
 
 City choice decides how hard a local SEO campaign is before a single page is written. Sun Belt mid-tier markets and Midwest manufacturing cities have the softest SERPs. Coastal big-three metros are only winnable at the neighborhood level. And within any city, the trade with the weakest optimization — landscaping, then electrical — is the one where the fundamentals still win. Pair the right city with the right trade and a complete, consistent, AI-ready entity profile, and local search in 2026 is winnable on execution, not budget.`,
-    relatedArticleIds: ["local-businesses-ai-search","ins-04","schema-as-citation-signal"],
+    relatedArticleIds: ["local-businesses-ai-search","local-entity-seo-ai-search","schema-as-citation-signal"],
     relatedServicePath: "/services/local-seo",
     relatedServiceName: "Local SEO Services",
     relatedCaseStudyPath: "/case-studies/local-seo-systems",
@@ -1518,7 +1523,7 @@ ChatGPT SEO is measured in citations, not rankings. Track three numbers weekly:
 ## The Bottom Line
 
 ChatGPT Search is not Google. It is a ranking surface that rewards pages which answer directly, resolve as entities, and get independently cited. The businesses getting named are not gaming a keyword list — they are restructuring their pages to be the cleanest, most verifiable answer in the retrieval set. Run the audit above, fix the answer capsule and entity resolution on your three highest-intent pages, and measure citation rate for a month. That is the entire strategy, minus the fluff.`,
-    relatedArticleIds: ["ins-01","answer-capsules-ai-extraction","entity-first-geo"],
+    relatedArticleIds: ["geo-chatgpt-search-perplexity","answer-capsules-ai-extraction","entity-first-geo"],
     relatedServicePath: "/services/ai-seo-consulting",
     relatedServiceName: "AI SEO Consulting",
     relatedCaseStudyPath: "/case-studies/azuno",
@@ -1590,7 +1595,7 @@ Think of llms.txt as the table of contents for the file an AI engine is most lik
 ## The Bottom Line
 
 Ship \`/llms.txt\` this week: it takes ten minutes, it cannot hurt you, and it gives every AI crawler a direct, plain-text map of your best pages. Then get back to the work that actually moves citations — answer-first structure, clean schema, entity resolution, and co-citation. llms.txt opens the door; the content has to walk through it.`,
-    relatedArticleIds: ["ins-01","chatgpt-seo-optimization","entity-first-geo"],
+    relatedArticleIds: ["geo-chatgpt-search-perplexity","chatgpt-seo-optimization","entity-first-geo"],
     relatedServicePath: "/services/ai-seo-consulting",
     relatedServiceName: "AI SEO Consulting",
     relatedCaseStudyPath: "/case-studies/azuno",
@@ -1602,45 +1607,51 @@ Ship \`/llms.txt\` this week: it takes ten minutes, it cannot hurt you, and it g
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: "testimonial-01",
-    quote: "I own a coffee shop in Austin, Texas, and we were buried on page three of Google. Farrukh helped us show up in the local pack within weeks. Now new customers literally tell us they found us online. He's approachable, explains things clearly, and delivers results.",
-    name: "Sarah M.",
-    role: "Owner, Coffee Shop",
-    company: "Austin, TX"
+    quote: "I own a coffee roaster in Austin, Texas, and we were buried on page three of Google. Farrukh helped us show up in the local pack within weeks. Now new customers literally tell us they found us online. He's approachable, explains things clearly, and delivers results.",
+    name: "Andrew",
+    role: "Manager, Armadillo Coffee Roasters",
+    company: "Austin, TX",
+    linkedCaseStudyPath: "/case-studies/armadillo-coffee-roasters"
   },
   {
     id: "testimonial-02",
-    quote: "Running a small law firm in Chicago, I needed someone who understood how clients search locally. Farrukh rebuilt our SEO strategy from the ground up. Calls from local leads have doubled, and our site finally feels professional. He's the kind of specialist you want in your corner.",
-    name: "David R.",
-    role: "Attorney, Law Firm",
-    company: "Chicago, IL"
+    quote: "Running a small law firm in the Chicago area, I needed someone who understood how clients search locally. Farrukh rebuilt our SEO strategy from the ground up. Calls from local leads have doubled, and our site finally feels professional. He's the kind of specialist you want in your corner.",
+    name: "Derrick Reese",
+    role: "Managing Attorney, The Reese Law Centre LLC",
+    company: "Homewood, IL",
+    linkedCaseStudyPath: "/case-studies/reese-law-centre"
   },
   {
     id: "testimonial-03",
-    quote: "I manage a boutique hotel in Miami, and competition here is fierce. Farrukh's geo-targeted SEO gave us visibility in exactly the neighborhoods we wanted. Bookings through organic search are up 35%. He's responsive, detail-oriented, and genuinely cares about outcomes.",
-    name: "Elena P.",
-    role: "Manager, Boutique Hotel",
-    company: "Miami, FL"
+    quote: "I oversee a hotel in Miami Beach, and competition here is fierce. Farrukh's geo-targeted SEO gave us visibility in exactly the neighborhoods we wanted. Bookings through organic search are up 35%. He's responsive, detail-oriented, and genuinely cares about outcomes.",
+    name: "Jessica Santiago",
+    role: "Director of Sales & Marketing, Hotel Circa 39",
+    company: "Miami Beach, FL",
+    linkedCaseStudyPath: "/case-studies/hotel-circa-39"
   },
   {
     id: "testimonial-04",
-    quote: "Our e-commerce store in Denver was struggling to get traction. Farrukh spotted technical issues and optimized our product pages with semantic SEO. Within three months, organic sales became our main revenue stream. He's not just an SEO guy — he's a strategist.",
-    name: "Mark T.",
-    role: "Owner, E-Commerce Store",
-    company: "Denver, CO"
+    quote: "Our swag and merchandise business in Denver was struggling to get traction online. Farrukh spotted technical issues and optimized our product pages with semantic SEO. Within three months, organic sales became our main revenue stream. He's not just an SEO guy — he's a strategist.",
+    name: "Kyle Tudor",
+    role: "Sales Leader, Swag Pro",
+    company: "Denver, CO",
+    linkedCaseStudyPath: "/case-studies/swag-pro"
   },
   {
     id: "testimonial-05",
-    quote: "I run a fitness studio in Seattle, and Farrukh helped us dominate local search. We're now consistently in the top three results, which brought in a steady stream of new members. What I appreciated most was how he explained everything in plain English. Highly recommend.",
-    name: "Jessica L.",
-    role: "Owner, Fitness Studio",
-    company: "Seattle, WA"
+    quote: "I run a personal training and fitness studio in Seattle, and Farrukh helped us dominate local search. We're now consistently in the top three results, which brought in a steady stream of new members. What I appreciated most was how he explained everything in plain English. Highly recommend.",
+    name: "Arianna S.",
+    role: "Personal Trainer & Fitness Instructor, South Seattle Women's Fitness",
+    company: "Seattle, WA",
+    linkedCaseStudyPath: "/case-studies/south-seattle-womens-fitness"
   },
   {
     id: "testimonial-06",
-    quote: "As a tech startup founder in San Francisco, I was fascinated by how Farrukh connected semantic SEO with the latest advances in AI. He showed us how search engines increasingly rely on language models to interpret intent, and then tailored our content so it aligned perfectly with those signals. On top of that, his geo-targeting strategy helped us capture local visibility in the Bay Area. The combination of semantic precision and geo focus gave us a real competitive edge.",
-    name: "Michael K.",
-    role: "Founder, Tech Startup",
-    company: "San Francisco, CA"
+    quote: "As co-founder of a fast-growing tech company, I was fascinated by how Farrukh connected semantic SEO with the latest advances in AI. He showed us how search engines increasingly rely on language models to interpret intent, and then tailored our content so it aligned perfectly with those signals. The combination of semantic precision and geo focus gave us a real competitive edge.",
+    name: "Satyam Singh",
+    role: "Co-founder, Simulithic",
+    company: "YC-backed tech startup",
+    linkedCaseStudyPath: "/case-studies/simulithic"
   },
   {
     id: "testimonial-07",

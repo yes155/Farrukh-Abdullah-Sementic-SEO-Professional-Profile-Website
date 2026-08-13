@@ -2,18 +2,15 @@
 
 import Link from "next/link";
 import { ArrowLeft, Cpu, TrendingUp, ArrowRight, Quote } from "lucide-react";
-import { motion } from "motion/react";
 import JsonLd from "@/components/JsonLd";
-import { FEATURED_PROJECTS } from "@/data";
 import { getBreadcrumbSchema } from "@/lib/schemas";
+import type { ClientCaseStudy } from "@/lib/clientCaseStudies";
 
-export default function AzunoPage() {
-  const project = FEATURED_PROJECTS[2];
-
+export default function ClientCaseStudyPageClient({ study }: { study: ClientCaseStudy }) {
   const breadcrumbs = getBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Case Studies", url: "/case-studies" },
-    { name: "Azuno", url: "/case-studies/azuno" }
+    { name: study.clientName, url: `/case-studies/${study.slug}` }
   ]);
 
   // Real client feedback for this engagement — displayed as editorial proof on
@@ -23,14 +20,9 @@ export default function AzunoPage() {
   const caseStudySchema = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": "Semantic SEO Case Study: Azuno | +120% Organic Traffic in 4 Months",
-    "description": "How a semantic SEO framework and AI/LLM content alignment drove +120% organic traffic growth and top 3 local rankings for a San Francisco SaaS analytics platform.",
-    "about": [
-      { "@type": "Thing", "name": "Semantic SEO" },
-      { "@type": "Thing", "name": "Generative Engine Optimization" },
-      { "@type": "Thing", "name": "Local SEO" },
-      { "@type": "Thing", "name": "SaaS" }
-    ],
+    "headline": study.schemaHeadline,
+    "description": study.schemaDescription,
+    "about": study.schemaAbout,
     "author": {
       "@type": "Person",
       "name": "Farrukh Abdullah"
@@ -39,12 +31,12 @@ export default function AzunoPage() {
 
   return (
     <div className="pt-12 pb-20 px-6 max-w-5xl mx-auto space-y-12">
-      <JsonLd id="schema-breadcrumb-azuno" data={breadcrumbs} />
-      <JsonLd id="schema-case-azuno" data={caseStudySchema} />
+      <JsonLd id={`schema-breadcrumb-${study.slug}`} data={breadcrumbs} />
+      <JsonLd id={`schema-case-${study.slug}`} data={caseStudySchema} />
 
       {/* Back button */}
       <div>
-        <Link 
+        <Link
           href="/case-studies"
           className="inline-flex items-center gap-1 text-xs font-mono font-bold uppercase text-neutral-500 hover:text-black transition-colors"
         >
@@ -55,14 +47,15 @@ export default function AzunoPage() {
 
       {/* Title block */}
       <div className="border-b-2 border-black pb-8">
-        <span className="text-[10px] font-mono tracking-widest text-cyan-600 font-bold block uppercase mb-1.5">
-          SAAS / AI SOLUTIONS &middot; SAN FRANCISCO, CA &middot; 4-MONTH ENGAGEMENT
-        </span>
+        <span
+          className="text-[10px] font-mono tracking-widest text-cyan-600 font-bold block uppercase mb-1.5"
+          dangerouslySetInnerHTML={{ __html: study.eyebrow }}
+        />
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black font-sans text-black uppercase tracking-tight leading-tight">
-          Semantic SEO Case Study: Azuno
+          {study.h1}
         </h1>
         <div className="flex flex-wrap gap-2 mt-4">
-          {project.technologies.map((tech) => (
+          {study.technologies.map((tech) => (
             <span key={tech} className="text-[9px] font-mono bg-neutral-100 text-neutral-600 border border-neutral-200 px-2 py-0.5 uppercase font-bold">
               {tech}
             </span>
@@ -73,8 +66,8 @@ export default function AzunoPage() {
       {/* Main Image */}
       <div className="border-2 border-black overflow-hidden relative aspect-video shadow-[4px_4px_0px_rgba(0,0,0,1)] bg-neutral-100">
         <img
-          src={project.imageSrc}
-          alt="Azuno Case Study"
+          src={study.imageSrc}
+          alt={`${study.clientName} Case Study`}
           className="w-full h-full object-cover grayscale"
           referrerPolicy="no-referrer"
         />
@@ -88,21 +81,21 @@ export default function AzunoPage() {
             <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
               Background
             </h2>
-            <p>Azuno is a fast-growing SaaS company specializing in AI-driven analytics. Despite an innovative product, the team struggled to gain traction in search results — their content wasn&apos;t ranking for relevant queries, and potential customers were missing them entirely.</p>
+            <p>{study.background}</p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
               The Client Challenge
             </h2>
-            <p>{project.challenge}</p>
+            <p>{study.challenge}</p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
               Strategic SEO Solution
             </h2>
-            <p>{project.strategy}</p>
+            <p>{study.strategy}</p>
           </section>
 
           <section className="space-y-3 bg-neutral-50 border-2 border-black p-6 shadow-[3px_3px_0px_rgba(0,0,0,1)]">
@@ -110,7 +103,7 @@ export default function AzunoPage() {
               Tactical Execution Plan
             </h3>
             <ul className="space-y-3 pt-2">
-              {project.execution.map((exc, i) => (
+              {study.execution.map((exc, i) => (
                 <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-neutral-800 leading-normal font-semibold">
                   <Cpu className="w-4 h-4 text-cyan-600 shrink-0 mt-0.5" />
                   <span>{exc}</span>
@@ -119,52 +112,48 @@ export default function AzunoPage() {
             </ul>
           </section>
 
-          {project.methodology && (
-            <section className="space-y-3">
-              <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
-                The Methodology
-              </h2>
-              <ol className="space-y-3 pt-1">
-                {project.methodology.map((step, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-xs md:text-sm text-neutral-800 leading-normal">
-                    <span className="w-5 h-5 bg-black text-cyan-400 font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
-                      {i + 1}
-                    </span>
-                    <span className="font-medium">{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </section>
-          )}
+          <section className="space-y-3">
+            <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
+              The Methodology
+            </h2>
+            <ol className="space-y-3 pt-1">
+              {study.methodology.map((step, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-xs md:text-sm text-neutral-800 leading-normal">
+                  <span className="w-5 h-5 bg-black text-cyan-400 font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+                    {i + 1}
+                  </span>
+                  <span className="font-medium">{step}</span>
+                </li>
+              ))}
+            </ol>
+          </section>
 
-          {project.keyLearnings && (
-            <section className="space-y-3">
-              <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
-                Key Learnings
-              </h2>
-              <ul className="space-y-3 pt-1">
-                {project.keyLearnings.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-neutral-800 leading-normal font-medium">
-                    <span className="w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 mt-1.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
+          <section className="space-y-3">
+            <h2 className="text-lg font-black uppercase text-black font-sans tracking-tight">
+              Key Learnings
+            </h2>
+            <ul className="space-y-3 pt-1">
+              {study.keyLearnings.map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-neutral-800 leading-normal font-medium">
+                  <span className="w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 mt-1.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
 
           {/* Client Feedback */}
           <section className="space-y-3 bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
             <Quote className="w-7 h-7 text-cyan-500" />
             <p className="text-sm md:text-base text-neutral-800 font-medium leading-relaxed italic">
-              &ldquo;Farrukh showed us how semantic SEO and geo-targeting could work hand-in-hand with the way AI and language models interpret search intent. His strategy didn&apos;t just boost our rankings, it made our content future-proof in an AI-first world.&rdquo;
+              &ldquo;{study.testimonialQuote}&rdquo;
             </p>
             <div className="pt-3 border-t border-neutral-100">
               <p className="text-xs font-bold uppercase tracking-wider text-black font-sans">
-                Margaret Genet
+                {study.ownerName}
               </p>
               <p className="text-xs text-neutral-500 font-mono">
-                Head of Marketing, Azuno &middot; San Francisco, CA
+                {study.ownerRole} &middot; {study.location}
               </p>
             </div>
           </section>
@@ -180,7 +169,7 @@ export default function AzunoPage() {
               Proven Results
             </h3>
             <div className="space-y-4">
-              {project.results.map((res, i) => (
+              {study.results.map((res, i) => (
                 <div key={i} className="flex items-start gap-2.5">
                   <div className="w-5 h-5 bg-emerald-50 border border-emerald-250 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5 rounded-full">
                     <TrendingUp className="w-3.5 h-3.5" />
@@ -201,28 +190,28 @@ export default function AzunoPage() {
               Deploy this methodology
             </h4>
             <p className="text-[11px] text-neutral-400 leading-normal mb-5 font-medium">
-              This case study proves that pairing entity-based semantic structure with local geo-targeting compounds visibility across both traditional and AI-driven search.
+              {study.strategy.split(".")[0]}.
             </p>
             <div className="space-y-2.5">
               <Link
-                href="/services/semantic-seo"
+                href={study.servicesPrimary.path}
                 className="w-full inline-flex items-center justify-center gap-1.5 bg-cyan-400 hover:bg-cyan-300 text-black font-sans text-[10px] font-bold uppercase tracking-wider py-2.5 border-2 border-black"
               >
-                <span>Semantic SEO Services</span>
+                <span>{study.servicesPrimary.label}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link
-                href="/services/ai-seo-consulting"
+                href={study.servicesSecondary.path}
                 className="w-full inline-flex items-center justify-center gap-1.5 bg-neutral-900 hover:bg-neutral-800 text-white font-sans text-[10px] font-bold uppercase tracking-wider py-2.5 border border-white"
               >
-                <span>AI SEO / GEO Solutions</span>
+                <span>{study.servicesSecondary.label}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link
-                href="/insights/topical-map-framework"
+                href={study.insightLink.path}
                 className="w-full inline-flex items-center justify-center gap-1.5 bg-transparent hover:bg-neutral-900 text-white font-sans text-[10px] font-bold uppercase tracking-wider py-2.5 border border-neutral-600"
               >
-                <span>Read: How to Build a Topical Map</span>
+                <span>{study.insightLink.label}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>

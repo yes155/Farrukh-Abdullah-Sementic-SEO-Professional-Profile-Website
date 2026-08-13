@@ -39,9 +39,9 @@ export const PERSON_SCHEMA = {
   "hasCredential": [
     {
       "@type": "EducationalOccupationalCredential",
-      "name": "IBM SEO and Content Strategy Professional Certificate",
+      "name": "Search Engine Optimization and Content Marketing",
       "credentialCategory": "Professional Certificate",
-      "dateCreated": "2023",
+      "dateCreated": "2026",
       "recognizedBy": {
         "@type": "Organization",
         "name": "IBM"
@@ -49,9 +49,9 @@ export const PERSON_SCHEMA = {
     },
     {
       "@type": "EducationalOccupationalCredential",
-      "name": "Moz Search Engine Optimization Professional Certificate",
+      "name": "Search Engine Optimization Professional Certificate",
       "credentialCategory": "Professional Certificate",
-      "dateCreated": "2021",
+      "dateCreated": "2026",
       "recognizedBy": {
         "@type": "Organization",
         "name": "Moz"
@@ -59,9 +59,9 @@ export const PERSON_SCHEMA = {
     },
     {
       "@type": "EducationalOccupationalCredential",
-      "name": "BrightLocal Local SEO Certificate",
+      "name": "How to Create, Optimize, and Manage Google Business Profiles",
       "credentialCategory": "Professional Certificate",
-      "dateCreated": "2022",
+      "dateCreated": "2025",
       "recognizedBy": {
         "@type": "Organization",
         "name": "BrightLocal"
@@ -320,10 +320,10 @@ export const HOME_BREADCRUMB_SCHEMA = getBreadcrumbSchema([
 
 // 6. ARTICLE SCHEMAS
 export const ARTICLE_SCHEMAS: Record<string, any> = {
-  "ins-01": {
+  "geo-chatgpt-search-perplexity": {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "@id": `${CANONICAL_DOMAIN}/insights/ins-01/#article`,
+    "@id": `${CANONICAL_DOMAIN}/insights/geo-chatgpt-search-perplexity/#article`,
     "headline": "Generative Engine Optimization: How to Secure Brand Citations in ChatGPT Search and Perplexity",
     "datePublished": "2026-06-24T08:00:00Z",
     "dateModified": "2026-06-24T08:00:00Z",
@@ -341,12 +341,12 @@ export const ARTICLE_SCHEMAS: Record<string, any> = {
       { "@type": "Thing", "name": "AI Citations" }
     ],
     "wordCount": 540,
-    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/ins-01`
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/geo-chatgpt-search-perplexity`
   },
-  "ins-02": {
+  "entity-based-content-architecture": {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "@id": `${CANONICAL_DOMAIN}/insights/ins-02/#article`,
+    "@id": `${CANONICAL_DOMAIN}/insights/entity-based-content-architecture/#article`,
     "headline": "Understanding Entity-Based Content Architecture: Moving Beyond Simple Keyword Density",
     "datePublished": "2026-05-12T08:00:00Z",
     "dateModified": "2026-05-12T08:00:00Z",
@@ -364,12 +364,12 @@ export const ARTICLE_SCHEMAS: Record<string, any> = {
       { "@type": "Thing", "name": "Knowledge Graphs" }
     ],
     "wordCount": 680,
-    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/ins-02`
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/entity-based-content-architecture`
   },
-  "ins-03": {
+  "schema-strategy-growth-brands": {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "@id": `${CANONICAL_DOMAIN}/insights/ins-03/#article`,
+    "@id": `${CANONICAL_DOMAIN}/insights/schema-strategy-growth-brands/#article`,
     "headline": "A Schema Strategy for Growth Brands: Structuring Your Site for Google's Knowledge Graph",
     "datePublished": "2026-04-08T08:00:00Z",
     "dateModified": "2026-04-08T08:00:00Z",
@@ -387,12 +387,12 @@ export const ARTICLE_SCHEMAS: Record<string, any> = {
       { "@type": "Thing", "name": "Entity Disambiguation" }
     ],
     "wordCount": 490,
-    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/ins-03`
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/schema-strategy-growth-brands`
   },
-  "ins-04": {
+  "local-entity-seo-ai-search": {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "@id": `${CANONICAL_DOMAIN}/insights/ins-04/#article`,
+    "@id": `${CANONICAL_DOMAIN}/insights/local-entity-seo-ai-search/#article`,
     "headline": "Local Entity SEO: How AI Search Engines Understand Location-Based Businesses",
     "datePublished": "2026-07-14T08:00:00Z",
     "dateModified": "2026-07-14T08:00:00Z",
@@ -410,12 +410,12 @@ export const ARTICLE_SCHEMAS: Record<string, any> = {
       { "@type": "Thing", "name": "NAP Consistency" }
     ],
     "wordCount": 560,
-    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/ins-04`
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/local-entity-seo-ai-search`
   },
-  "ins-05": {
+  "topical-map-framework": {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "@id": `${CANONICAL_DOMAIN}/insights/ins-05/#article`,
+    "@id": `${CANONICAL_DOMAIN}/insights/topical-map-framework/#article`,
     "headline": "How to Build a Topical Map: The Semantic SEO Framework for Topical Authority",
     "datePublished": "2026-07-17T08:00:00Z",
     "dateModified": "2026-07-17T08:00:00Z",
@@ -433,7 +433,7 @@ export const ARTICLE_SCHEMAS: Record<string, any> = {
       { "@type": "Thing", "name": "Semantic SEO" }
     ],
     "wordCount": 720,
-    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/ins-05`
+    "mainEntityOfPage": `${CANONICAL_DOMAIN}/insights/topical-map-framework`
   },
   "entity-first-geo": {
     "@context": "https://schema.org",
@@ -697,6 +697,10 @@ export const FAQ_QUESTIONS_DATA = [
   {
     question: "Do you provide Local SEO services for regional brands?",
     answer: "Yes. Local SEO Services is a separate offering focused on local map pack visibility, Google Business Profile optimization, and localized landing page architecture — built for service businesses that need calls and form-fills, not enterprise knowledge graph work."
+  },
+  {
+    question: "Do you provide Local SEO for businesses anywhere in the United States?",
+    answer: "Yes. I work remotely with service businesses in any US city or state — the same entity-based local SEO system, from Google Business Profile optimization and service-area landing pages to map pack citations and call tracking. Whether you're a dentist in Austin or an HVAC company in Ohio, the strategy adapts to your market's competitive signals and citation sources."
   },
   {
     question: "How long does semantic SEO or GEO work take to show results?",

@@ -9,21 +9,21 @@ import { LOCAL_NICHES } from "@/lib/localNiches";
 export const metadata: Metadata = {
   title: "Local SEO Locations",
   description:
-    "Local SEO service markets served remotely from Faisalabad, Pakistan — dedicated local SEO systems for businesses in Lahore, Austin, Chicago, Denver, Houston, Dallas, Phoenix, Miami, Seattle, and San Francisco, across 16 service industries.",
+    "National local SEO for service businesses in any US city or state, delivered remotely — with example markets in Austin, Chicago, Denver, Houston, Dallas, Phoenix, Miami, Seattle, and San Francisco, across 16 service industries.",
   alternates: {
     canonical: "/locations",
   },
   openGraph: {
     title: "Local SEO Locations | Farrukh Abdullah",
     description:
-      "Local SEO systems for businesses in Lahore, Austin, Chicago, Denver, Houston, Dallas, Phoenix, Miami, Seattle, and San Francisco — Google Business Profile optimization, map pack visibility, and service-area landing pages.",
+      "National local SEO for service businesses in any US city or state — Google Business Profile optimization, map pack visibility, and service-area landing pages. Example markets include Austin, Chicago, Denver, Houston, Dallas, Phoenix, Miami, Seattle, and San Francisco.",
     url: "/locations",
   },
   twitter: {
     card: "summary_large_image",
     title: "Local SEO Locations | Farrukh Abdullah",
     description:
-      "Local SEO systems for businesses in Lahore, Austin, Chicago, Denver, Houston, Dallas, Phoenix, Miami, Seattle, and San Francisco.",
+      "National local SEO for service businesses in any US city or state — example markets include Austin, Chicago, Denver, Houston, Dallas, Phoenix, Miami, Seattle, and San Francisco.",
   },
 };
 
@@ -40,13 +40,13 @@ export default function LocationsPage() {
       {/* Header Block */}
       <div className="border-b-2 border-black pb-10">
         <span className="text-[10px] font-mono tracking-widest text-cyan-600 font-bold block uppercase mb-2">
-          Local Market Coverage
+          National Local Market Coverage
         </span>
         <h1 className="text-4xl md:text-5xl font-black font-sans text-black tracking-tight uppercase leading-[1.1]">
           Local SEO Locations
         </h1>
         <p className="text-sm md:text-base text-neutral-600 mt-4 max-w-3xl font-semibold leading-relaxed">
-          Dedicated local SEO systems, delivered remotely from Faisalabad, Pakistan and working with businesses worldwide. Each market below gets its own service-area structure, citation alignment, and Google Business Profile strategy.
+          I build dedicated local SEO systems for service businesses in any city or state across the United States — delivered remotely, with each market getting its own service-area structure, citation alignment, and Google Business Profile strategy. The metros below are example markets I've worked in, and the same system applies nationwide.
         </p>
       </div>
 
@@ -75,31 +75,36 @@ export default function LocationsPage() {
       </Link>
 
       {/* US cities grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {CITIES.map((city) => (
-          <Link
-            key={city.slug}
-            href={`/locations/${city.slug}`}
-            className="group bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
-          >
-            <div className="flex items-center gap-2 mb-3">
-              <MapPin className="w-4 h-4 text-cyan-600" />
-              <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold uppercase">
-                {city.region}
+      <div>
+        <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold uppercase block mb-4">
+          Example US Markets
+        </span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {CITIES.map((city) => (
+            <Link
+              key={city.slug}
+              href={`/locations/${city.slug}`}
+              className="group bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <MapPin className="w-4 h-4 text-cyan-600" />
+                <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold uppercase">
+                  {city.region}
+                </span>
+              </div>
+              <h2 className="text-lg font-black font-sans text-black uppercase tracking-tight group-hover:text-cyan-600 transition-colors">
+                SEO in {city.name}, {city.state}
+              </h2>
+              <p className="text-xs text-neutral-600 font-medium mt-2 leading-relaxed line-clamp-3">
+                {city.blurb}
+              </p>
+              <span className="inline-flex items-center gap-1 mt-4 text-[11px] font-mono font-bold text-cyan-600 uppercase group-hover:text-black transition-colors">
+                <span>Explore Example Market</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </span>
-            </div>
-            <h2 className="text-lg font-black font-sans text-black uppercase tracking-tight group-hover:text-cyan-600 transition-colors">
-              SEO in {city.name}, {city.state}
-            </h2>
-            <p className="text-xs text-neutral-600 font-medium mt-2 leading-relaxed line-clamp-3">
-              {city.blurb}
-            </p>
-            <span className="inline-flex items-center gap-1 mt-4 text-[11px] font-mono font-bold text-cyan-600 uppercase group-hover:text-black transition-colors">
-              <span>Explore Market</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
 
       {/* Industry cross-links */}
@@ -131,7 +136,7 @@ export default function LocationsPage() {
               Where Local SEO Opportunity Actually Sits in US Cities
             </h2>
             <p className="text-xs text-neutral-600 font-medium mt-2 max-w-2xl leading-relaxed">
-              Competition density, map pack benchmarks, and the AI-answer layer across the nine US markets we cover — with the data behind every city page.
+              Competition density, map pack benchmarks, and the AI-answer layer across the US markets we serve — with the data behind every example city page.
             </p>
           </div>
           <Link

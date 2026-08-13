@@ -30,7 +30,7 @@ export default function Hero({ onBookClick, onAuditClick }: HeroProps) {
           </h1>
 
           <p className="text-sm md:text-base leading-relaxed text-neutral-700 max-w-2xl mt-4 font-sans font-medium">
-            Semantic SEO specialist helping growing brands and local businesses get found — and cited — by both Google and AI search engines. I restructure your site into a knowledge graph AI models can trust, cite, and quote first.
+            Semantic SEO specialist helping growing brands and local businesses across the United States get found — and cited — by both Google and AI search engines. I restructure your site into a knowledge graph AI models can trust, cite, and quote first.
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-6">

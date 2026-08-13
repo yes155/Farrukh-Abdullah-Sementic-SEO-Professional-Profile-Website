@@ -165,7 +165,7 @@ export default function AiSeoConsultingPage() {
             <h3 className="text-xs font-black uppercase text-black mb-4">Supporting Publications</h3>
             <div className="space-y-3">
               <Link
-                href="/insights/ins-01"
+                href="/insights/geo-chatgpt-search-perplexity"
                 className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
               >
                 <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">Article</span>
@@ -174,7 +174,7 @@ export default function AiSeoConsultingPage() {
                 </span>
               </Link>
               <Link
-                href="/insights/ins-03"
+                href="/insights/schema-strategy-growth-brands"
                 className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
               >
                 <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">Article</span>

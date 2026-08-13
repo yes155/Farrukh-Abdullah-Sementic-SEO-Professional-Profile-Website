@@ -128,7 +128,7 @@ export const CITIES: City[] = [
     industries: ["Roofers", "Pest Control", "Plumbers"],
     relatedCities: ["austin", "chicago", "seattle"],
     relatedNiches: ["seo-for-roofers", "seo-for-pest-control", "seo-for-plumbers", "seo-for-landscapers"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems"
   },
   {
@@ -233,7 +233,7 @@ export const CITIES: City[] = [
     industries: ["Pest Control", "Roofers", "Salons"],
     relatedCities: ["dallas", "houston", "miami"],
     relatedNiches: ["seo-for-pest-control", "seo-for-roofers", "seo-for-salons", "seo-for-hvac"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems"
   },
   {
@@ -338,7 +338,7 @@ export const CITIES: City[] = [
     industries: ["Dentists", "Plumbers", "Salons"],
     relatedCities: ["seattle", "chicago", "miami"],
     relatedNiches: ["seo-for-dentists", "seo-for-plumbers", "seo-for-salons", "seo-for-therapists"],
-    relatedInsight: "ins-04",
+    relatedInsight: "local-entity-seo-ai-search",
     relatedCaseStudyPath: "/case-studies/local-seo-systems"
   }
 ];

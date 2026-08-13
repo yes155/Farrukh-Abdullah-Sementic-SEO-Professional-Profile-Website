@@ -165,7 +165,7 @@ export default function SemanticSeoPage() {
             <h3 className="text-xs font-black uppercase text-black mb-4">Supporting Publications</h3>
             <div className="space-y-3">
               <Link
-                href="/insights/ins-02"
+                href="/insights/entity-based-content-architecture"
                 className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
               >
                 <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">Article</span>
@@ -174,7 +174,7 @@ export default function SemanticSeoPage() {
                 </span>
               </Link>
               <Link
-                href="/insights/ins-05"
+                href="/insights/topical-map-framework"
                 className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
               >
                 <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">Article</span>
@@ -183,7 +183,7 @@ export default function SemanticSeoPage() {
                 </span>
               </Link>
               <Link
-                href="/insights/ins-03"
+                href="/insights/schema-strategy-growth-brands"
                 className="block group p-3 border border-neutral-200 hover:border-black transition-all bg-neutral-50"
               >
                 <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">Article</span>
