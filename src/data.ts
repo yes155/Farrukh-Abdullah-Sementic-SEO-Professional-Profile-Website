@@ -1617,7 +1617,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: "testimonial-02",
     quote: "Running a small law firm in the Chicago area, I needed someone who understood how clients search locally. Farrukh rebuilt our SEO strategy from the ground up. Calls from local leads have doubled, and our site finally feels professional. He's the kind of specialist you want in your corner.",
     name: "Derrick Reese",
-    role: "Managing Attorney, The Reese Law Centre LLC",
+    role: "Managing Attorney, The Reese Law Center LLC",
     company: "Homewood, IL",
     linkedCaseStudyPath: "/case-studies/reese-law-centre"
   },
@@ -1640,7 +1640,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: "testimonial-05",
     quote: "I run a personal training and fitness studio in Seattle, and Farrukh helped us dominate local search. We're now consistently in the top three results, which brought in a steady stream of new members. What I appreciated most was how he explained everything in plain English. Highly recommend.",
-    name: "Arianna S.",
+    name: "Caitlin",
     role: "Personal Trainer & Fitness Instructor, South Seattle Women's Fitness",
     company: "Seattle, WA",
     linkedCaseStudyPath: "/case-studies/south-seattle-womens-fitness"
