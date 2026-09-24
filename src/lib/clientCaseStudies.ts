@@ -101,16 +101,16 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
   {
     slug: "reese-law-centre",
     eyebrow: "LOCAL SEO FOR LAW FIRMS &middot; HOMEWOOD, IL &middot; ONGOING ENGAGEMENT",
-    headline: "Local SEO Case Study: The Reese Law Centre LLC",
-    h1: "Local SEO Case Study: The Reese Law Centre LLC",
-    clientName: "The Reese Law Centre LLC",
+    headline: "Local SEO Case Study: The Reese Law Center LLC",
+    h1: "Local SEO Case Study: The Reese Law Center LLC",
+    clientName: "The Reese Law Center LLC",
     ownerName: "Derrick Reese",
-    ownerRole: "Managing Attorney, The Reese Law Centre LLC",
+    ownerRole: "Managing Attorney, The Reese Law Center LLC",
     location: "Homewood, IL",
     industry: "Law Firm",
     challengeShort: "A Chicago-area law firm relying on referrals, invisible to prospective clients searching for the legal help they offer.",
     challenge:
-      "The Reese Law Centre LLC is a law firm in Homewood, Illinois, serving the greater Chicago area. The firm operated largely on referrals and word of mouth, but prospective clients searching for the legal services it provides found little evidence the firm existed — no meaningful local rankings, no optimized profile, and a site that didn't convert search visits.",
+      "The Reese Law Center LLC is a law firm in Homewood, Illinois, serving the greater Chicago area. The firm operated largely on referrals and word of mouth, but prospective clients searching for the legal services it provides found little evidence the firm existed — no meaningful local rankings, no optimized profile, and a site that didn't convert search visits.",
     strategy:
       "Built a trust-first local SEO system for a practice where client confidence is the deciding factor: attorney and LegalService schema, practice-area pages for each service, a rebuilt Google Business Profile, and review and citation work positioned to win local and AI-assisted search recommendations.",
     execution: [
@@ -135,7 +135,7 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
     imageSrc:
       "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
     background:
-      "The Reese Law Centre LLC is a Chicago-area law firm headquartered in Homewood, Illinois. It is a referral-driven practice whose real online presence was close to zero — invisible for the very searches prospective clients make when they need legal help locally.",
+      "The Reese Law Center LLC is a Chicago-area law firm headquartered in Homewood, Illinois. It is a referral-driven practice whose real online presence was close to zero — invisible for the very searches prospective clients make when they need legal help locally.",
     methodology: [
       "Audited how and where the firm appeared for its practice areas and jurisdictions, isolating the local-search and AI-search gaps.",
       "Rebuilt the Google Business Profile and directory citations so name, address, phone, categories, and service areas were consistent everywhere.",
@@ -150,10 +150,10 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
     ],
     testimonialQuote:
       "Running a small law firm in the Chicago area, I needed someone who understood how clients search locally. Farrukh rebuilt our SEO strategy from the ground up. Calls from local leads have doubled, and our site finally feels professional. He's the kind of specialist you want in your corner.",
-    metaTitle: "The Reese Law Centre Case Study | Local SEO for Law Firms",
+    metaTitle: "The Reese Law Center Case Study | Local SEO for Law Firms",
     metaDescription:
       "How a Homewood, IL law firm doubled calls from local leads with LegalService schema, practice-area pages, citation work, and a rebuilt Google Business Profile.",
-    schemaHeadline: "Local SEO Case Study: The Reese Law Centre | Doubling Local Calls",
+    schemaHeadline: "Local SEO Case Study: The Reese Law Center | Doubling Local Calls",
     schemaDescription:
       "How a trust-first local SEO system — LegalService schema, practice-area pages, and consistent citations — doubled local-lead calls for a Chicago-area law firm.",
     schemaAbout: [
@@ -305,7 +305,7 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
     headline: "Local SEO Case Study: South Seattle Women's Fitness",
     h1: "Local SEO Case Study: South Seattle Women's Fitness",
     clientName: "South Seattle Women's Fitness",
-    ownerName: "Arianna S.",
+    ownerName: "Caitlin",
     ownerRole: "Personal Trainer & Fitness Instructor, South Seattle Women's Fitness",
     location: "Seattle, WA",
     industry: "Fitness Studio",
