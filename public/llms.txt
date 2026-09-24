@@ -14,7 +14,7 @@
 - [Local SEO systems for competitive service niches](/case-studies/local-seo-systems): 1,200+ inbound calls and 340% average ROI across a local SEO site portfolio in competitive US service niches.
 - [Semantic SEO & AI/LLM alignment — Azuno](/case-studies/azuno): +120% organic traffic in 4 months and top 3 local rankings for a San Francisco SaaS analytics platform through semantic content structuring and AI/LLM alignment.
 - [Local SEO — Armadillo Coffee Roasters](/case-studies/armadillo-coffee-roasters): An Austin, TX specialty roaster moved from page three of Google to the local map pack with Google Business Profile optimization, CoffeeShop schema, and neighborhood service-area pages.
-- [Local SEO — The Reese Law Centre LLC](/case-studies/reese-law-centre): A Homewood, IL law firm doubled local-lead calls with LegalService schema, practice-area pages, and consistent directory citations.
+- [Local SEO — The Reese Law Center LLC](/case-studies/reese-law-centre): A Homewood, IL law firm doubled local-lead calls with LegalService schema, practice-area pages, and consistent directory citations.
 - [Geo-targeted Local SEO — Hotel Circa 39](/case-studies/hotel-circa-39): A Miami Beach boutique hotel gained visibility in exactly the neighborhoods it targeted, with organic bookings up 35%.
 - [Semantic & E-Commerce SEO — Swag Pro](/case-studies/swag-pro): Technical fixes and entity-based product architecture made organic sales a Denver merchandise business's main revenue stream within three months.
 - [Local SEO — South Seattle Women's Fitness](/case-studies/south-seattle-womens-fitness): A Seattle fitness studio reached consistent top-three local rankings and a steady stream of new members with neighborhood-precise local SEO.
