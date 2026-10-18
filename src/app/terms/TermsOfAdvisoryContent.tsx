@@ -20,7 +20,7 @@ const sections = [
   {
     heading: "3. Deliverables & Approvals",
     body: [
-      "Deliverables are produced in agreed phases. The client will be given a reasonable review window for each phase; if no feedback is provided, the phase is considered approved and work proceeds to the next step.",
+      "Deliverables and approvals follow the written statement of work. The proposal specifies review windows, implementation responsibilities, and any acceptance terms before work begins.",
     ],
   },
   {
@@ -44,7 +44,7 @@ const sections = [
   {
     heading: "7. Results Disclaimer",
     body: [
-      "Search engine rankings and AI citations are influenced by many factors outside our control, including competitor activity and algorithm changes. While every engagement is executed to professional standards, we do not guarantee specific rankings, traffic volumes, or revenue outcomes. Case study figures reflect results achieved for specific clients under specific conditions.",
+      "Search engine rankings and AI citations are influenced by many factors outside our control, including competitor activity and algorithm changes. While every engagement is executed to professional standards, we do not guarantee specific rankings, traffic volumes, or revenue outcomes. Case-study figures are reported engagement outcomes. Evidence availability and measurement limits are stated on each page; they are not independently verified predictions for another engagement.",
     ],
   },
   {
@@ -67,7 +67,7 @@ const sections = [
   },
 ];
 
-const lastUpdated = "August 2026";
+const lastUpdated = "18 October 2026";
 
 export function TermsOfAdvisoryContent() {
   const breadcrumbs = getBreadcrumbSchema([

@@ -9,7 +9,7 @@ import { Analytics } from '@vercel/analytics/next';
 const SITE_URL = "https://farrukh.top";
 const SITE_TITLE = "Farrukh Abdullah | Semantic SEO & GEO Strategist";
 const SITE_DESCRIPTION =
-  "Semantic SEO & local SEO consultant helping service businesses across the United States get found — and cited — by Google, AI Overviews, ChatGPT Search, and Perplexity.";
+  "Independent SEO consulting with Farrukh Abdullah: content planning, local business information, implementation, and search visibility measurement.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -18,9 +18,6 @@ export const metadata: Metadata = {
     template: "%s | Farrukh Abdullah",
   },
   description: SITE_DESCRIPTION,
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     url: SITE_URL,

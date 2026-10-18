@@ -7,8 +7,8 @@ const sections = [
   {
     heading: "1. Information We Collect",
     body: [
-      "When you contact Farrukh Abdullah Advisory through the contact form, email, or WhatsApp, we collect only the information you choose to share: your name, business name, email address, and details about your project or website.",
-      "We do not collect payment card details directly. Any billing is handled over email or invoicing channels you approve, and financial details are never stored on this site.",
+      "When you request a manual website review or contact Farrukh Abdullah Advisory through the inquiry form, email, or WhatsApp, we collect only the information you choose to share: your name, business name, email address, and details about your project or website.",
+      "The website review entry step does not crawl your site. It carries the website address into the inquiry form; contact details are sent only when you submit that form. Form submissions use Web3Forms for delivery. We do not collect payment card details directly. Any billing is handled over email or invoicing channels you approve, and financial details are never stored on this site.",
     ],
   },
   {
@@ -22,7 +22,7 @@ const sections = [
     heading: "3. How We Use Your Information",
     body: [
       "Information you provide is used solely to respond to inquiries, prepare proposals, deliver advisory services, and maintain our professional relationship. We do not sell, rent, or share your personal data with third parties for marketing purposes.",
-      "Your details may be shared with service providers only when necessary to deliver work you requested (for example, invoicing or scheduling tools), and only under contracts that require them to protect your data.",
+      "Your details may be shared with service providers only when necessary to deliver work you requested (for example, invoicing or scheduling tools), according to the relevant provider’s processing terms.",
     ],
   },
   {
@@ -51,7 +51,7 @@ const sections = [
   },
 ];
 
-const lastUpdated = "August 2026";
+const lastUpdated = "18 October 2026";
 
 export function PrivacyPolicyContent() {
   const breadcrumbs = getBreadcrumbSchema([

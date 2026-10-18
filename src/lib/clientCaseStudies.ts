@@ -47,10 +47,10 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
       "Built a service-area local SEO system around the roaster's real presence: a fully optimized Google Business Profile, a nested LocalBusiness + CoffeeShop schema, service-area pages for the neighborhoods it actually delivers to, and a citation footprint that matched its physical and delivery footprint in Austin.",
     execution: [
       "Rebuilt the Google Business Profile with exact categories, real service areas, updated hours, and consistent NAP matching the Austin storefront.",
-      "Injected CoffeeShop/RetailLocalBusiness schema bound to the physical address and delivery service areas.",
+      "Implemented business structured data bound to the physical address and delivery service areas.",
       "Created neighborhood service-area pages for areas the roaster actually ships to, each with unique local content instead of duplicated keyword walls.",
       "Audited and corrected local citations across directories so every listing pointed to the same address, phone, and hours.",
-      "Set up call tracking and review generation so every new lead could be attributed to a specific local asset.",
+      "Set up call tracking and review generation to support inquiry attribution.",
     ],
     results: [
       "Local pack visibility within weeks — new customers began saying they found the roaster through online search.",
@@ -140,7 +140,7 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
       "Audited how and where the firm appeared for its practice areas and jurisdictions, isolating the local-search and AI-search gaps.",
       "Rebuilt the Google Business Profile and directory citations so name, address, phone, categories, and service areas were consistent everywhere.",
       "Structured legal services into unique, citable pages built around real client questions and jurisdictional detail.",
-      "Injected LegalService and Attorney schema tied to the firm's entity, so Google and AI engines resolved what the firm does and where it does it.",
+      "Injected LegalService and Attorney schema tied to the firm's entity, to describe the firm and its services accurately.",
       "Monitored rankings, calls, and citation consistency, refining the assets that drove attributed inbound leads.",
     ],
     keyLearnings: [
@@ -179,7 +179,7 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
     challenge:
       "Hotel Circa 39 is a boutique hotel in Miami Beach competing in one of the most concentrated hospitality markets in the United States. For a guest deciding where to stay, the hotel was effectively invisible in the neighborhoods it wanted to attract — shoulder-season bookings depended on platforms and referrals rather than on being found by guests searching directly for the area.",
     strategy:
-      "Deployed geo-targeted local SEO targeting the specific Miami Beach neighborhoods the hotel wanted to capture — pairing a fully optimized Google Business Profile with location-intent content and hotel schema so the property won visibility exactly where demand was highest.",
+      "Deployed geo-targeted local SEO targeting the specific Miami Beach neighborhoods the hotel wanted to capture — pairing a fully optimized Google Business Profile with location-intent content and hotel schema so the property addressed the target geographic information.",
     execution: [
       "Optimized the Google Business Profile for hotel categories, amenity keywords, and the precise Miami Beach service area.",
       "Injected Hotel + LocalBusiness schema bound to the property's address and neighborhood context.",

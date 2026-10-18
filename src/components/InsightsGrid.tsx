@@ -29,7 +29,7 @@ export default function InsightsGrid({ articles }: { articles: Insight[] }) {
 
             <div className="space-y-3">
               <h2 className="text-base md:text-lg font-black font-sans text-black group-hover:text-cyan-600 transition-colors uppercase tracking-tight leading-tight">
-                {article.title}
+                <Link href={`/insights/${article.id}`}>{article.title}</Link>
               </h2>
               <p className="text-xs text-neutral-600 leading-relaxed font-sans font-medium line-clamp-3">
                 {article.summary}

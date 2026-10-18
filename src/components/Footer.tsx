@@ -31,7 +31,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-xs text-neutral-600 leading-relaxed font-sans font-medium">
-              Helping growing businesses, small-to-mid-size B2B companies, and regional service brands establish broader SEO reach — engineering unbreakable topical authority and claiming AI search real estate.
+              Independent SEO consulting: content planning, accurate local information, implementation, and measurement.
             </p>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function Footer() {
                 WhatsApp: +92 334 6536393
               </a>
               <span className="text-[10px] text-neutral-500 font-mono block font-bold">
-                Office Hours: 09:00 - 18:00 PST
+                Office Hours: 09:00–18:00 PKT (UTC+5)
               </span>
             </div>
           </div>

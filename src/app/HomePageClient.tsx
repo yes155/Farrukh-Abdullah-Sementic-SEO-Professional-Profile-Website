@@ -12,12 +12,12 @@ import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
 import { LOCAL_NICHES } from "@/lib/localNiches";
 import { CITIES } from "@/lib/locations";
-import { INSIGHTS_ARTICLES, FEATURED_PROJECTS } from "@/data";
+import { FEATURED_PROJECTS } from "@/data";
 import Scheduler from "@/components/Scheduler";
 import SEOAnalyzer from "@/components/SEOAnalyzer";
 import { motion, AnimatePresence } from "motion/react";
 
-export default function Page() {
+export default function Page({ articles }: { articles: import("@/types").Insight[] }) {
   const [isBookModalOpen, setIsBookModalOpen] = useState(false);
   const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
   const [auditUrl, setAuditUrl] = useState("");
@@ -25,17 +25,17 @@ export default function Page() {
   const condensedServices = [
     {
       title: "Semantic SEO & Topical Authority",
-      description: "Entity mapping, topical authority architecture, and semantic content restructuring that turns scattered pages into an authority search engines can't ignore.",
+      description: "Content inventories, distinct page purposes, useful internal relationships, and implementation briefs.",
       path: "/services/semantic-seo"
     },
     {
       title: "AI SEO Consulting",
-      description: "Get cited by ChatGPT Search, Perplexity, and Google AI Overviews. Generative Engine Optimization (GEO) plus technical AI-crawler signals to secure machine-readable citations.",
+      description: "Search access checks, factual source corrections, and a documented plan for observing citations and referrals.",
       path: "/services/ai-seo-consulting"
     },
     {
       title: "Local SEO Systems",
-      description: "Localized search networks built for calls and form-fills — map pack visibility, Google Business Profile systems, and geographic landing pages.",
+      description: "Accurate profiles, useful service/coverage information, and measurement of qualified inquiries.",
       path: "/services/local-seo"
     }
   ];
@@ -64,10 +64,10 @@ export default function Page() {
             Advisory Capabilities
           </span>
           <h2 className="text-3xl md:text-4xl font-black font-sans text-black tracking-tight uppercase">
-            Our Core Strategic Channels
+            Choose the work your website needs
           </h2>
           <p className="text-xs md:text-sm text-neutral-600 mt-2 max-w-2xl font-semibold">
-            I restructure how search engines and AI models understand your site — showing up as a trusted, cited answer, rather than a generic monthly blog post list.
+            Each engagement defines the deliverables, implementation responsibilities, evidence, and outcome to measure.
           </p>
         </div>
 
@@ -158,7 +158,7 @@ export default function Page() {
             Local SEO Systems Built for Any US Market
           </h2>
           <p className="text-xs md:text-sm text-neutral-600 mt-2 max-w-2xl font-semibold">
-            I build the same entity-based local SEO system for service businesses in any US city or state. The metros below are examples I've worked in — with verified results, market research, and the strategy that wins both the map pack and AI answers.
+            Consulting is delivered remotely from Faisalabad. These pages describe service availability, illustrative planning decisions, and relevant reported work where identified.
           </p>
         </div>
 
@@ -187,7 +187,7 @@ export default function Page() {
               >
                 <span className="block text-[8px] font-mono font-bold text-neutral-400 group-hover:text-cyan-600 uppercase">More Markets</span>
                 <span className="block text-[11px] font-bold text-black uppercase leading-tight mt-1 group-hover:underline">
-                  More Cities I've Worked In
+                  Remote Service Areas
                 </span>
               </Link>
             </div>
@@ -196,7 +196,7 @@ export default function Page() {
           {/* Featured Case Study */}
           <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)] flex flex-col">
             <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block mb-2 uppercase">
-              Verified Results
+              Reported Engagement
             </span>
             <div className="flex-1">
               <span className="block text-sm font-black font-sans text-black uppercase tracking-tight mb-2">
@@ -223,10 +223,10 @@ export default function Page() {
           {/* Featured Insights */}
           <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
             <span className="text-[9px] font-mono tracking-widest text-neutral-400 font-bold block mb-2 uppercase">
-              Latest Research
+              Guides and Methods
             </span>
             <div className="space-y-2.5">
-              {INSIGHTS_ARTICLES.filter((a) => a.category === "Local SEO").slice(0, 3).map((a) => (
+              {articles.filter((a) => a.category === "Local SEO").slice(0, 3).map((a) => (
                 <Link
                   key={a.id}
                   href={`/insights/${a.id}`}

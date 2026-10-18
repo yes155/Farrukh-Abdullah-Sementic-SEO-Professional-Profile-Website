@@ -73,6 +73,9 @@ export interface Insight {
   category: string;
   readTime: string;
   date: string;
+  modifiedDate?: string;
+  cmsUpdatedAt?: string;
+  relatedIndustrySlugs?: string[];
   summary: string;
   contentMarkdown?: string;
   featuredImageUrl?: string;

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import InsightsGrid from "@/components/InsightsGrid";
 import { getInsightsArticles } from "@/sanity/posts";
-import { getBreadcrumbSchema } from "@/lib/schemas";
+import { getCollectionSchema, getBreadcrumbSchema } from "@/lib/schemas";
 
 export const dynamic = "force-dynamic";
 
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 };
 
 export default async function InsightsIndex() {
-  const articles = await getInsightsArticles();
+  const articles = (await getInsightsArticles()).filter(a => !a.noIndex);
 
   const listBreadcrumb = getBreadcrumbSchema([
     { name: "Home", url: "/" },
@@ -37,6 +37,7 @@ export default async function InsightsIndex() {
   return (
     <div className="pt-12 pb-20 px-6 max-w-7xl mx-auto space-y-12">
       <JsonLd id="schema-breadcrumbs-insights" data={listBreadcrumb} />
+      <JsonLd id="insights-collection" data={getCollectionSchema("/insights", "SEO and AI search guides", articles.map(a => ({ name:a.title,path:`/insights/${a.id}` })))} />
 
       {/* Title Block */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-black pb-8">
@@ -49,7 +50,7 @@ export default async function InsightsIndex() {
           </h1>
         </div>
         <p className="text-xs text-neutral-500 max-w-xs md:text-right font-mono uppercase tracking-wider font-extrabold">
-          In-depth analyses on semantic web, entity graphs, and AI search visibility.
+          Sourced guides, implementation examples, and evidence limits.
         </p>
       </div>
 

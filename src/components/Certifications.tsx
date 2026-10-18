@@ -12,7 +12,7 @@ export default function Certifications() {
         <div className="flex items-center gap-2">
           <GraduationCap className="w-4 h-4 text-cyan-600" />
           <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase font-bold">
-            ACCREDITATIONS & AUDITED STANDARDS
+            Training and credentials
           </span>
         </div>
       </div>
@@ -38,7 +38,7 @@ export default function Certifications() {
                   <Award className="w-4 h-4" />
                 </div>
                 <span className="text-[9px] font-mono text-neutral-500 font-bold uppercase">
-                  VERIFIED — {cert.year}
+                  ISSUED — {cert.year}
                 </span>
               </div>
 
@@ -66,16 +66,16 @@ export default function Certifications() {
                   className="group/verify flex items-center justify-between gap-1 text-[8px] font-mono text-neutral-500 hover:text-cyan-600 transition-colors font-bold uppercase"
                 >
                   <span className="truncate">
-                    {cert.credentialId ? `ID: ${cert.credentialId.slice(0, 16)}` : "Registry Verified"}
+                    {cert.credentialId ? `ID: ${cert.credentialId.slice(0, 16)}` : "View credential"}
                   </span>
                   <ArrowUpRight className="w-2.5 h-2.5 shrink-0" />
                 </a>
               ) : (
                 <div className="flex items-center justify-between gap-1 text-[8px] font-mono text-neutral-500 uppercase font-bold">
                   <span className="truncate">
-                    {cert.credentialId ? `ID: ${cert.credentialId.slice(0, 16)}` : "Registry Verified"}
+                    {cert.credentialId ? `ID: ${cert.credentialId.slice(0, 16)}` : "View credential"}
                   </span>
-                  <span className="shrink-0">Credential Active</span>
+                  <span className="shrink-0">Course credential</span>
                 </div>
               )}
             </div>

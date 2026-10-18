@@ -1,72 +1,12 @@
-import type { MetadataRoute } from "next";
-import { getInsightsArticles } from "@/sanity/posts";
-import { LOCAL_NICHES } from "@/lib/localNiches";
-
-const SITE_URL = "https://farrukh.top";
-
-const US_CITIES = [
-  "austin",
-  "chicago",
-  "denver",
-  "houston",
-  "dallas",
-  "phoenix",
-  "miami",
-  "seattle",
-  "san-francisco",
-];
-
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticRoutes: MetadataRoute.Sitemap = [
-    { url: `${SITE_URL}/`, changeFrequency: "weekly", priority: 1 },
-    { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/services`, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/services/semantic-seo`, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/services/ai-seo-consulting`, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/services/local-seo`, changeFrequency: "monthly", priority: 0.9 },
-    ...LOCAL_NICHES.map((n) => ({
-      url: `${SITE_URL}/services/${n.slug}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    })),
-    { url: `${SITE_URL}/case-studies`, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/case-studies/windcave`, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${SITE_URL}/case-studies/local-seo-systems`, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${SITE_URL}/case-studies/azuno`, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${SITE_URL}/case-studies/armadillo-coffee-roasters`, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${SITE_URL}/case-studies/reese-law-centre`, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${SITE_URL}/case-studies/hotel-circa-39`, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${SITE_URL}/case-studies/swag-pro`, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${SITE_URL}/case-studies/south-seattle-womens-fitness`, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${SITE_URL}/case-studies/simulithic`, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${SITE_URL}/locations`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/locations/lahore`, changeFrequency: "monthly", priority: 0.7 },
-    ...US_CITIES.map((city) => ({
-      url: `${SITE_URL}/locations/${city}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
-    { url: `${SITE_URL}/insights`, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${SITE_URL}/contact`, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${SITE_URL}/privacy`, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${SITE_URL}/terms`, changeFrequency: "yearly", priority: 0.3 },
-  ];
-
-  let articleRoutes: MetadataRoute.Sitemap = [];
-  try {
-    const articles = await getInsightsArticles();
-    articleRoutes = articles
-      .filter((a) => !a.noIndex)
-      .map((a) => ({
-        url: `${SITE_URL}/insights/${a.id}`,
-        lastModified: a.date ? new Date(a.date) : undefined,
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
-      }));
-  } catch {
-    // If Sanity is unreachable at build time, still ship the static routes.
-    articleRoutes = [];
-  }
-
-  return [...staticRoutes, ...articleRoutes];
+import type { MetadataRoute } from 'next';
+import {getInsightsArticles} from '@/sanity/posts';
+import {LOCAL_NICHES} from '@/lib/localNiches';
+import {CITIES} from '@/lib/locations';
+import {CORE_SERVICES} from '@/lib/serviceContent';
+import {CASE_SLUGS} from '@/lib/caseContent';
+import {EDITORIAL_UPDATED,validISODate} from '@/lib/contentMetadata';
+export default async function sitemap():Promise<MetadataRoute.Sitemap>{
+ const paths=['/','/about','/services','/case-studies','/locations','/locations/lahore','/insights','/contact','/privacy','/terms',...CORE_SERVICES.map(s=>`/services/${s.slug}`),...LOCAL_NICHES.map(n=>`/services/${n.slug}`),...CITIES.map(c=>`/locations/${c.slug}`),...CASE_SLUGS.map(s=>`/case-studies/${s}`)];
+ const articles=await getInsightsArticles();
+ return [...paths.map(path=>({url:new URL(path,'https://farrukh.top').href,lastModified:EDITORIAL_UPDATED})),...articles.filter(a=>!a.noIndex&&(!a.canonicalUrl||new URL(a.canonicalUrl,'https://farrukh.top').href===`https://farrukh.top/insights/${a.id}`)).map(a=>({url:`https://farrukh.top/insights/${a.id}`,lastModified:validISODate(a.modifiedDate||a.date)}))];
 }

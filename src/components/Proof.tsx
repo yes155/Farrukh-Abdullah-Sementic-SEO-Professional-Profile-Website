@@ -9,7 +9,7 @@ export default function Proof() {
       <div className="flex items-center gap-2 mb-8">
         <div className="w-1.5 h-1.5 bg-cyan-500" />
         <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase font-bold">
-          Proof, not adjectives
+          Practical areas of work
         </span>
       </div>
 
@@ -28,9 +28,9 @@ export default function Proof() {
               <span className="block text-2xl sm:text-3xl md:text-2xl lg:text-3xl xl:text-4xl font-black font-mono tracking-tight text-black group-hover:text-cyan-600 transition-colors break-words leading-tight">
                 {card.value}
               </span>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-800">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-800">
                 {card.title}
-              </h4>
+              </h3>
               <p className="text-xs text-neutral-600 leading-relaxed font-sans font-medium">
                 {card.description}
               </p>

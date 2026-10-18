@@ -3,6 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
+      { source: "/services/seo-for-estate-agents", destination: "/services/seo-for-real-estate-agents", permanent: true },
+      { source: "/services/seo-for-tradies", destination: "/services/seo-for-contractors", permanent: true },
       {
         source: "/services/geo",
         destination: "/services/ai-seo-consulting",

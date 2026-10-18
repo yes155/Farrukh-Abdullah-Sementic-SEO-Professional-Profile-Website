@@ -1,0 +1,22 @@
+name: SEO regression checks
+on:
+  pull_request:
+  push:
+    branches: [main, codex/semantic-seo-fixes-2026-10-18]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - run: npm run build
+      - name: Check production HTML, metadata, source links, schemas, and redirects
+        run: npm run test:production

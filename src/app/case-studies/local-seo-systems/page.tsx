@@ -1,28 +1,6 @@
 import type { Metadata } from "next";
-import LocalSeoSystemsPageClient from "./LocalSeoSystemsPageClient";
-
-export const metadata: Metadata = {
-  title: "Local SEO Systems Case Study",
-  description:
-    "How a localized SEO system delivered rapid map pack traction and 1,200+ inbound calls for new brand entrants in hyper-competitive local service niches — with 340% ROI and 12 map pack rankings.",
-  keywords:
-    "local seo case study, map pack case study, local seo systems, local lead generation case study, service niche seo results",
-  alternates: {
-    canonical: "/case-studies/local-seo-systems",
-  },
-  openGraph: {
-    title: "Local SEO Systems Case Study | Farrukh Abdullah",
-    description:
-      "How a localized SEO system delivered rapid map pack traction and 1,200+ inbound calls for new brand entrants in hyper-competitive local service niches.",
-    url: "/case-studies/local-seo-systems",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Local SEO Systems Case Study | Farrukh Abdullah",
-    description: "How a localized SEO system delivered rapid map pack traction and 1,200+ inbound calls for new brand entrants in hyper-competitive local service niches.",
-  },
-};
-
-export default function Page() {
-  return <LocalSeoSystemsPageClient />;
-}
+import CaseStudyPage from "@/components/CaseStudyPage";
+import { getCaseContent } from "@/lib/caseContent";
+const study=getCaseContent("local-seo-systems")!;
+export const metadata: Metadata = { title: study.title, description: "Reported SEO engagement, work description, outcomes, and evidence limits for "+study.name+".", alternates: { canonical: "/case-studies/local-seo-systems" } };
+export default function Page(){ return <CaseStudyPage slug="local-seo-systems" />; }

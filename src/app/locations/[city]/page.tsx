@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const cityData = getCityBySlug(city);
   if (!cityData) return { title: "Location Not Found" };
 
-  const title = `Local SEO Services in ${cityData.name}, ${cityData.state}`;
-  const description = `Local SEO systems for ${cityData.name}, ${cityData.stateName} businesses — Google Business Profile optimization, service-area landing pages for ${cityData.neighborhoods.slice(0, 3).join(", ")}, ${cityData.state}-specific citations, and call tracking built to win map pack rankings and new local customers.`;
+  const title = `Remote SEO services for ${cityData.name} businesses`;
+  const description = cityData.blurb;
   const keywords = [
     `local seo ${cityData.name}`,
     `local seo for plumbers ${cityData.name}`,
