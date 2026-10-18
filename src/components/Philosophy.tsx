@@ -12,7 +12,7 @@ export default function Philosophy() {
         <div className="flex items-center gap-2 mb-10">
           <BrainCircuit className="w-4 h-4 text-cyan-600" />
           <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase font-bold">
-            Why keyword-stuffed pages fail
+            How I approach SEO
           </span>
         </div>
 
@@ -20,13 +20,10 @@ export default function Philosophy() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-4">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black font-sans text-black leading-tight tracking-tight">
-              The machine<br />
-              wants<br />
-              knowledge,<br />
-              <span className="text-cyan-600">not strings.</span>
+              Clear information.<br /><span className="text-cyan-600">Useful evidence.</span>
             </h2>
             <p className="text-xs text-neutral-500 font-mono uppercase tracking-wider mt-4 leading-relaxed font-bold">
-              Why keyword-stuffed pages fail under modern NLP and AI models.
+              How I approach SEO under modern NLP and AI models.
             </p>
           </div>
 

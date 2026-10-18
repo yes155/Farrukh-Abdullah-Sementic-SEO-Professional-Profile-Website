@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { 
   Mail, 
   Link2, 
@@ -27,9 +27,7 @@ export default function Scheduler({ initialUrl = "" }: SchedulerProps) {
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Sync url state when initialUrl changes (e.g., from the audit analyzer tool)
-  if (initialUrl && url !== initialUrl && step === "form") {
-    setUrl(initialUrl);
-  }
+  useEffect(() => { if (initialUrl) setUrl(initialUrl); }, [initialUrl]);
 
   const servicesList = [
     "Semantic SEO & Topical Authority",

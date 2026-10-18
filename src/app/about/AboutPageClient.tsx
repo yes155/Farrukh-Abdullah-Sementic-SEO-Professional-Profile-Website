@@ -12,23 +12,9 @@ export default function AboutPage() {
     { name: "About", url: "/about" }
   ]);
 
-  // Profile metadata
   const profileSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Farrukh Abdullah",
-    "jobTitle": "Semantic SEO Specialist & GEO Consultant",
-    "knowsAbout": ["Semantic SEO", "Entity SEO", "Generative Engine Optimization", "Topical Authority"],
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Independent SEO Consultant"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Faisalabad",
-      "addressRegion": "Punjab",
-      "addressCountry": "PK"
-    }
+    "@context": "https://schema.org", "@type": "ProfilePage", "@id": "https://farrukh.top/about#page",
+    url: "https://farrukh.top/about", name: "About Farrukh Abdullah", mainEntity: { "@id": "https://farrukh.top/#person" }
   };
 
   return (
@@ -39,13 +25,13 @@ export default function AboutPage() {
       {/* Header block */}
       <div className="border-b-2 border-black pb-12">
         <span className="text-[10px] font-mono tracking-widest text-cyan-600 font-bold block uppercase mb-2">
-          Co-pilot & Senior Consultant
+          Independent SEO consultant
         </span>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-sans text-black tracking-tight uppercase leading-[1.1]">
           About Farrukh Abdullah
         </h1>
         <p className="text-sm md:text-base text-neutral-600 mt-4 max-w-3xl font-semibold leading-relaxed">
-          I am a specialized search strategist and authority architect. I take web properties with stalled search engines presence and transform their content into structured knowledge structures that AI models and Google can trust and cite.
+          I am Farrukh Abdullah, an independent SEO consultant based in Faisalabad, Pakistan. My work covers content planning, technical implementation, local business information, and search visibility measurement.
         </p>
       </div>
 
@@ -100,7 +86,7 @@ export default function AboutPage() {
                 My background in corporate sales and market analytics spans over 11 years. Turning raw data trends, forecasts, and performance numbers into actionable business revenue is the exact logical framework I now apply to modern Search Engine Optimization.
               </p>
               <p>
-                I founded this advisory to solve a common B2B and corporate growth obstacle: search results stagnating due to outdated keyword density techniques. By rebuilding web properties from the database-level schema registries upwards, we ensure our clients' expertise is perfectly clear to automated crawlers and language models.
+                I founded this advisory to solve a common B2B and corporate growth obstacle: search results stagnating due to outdated keyword density techniques. My approach connects page purpose, supporting evidence, implementation responsibilities, and the business outcome being measured.
               </p>
             </div>
           </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowRight, ArrowDownRight } from "lucide-react";
 import {
   STRATEGIST_NAME,
@@ -24,13 +25,10 @@ export default function Hero({ onBookClick, onAuditClick }: HeroProps) {
             {STRATEGIST_TITLE}
           </span>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight font-sans text-black leading-[1.1] md:leading-[1.15]">
-            You don't rank anymore — <span className="text-cyan-600">you get cited.</span><br />
-            I make you the <span className="inline-block bg-cyan-400 text-black px-3 py-0.5 mt-1 border-2 border-black rotate-[-1deg] shadow-[4px_4px_0px_rgba(0,0,0,1)]">answer.</span>
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight font-sans text-black leading-[1.1] md:leading-[1.15]">Semantic SEO and local SEO consulting for growing businesses.</h1>
 
           <p className="text-sm md:text-base leading-relaxed text-neutral-700 max-w-2xl mt-4 font-sans font-medium">
-            Semantic SEO specialist helping growing brands and local businesses across the United States get found — and cited — by both Google and AI search engines. I restructure your site into a knowledge graph AI models can trust, cite, and quote first.
+            I’m Farrukh Abdullah, an independent SEO consultant based in Faisalabad, Pakistan. I help businesses clarify content, improve local information, and measure search visibility through scoped, practical work.
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-6">
@@ -48,7 +46,7 @@ export default function Hero({ onBookClick, onAuditClick }: HeroProps) {
               className="group flex items-center justify-center gap-2 bg-white hover:bg-neutral-50 text-black text-xs font-bold uppercase tracking-wider py-3.5 px-6 border-2 border-black transition-all cursor-pointer"
               id="hero-audit-btn"
             >
-              <span>Run a Free Site Audit</span>
+              <span>Request a Website Review</span>
               <ArrowDownRight className="w-4 h-4" />
             </button>
           </div>
@@ -86,8 +84,9 @@ export default function Hero({ onBookClick, onAuditClick }: HeroProps) {
       {/* Credentials Summary Line */}
       <div className="mt-8 border-t border-neutral-200 pt-8">
         <span className="text-[11px] font-mono tracking-wider text-neutral-600 uppercase block font-bold leading-relaxed">
-          2+ years in semantic SEO and topical authority · 11+ years in sales and data analytics · Certified by IBM, Moz, and BrightLocal
+          2+ years in semantic SEO and topical authority · 11+ years in sales and data analytics · Training from IBM, Moz, and BrightLocal
         </span>
+        <Link href="/about" className="inline-block mt-4 text-sm underline">About Farrukh Abdullah and his experience</Link>
       </div>
     </section>
   );

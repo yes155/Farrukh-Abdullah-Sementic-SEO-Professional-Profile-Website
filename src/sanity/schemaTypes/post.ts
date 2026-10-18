@@ -29,7 +29,8 @@ export const postType = defineType({
       name: "category",
       type: "string",
       title: "Category",
-      description: "e.g. AI Search, Semantic SEO, Local SEO, Entity SEO",
+      description: "Select the primary reader topic.",
+      options: { list: ["AI Search", "Semantic SEO", "Local SEO", "Entity SEO", "Topical Authority"] },
       group: "content",
       validation: (rule) => rule.required(),
     }),
@@ -114,6 +115,13 @@ export const postType = defineType({
       group: "seo",
       initialValue: false,
     }),
+    defineField({ name: "modifiedDate", title: "Last substantive revision", type: "datetime", group: "content", description: "Use the date of a real content revision; leave empty to use the document update date." }),
+    defineField({ name: "relatedArticleIds", title: "Related article slugs", type: "array", of: [{type:"string"}], group: "content" }),
+    defineField({ name: "relatedIndustrySlugs", title: "Related industry slugs", type: "array", of: [{type:"string"}], group: "content", description: "Use active service slugs only, such as seo-for-fence-contractors." }),
+    defineField({ name: "relatedServicePath", title: "Related service path", type: "string", group: "content", validation: rule => rule.regex(/^\/services\/[a-z0-9-]+$/) }),
+    defineField({ name: "relatedServiceName", title: "Related service label", type: "string", group: "content" }),
+    defineField({ name: "relatedCaseStudyPath", title: "Related case-study path", type: "string", group: "content", validation: rule => rule.regex(/^\/case-studies\/[a-z0-9-]+$/) }),
+    defineField({ name: "relatedCaseStudyName", title: "Related case-study label", type: "string", group: "content" }),
   ],
   preview: {
     select: {

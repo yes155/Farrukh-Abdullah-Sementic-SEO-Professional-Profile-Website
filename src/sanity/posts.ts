@@ -1,101 +1,45 @@
-import { getSanityClient } from "./client";
+import { cache } from "react";
 import imageUrlBuilder from "@sanity/image-url";
-import { INSIGHTS_ARTICLES } from "@/data";
+import { getSanityClient } from "./client";
+import { EDITORIAL_ARTICLES } from "@/lib/articles";
 import type { Insight } from "@/types";
 
-const POSTS_QUERY = `*[_type == "post"] | order(publishedDate desc) {
-  "id": slug.current,
-  title,
-  category,
-  readTime,
-  "date": publishedDate,
-  summary,
-  contentMarkdown,
-  featuredImage,
-  metaTitle,
-  metaDescription,
-  canonicalUrl,
-  noIndex
+const POSTS_QUERY = `*[_type == "post" && !(_id in path("drafts.**")) && defined(slug.current)] | order(publishedDate desc) {
+ "id": slug.current, title, category, readTime, "date": publishedDate,
+ "modifiedDate": coalesce(modifiedDate, _updatedAt), "cmsUpdatedAt": _updatedAt, summary, contentMarkdown,
+ featuredImage, metaTitle, metaDescription, canonicalUrl, noIndex,
+ relatedArticleIds, relatedServicePath, relatedServiceName, relatedCaseStudyPath, relatedCaseStudyName, relatedIndustrySlugs
 }`;
-
-function formatDate(isoDate: string): string {
-  try {
-    return new Date(isoDate).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  } catch {
-    return isoDate;
-  }
+type SanityPost = Insight & { featuredImage?: { asset?: { _ref: string }; alt?: string } };
+const categories = new Set(['AI Search', 'Semantic SEO', 'Local SEO', 'Entity SEO', 'Topical Authority']);
+export function normalizeCategory(value: string): string {
+ if (categories.has(value)) return value;
+ if (/local/i.test(value)) return 'Local SEO';
+ if (/semantic|sementic/i.test(value)) return 'Semantic SEO';
+ if (/entity/i.test(value)) return 'Entity SEO';
+ if (/topical/i.test(value)) return 'Topical Authority';
+ return 'AI Search';
 }
-
-interface SanityPost {
-  id: string;
-  title: string;
-  category: string;
-  readTime?: string;
-  date: string;
-  summary: string;
-  contentMarkdown: string;
-  featuredImage?: { asset?: { _ref: string }; alt?: string } | null;
-  metaTitle?: string;
-  metaDescription?: string;
-  canonicalUrl?: string;
-  noIndex?: boolean;
+export function mergeArticles(local: Insight[], remote: Insight[]): Insight[] {
+ const merged = new Map(local.map(a => [a.id, a]));
+ for (const article of remote) {
+  if (!article.id || !article.title || !article.contentMarkdown) continue;
+  const revision = merged.get(article.id);
+  // Preserve the approved corrections until a later CMS edit supersedes them.
+  const useRevision = revision && Date.parse(revision.modifiedDate || revision.date) > Date.parse(article.cmsUpdatedAt || article.modifiedDate || article.date);
+  merged.set(article.id, useRevision ? { ...article, ...revision, featuredImageUrl: article.featuredImageUrl, featuredImageAlt: article.featuredImageAlt, noIndex: article.noIndex, canonicalUrl: article.canonicalUrl } : { ...article, category: normalizeCategory(article.category) });
+ }
+ return [...merged.values()].sort((a,b) => (Date.parse(b.date) || 0) - (Date.parse(a.date) || 0));
 }
-
-/**
- * Fetches published posts from Sanity and merges them with the
- * local INSIGHTS_ARTICLES array. Sanity posts take priority if an
- * id/slug collides with a local article. Falls back silently to
- * local-only articles if Sanity isn't configured yet or the fetch fails.
- * The merged list is sorted newest-first by date.
- */
-function sortByDateDesc(articles: Insight[]): Insight[] {
-  return [...articles].sort((a, b) => {
-    const ta = Date.parse(a.date);
-    const tb = Date.parse(b.date);
-    if (Number.isNaN(ta)) return 1;
-    if (Number.isNaN(tb)) return -1;
-    return tb - ta;
-  });
-}
-
-export async function getInsightsArticles(): Promise<Insight[]> {
-  const client = getSanityClient();
-  if (!client) {
-    return sortByDateDesc(INSIGHTS_ARTICLES);
-  }
-
-  try {
-    const builder = imageUrlBuilder(client);
-    const sanityPosts = await client.fetch<SanityPost[]>(POSTS_QUERY, {}, { cache: "no-store" });
-
-    const formatted: Insight[] = sanityPosts.map((p) => ({
-      id: p.id,
-      title: p.title,
-      category: p.category,
-      readTime: p.readTime || "5 min read",
-      date: formatDate(p.date),
-      summary: p.summary,
-      contentMarkdown: p.contentMarkdown,
-      featuredImageUrl: p.featuredImage?.asset
-        ? builder.image(p.featuredImage).width(1600).url()
-        : undefined,
-      featuredImageAlt: p.featuredImage?.alt,
-      metaTitle: p.metaTitle,
-      metaDescription: p.metaDescription,
-      canonicalUrl: p.canonicalUrl,
-      noIndex: p.noIndex,
-    }));
-
-    const sanityIds = new Set(formatted.map((a) => a.id));
-    const localOnly = INSIGHTS_ARTICLES.filter((a) => !sanityIds.has(a.id));
-
-    return sortByDateDesc([...formatted, ...localOnly]);
-  } catch (err) {
-    console.error("Sanity fetch failed, falling back to local articles:", err);
-    return sortByDateDesc(INSIGHTS_ARTICLES);
-  }
-}
+export const getInsightsArticles = cache(async (): Promise<Insight[]> => {
+ const client = getSanityClient();
+ if (!client) return mergeArticles(EDITORIAL_ARTICLES, []);
+ try {
+  const builder = imageUrlBuilder(client);
+  const posts = await client.fetch<SanityPost[]>(POSTS_QUERY, {}, { cache: 'no-store' });
+  return mergeArticles(EDITORIAL_ARTICLES, posts.map(p => ({ ...p, category: normalizeCategory(p.category), readTime: p.readTime || '5 min read', featuredImageUrl: p.featuredImage?.asset ? builder.image(p.featuredImage).width(1600).url() : undefined, featuredImageAlt: p.featuredImage?.alt })));
+ } catch (error) {
+  console.error('Unable to load CMS articles; serving maintained local records.');
+  return mergeArticles(EDITORIAL_ARTICLES, []);
+ }
+});

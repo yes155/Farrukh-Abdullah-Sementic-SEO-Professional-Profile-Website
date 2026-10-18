@@ -1,0 +1,22 @@
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import EditorialLayout,{ContentSection,ContactAction} from './EditorialLayout';
+import JsonLd from './JsonLd';
+import {getCaseContent} from '@/lib/caseContent';
+import {CANONICAL_DOMAIN,PERSON_ID,ORGANIZATION_ID} from '@/lib/schemas';
+import {EDITORIAL_UPDATED} from '@/lib/contentMetadata';
+export default function CaseStudyPage({slug}:{slug:string}) {
+ const study=getCaseContent(slug); if(!study) notFound();
+ const url=`${CANONICAL_DOMAIN}/case-studies/${slug}`;
+ return <EditorialLayout title={study.title} intro={`Reported engagement: ${study.name}. ${study.location}. The account below separates the reported work and outcomes from the supporting evidence currently published.`} path={`/case-studies/${slug}`} parent={{name:'Case studies',url:'/case-studies'}}>
+  <JsonLd id="case-article" data={{'@context':'https://schema.org','@type':'Article','@id':`${url}#article`,headline:study.title,mainEntityOfPage:url,author:{'@id':PERSON_ID,url:`${CANONICAL_DOMAIN}/about`},publisher:{'@id':ORGANIZATION_ID},dateModified:EDITORIAL_UPDATED}} />
+  <ContentSection title="Evidence and interpretation"><p>The outcomes are reported in the consultant’s engagement descriptions and, where shown, attributed client feedback. Raw campaign analytics and underlying tracking exports are not published on this page.</p><div className="overflow-x-auto"><table className="w-full text-sm border-collapse"><tbody>{[['Role described','SEO strategy and implementation; precise responsibilities should be checked against the engagement record.'],['Campaign dates and baseline','Exact calendar windows and baseline exports are not published here.'],['Measurement definition','Traffic, calls, bookings, leads, and revenue are different measures. The underlying definitions and attribution rules are needed to evaluate numerical outcomes.'],['Evidence available here','Work description and attributed feedback, where included.'],['Evidence to request','Campaign dates, metric definitions, attribution window, sample deliverables, and permission to share any client records.']].map(([label,value])=><tr key={label}><th className="border p-3 text-left align-top w-1/3">{label}</th><td className="border p-3">{value}</td></tr>)}</tbody></table></div><p>No outcome here is a forecast for another business, an independent verification, or proof that a single SEO technique caused the result.</p></ContentSection>
+  <figure><img src={study.image} alt="Illustrative business image" className="w-full max-h-80 object-cover border-2 border-black grayscale" /><figcaption className="text-xs text-neutral-600 mt-2">Illustrative stock image; not a client dashboard or campaign evidence.</figcaption></figure>
+  <ContentSection title="Reported starting situation"><p>{study.challenge}</p></ContentSection>
+  <ContentSection title="Reported work"><p>{study.strategy}</p><ul className="list-disc pl-6 space-y-2">{study.execution.map(s=><li key={s}>{s}</li>)}</ul><p>This is an account of the engagement. It should not be read as a statement of proprietary search-engine weighting.</p></ContentSection>
+  <ContentSection title="Reported outcomes"><ul className="list-disc pl-6 space-y-2">{study.results.map(s=><li key={s}>{s}</li>)}</ul>{slug==='local-seo-systems'&&<p>The portfolio’s 340% ROI figure is a reported figure. The spend/return formula, campaign weighting, period, and treatment of estimated lead value versus realized revenue are not published here; it should not be used as an expected return.</p>}</ContentSection>
+  {study.quote&&<ContentSection title="Attributed client feedback"><blockquote className="border-l-4 border-cyan-600 pl-4">“{study.quote}”</blockquote><p className="text-sm">{study.attribution}</p></ContentSection>}
+  <ContentSection title="How to assess a similar engagement"><p>Agree the starting state, implementation owner, baseline dates, metric definitions, and comparison period before work starts. Review changes as a group when several interventions ship together.</p><p><a className="underline" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google’s guidance on evidence and useful content</a> · <Link className="underline" href={study.insight.path}>{study.insight.label}</Link></p><ul className="space-y-2">{study.services.map(s=><li key={s.path}><Link href={s.path} className="underline">{s.label}</Link></li>)}</ul></ContentSection>
+  <ContactAction text="Discuss a comparable project" />
+ </EditorialLayout>;
+}

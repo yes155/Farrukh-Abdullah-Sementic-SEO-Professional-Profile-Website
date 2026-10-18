@@ -7,7 +7,10 @@
     "dev": "next dev -p 3000",
     "build": "next build",
     "clean": "rm -rf .next out",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test": "node scripts/check-content-model.mjs",
+    "test:seo": "python3 scripts/verify-seo.py",
+    "test:production": "python3 scripts/test-production.py"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
@@ -23,7 +26,9 @@
     "next-sanity": "^13.1.1",
     "postcss": "^8.5.17",
     "react": "^19.0.1",
-    "react-dom": "^19.0.1"
+    "react-dom": "^19.0.1",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

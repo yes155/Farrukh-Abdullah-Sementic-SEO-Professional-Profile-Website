@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ industry:
 
   const title = `Local SEO for ${niche.industry}`;
   const primaryKeyword = niche.focusKeywords[0] || `local seo for ${niche.industry.toLowerCase()}`;
-  const description = `${primaryKeyword.charAt(0).toUpperCase() + primaryKeyword.slice(1)} — Google Business Profile optimization, ${niche.singular.toLowerCase()} schema markup, service-area landing pages, and call tracking built to win map pack rankings and new customers in your market.`;
+  const description = niche.intro;
 
   return {
     title,
