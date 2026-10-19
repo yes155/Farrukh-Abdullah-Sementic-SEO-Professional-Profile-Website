@@ -92,7 +92,7 @@ def run(base):
   assert 'Not a client case study' in text,(path,'Example could be confused with client work')
   assert any(href==source and main for href,main in p.links),(path,'Missing primary-source link')
   assert not any(href==example_url for href,_ in p.links),(path,'Illustrative business URL became a broken site link')
-  assert 'Measure the inquiry journey, not just clicks' in headings,(path,'Missing outcome definitions')
+  assert 'Measure inquiries and booking outcomes' in headings,(path,'Missing outcome definitions')
   assert len(p.descriptions[0])<=170,(path,'Service description too long')
   service=[schema for schema in p.schemas if schema.get('@type')=='Service']
   assert len(service)==1 and service[0]['name']==p.h1[0],(path,'Service schema and visible title differ')

@@ -333,7 +333,7 @@ export const LOCAL_NICHES: Niche[] = [
     "schemaType": "Electrician",
     "eyebrow": "Local SEO consulting",
     "headline": "SEO for Electricians",
-    "intro": "I help electrical contractors organize local search around the jobs they want to accept: emergency calls, panel upgrades, EV charger installations, and commercial work. The scope connects accurate service coverage, useful pages, and qualified inquiries—not just traffic.",
+    "intro": "I help electrical contractors organize local search around the jobs they want to accept: emergency calls, panel upgrades, EV charger installations, and commercial work. The scope covers accurate service information, useful pages, and measurement of qualified inquiries.",
     "deliverables": [
       "Electrical-service and coverage review",
       "Distinct briefs for urgent and planned work",
