@@ -14,9 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ industry:
   const niche = getNicheBySlug(industry);
   if (!niche) return { title: "Service Not Found" };
 
-  const title = `Local SEO for ${niche.industry}`;
-  const primaryKeyword = niche.focusKeywords[0] || `local seo for ${niche.industry.toLowerCase()}`;
-  const description = niche.intro;
+  const title = niche.metaTitle || `Local SEO for ${niche.industry}`;
+  const description = niche.metaDescription || niche.intro;
 
   return {
     title,
@@ -26,13 +25,13 @@ export async function generateMetadata({ params }: { params: Promise<{ industry:
       canonical: `/services/${niche.slug}`,
     },
     openGraph: {
-      title: `Local SEO for ${niche.industry} | Farrukh Abdullah`,
+      title: `${title} | Farrukh Abdullah`,
       description,
       url: `/services/${niche.slug}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `Local SEO for ${niche.industry} | Farrukh Abdullah`,
+      title: `${title} | Farrukh Abdullah`,
       description,
     },
   };
