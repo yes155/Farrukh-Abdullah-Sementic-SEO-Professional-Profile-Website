@@ -39,7 +39,7 @@ add('/tools/seo-project-planner','Planning tools','Utility','Prepare an SEO proj
 for(const service of CORE_SERVICES)add('/services/'+service.slug,'Core services','Commercial',service.title,['Service fit',...service.deliverables,'Access','Progress','Engagement questions']);
 for(const niche of LOCAL_NICHES){
  const example=getPriorityServiceContent(niche.slug);
- const headings=example?[example.journeyTitle,'What I would deliver for your business','Public-site walkthrough: '+example.publicExample.business,'An example implementation brief','Measure the inquiry journey, not just clicks']:['Customer decision'];
+ const headings=example?[example.journeyTitle,'What I would deliver for your business','Public-site walkthrough: '+example.publicExample.business,'An example implementation brief','Measure inquiries and booking outcomes']:['Customer decision'];
  add('/services/'+niche.slug,'Industry services','Commercial',niche.headline,[...headings,...niche.faqs.map(item=>item.q),...niche.keywords.map(item=>item.question)],'Industry synonyms and narrower wording belong on the existing service page unless they introduce a distinct customer task');
 }
 for(const city of CITIES)add('/locations/'+city.slug,'Service areas','Commercial','Assess remote SEO work for a '+city.name+' business',['Customer area','Planning example','Relevant project','Office and delivery questions'],'Address variants answered by the actual remote-delivery statement; no invented city office');

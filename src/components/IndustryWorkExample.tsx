@@ -4,7 +4,7 @@ import { ContentSection } from './EditorialLayout';
 export default function IndustryWorkExample({ content }: { content: PriorityServiceContent }) {
   return <>
     <ContentSection title={content.journeyTitle}>
-      <p>These are illustrative searches by your customers. They show how I would organize the contractor or practice website; they are not search-volume or ranking claims.</p>
+      <p>These illustrative customer searches show how I would organize your business’s website. Actual query research and service details shape the final plan.</p>
       <div className="overflow-x-auto"><table className="w-full border-collapse text-sm md:text-base"><thead><tr>{['Customer search example', 'Page purpose', 'Useful next step'].map(label => <th scope="col" key={label} className="text-left align-top border border-neutral-300 p-4 bg-neutral-50 font-semibold text-black">{label}</th>)}</tr></thead><tbody>{content.journeys.map(item => <tr key={item.search}><th scope="row" className="text-left align-top border border-neutral-300 p-4 font-medium text-black min-w-44">{item.search}</th><td className="border border-neutral-300 p-4 align-top">{item.destination}</td><td className="border border-neutral-300 p-4 align-top">{item.nextStep}</td></tr>)}</tbody></table></div>
     </ContentSection>
     <ContentSection title="What I would deliver for your business">
@@ -24,7 +24,7 @@ export default function IndustryWorkExample({ content }: { content: PriorityServ
         <section className="border-t border-neutral-300 pt-5"><h4 className="text-base font-semibold text-black mb-4">Acceptance checks before publication</h4><ul className="list-disc pl-5 space-y-2">{content.brief.acceptance.map(item => <li key={item}>{item}</li>)}</ul></section>
       </div>
     </ContentSection>
-    <ContentSection title="Measure the inquiry journey, not just clicks">
+    <ContentSection title="Measure inquiries and booking outcomes">
       <div className="overflow-x-auto"><table className="w-full border-collapse text-sm md:text-base"><thead><tr>{['Stage', 'Record to use', 'What it tells us'].map(label => <th scope="col" key={label} className="text-left align-top border border-neutral-300 p-4 bg-neutral-50 font-semibold text-black">{label}</th>)}</tr></thead><tbody>{content.measurement.map(item => <tr key={item.stage}><th scope="row" className="text-left align-top border border-neutral-300 p-4 font-medium text-black min-w-36">{item.stage}</th><td className="border border-neutral-300 p-4 align-top">{item.record}</td><td className="border border-neutral-300 p-4 align-top">{item.meaning}</td></tr>)}</tbody></table></div>
       <p>{content.measurementNote}</p>
     </ContentSection>
