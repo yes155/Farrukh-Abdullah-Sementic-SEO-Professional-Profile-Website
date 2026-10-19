@@ -90,6 +90,8 @@ export default function Navbar() {
             className="md:hidden text-black hover:text-cyan-500 p-2 cursor-pointer"
             id="nav-mobile-hamburger"
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -105,7 +107,7 @@ export default function Navbar() {
               transition={{ duration: 0.25 }}
               className="md:hidden bg-white border-b border-neutral-200"
             >
-              <div className="px-6 py-6 flex flex-col gap-5">
+              <div id="mobile-navigation" className="px-6 py-6 flex flex-col gap-5">
                 {navItems.map((item) => (
                   <Link
                     key={item.path}

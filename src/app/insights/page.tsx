@@ -40,17 +40,17 @@ export default async function InsightsIndex() {
       <JsonLd id="insights-collection" data={getCollectionSchema("/insights", "SEO and AI search guides", articles.map(a => ({ name:a.title,path:`/insights/${a.id}` })))} />
 
       {/* Title Block */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-black pb-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-200 pb-9">
         <div>
           <span className="text-[10px] font-mono tracking-widest text-cyan-600 uppercase block mb-2 font-bold">
             Insights and strategy
           </span>
-          <h1 className="text-4xl font-extrabold font-sans text-black tracking-tight uppercase leading-none">
-            SEO & GEO Insights
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+            SEO and AI-search guides
           </h1>
         </div>
-        <p className="text-xs text-neutral-500 max-w-xs md:text-right font-mono uppercase tracking-wider font-extrabold">
-          Sourced guides, implementation examples, and evidence limits.
+        <p className="text-base text-neutral-600 max-w-sm md:text-right leading-relaxed">
+          Practical explanations, implementation examples, and primary sources.
         </p>
       </div>
 

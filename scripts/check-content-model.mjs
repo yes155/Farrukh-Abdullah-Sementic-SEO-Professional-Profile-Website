@@ -29,3 +29,16 @@ assert.equal(normalizeCategory('AI Search, Sementic SEO'),'Semantic SEO');
 const {getArticleSchema}=load('src/lib/schemas.ts');
 for(const article of EDITORIAL_ARTICLES){const s=getArticleSchema(article);assert.equal(s.headline,article.title);assert.ok(s.datePublished&&s.dateModified);assert.ok(article.contentMarkdown.includes('https://'));}
 console.log('Content-model checks passed: revision precedence, category normalization, and schema/title/date consistency across 20 articles.');
+
+const {CASE_SLUGS,getCaseContent}=load('src/lib/caseContent.ts');
+assert.equal(CASE_SLUGS.length,9);
+for(const slug of CASE_SLUGS){const study=getCaseContent(slug);assert.ok(study.name&&study.summary&&study.challenge&&study.strategy);assert.ok(study.execution.length&&study.results.length&&study.focus.length);}
+const {createProjectBrief}=load('src/lib/projectPlanner.ts');
+const localCatalog=createProjectBrief('local','catalog','example.com');
+assert.match(localCatalog.fitNote,/eligibility/);
+assert.match(localCatalog.text,/example.com/);
+assert.equal(localCatalog.path,'/services/local-seo');
+const content=createProjectBrief('content','online-business');
+assert.equal(content.path,'/services/semantic-seo');assert.match(content.text,/To be supplied/);
+const ai=createProjectBrief('ai','local-service');assert.match(ai.measure,/Search Console/);
+console.log('All nine case records are complete; planner briefs preserve inputs, choose the relevant service, and flag local-profile eligibility.');

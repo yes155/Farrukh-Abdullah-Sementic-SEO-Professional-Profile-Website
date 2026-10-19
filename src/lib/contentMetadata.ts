@@ -1,5 +1,5 @@
 // The substantive revision date, not a build timestamp.
-export const EDITORIAL_UPDATED = "2026-10-18T18:18:45Z";
+export const EDITORIAL_UPDATED = "2026-10-19";
 export function validISODate(value?: string): string | undefined {
   if (!value) return undefined;
   const date = new Date(value);
