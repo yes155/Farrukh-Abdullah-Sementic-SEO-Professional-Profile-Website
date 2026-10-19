@@ -1,154 +1,17 @@
-"use client";
-
-import { motion } from "motion/react";
-import { Quote, ChevronRight, Binary, MapPin } from "lucide-react";
-import { EXPERIENCE_TIMELINE } from "@/data";
-import JsonLd from "@/components/JsonLd";
-import { getBreadcrumbSchema } from "@/lib/schemas";
-
+import Link from 'next/link';
+import { EXPERIENCE_TIMELINE } from '@/data';
+import JsonLd from '@/components/JsonLd';
+import Certifications from '@/components/Certifications';
+import { getBreadcrumbSchema, PERSON_ID } from '@/lib/schemas';
 export default function AboutPage() {
-  const breadcrumbs = getBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "About", url: "/about" }
-  ]);
-
-  const profileSchema = {
-    "@context": "https://schema.org", "@type": "ProfilePage", "@id": "https://farrukh.top/about#page",
-    url: "https://farrukh.top/about", name: "About Farrukh Abdullah", mainEntity: { "@id": "https://farrukh.top/#person" }
-  };
-
-  return (
-    <div className="pt-12 pb-20 px-6 max-w-7xl mx-auto space-y-16">
-      <JsonLd id="schema-breadcrumb-about" data={breadcrumbs} />
-      <JsonLd id="schema-person-about" data={profileSchema} />
-
-      {/* Header block */}
-      <div className="border-b-2 border-black pb-12">
-        <span className="text-[10px] font-mono tracking-widest text-cyan-600 font-bold block uppercase mb-2">
-          Independent SEO consultant
-        </span>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-sans text-black tracking-tight uppercase leading-[1.1]">
-          About Farrukh Abdullah
-        </h1>
-        <p className="text-sm md:text-base text-neutral-600 mt-4 max-w-3xl font-semibold leading-relaxed">
-          I am Farrukh Abdullah, an independent SEO consultant based in Faisalabad, Pakistan. My work covers content planning, technical implementation, local business information, and search visibility measurement.
-        </p>
-      </div>
-
-      {/* Main Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-        {/* Left Column: Profile Photo & Key Credentials */}
-        <div className="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-28">
-          <div className="border-2 border-black p-2 bg-white shadow-[4px_4px_0px_rgba(0,0,0,1)] max-w-xs md:max-w-sm overflow-hidden">
-            <img
-              src="/farrukh-photo-final.jpg"
-              alt="Farrukh Abdullah - Semantic SEO Specialist"
-              className="w-full h-auto object-cover border border-black grayscale hover:grayscale-0 transition-all duration-300"
-              referrerPolicy="no-referrer"
-              id="farrukh-photo-about-img"
-            />
-          </div>
-
-          <div className="bg-neutral-50 border-2 border-black p-6 shadow-[3px_3px_0px_rgba(0,0,0,1)]">
-            <span className="text-[9px] font-mono text-neutral-400 font-extrabold block mb-3 uppercase">
-              STRATEGIST SPECIFICATIONS
-            </span>
-            <div className="space-y-3.5">
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-cyan-600 shrink-0 mt-0.5" />
-                <div className="text-xs">
-                  <span className="block font-black uppercase text-black">Location</span>
-                  <span className="text-neutral-600 font-semibold">Faisalabad, Pakistan (working globally)</span>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <Binary className="w-4 h-4 text-cyan-600 shrink-0 mt-0.5" />
-                <div className="text-xs">
-                  <span className="block font-black uppercase text-black">Core Specialties</span>
-                  <span className="text-neutral-600 font-semibold">Semantic SEO, GEO, Entity Mapping, Local Search Packs</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: Bio & Professional History */}
-        <div className="lg:col-span-7 space-y-10">
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Binary className="w-4 h-4 text-cyan-600" />
-              <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase font-bold">
-                Professional Bio & Methodological Rigor
-              </span>
-            </div>
-            <div className="text-xs md:text-sm text-neutral-700 leading-relaxed font-medium font-sans space-y-4">
-              <p>
-                My background in corporate sales and market analytics spans over 11 years. Turning raw data trends, forecasts, and performance numbers into actionable business revenue is the exact logical framework I now apply to modern Search Engine Optimization.
-              </p>
-              <p>
-                I founded this advisory to solve a common B2B and corporate growth obstacle: search results stagnating due to outdated keyword density techniques. My approach connects page purpose, supporting evidence, implementation responsibilities, and the business outcome being measured.
-              </p>
-            </div>
-          </div>
-
-          {/* Timeline */}
-          <div className="space-y-6">
-            <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase block border-b border-neutral-200 pb-2 font-bold">
-              PROFESSIONAL EXPERIENCE TIMELINE
-            </span>
-            {EXPERIENCE_TIMELINE.map((item, idx) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="bg-white border-2 border-black p-6 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:border-cyan-500 hover:shadow-[5px_5px_0px_rgba(0,0,0,1)] transition-all"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-neutral-100 pb-3 mb-4">
-                  <div>
-                    <span className="text-[9px] font-mono text-cyan-600 uppercase tracking-widest block font-bold">
-                      {item.period}
-                    </span>
-                    <h3 className="text-sm md:text-base font-black font-sans text-black uppercase tracking-tight mt-0.5">
-                      {item.role}
-                    </h3>
-                  </div>
-                  <span className="text-[10px] font-mono bg-neutral-100 text-neutral-600 border border-neutral-200 px-2 py-0.5 uppercase tracking-wide self-start sm:self-center font-bold">
-                    {item.company}
-                  </span>
-                </div>
-
-                <ul className="space-y-2 text-xs text-neutral-700 font-sans mb-4 font-medium">
-                  {item.bullets.map((bullet, bIdx) => (
-                    <li key={bIdx} className="flex items-start gap-2 leading-relaxed">
-                      <ChevronRight className="w-3.5 h-3.5 text-cyan-600 shrink-0 mt-0.5" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="text-[11px] text-neutral-600 italic font-mono leading-relaxed mt-2 border-t border-neutral-100 pt-3">
-                  {item.analyticalAngle}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Corporate Endorsement */}
-      <div className="mt-12 p-6 md:p-8 lg:p-10 bg-white border-2 border-black relative shadow-[4px_4px_0px_rgba(0,0,0,1)] w-full">
-        <div className="absolute top-6 right-6 text-cyan-600/10">
-          <Quote className="w-16 h-16" />
-        </div>
-        <p className="text-sm md:text-base lg:text-xl text-neutral-900 italic leading-relaxed font-sans font-bold pr-12">
-          "Farrukh took our stalled search performance and turned it around. He reorganized our content and site structure in a way that actually made sense for both search engines and our team, and we saw real, measurable growth in visibility and leads within a few months."
-        </p>
-        <span className="block text-[10px] md:text-xs font-mono uppercase tracking-widest text-neutral-500 mt-6 font-bold">
-          — Senior Digital Manager, Windcave (windcave.com)
-        </span>
-      </div>
+  return <>
+    <div className="site-shell py-10 md:py-16 space-y-12">
+      <JsonLd id="schema-breadcrumb-about" data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'About', url: '/about' }])} />
+      <JsonLd id="schema-person-about" data={{ '@context': 'https://schema.org', '@type': 'ProfilePage', '@id': 'https://farrukh.top/about#page', url: 'https://farrukh.top/about', name: 'About Farrukh Abdullah', mainEntity: { '@id': PERSON_ID } }} />
+      <header className="grid md:grid-cols-[minmax(0,1.8fr)_minmax(0,1fr)] gap-10 md:gap-16 items-start border-b border-neutral-200 pb-12"><div><p className="text-xs font-mono tracking-widest text-cyan-800 mb-5 uppercase">Independent SEO consultant</p><h1 className="text-4xl md:text-5xl font-bold tracking-tight">About Farrukh Abdullah</h1><p className="text-lg md:text-xl text-neutral-600 leading-relaxed mt-6">I work on content planning, local search, technical implementation, and search visibility measurement. I’m based in Faisalabad, Pakistan, and work remotely with business owners and their teams.</p><ul className="flex flex-wrap gap-2 mt-6">{['Semantic SEO', 'Local search', 'AI-search measurement'].map(label => <li key={label} className="text-xs border border-neutral-200 bg-neutral-50 px-3 py-2">{label}</li>)}</ul><Link href="/contact" className="inline-block mt-7 underline text-cyan-800 underline-offset-4">Discuss your website</Link></div><figure className="max-w-xs md:justify-self-end"><img src="/farrukh-photo-final.jpg" alt="Farrukh Abdullah, independent SEO consultant" className="w-full h-auto border border-black" width={320} height={400} /></figure></header>
+      <section className="max-w-3xl space-y-5"><h2 className="text-2xl md:text-3xl font-bold tracking-tight">How I approach the work</h2><p className="text-base md:text-lg leading-[1.8] text-neutral-700">My background includes more than 11 years in corporate sales and market analytics. That experience informs how I plan SEO work: understand the customer, identify the practical problem, and choose an outcome the business can measure.</p><p className="text-base md:text-lg leading-[1.8] text-neutral-700">I review what a website already offers before recommending more pages. Each engagement connects page purpose, supporting information, implementation responsibilities, and inquiry or sales measurement.</p><p className="text-base text-neutral-700"><Link href="/case-studies" className="underline text-cyan-800">Explore the case studies</Link> or <Link href="/services" className="underline text-cyan-800">see how services are scoped</Link>.</p></section>
+      <section className="max-w-4xl"><h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-7">Professional experience</h2><div className="divide-y divide-neutral-200">{EXPERIENCE_TIMELINE.map(item => <article key={item.id} className="py-7 first:pt-0"><p className="text-sm text-cyan-800 mb-2">{item.period}</p><h3 className="text-xl font-semibold">{item.role}</h3><p className="text-base text-neutral-500 mt-2 mb-5">{item.company}</p><ul className="list-disc pl-5 space-y-3 text-base text-neutral-700 leading-relaxed">{item.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul></article>)}</div></section>
     </div>
-  );
+    <Certifications />
+  </>;
 }

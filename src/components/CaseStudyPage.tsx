@@ -4,9 +4,9 @@ import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import JsonLd from './JsonLd';
 import { getCaseContent } from '@/lib/caseContent';
 import { CANONICAL_DOMAIN, PERSON_ID, ORGANIZATION_ID, getBreadcrumbSchema } from '@/lib/schemas';
-import { displayDate } from '@/lib/contentMetadata';
+import { displayDate, EDITORIAL_UPDATED } from '@/lib/contentMetadata';
 
-const UPDATED = '2026-10-19';
+const UPDATED = EDITORIAL_UPDATED;
 
 export default function CaseStudyPage({ slug }: { slug: string }) {
   const study = getCaseContent(slug);
@@ -24,6 +24,7 @@ export default function CaseStudyPage({ slug }: { slug: string }) {
         <p className="font-mono text-xs uppercase tracking-widest text-cyan-700 mb-5">{study.services[0].label.replace(/ services| consulting/ig, '')} · Case study</p>
         <h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold leading-[1.08] tracking-tight text-black">{study.name}</h1>
         <p className="mt-6 text-lg md:text-xl leading-relaxed text-neutral-600 max-w-2xl">{study.summary}</p>
+        <ul className="flex flex-wrap gap-2 mt-6" aria-label="Project focus">{study.focus.slice(0, 3).map(item => <li key={item} className="text-xs px-3 py-2 border border-neutral-200 bg-neutral-50 text-neutral-700">{item}</li>)}</ul>
         <p className="mt-7 text-sm text-neutral-500">By <Link href="/about" className="underline underline-offset-4 hover:text-black">Farrukh Abdullah</Link><span className="mx-2" aria-hidden="true">·</span><time dateTime={UPDATED}>{displayDate(UPDATED)}</time></p>
       </div>
       <aside aria-label="Project overview" className="border border-black bg-neutral-50 p-6 md:p-8 shadow-[4px_4px_0px_#00d3f2]">
@@ -71,7 +72,7 @@ export default function CaseStudyPage({ slug }: { slug: string }) {
           </figure>}
         </section>
         <div className="border-t border-neutral-200 pt-6 text-sm leading-relaxed text-neutral-500">
-          <p><span className="font-semibold text-neutral-700">About this case study.</span> This account is based on the engagement description{study.quote ? ' and client feedback' : ''}. Campaign dates and analytics exports are not published here; results are specific to this project.{slug === 'local-seo-systems' && ' The portfolio ROI figure has no published calculation or comparison period.'}</p>
+          <p><span className="font-semibold text-neutral-700">About this case study.</span> This account is based on the engagement description{study.quote ? ' and client feedback' : ''}. Campaign dates and analytics exports are not published here; results are specific to this project.{slug === 'simulithic' && ' This case does not publish a quantified ranking, traffic, or citation result.'}{slug === 'local-seo-systems' && ' The portfolio ROI figure has no published calculation or comparison period.'}</p>
         </div>
       </div>
     </div>
@@ -79,6 +80,6 @@ export default function CaseStudyPage({ slug }: { slug: string }) {
       <div><p className="font-mono text-xs uppercase tracking-widest text-cyan-400 mb-4">Your next step</p><h2 className="text-2xl md:text-3xl font-bold tracking-tight">What’s holding your search visibility back?</h2><p className="mt-4 text-neutral-300 leading-relaxed max-w-xl">Tell me about your business and where you want to grow. We’ll discuss the gaps and the work worth prioritizing.</p></div>
       <Link href="/contact" className="inline-flex items-center justify-center gap-3 bg-cyan-400 text-black px-6 py-4 text-sm font-bold hover:bg-cyan-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400">Discuss your project<ArrowRight size={17} aria-hidden="true" /></Link>
     </section>
-    <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-7 text-sm"><Link href="/case-studies" className="underline underline-offset-4">More case studies</Link>{study.services.map(service => <Link key={service.path} href={service.path} className="text-neutral-600 hover:text-black underline underline-offset-4">{service.label}</Link>)}</div>
+    <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-7 text-sm"><Link href={study.insight.path} className="underline underline-offset-4 text-cyan-800">{study.insight.label}</Link><Link href="/case-studies" className="underline underline-offset-4">More case studies</Link>{study.services.map(service => <Link key={service.path} href={service.path} className="text-neutral-600 hover:text-black underline underline-offset-4">{service.label}</Link>)}</div>
   </article>;
 }

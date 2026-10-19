@@ -1,93 +1,26 @@
-"use client";
-
-import Link from "next/link";
-import { ArrowRight, ArrowDownRight } from "lucide-react";
-import {
-  STRATEGIST_NAME,
-  STRATEGIST_TITLE,
-  STRATEGIST_SPECS,
-} from "../data";
-
-interface HeroProps {
-  onBookClick: () => void;
-  onAuditClick: () => void;
-}
-
-export default function Hero({ onBookClick, onAuditClick }: HeroProps) {
-  return (
-    <section id="home" className="pt-6 md:pt-8 pb-16 px-6 max-w-7xl mx-auto flex flex-col gap-12">
-      {/* Upper Hero Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-        {/* Title & Copy (Left) */}
-        <div className="lg:col-span-7 flex flex-col gap-6">
-          <span className="text-[11px] font-mono tracking-widest text-neutral-500 uppercase flex items-center gap-2">
-            <span className="w-2 h-2 bg-cyan-500 rounded-full inline-block animate-pulse" />
-            {STRATEGIST_TITLE}
-          </span>
-          
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight font-sans text-black leading-[1.1] md:leading-[1.15]">Semantic SEO and local SEO consulting for growing businesses.</h1>
-
-          <p className="text-sm md:text-base leading-relaxed text-neutral-700 max-w-2xl mt-4 font-sans font-medium">
-            I’m Farrukh Abdullah, an independent SEO consultant based in Faisalabad, Pakistan. I help businesses clarify content, improve local information, and measure search visibility through scoped, practical work.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-6">
-            <button
-              onClick={onBookClick}
-              className="group flex items-center justify-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-black text-xs font-bold uppercase tracking-wider py-3.5 px-6 border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] transition-all cursor-pointer"
-              id="hero-book-btn"
-            >
-              <span>Book Strategy Call</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            <button
-              onClick={onAuditClick}
-              className="group flex items-center justify-center gap-2 bg-white hover:bg-neutral-50 text-black text-xs font-bold uppercase tracking-wider py-3.5 px-6 border-2 border-black transition-all cursor-pointer"
-              id="hero-audit-btn"
-            >
-              <span>Request a Website Review</span>
-              <ArrowDownRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-
-        {/* Strategist Spec Box (Right) */}
-        <div className="lg:col-span-5 bg-white border-2 border-black p-6 md:p-8 shadow-[6px_6px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_rgba(0,0,0,1)] transition-all">
-          <span className="text-xs font-mono tracking-widest text-neutral-500 uppercase block mb-6 border-b border-neutral-200 pb-3 font-extrabold">
-            Strategist profile
-          </span>
-          <div className="flex flex-col gap-6">
-            {STRATEGIST_SPECS.map((spec) => (
-              <div
-                key={spec.label}
-                className="flex flex-col gap-2 border-b border-neutral-100 last:border-b-0 pb-4 last:pb-0"
-              >
-                <span className="text-[10px] md:text-xs font-mono text-neutral-500 font-extrabold uppercase tracking-wider">
-                  {spec.label}
-                </span>
-                <span className="text-xs md:text-sm font-mono text-neutral-900 font-black flex items-center gap-2.5 leading-relaxed">
-                  {spec.statusColor && (
-                    <span 
-                      className="w-3 h-3 rounded-full inline-block animate-pulse shrink-0"
-                      style={{ backgroundColor: spec.statusColor }}
-                    />
-                  )}
-                  {spec.value}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+'use client';
+import Link from 'next/link';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+export default function Hero({ onBookClick, onAuditClick }: { onBookClick: () => void; onAuditClick: () => void }) {
+  const startingPoints = [
+    { problem: 'Your pages overlap or miss customer questions', service: 'Content structure & semantic SEO', path: '/services/semantic-seo' },
+    { problem: 'Nearby customers struggle to find your business', service: 'Local SEO & business profiles', path: '/services/local-seo' },
+    { problem: 'AI answers miss or misrepresent your business', service: 'AI-search access & measurement', path: '/services/ai-seo-consulting' },
+  ];
+  return <section className="site-shell pt-8 md:pt-12 pb-12 md:pb-16">
+    <div className="grid lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] gap-10 lg:gap-14 items-start">
+      <div><p className="text-xs font-mono uppercase tracking-widest text-cyan-800 mb-5">Farrukh Abdullah · SEO consultant</p>
+        <h1 className="text-4xl md:text-5xl xl:text-[56px] font-bold tracking-tight leading-[1.1]">Semantic SEO and local SEO consulting for growing businesses.</h1>
+        <p className="text-lg leading-relaxed text-neutral-600 max-w-2xl mt-6">I help you organize useful content, improve local discovery, and measure search visibility. Based in Faisalabad, Pakistan, working remotely with your business and team.</p>
+        <ul aria-label="Consulting details" className="flex flex-wrap gap-2 mt-6">{['Independent consultant', 'Strategy & implementation', 'Remote delivery'].map(item => <li key={item} className="text-xs px-3 py-2 border border-neutral-200 bg-neutral-50 text-neutral-700">{item}</li>)}</ul>
+        <div className="flex flex-wrap items-center gap-6 mt-8"><button onClick={onBookClick} className="inline-flex items-center gap-3 bg-cyan-400 hover:bg-cyan-300 text-black border border-black px-6 py-4 font-semibold text-sm" id="hero-book-btn">Discuss your project<ArrowRight size={17} aria-hidden="true" /></button><button onClick={onAuditClick} className="text-sm font-semibold underline underline-offset-4" id="hero-audit-btn">Request a website review</button></div>
+        <p className="text-sm text-neutral-500 leading-relaxed mt-7">2+ years in semantic SEO · 11+ years in sales and data analytics · <Link href="/about" className="underline underline-offset-4">About Farrukh</Link></p>
       </div>
-
-      {/* Credentials Summary Line */}
-      <div className="mt-8 border-t border-neutral-200 pt-8">
-        <span className="text-[11px] font-mono tracking-wider text-neutral-600 uppercase block font-bold leading-relaxed">
-          2+ years in semantic SEO and topical authority · 11+ years in sales and data analytics · Training from IBM, Moz, and BrightLocal
-        </span>
-        <Link href="/about" className="inline-block mt-4 text-sm underline">About Farrukh Abdullah and his experience</Link>
-      </div>
-    </section>
-  );
+      <aside className="border border-black bg-neutral-50 p-6 md:p-8 shadow-[4px_4px_0px_#00d3f2]">
+        <h2 className="text-xl font-semibold mb-2">Where should we start?</h2><p className="text-sm text-neutral-600 leading-relaxed mb-6">Choose the problem your website needs to solve.</p>
+        <ul className="divide-y divide-neutral-200">{startingPoints.map(item => <li key={item.path} className="py-5 first:pt-0"><Link href={item.path} className="group block"><span className="block text-base text-neutral-800 leading-relaxed">{item.problem}</span><span className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-800 mt-2 group-hover:underline">{item.service}<ArrowUpRight size={15} aria-hidden="true" /></span></Link></li>)}</ul>
+        <Link href="/tools/seo-project-planner" className="block border-t border-neutral-300 pt-5 text-sm font-semibold underline underline-offset-4">Not sure? Use the free project planner</Link>
+      </aside>
+    </div>
+  </section>;
 }

@@ -16,13 +16,13 @@ export default function ContactPage() {
 
       <div className="mb-12 text-center max-w-3xl mx-auto">
         <span className="text-[10px] font-mono tracking-widest text-cyan-600 font-bold block uppercase mb-2">
-          Advisory Booking & Intake
+          Project inquiry
         </span>
         <h1 className="text-4xl md:text-5xl font-black font-sans text-black tracking-tight uppercase">
-          Book a Strategy Session
+          Discuss your SEO project
         </h1>
         <p className="text-sm text-neutral-600 mt-3 font-semibold leading-relaxed">
-          Ready to turn search plateau into pipeline compounding? Describe your project, start an email draft, or drop a message on WhatsApp.
+          Share your website, customers, and main goal. We’ll discuss a useful starting point, the work involved, and how to assess progress.
         </p>
       </div>
 

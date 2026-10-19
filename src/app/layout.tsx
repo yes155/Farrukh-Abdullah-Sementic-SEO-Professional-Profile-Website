@@ -47,16 +47,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-white text-black min-h-screen font-sans selection:bg-cyan-400 selection:text-black flex flex-col">
+      <body id="top" className="bg-white text-black min-h-screen font-sans selection:bg-cyan-400 selection:text-black flex flex-col">
         {/* Sitewide / Homepage Core JSON-LD Schemas */}
         <JsonLd id="schema-person" data={PERSON_SCHEMA} />
         <JsonLd id="schema-organization" data={ORGANIZATION_SCHEMA} />
         <JsonLd id="schema-website" data={WEBSITE_SCHEMA} />
 
         {/* Sticky Translucent Navbar with integrated Top Banner */}
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
 
-        <main className="min-h-[60vh] flex-grow pt-20">
+        <main id="main-content" tabIndex={-1} className="min-h-[60vh] flex-grow pt-20">
           {children}
         </main>
 

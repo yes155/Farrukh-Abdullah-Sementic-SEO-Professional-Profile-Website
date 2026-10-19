@@ -1,0 +1,15 @@
+export type PlannerGoal = 'content' | 'local' | 'ai';
+export type BusinessModel = 'local-service' | 'online-business' | 'catalog';
+export const PLANNER_GOALS: Record<PlannerGoal, { label: string; service: string; path: string; priorities: string[]; measure: string }> = {
+  content: { label: 'Clarify content and page structure', service: 'Semantic SEO and content architecture', path: '/services/semantic-seo', priorities: ['Inventory existing pages and match each to a customer question.', 'Decide which pages to improve, combine, or keep as they are.', 'Prepare page briefs and useful internal links before producing more content.'], measure: 'Review the changed page and query groups alongside relevant inquiries or purchases.' },
+  local: { label: 'Improve local discovery and inquiries', service: 'Local SEO services', path: '/services/local-seo', priorities: ['Confirm the business’s actual location, services, coverage, and profile eligibility.', 'Review the Business Profile, relevant service pages, listings, and contact routes.', 'Agree how to record and qualify calls, forms, and appointments.'], measure: 'Track qualified inquiries and booked work separately from local ranking observations.' },
+  ai: { label: 'Review AI-search representation', service: 'AI SEO consulting', path: '/services/ai-seo-consulting', priorities: ['Check accessible pages and correct important company, product, and service facts.', 'Define a dated sample of customer questions and record the sources cited.', 'Review source accuracy, referral visits, and inquiries as separate measures.'], measure: 'Use available Search Console AI reports, dated platform observations, and referral outcomes.' },
+};
+export function createProjectBrief(goal: PlannerGoal, model: BusinessModel, website = '') {
+  const plan = PLANNER_GOALS[goal];
+  const modelLabel = { 'local-service': 'A local service business', 'online-business': 'An online business or SaaS product', catalog: 'A product catalog or online store' }[model];
+  const context = model === 'catalog' ? 'Include product/category URLs, current catalog structure, and any available purchase data.' : model === 'local-service' ? 'Include the actual customer area, services, contact process, and available inquiry data.' : 'Include product or service use cases, target customers, and the intended conversion action.';
+  const fitNote = goal === 'local' && model !== 'local-service' ? 'Confirm Business Profile eligibility before planning profile work; an online-only business may need a different approach.' : 'The priorities are a starting brief; a website review determines the final scope.';
+  const text = [`SEO project brief`, `Website: ${website.trim() || 'To be supplied'}`, `Business: ${modelLabel}`, `Goal: ${plan.label}`, '', 'Suggested review priorities:', ...plan.priorities.map((item, index) => `${index + 1}. ${item}`), '', `Useful background: ${context}`, `Measurement: ${plan.measure}`, '', fitNote].join('\n');
+  return { ...plan, context, fitNote, text };
+}

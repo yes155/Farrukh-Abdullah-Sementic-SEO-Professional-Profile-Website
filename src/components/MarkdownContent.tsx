@@ -1,12 +1,13 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
+import { articleHeadingId } from "@/lib/articleHeadings";
 
 export default function MarkdownContent({ content }: { content: string }) {
-  return <div className="article-body space-y-5 text-sm md:text-base leading-relaxed text-neutral-700">
+  return <div className="article-body space-y-5 text-base md:text-lg leading-[1.85] text-neutral-700">
     <ReactMarkdown remarkPlugins={[remarkGfm]} components={{
       h1: ({ children }) => <h2 className="text-2xl font-black text-black mt-8">{children}</h2>,
-      h2: ({ children }) => <h2 className="text-xl md:text-2xl font-black text-black mt-8 border-b pb-3">{children}</h2>,
+      h2: ({ children, node }) => <h2 id={articleHeadingId(node?.position?.start.line || 0)} className="text-xl md:text-2xl font-black text-black mt-10 mb-5 scroll-mt-28">{children}</h2>,
       h3: ({ children }) => <h3 className="text-lg font-bold text-black mt-6">{children}</h3>,
       h4: ({ children }) => <h4 className="text-base font-bold text-black mt-5">{children}</h4>,
       ul: ({ children }) => <ul className="list-disc pl-6 space-y-2">{children}</ul>,

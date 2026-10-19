@@ -1,4 +1,4 @@
-import { FEATURED_PROJECTS } from '@/data';
+import { FEATURED_PROJECTS, TESTIMONIALS } from '@/data';
 import { CLIENT_CASE_STUDIES } from './clientCaseStudies';
 
 const featuredDetails = [
@@ -36,10 +36,11 @@ export function getCaseContent(slug: string) {
   if (index < 0) return undefined;
   const details = featuredDetails[index];
   const project = FEATURED_PROJECTS[index];
+  const feedback = TESTIMONIALS.find(item => item.linkedCaseStudyPath === `/case-studies/${slug}`);
   return {
     ...details, title: `${details.name}: SEO case study`, industry: project.industry,
     focus: project.technologies, execution: project.execution, results: project.results,
-    quote: '', attribution: '',
+    quote: feedback?.quote || '', attribution: feedback ? `${feedback.name}, ${feedback.role}, ${feedback.company}` : '',
     services: [
       { path: index === 1 ? '/services/local-seo' : '/services/semantic-seo', label: index === 1 ? 'Local SEO services' : 'Semantic SEO consulting' },
       { path: '/services/ai-seo-consulting', label: 'AI SEO consulting' },

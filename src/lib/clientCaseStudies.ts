@@ -53,10 +53,9 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
       "Set up call tracking and a process for requesting customer reviews."
 ],
     results: [
-      "Local pack visibility within weeks — new customers began saying they found the roaster through online search.",
-      "Map pack appearance for high-intent coffee roaster + whole bean queries across target Austin neighborhoods.",
-      "Attributed inbound calls and a growing stream of new local customers.",
-    ],
+      "The client reported appearing in the local pack within weeks.",
+      "New customers told the business they had found it through online search."
+],
     technologies: [
       "Google Business Profile",
       "CoffeeShop Schema",
@@ -121,10 +120,9 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
       "Clarified service, jurisdiction, and contact information throughout the website."
 ],
     results: [
-      "Calls from local leads doubled as the firm became discoverable to people actively searching for legal help.",
-      "A professional, trustworthy online presence consistent with the firm's reputation.",
-      "Consistent local citation and review footprint strengthening local relevance.",
-    ],
+      "The client reported that calls from local leads had doubled.",
+      "Client feedback described a more professional website and a stronger local search strategy."
+],
     technologies: [
       "Google Business Profile",
       "LegalService Schema",
@@ -188,10 +186,9 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
       "Set up tracking for reservation inquiries and reviews."
 ],
     results: [
-      "Visibility in exactly the neighborhoods the hotel wanted to target.",
-      "Bookings through organic search up 35% as direct discoverability grew.",
-      "A defensible local presence against far larger hotel competitors.",
-    ],
+      "The client reported a 35% increase in bookings through organic search.",
+      "Client feedback described improved visibility in the Miami Beach neighborhoods the hotel wanted to reach."
+],
     technologies: [
       "Google Business Profile",
       "Hotel Schema",
@@ -255,10 +252,9 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
       "Reworked category pages to explain and connect the relevant products."
 ],
     results: [
-      "Organic sales became the business's main revenue stream within three months.",
-      "Product and category pages began ranking for the exact products the business sells.",
-      "A catalog that crawlers could fully see, index, and attribute to relevant searches.",
-    ],
+      "The client reported that organic sales became the main revenue stream within three months.",
+      "Client feedback highlighted the technical fixes and product-page work behind the engagement."
+],
     technologies: [
       "Technical SEO",
       "Product Schema",
@@ -322,10 +318,9 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
       "Clarified the studio’s training specialties throughout the website."
 ],
     results: [
-      "Consistently in the top three local results for the studio's target searches.",
-      "A steady stream of new members discovering the studio through local search.",
-      "Clear local authority for personal-training intent in South Seattle.",
-    ],
+      "The client reported consistently appearing in the top three local results for target searches.",
+      "Client feedback linked local discovery with a steady stream of new members."
+],
     technologies: [
       "Google Business Profile",
       "HealthClub Schema",
@@ -390,17 +385,15 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
       "Aligned headings, page relationships, and internal links with that content plan."
 ],
     results: [
-      "A semantic and geo-focus foundation that gives the brand a competitive edge with AI-first audiences.",
-      "Content structured to be surfaced by AI search engines as the category grows search vocabulary.",
-      "Entity-level clarity in a category where competitors remain invisible to machine understanding.",
-    ],
+      "The engagement organized the product’s concepts, use cases, and related topics into a content plan.",
+      "Client feedback highlighted the value of connecting semantic SEO with clear explanations for an AI-focused audience."
+],
     technologies: [
-      "Semantic SEO",
-      "Entity Mapping",
-      "LLM Content Alignment",
-      "JSON-LD Schema",
-      "GEO",
-    ],
+      "Content strategy",
+      "Product explanations",
+      "Topic planning",
+      "Structured data"
+],
     imageSrc:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     background:

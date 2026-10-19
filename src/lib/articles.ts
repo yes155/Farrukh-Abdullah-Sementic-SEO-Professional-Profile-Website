@@ -38,7 +38,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
     "relatedArticleIds": [
       "how-to-build-topical-authority-for-ai-seo"
     ],
-    "relatedIndustrySlugs": []
+    "relatedIndustrySlugs": [],
+    "relatedCaseStudyPath": "/case-studies/windcave",
+    "relatedCaseStudyName": "Windcave"
   },
   {
     "id": "schema-strategy-growth-brands",
@@ -56,7 +58,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
     "relatedArticleIds": [
       "schema-as-citation-signal"
     ],
-    "relatedIndustrySlugs": []
+    "relatedIndustrySlugs": [],
+    "relatedCaseStudyPath": "/case-studies/swag-pro",
+    "relatedCaseStudyName": "Swag Pro"
   },
   {
     "id": "local-entity-seo-ai-search",
@@ -80,7 +84,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
       "seo-for-electricians",
       "seo-for-orthodontists",
       "seo-for-plumbers"
-    ]
+    ],
+    "relatedCaseStudyPath": "/case-studies/local-seo-systems",
+    "relatedCaseStudyName": "Local lead-generation portfolio"
   },
   {
     "id": "topical-map-framework",
@@ -88,11 +94,11 @@ export const EDITORIAL_ARTICLES: Insight[] = [
     "category": "Topical Authority",
     "readTime": "2 min read",
     "date": "July 17, 2026",
-    "modifiedDate": "2026-10-18T18:18:45Z",
+    "modifiedDate": "2026-10-19",
     "summary": "Create a practical topic and URL plan with distinct page purposes, evidence, and useful internal links.",
     "metaTitle": "How to Build a Topical Map Around Customer Decisions",
     "metaDescription": "Create a practical topic and URL plan with distinct page purposes, evidence, and useful internal links.",
-    "contentMarkdown": "## A map is a planning document\n\nA topical map records which subjects a site should explain, why those subjects matter to its audience, and where each explanation belongs. It is not a disclosed Google score or proof that publishing more pages creates authority.\n\n## Define the business and audience\n\nWrite down what the business offers, who buys it, and what decisions those buyers make. For a consultant, the person is the author and service provider; the commercial subjects are the actual services. Repeating the consultant's name in every paragraph is unnecessary.\n\n## Build a small intent inventory\n\nList the customer question, existing URL, primary purpose, evidence, and next step. A page can cover several related questions when that is useful. Do not split every entity attribute or query wording into another URL.\n\n| Customer decision | Page purpose | Evidence |\n|---|---|---|\n| Is this service suitable? | Explain scope and fit | Sample deliverable |\n| Can this provider do the work? | Demonstrate experience | Documented case study |\n| What happens next? | Explain inquiry and delivery | Process and access requirements |\n\n## Identify overlap before expanding\n\nTwo articles can use similar terminology while answering different questions. Compare the actual audience, information, and outcome before consolidating. If the same task is repeated, combine the useful content and plan a relevant permanent redirect.\n\n## Plan the bridges\n\nConnect an explanation to the service it supports and a relevant example. The anchor should describe the actual destination. There is no universal requirement for exactly three links or a fixed number of pages per cluster.\n\n## Review the map over time\n\nUse query and conversion data to see which tasks the site serves. Missing evidence can be more important than a missing article. Maintain an owner and review date for each important page.\n\n## Sources and scope\n\n- [Google helpful-content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)\n- [Google SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)\n- [Crawlable links guidance](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)",
+    "contentMarkdown": "## A map is a planning document\n\nA topical map records which subjects a site should explain, why those subjects matter to its audience, and where each explanation belongs. It is not a disclosed Google score or proof that publishing more pages creates authority.\n\n## Define the business and audience\n\nWrite down what the business offers, who buys it, and what decisions those buyers make. For a consultant, the person is the author and service provider; the commercial subjects are the actual services. Repeating the consultant's name in every paragraph is unnecessary.\n\n## Build a small intent inventory\n\nList the customer question, existing URL, primary purpose, evidence, and next step. A page can cover several related questions when that is useful. Do not split every entity attribute or query wording into another URL.\n\n| Customer decision | Page purpose | Evidence |\n|---|---|---|\n| Is this service suitable? | Explain scope and fit | Sample deliverable |\n| Can this provider do the work? | Demonstrate experience | Documented case study |\n| What happens next? | Explain inquiry and delivery | Process and access requirements |\n\n## Identify overlap before expanding\n\nTwo articles can use similar terminology while answering different questions. Compare the actual audience, information, and outcome before consolidating. If the same task is repeated, combine the useful content and plan a relevant permanent redirect.\n\n## Choose a page, heading, or short section\n\nUse a distinct page when a visitor has a separate task and you can provide a useful, complete answer. Use a heading for a meaningful sub-question of an existing page. Use a sentence or short section for a close wording variant. QDP, QDH, and QDS are planning labels, not Google ranking metrics.\n\n| Decision | Example | Placement |\n|---|---|---|\n| QDP: distinct task | Compare an SEO service’s scope and fit | Existing service page |\n| QDH: supporting question | What access does the consultant need? | Heading or FAQ on that service page |\n| QDS: close variant | Fence company SEO versus fencing contractor SEO | Natural wording on the same industry page |\n\nCompetitor coverage can reveal unanswered customer questions. A requirement to publish 20–30% more topics than competitors is not an established threshold; relevance and useful evidence matter more than a page-count target.\n\n## Plan the bridges\n\nConnect an explanation to the service it supports and a relevant example. The anchor should describe the actual destination. There is no universal requirement for exactly three links or a fixed number of pages per cluster.\n\n## Review the map over time\n\nUse query and conversion data to see which tasks the site serves. Missing evidence can be more important than a missing article. Maintain an owner and review date for each important page.\n\n## Sources and scope\n\n- [Google helpful-content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)\n- [Google SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)\n- [Crawlable links guidance](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)",
     "relatedServicePath": "/services/semantic-seo",
     "relatedServiceName": "Semantic SEO consulting",
     "relatedArticleIds": [
@@ -100,7 +106,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
       "entity-based-content-architecture",
       "content-freshness-ai-search"
     ],
-    "relatedIndustrySlugs": []
+    "relatedIndustrySlugs": [],
+    "relatedCaseStudyPath": "/case-studies/windcave",
+    "relatedCaseStudyName": "Windcave"
   },
   {
     "id": "entity-first-geo",
@@ -120,7 +128,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
       "answer-capsules-ai-extraction",
       "ai-mode-search-language"
     ],
-    "relatedIndustrySlugs": []
+    "relatedIndustrySlugs": [],
+    "relatedCaseStudyPath": "/case-studies/simulithic",
+    "relatedCaseStudyName": "Simulithic"
   },
   {
     "id": "answer-capsules-ai-extraction",
@@ -140,7 +150,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
       "entity-first-geo",
       "ai-mode-search-language"
     ],
-    "relatedIndustrySlugs": []
+    "relatedIndustrySlugs": [],
+    "relatedCaseStudyPath": "/case-studies/simulithic",
+    "relatedCaseStudyName": "Simulithic"
   },
   {
     "id": "ai-mode-search-language",
@@ -160,7 +172,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
       "entity-first-geo",
       "answer-capsules-ai-extraction"
     ],
-    "relatedIndustrySlugs": []
+    "relatedIndustrySlugs": [],
+    "relatedCaseStudyPath": "/case-studies/simulithic",
+    "relatedCaseStudyName": "Simulithic"
   },
   {
     "id": "schema-as-citation-signal",
@@ -180,7 +194,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
       "faq-schema-ai-overviews",
       "entity-first-geo"
     ],
-    "relatedIndustrySlugs": []
+    "relatedIndustrySlugs": [],
+    "relatedCaseStudyPath": "/case-studies/swag-pro",
+    "relatedCaseStudyName": "Swag Pro"
   },
   {
     "id": "content-freshness-ai-search",
@@ -200,7 +216,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
       "topical-authority-core-update",
       "original-data-solo-seo"
     ],
-    "relatedIndustrySlugs": []
+    "relatedIndustrySlugs": [],
+    "relatedCaseStudyPath": "/case-studies/windcave",
+    "relatedCaseStudyName": "Windcave"
   },
   {
     "id": "topical-authority-core-update",
@@ -220,7 +238,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
       "content-freshness-ai-search",
       "original-data-solo-seo"
     ],
-    "relatedIndustrySlugs": []
+    "relatedIndustrySlugs": [],
+    "relatedCaseStudyPath": "/case-studies/windcave",
+    "relatedCaseStudyName": "Windcave"
   },
   {
     "id": "reddit-youtube-co-citation-geo",
@@ -260,7 +280,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
       "content-freshness-ai-search",
       "topical-authority-core-update"
     ],
-    "relatedIndustrySlugs": []
+    "relatedIndustrySlugs": [],
+    "relatedCaseStudyPath": "/case-studies/windcave",
+    "relatedCaseStudyName": "Windcave"
   },
   {
     "id": "local-businesses-ai-search",
@@ -284,7 +306,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
       "seo-for-salons",
       "seo-for-therapists",
       "seo-for-dermatologists"
-    ]
+    ],
+    "relatedCaseStudyPath": "/case-studies/local-seo-systems",
+    "relatedCaseStudyName": "Local lead-generation portfolio"
   },
   {
     "id": "geo-measurement-stack",
@@ -292,11 +316,11 @@ export const EDITORIAL_ARTICLES: Insight[] = [
     "category": "AI Search",
     "readTime": "2 min read",
     "date": "August 11, 2026",
-    "modifiedDate": "2026-10-18T18:18:45Z",
+    "modifiedDate": "2026-10-19",
     "summary": "Define citations, share of voice, and business outcomes with a repeatable sample and explicit uncertainty.",
     "metaTitle": "Measure AI Search Visibility with a Documented Query Sample",
     "metaDescription": "Define citations, share of voice, and business outcomes with a repeatable sample and explicit uncertainty.",
-    "contentMarkdown": "## Define what you are measuring\n\nA brand mention, a source citation, a referral visit, and an inquiry are different observations. Record them separately. An engine may name a business without linking to its website, or cite a page that produces no useful visit.\n\n## Build a sampling plan\n\nChoose a set of customer questions and record country, language, platform, account context, date, and whether web search was used. Repeat observations consistently enough to understand variation. No single sample size, including 50 runs, is a universal industry standard.\n\n| Field | Meaning |\n|---|---|\n| Citation presence | Whether the answer links to the intended source |\n| Description accuracy | Whether the answer represents the business correctly |\n| Share of voice | Your stated proportion within a defined comparison set |\n| Referral outcome | Visits and qualified inquiries attributed to the source |\n\n## An illustrative calculation\n\nIf a source is cited in 3 of 10 observations, its observed citation frequency in that sample is 30%. That is not a 30% probability of being cited for all users. The sample may vary by time, engine, location, and personalization.\n\n## Turn observations into work\n\nIf an answer repeats an outdated fact, correct the underlying page and profile. If the source cannot access the page, inspect status and access rules. If competitors provide more useful evidence, improve the substance rather than inventing another markup field.\n\n## Report uncertainty\n\nKeep missing results and failed requests visible. Record simultaneous site changes and platform changes. Use permitted interfaces and collection methods. Explain the cost and feasibility of repeated sampling before treating a large run count as mandatory.\n\n## Connect to business value\n\nCompare referral visits, inquiry quality, and engagements over time. A citation count without a defined query set or outcome is too ambiguous to serve as the only performance measure.\n\n## Sources and scope\n\n- [Google AI optimization and measurement guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)\n- [GEO visibility metric definitions](https://arxiv.org/html/2311.09735v3)\n- [OpenAI search crawler documentation](https://developers.openai.com/api/docs/bots)",
+    "contentMarkdown": "## Define what you are measuring\n\nA brand mention, a source citation, a referral visit, and an inquiry are different observations. Record them separately. An engine may name a business without linking to its website, or cite a page that produces no useful visit.\n\n## Use available first-party reporting\n\nGoogle introduced Generative AI performance reports in Search Console in June 2026, initially for a subset of websites. Where the report is available for your property, record its AI-feature impressions, pages, countries, devices, and date range alongside the overall search performance report. If it is unavailable, record that gap rather than treating overall Web impressions as a separate AI-only measure.\n\nKeep platform observations, referral visits, and qualified inquiries separate from those impressions. This guide does not claim access to your property or that a report is enabled for every website.\n\n## Build a sampling plan\n\nChoose a set of customer questions and record country, language, platform, account context, date, and whether web search was used. Repeat observations consistently enough to understand variation. No single sample size, including 50 runs, is a universal industry standard.\n\n| Field | Meaning |\n|---|---|\n| Citation presence | Whether the answer links to the intended source |\n| Description accuracy | Whether the answer represents the business correctly |\n| Share of voice | Your stated proportion within a defined comparison set |\n| Referral outcome | Visits and qualified inquiries attributed to the source |\n\n## An illustrative calculation\n\nIf a source is cited in 3 of 10 observations, its observed citation frequency in that sample is 30%. That is not a 30% probability of being cited for all users. The sample may vary by time, engine, location, and personalization.\n\n## Turn observations into work\n\nIf an answer repeats an outdated fact, correct the underlying page and profile. If the source cannot access the page, inspect status and access rules. If competitors provide more useful evidence, improve the substance rather than inventing another markup field.\n\n## Report uncertainty\n\nKeep missing results and failed requests visible. Record simultaneous site changes and platform changes. Use permitted interfaces and collection methods. Explain the cost and feasibility of repeated sampling before treating a large run count as mandatory.\n\n## Connect to business value\n\nCompare referral visits, inquiry quality, and engagements over time. A citation count without a defined query set or outcome is too ambiguous to serve as the only performance measure.\n\n## Sources and scope\n\n- [Google’s introduction to Generative AI performance reports](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)\n- [Google AI optimization and measurement guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)\n- [GEO visibility metric definitions](https://arxiv.org/html/2311.09735v3)\n- [OpenAI search crawler documentation](https://developers.openai.com/api/docs/bots)",
     "relatedServicePath": "/services/ai-seo-consulting",
     "relatedServiceName": "AI SEO consulting",
     "relatedArticleIds": [
@@ -329,7 +353,9 @@ export const EDITORIAL_ARTICLES: Insight[] = [
       "seo-for-landscapers",
       "seo-for-pest-control",
       "seo-for-contractors"
-    ]
+    ],
+    "relatedCaseStudyPath": "/case-studies/local-seo-systems",
+    "relatedCaseStudyName": "Local lead-generation portfolio"
   },
   {
     "id": "chatgpt-seo-optimization",
@@ -407,6 +433,8 @@ export const EDITORIAL_ARTICLES: Insight[] = [
     "relatedArticleIds": [
       "entity-based-content-architecture"
     ],
-    "relatedIndustrySlugs": []
+    "relatedIndustrySlugs": [],
+    "relatedCaseStudyPath": "/case-studies/windcave",
+    "relatedCaseStudyName": "Windcave"
   }
 ];

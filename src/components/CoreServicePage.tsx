@@ -1,18 +1,38 @@
 import Link from 'next/link';
 import EditorialLayout, { ContentSection, ContactAction } from './EditorialLayout';
+import PageQuestions from './PageQuestions';
 import JsonLd from './JsonLd';
 import { CORE_SERVICES } from '@/lib/serviceContent';
 import { getServiceSchema } from '@/lib/schemas';
+
+const questions: Record<string, { q: string; a: string }[]> = {
+  'semantic-seo': [
+    { q: 'Do I need a separate page for every keyword?', a: 'No. A separate page makes sense when the visitor has a different task or needs a substantially different answer. Close variants can usually be covered with headings or a short explanation on an existing page.' },
+    { q: 'What does a topic map include?', a: 'A topic map connects customer questions to existing or proposed pages. It records page purpose, supporting evidence, internal links, and decisions to retain, improve, or combine content.' },
+    { q: 'Can you work with my writer or developer?', a: 'Yes. The scope can include page briefs and implementation instructions for your team, or agreed changes that I carry out with the appropriate access.' },
+  ],
+  'local-seo': [
+    { q: 'Can a service-area business use local SEO?', a: 'Yes. The review starts with the real service area, business eligibility, and how customers contact the business. Pages and profiles should describe that operation accurately.' },
+    { q: 'What should we measure besides rankings?', a: 'Track relevant calls, forms, booked appointments, and lead quality when those records are available. Keep ranking observations separate from confirmed business outcomes.' },
+    { q: 'What access do you need?', a: 'Business Profile access, the website, accurate service and location information, and any available Search Console or inquiry records. Access is agreed for the work in scope.' },
+  ],
+  'ai-seo-consulting': [
+    { q: 'Can you guarantee a citation in an AI answer?', a: 'No. The work improves access, factual information, and useful supporting content. A platform decides which sources it uses, and answers can vary by question, time, and user context.' },
+    { q: 'How do you measure AI-search visibility?', a: 'Use the Search Console Generative AI performance report where it is available, alongside overall search data. Keep dated observations on other platforms, referral visits, and qualified inquiries as separate measures.' },
+    { q: 'Do I need special AI markup?', a: 'Google does not require special AI markup or an llms.txt file for its generative search features. Start with accessible pages, accurate information, and useful content.' },
+  ],
+};
 export default function CoreServicePage({ slug }: { slug: string }) {
- const service = CORE_SERVICES.find(s => s.slug === slug)!;
- return <EditorialLayout title={service.title} intro={service.intro} path={`/services/${slug}`} parent={{name:'Services',url:'/services'}}>
-  <JsonLd id="service-schema" data={getServiceSchema(`/services/${slug}`, service.title, service.intro)} />
-  <div className="grid md:grid-cols-2 gap-6"><ContentSection title="Who this is for"><p>{service.audience}</p></ContentSection><ContentSection title="Scope and responsibilities"><p>{service.scope}</p></ContentSection></div>
-  <ContentSection title="What you receive"><ul className="list-disc pl-6 space-y-3">{service.deliverables.map(d => <li key={d}>{d}</li>)}</ul></ContentSection>
-  <ContentSection title="An illustrative deliverable"><p>{service.example}</p><p className="text-sm">This is a planning example, not a claim of completed work or a promised outcome for your business.</p></ContentSection>
-  <div className="grid md:grid-cols-2 gap-6"><ContentSection title="Access and implementation"><p>{service.access}</p><p>The written scope identifies who approves and implements each change.</p></ContentSection><ContentSection title="How progress is assessed"><p>{service.measurement}</p></ContentSection></div>
-  <ContentSection title="Experience and supporting guidance"><p><Link className="underline" href={service.casePath}>{service.caseLabel}</Link> describes reported work and its evidence limits.</p><p><a className="underline" href={slug==='local-seo' ? 'https://support.google.com/business/answer/7091?hl=en' : 'https://developers.google.com/search/docs/fundamentals/ai-optimization-guide'}>Read the relevant Google guidance</a>.</p><p><Link className="underline" href={slug==='local-seo' ? '/insights/local-entity-seo-ai-search' : slug==='semantic-seo' ? '/insights/topical-map-framework' : '/insights/geo-measurement-stack'}>Read the implementation and measurement explanation</Link>.</p></ContentSection>
-  <ContentSection title="Related services"><ul className="space-y-2">{CORE_SERVICES.filter(s=>s.slug!==slug).map(s=><li key={s.slug}><Link className="underline" href={`/services/${s.slug}`}>{s.title}</Link></li>)}</ul>{slug==='local-seo' && <p><Link className="underline" href="/services">Browse industry services</Link> · <Link className="underline" href="/locations">Remote service areas</Link></p>}</ContentSection>
-  <ContactAction />
- </EditorialLayout>;
+  const service = CORE_SERVICES.find(item => item.slug === slug)!;
+  return <EditorialLayout title={service.title} intro={service.intro} path={`/services/${slug}`} parent={{ name: 'Services', url: '/services' }} attributes={['Independent consultant', 'Remote delivery', 'Agreed implementation scope']} overview={{ title: 'What you receive', items: service.deliverables.slice(0, 3) }} action={{ label: 'Discuss your project', href: '/contact' }}>
+    <JsonLd id="service-schema" data={getServiceSchema(`/services/${slug}`, service.title, service.intro)} />
+    <div className="grid md:grid-cols-2 gap-10"><ContentSection title="Is this the right fit?"><p>{service.audience}</p></ContentSection><ContentSection title="How the engagement works"><p>{service.scope}</p></ContentSection></div>
+    <ContentSection title="Deliverables"><ul className="list-disc pl-6 space-y-3">{service.deliverables.map(item => <li key={item}>{item}</li>)}</ul></ContentSection>
+    <ContentSection title="What the work looks like"><p>{service.example}</p><p className="text-sm text-neutral-500">Planning example; the final brief follows a review of your website.</p></ContentSection>
+    <div className="grid md:grid-cols-2 gap-10"><ContentSection title="What I need from you"><p>{service.access}</p></ContentSection><ContentSection title="How we assess progress"><p>{service.measurement}</p></ContentSection></div>
+    <ContentSection title="See the approach in practice"><p><Link className="underline text-cyan-800" href={service.casePath}>{service.caseLabel}</Link> explains the business challenge, the work, and the outcomes described in the engagement.</p><p><Link className="underline text-cyan-800" href={slug === 'local-seo' ? '/insights/local-entity-seo-ai-search' : slug === 'semantic-seo' ? '/insights/topical-map-framework' : '/insights/geo-measurement-stack'}>Read the implementation guide</Link> or <a className="underline text-cyan-800" href={slug === 'local-seo' ? 'https://support.google.com/business/answer/7091?hl=en' : 'https://developers.google.com/search/docs/fundamentals/ai-optimization-guide'}>Google’s related guidance</a>.</p></ContentSection>
+    <PageQuestions items={questions[slug]} />
+    <ContentSection title="Related services"><ul className="space-y-3">{CORE_SERVICES.filter(item => item.slug !== slug).map(item => <li key={item.slug}><Link className="underline text-cyan-800" href={`/services/${item.slug}`}>{item.title}</Link></li>)}</ul>{slug === 'local-seo' && <p><Link className="underline text-cyan-800" href="/services">Local SEO by industry</Link> · <Link className="underline text-cyan-800" href="/locations">Remote service areas</Link></p>}<p><Link className="underline text-cyan-800" href="/tools/seo-project-planner">Use the free SEO project planner</Link> to prepare your brief.</p></ContentSection>
+    <ContactAction />
+  </EditorialLayout>;
 }
