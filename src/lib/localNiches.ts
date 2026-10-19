@@ -5,7 +5,7 @@ export interface Niche {
  slug: string; industry: string; singular: string; schemaType: string; eyebrow: string; headline: string; intro: string;
  deliverables: string[]; strategies: NicheStrategy[]; faqs: NicheFaq[]; keywords: NicheKeyword[]; focusKeywords: string[];
  relatedCities: string[]; relatedInsight: string; relatedCaseStudyPath: string; relatedCaseStudyName: string;
- example: string; measurement: string; limitations: string;
+ example: string; measurement: string; limitations: string; metaTitle?: string; metaDescription?: string;
 }
 export const LOCAL_NICHES: Niche[] = [
   {
@@ -333,12 +333,11 @@ export const LOCAL_NICHES: Niche[] = [
     "schemaType": "Electrician",
     "eyebrow": "Local SEO consulting",
     "headline": "SEO for Electricians",
-    "intro": "Electrical buyers need accurate licensing, actual coverage, and a safe route to request professional service. I review the website, business profile, and contact journey, then agree the work needed for the actual market.",
+    "intro": "I help electrical contractors organize local search around the jobs they want to accept: emergency calls, panel upgrades, EV charger installations, and commercial work. The scope connects accurate service coverage, useful pages, and qualified inquiries—not just traffic.",
     "deliverables": [
-      "Service and intent map for emergency work, panel upgrades, EV charger installation",
-      "Accurate business/profile and service-coverage review",
-      "Page briefs, useful internal links, and implementation responsibilities",
-      "Qualified calls and estimate requests, separated into urgent and planned work."
+      "Electrical-service and coverage review",
+      "Distinct briefs for urgent and planned work",
+      "Qualified-call and booked-job measurement"
     ],
     "strategies": [
       {
@@ -352,12 +351,20 @@ export const LOCAL_NICHES: Niche[] = [
     ],
     "faqs": [
       {
-        "q": "What makes SEO for electricians different?",
-        "a": "Electrical buyers need accurate licensing, actual coverage, and a safe route to request professional service. Verify licensing and hours with the contractor. SEO content must not replace electrical safety advice."
+        "q": "How do you approach electrician map-pack SEO?",
+        "a": "I first review Business Profile eligibility, the selected categories, services, hours, contact details, and the actual operating area against the electrical business’s records. I then review the linked website and how a caller reaches the team. Relevance, distance, and prominence affect local results; adding more city names does not create a new service location."
       },
       {
-        "q": "What does the initial review produce?",
-        "a": "A prioritized list of observed problems, recommended changes, required access, and a scope for implementation. Ranking and lead-volume outcomes are not guaranteed."
+        "q": "Should emergency work and EV charger installations have separate pages?",
+        "a": "They can when the contractor offers both and each page answers a distinct customer task. Emergency visitors need actual availability and a call route; planned installations need assessment and estimate information. Wording variants for the same job can stay on one page."
+      },
+      {
+        "q": "What do you need from the electrical contractor?",
+        "a": "An approved service list, genuine operating area, licensing information the business can substantiate, contact availability, and existing project evidence. Search Console, Business Profile, website, and aggregate inquiry records help define the implementation scope."
+      },
+      {
+        "q": "How will I know whether SEO is bringing useful jobs?",
+        "a": "We compare relevant inquiries, assessments booked, and accepted jobs where your records can connect them to search. Phone-link clicks are reported as interactions; an answered call still needs a service and coverage check before it counts as a qualified lead."
       }
     ],
     "keywords": [
@@ -377,7 +384,9 @@ export const LOCAL_NICHES: Niche[] = [
     "relatedCaseStudyName": "General local lead-generation portfolio",
     "example": "Separate emergency call routing from planned upgrades. An EV charger page can explain inspection and quote steps without promising installation eligibility.",
     "measurement": "Qualified calls and estimate requests, separated into urgent and planned work.",
-    "limitations": "Verify licensing and hours with the contractor. SEO content must not replace electrical safety advice."
+    "limitations": "Verify licensing and hours with the contractor. SEO content must not replace electrical safety advice.",
+    "metaTitle": "SEO for Electricians: Local Search & Job Inquiries",
+    "metaDescription": "Local SEO for electrical contractors: service and coverage reviews, EV charger page briefs, practical examples, and qualified-call measurement. Work with Farrukh."
   },
   {
     "slug": "seo-for-contractors",
@@ -598,12 +607,11 @@ export const LOCAL_NICHES: Niche[] = [
     "schemaType": "Dentist",
     "eyebrow": "Local SEO consulting",
     "headline": "SEO for Orthodontists",
-    "intro": "Patients comparing orthodontic options need a clear consultation route, accurate practice information, and understandable next steps. I review the website, business profile, and contact journey, then agree the work needed for the actual market.",
+    "intro": "I help orthodontic practices connect local discovery and treatment research to a clear consultation route. The work reviews practice information, braces and clear-aligner page purposes, clinician evidence, and how appointment inquiries become confirmed bookings.",
     "deliverables": [
-      "Service and intent map for braces consultations, clear-aligner inquiries, treatment planning",
-      "Accurate business/profile and service-coverage review",
-      "Page briefs, useful internal links, and implementation responsibilities",
-      "Relevant consultation requests, bookings, and attended appointments if aggregate data is available."
+      "Practice and treatment-page review",
+      "Consultation briefs with practice approval",
+      "Aggregate booking-quality measurement"
     ],
     "strategies": [
       {
@@ -617,12 +625,20 @@ export const LOCAL_NICHES: Niche[] = [
     ],
     "faqs": [
       {
-        "q": "What makes SEO for orthodontists different?",
-        "a": "Patients comparing orthodontic options need a clear consultation route, accurate practice information, and understandable next steps. Do not promise treatment eligibility, financing approval, clinical outcomes, or acquisition results from another industry."
+        "q": "What does local SEO for orthodontists include?",
+        "a": "The initial scope reviews actual practice locations, Business Profile information, clinician details, treatment-page purposes, internal links, and consultation routes. The deliverable identifies the pages and business information to improve, who approves the content, and how implementation will be checked."
       },
       {
-        "q": "What does the initial review produce?",
-        "a": "A prioritized list of observed problems, recommended changes, required access, and a scope for implementation. Ranking and lead-volume outcomes are not guaranteed."
+        "q": "Should braces and clear aligners have separate pages?",
+        "a": "They can if the practice offers both and can answer meaningfully different patient questions. Each page should explain the actual consultation process and link to the relevant practice and clinician information. Individual treatment suitability remains a clinical assessment."
+      },
+      {
+        "q": "Who approves treatment and payment information?",
+        "a": "The practice approves clinician qualifications, treatment descriptions, photographs, consent requirements, and payment statements before publication. My role is to organize and implement useful content from confirmed practice information."
+      },
+      {
+        "q": "How do you measure orthodontic consultation quality?",
+        "a": "Where the practice can supply aggregate records, we distinguish consultation inquiries, relevant requests, confirmed bookings, and attended appointments. We agree the reporting period and attribution limits, and keep patient health information out of website analytics events."
       }
     ],
     "keywords": [
@@ -642,7 +658,9 @@ export const LOCAL_NICHES: Niche[] = [
     "relatedCaseStudyName": "General local lead-generation portfolio",
     "example": "Separate consultation questions from general dental care. Describe braces, aligners, and financing only from practice-approved material, then connect to the correct booking route.",
     "measurement": "Relevant consultation requests, bookings, and attended appointments if aggregate data is available.",
-    "limitations": "Do not promise treatment eligibility, financing approval, clinical outcomes, or acquisition results from another industry."
+    "limitations": "Do not promise treatment eligibility, financing approval, clinical outcomes, or acquisition results from another industry.",
+    "metaTitle": "Local SEO for Orthodontists: Consultation Journeys",
+    "metaDescription": "Local SEO for orthodontic practices: treatment-page planning, accurate practice information, consultation routes, and booking-quality measurement. View example briefs."
   },
   {
     "slug": "seo-for-dermatologists",
@@ -704,12 +722,11 @@ export const LOCAL_NICHES: Niche[] = [
     "schemaType": "HomeAndConstructionBusiness",
     "eyebrow": "Local SEO consulting",
     "headline": "SEO for Fence Contractors",
-    "intro": "A homeowner researching materials is at a different stage from someone ready to request an installation estimate. I review the website, business profile, and contact journey, then agree the work needed for the actual market.",
+    "intro": "I help fence contractors connect material research, installation questions, and repair searches to the right estimate process. The work starts with the fencing services you actually offer, your project evidence, and the areas your team can serve.",
     "deliverables": [
-      "Service and intent map for wood fencing, vinyl fencing, security and boundary work",
-      "Accurate business/profile and service-coverage review",
-      "Page briefs, useful internal links, and implementation responsibilities",
-      "Qualified estimate requests, booked site visits, and accepted installation or repair jobs."
+      "Material, installation, and repair page map",
+      "Project-led content and implementation briefs",
+      "Qualified estimates and accepted-job tracking"
     ],
     "strategies": [
       {
@@ -723,12 +740,20 @@ export const LOCAL_NICHES: Niche[] = [
     ],
     "faqs": [
       {
-        "q": "What makes SEO for fence contractors different?",
-        "a": "A homeowner researching materials is at a different stage from someone ready to request an installation estimate. Do not invent material prices, permit rules, local projects, or fencing outcomes from a mixed-industry portfolio."
+        "q": "Do fence company SEO and fence contractor SEO need separate pages?",
+        "a": "Usually they describe the same service buyer and belong on one useful page. Separate pages are justified by different customer tasks, such as comparing materials, requesting a repair, or planning a commercial project—not a swap between company and contractor."
       },
       {
-        "q": "What does the initial review produce?",
-        "a": "A prioritized list of observed problems, recommended changes, required access, and a scope for implementation. Ranking and lead-volume outcomes are not guaranteed."
+        "q": "Should every fence material have its own page?",
+        "a": "Only when the contractor offers it and can give a useful, distinct explanation supported by accurate service details and project evidence. A short material mention can remain on the main fencing page. Thin pages that repeat the same text do not help a homeowner choose."
+      },
+      {
+        "q": "What project evidence should a fencing page include?",
+        "a": "Genuine photographs with accurate descriptions, the material and work completed, relevant site considerations supplied by the contractor, and the actual estimate process. I identify missing evidence in the brief; your team confirms what can be published."
+      },
+      {
+        "q": "Can you improve the quality of fence estimate requests?",
+        "a": "The review checks whether installation, repair, material, project type, and operating-area information are clear before a visitor contacts you. We agree a qualification definition and review unique projects, booked site visits, and accepted estimates where records are available. Results depend on demand, competition, the offer, and implementation."
       }
     ],
     "keywords": [
@@ -748,7 +773,9 @@ export const LOCAL_NICHES: Niche[] = [
     "relatedCaseStudyName": "General local lead-generation portfolio",
     "example": "Separate material explanations from installation and repair quote routes. Show genuine project photographs, actual coverage, and the site-visit/estimate process.",
     "measurement": "Qualified estimate requests, booked site visits, and accepted installation or repair jobs.",
-    "limitations": "Do not invent material prices, permit rules, local projects, or fencing outcomes from a mixed-industry portfolio."
+    "limitations": "Do not invent material prices, permit rules, local projects, or fencing outcomes from a mixed-industry portfolio.",
+    "metaTitle": "Fence Contractor SEO: Local Search & Estimate Requests",
+    "metaDescription": "SEO for fence contractors covering material and service pages, genuine project evidence, repair inquiries, and qualified estimate tracking. See sample deliverables."
   }
 ];
 export function getNicheBySlug(slug: string) { return LOCAL_NICHES.find(n => n.slug === slug); }

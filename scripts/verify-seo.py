@@ -80,6 +80,28 @@ def run(base):
  for path,p in cases.items():
   assert not p.main_images,(path,'Unrelated image returned in case-study template')
   article=[s for s in p.schemas if s.get('@type')=='Article'];assert len(article)==1 and article[0]['headline']==p.h1[0],path
+ priority={
+  '/services/seo-for-electricians':('Mr. Electric','EV charger installation page brief','https://mrelectric.com/residential/electric-vehicles/ev-charger-installation-replacement','/services/ev-charger-installation'),
+  '/services/seo-for-fence-contractors':('Long Fence','Wood fence installation page brief','https://www.longfence.com/repair/','/fencing/wood-fence-installation'),
+  '/services/seo-for-orthodontists':('Diamond Braces','Clear-aligner consultation page brief','https://www.diamondbraces.com/pages/free-virtual-consultation','/treatments/clear-aligner-consultation'),
+ }
+ for path,(business,brief,source,example_url) in priority.items():
+  p=results[path];text=' '.join(' '.join(p.dom_text).split());headings=[text for _,text in p.headings]
+  assert 'Public-site walkthrough: '+business in headings,(path,'Missing independent walkthrough')
+  assert brief in headings and 'Sample deliverable' in text,(path,'Missing original implementation brief')
+  assert 'Not a client case study' in text,(path,'Example could be confused with client work')
+  assert any(href==source and main for href,main in p.links),(path,'Missing primary-source link')
+  assert not any(href==example_url for href,_ in p.links),(path,'Illustrative business URL became a broken site link')
+  assert 'Measure the inquiry journey, not just clicks' in headings,(path,'Missing outcome definitions')
+  assert len(p.descriptions[0])<=170,(path,'Service description too long')
+  service=[schema for schema in p.schemas if schema.get('@type')=='Service']
+  assert len(service)==1 and service[0]['name']==p.h1[0],(path,'Service schema and visible title differ')
+  assert any(href==path and main for href,main in results['/services/local-seo'].links),(path,'Not linked from parent service')
+  for guide in ['local-entity-seo-ai-search','us-cities-local-seo-opportunity']:
+   assert any(href==path and main for href,main in results['/insights/'+guide].links),(path,'Missing guide link')
+ for path,p in results.items():
+  if path.startswith('/services/seo-for-') and path not in priority:
+   assert not any('Public-site walkthrough:' in text for _,text in p.headings),(path,'Wrong industry example leaked onto another service')
  planner=results['/tools/seo-project-planner']
  assert {'planner-website','planner-business','planner-goal'}<=planner.ids
  assert any(s.get('@type')=='WebApplication' and s['offers']['price']=='0' for s in planner.schemas)
@@ -95,6 +117,6 @@ def run(base):
   except urllib.error.HTTPError as e:
    assert e.code in (301,308),(old,e.code)
    assert urllib.parse.urlparse(e.headers['Location']).path==new,(old,e.headers['Location'])
- print(json.dumps({'pages':len(paths),'articles':len(articles),'case_studies':len(cases),'faq_and_fragment_checks':'passed','primary_sources':'20/20','article_schema':'20/20','missing_routes':'3 paths × 2 user agents return 404','redirects':2,'status':'passed'},indent=2))
+ print(json.dumps({'pages':len(paths),'articles':len(articles),'case_studies':len(cases),'faq_and_fragment_checks':'passed','priority_service_walkthroughs':'3/3','primary_sources':'20/20','article_schema':'20/20','missing_routes':'3 paths × 2 user agents return 404','redirects':2,'status':'passed'},indent=2))
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('--base-url',default='http://127.0.0.1:4317');run(parser.parse_args().base_url.rstrip('/'))
