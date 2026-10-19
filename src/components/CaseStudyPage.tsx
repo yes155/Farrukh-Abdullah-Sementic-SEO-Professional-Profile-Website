@@ -6,7 +6,7 @@ import { getCaseContent } from '@/lib/caseContent';
 import { CANONICAL_DOMAIN, PERSON_ID, ORGANIZATION_ID, getBreadcrumbSchema } from '@/lib/schemas';
 import { displayDate } from '@/lib/contentMetadata';
 
-const UPDATED = '2026-10-19T08:40:00Z';
+const UPDATED = '2026-10-19';
 
 export default function CaseStudyPage({ slug }: { slug: string }) {
   const study = getCaseContent(slug);
