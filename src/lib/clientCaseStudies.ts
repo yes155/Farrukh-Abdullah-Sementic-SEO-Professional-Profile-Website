@@ -40,18 +40,18 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
     ownerRole: "Manager, Armadillo Coffee Roasters",
     location: "Austin, TX",
     industry: "Coffee Roasting & Retail",
-    challengeShort: "A specialty coffee roaster buried on page three of Google in one of the country's most competitive local retail markets.",
+    challengeShort: "Helping an Austin coffee roaster improve local discovery through its business profile, neighborhood pages, and consistent listings.",
     challenge:
-      "Armadillo Coffee Roasters is a specialty roaster in Austin, Texas. Despite a loyal local following, the business was buried on page three of Google for the searches that matter — coffee roaster, whole bean, and café queries with Austin intent. New customers weren't finding the brand online, and walk-in growth depended almost entirely on word-of-mouth.",
+      "Armadillo Coffee Roasters relied on an established local following, but new customers were not finding the business easily in search. The project focused on searches for coffee roasters, whole-bean coffee, and cafés in Austin, where the client described being on page three of Google.",
     strategy:
-      "Built a service-area local SEO system around the roaster's real presence: a fully optimized Google Business Profile, a nested LocalBusiness + CoffeeShop schema, service-area pages for the neighborhoods it actually delivers to, and a citation footprint that matched its physical and delivery footprint in Austin.",
+      "I focused on making the storefront and delivery information consistent wherever customers encountered the business. The work connected the Google Business Profile, relevant neighborhood pages, and directory listings, with call tracking to help assess inquiries.",
     execution: [
-      "Rebuilt the Google Business Profile with exact categories, real service areas, updated hours, and consistent NAP matching the Austin storefront.",
-      "Implemented business structured data bound to the physical address and delivery service areas.",
-      "Created neighborhood service-area pages for areas the roaster actually ships to, each with unique local content instead of duplicated keyword walls.",
-      "Audited and corrected local citations across directories so every listing pointed to the same address, phone, and hours.",
-      "Set up call tracking and review generation to support inquiry attribution.",
-    ],
+      "Updated the Google Business Profile with relevant categories, opening hours, service areas, and storefront contact details.",
+      "Added structured business information describing the coffee shop, its address, and delivery coverage.",
+      "Created neighborhood pages for areas the business actually served, with useful local information on each page.",
+      "Corrected inconsistent business names, addresses, phone numbers, and hours across directory listings.",
+      "Set up call tracking and a process for requesting customer reviews."
+],
     results: [
       "Local pack visibility within weeks — new customers began saying they found the roaster through online search.",
       "Map pack appearance for high-intent coffee roaster + whole bean queries across target Austin neighborhoods.",
@@ -108,18 +108,18 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
     ownerRole: "Managing Attorney, The Reese Law Center LLC",
     location: "Homewood, IL",
     industry: "Law Firm",
-    challengeShort: "A Chicago-area law firm relying on referrals, invisible to prospective clients searching for the legal help they offer.",
+    challengeShort: "Helping a Homewood law firm reach prospective clients through clearer practice-area pages and a consistent local presence.",
     challenge:
-      "The Reese Law Center LLC is a law firm in Homewood, Illinois, serving the greater Chicago area. The firm operated largely on referrals and word of mouth, but prospective clients searching for the legal services it provides found little evidence the firm existed — no meaningful local rankings, no optimized profile, and a site that didn't convert search visits.",
+      "The Reese Law Center LLC serves clients in Homewood and the wider Chicago area. The firm relied heavily on referrals, while people searching online for its legal services had difficulty finding it. Its website and local listings needed to explain the practice and make contacting the firm easier.",
     strategy:
-      "Built a trust-first local SEO system for a practice where client confidence is the deciding factor: attorney and LegalService schema, practice-area pages for each service, a rebuilt Google Business Profile, and review and citation work positioned to win local and AI-assisted search recommendations.",
+      "I brought the website and local business information into alignment. The priority was clear explanations of the legal services, the areas served, and the attorneys, supported by an updated Google Business Profile and consistent legal-directory listings.",
     execution: [
-      "Rebuilt the Google Business Profile with the firm's true categories, service areas, and consistent NAP for the Homewood address.",
-      "Injected LegalService + Attorney schema cleanly tied to the firm's entity profile and practice areas.",
-      "Created practice-area pages that answered the real questions local clients ask before calling a lawyer.",
-      "Corrected citations across legal directories so every listing presented the firm consistently.",
-      "Structured the site so AI search engines could extract the firm's services, jurisdictions, and contact information without ambiguity.",
-    ],
+      "Updated the Google Business Profile with the firm's categories, Homewood address, service areas, and contact information.",
+      "Organized practice-area pages around the questions prospective clients ask before contacting an attorney.",
+      "Added structured information describing the firm, its legal services, and its attorneys.",
+      "Corrected business details across relevant legal directories.",
+      "Clarified service, jurisdiction, and contact information throughout the website."
+],
     results: [
       "Calls from local leads doubled as the firm became discoverable to people actively searching for legal help.",
       "A professional, trustworthy online presence consistent with the firm's reputation.",
@@ -175,18 +175,18 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
     ownerRole: "Director of Sales & Marketing, Hotel Circa 39",
     location: "Miami Beach, FL",
     industry: "Boutique Hotel / Hospitality",
-    challengeShort: "A boutique Miami Beach hotel swallowed by competition in one of the country's fiercest hospitality search markets.",
+    challengeShort: "Improving local discovery for a Miami Beach boutique hotel, with a focus on guests searching by neighborhood.",
     challenge:
-      "Hotel Circa 39 is a boutique hotel in Miami Beach competing in one of the most concentrated hospitality markets in the United States. For a guest deciding where to stay, the hotel was effectively invisible in the neighborhoods it wanted to attract — shoulder-season bookings depended on platforms and referrals rather than on being found by guests searching directly for the area.",
+      "Hotel Circa 39 competes with many other properties in Miami Beach. The project focused on helping travelers find the hotel directly when researching its neighborhood, amenities, and nearby areas, rather than relying mainly on booking platforms and referrals.",
     strategy:
-      "Deployed geo-targeted local SEO targeting the specific Miami Beach neighborhoods the hotel wanted to capture — pairing a fully optimized Google Business Profile with location-intent content and hotel schema so the property addressed the target geographic information.",
+      "I aligned the hotel profile and website with the information guests need when choosing where to stay. The work covered property details, neighborhood content, search snippets, and tracking for reservation inquiries.",
     execution: [
-      "Optimized the Google Business Profile for hotel categories, amenity keywords, and the precise Miami Beach service area.",
-      "Injected Hotel + LocalBusiness schema bound to the property's address and neighborhood context.",
-      "Created neighborhood-focused pages for the exact Miami Beach areas the hotel competes in.",
-      "Aligned meta content with geo-intent queries so guests searching the neighborhood found the property.",
-      "Set up booking-and-review tracking so organic visibility tied directly to reservation inquiry volume.",
-    ],
+      "Updated the Google Business Profile with the hotel's categories, amenities, and property information.",
+      "Added structured data describing the hotel and its Miami Beach address.",
+      "Created content explaining the hotel’s location and the surrounding neighborhoods.",
+      "Revised page titles and descriptions to reflect the property and relevant guest searches.",
+      "Set up tracking for reservation inquiries and reviews."
+],
     results: [
       "Visibility in exactly the neighborhoods the hotel wanted to target.",
       "Bookings through organic search up 35% as direct discoverability grew.",
@@ -242,18 +242,18 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
     ownerRole: "Sales Leader, Swag Pro",
     location: "Denver, CO",
     industry: "Promotional Products / Merchandise",
-    challengeShort: "A promotional-products business whose online catalog couldn't be found for the very products it sells.",
+    challengeShort: "Making a Denver merchandise catalog easier to crawl, understand, and discover through product searches.",
     challenge:
-      "Swag Pro is a Denver-based promotional products and merchandise business selling through a catalog of thousands of products. The site struggled for organic traction — product pages weren't ranking for the exact products customers were searching for, and technical issues capped how much of the catalog search engines could even see.",
+      "Swag Pro sells promotional products and merchandise through a large online catalog. Product pages were difficult to find for relevant searches, while technical and duplicate-content issues limited how clearly search engines could interpret the catalog.",
     strategy:
-      "Combined a technical crawl-and-index fix with semantic product-page optimization: entity-based structure for product categories, de-duplicated and enriched product content, and schema that let Google and AI search engines resolve every product the catalog actually offered.",
+      "I worked on access to the catalog and the quality of its page structure together. The focus was distinct product and category pages, fewer overlapping URLs, and structured product information matching the items on sale.",
     execution: [
-      "Audited and fixed technical issues limiting how much of the product catalog search engines could index.",
-      "Restructured product and category pages around entity relationships instead of identical keyword templates.",
-      "Injected product schema so every item resolved as a distinct, purchasable entity.",
-      "Eliminated duplicate and near-duplicate pages that were splitting catalog authority.",
-      "Optimized category hubs so search engines understood the full merchandise breadth of the catalog.",
-    ],
+      "Audited and corrected technical issues affecting catalog crawling and indexing.",
+      "Organized product and category pages around the merchandise customers were looking for.",
+      "Added product structured data matching the visible product information.",
+      "Consolidated duplicate and overlapping catalog pages.",
+      "Reworked category pages to explain and connect the relevant products."
+],
     results: [
       "Organic sales became the business's main revenue stream within three months.",
       "Product and category pages began ranking for the exact products the business sells.",
@@ -309,18 +309,18 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
     ownerRole: "Personal Trainer & Fitness Instructor, South Seattle Women's Fitness",
     location: "Seattle, WA",
     industry: "Fitness Studio",
-    challengeShort: "A personal-training studio in South Seattle invisible to the neighbors searching for exactly what it offers.",
+    challengeShort: "Helping a South Seattle fitness studio reach nearby women looking for personal training and a supportive place to exercise.",
     challenge:
-      "South Seattle Women's Fitness is a personal-training studio on Beacon Avenue South in Seattle. The people who most needed it — women in the surrounding neighborhoods looking for a trainer and a supportive studio — could not find it in local search. New-member discovery relied almost entirely on referrals rather than on being found at the moment of intent.",
+      "South Seattle Women's Fitness operates a personal-training studio on Beacon Avenue South. The business needed to reach women searching for training in nearby neighborhoods, alongside the referrals that already brought people to the studio.",
     strategy:
-      "Built a neighborhood-precise local SEO system: a fully optimized Google Business Profile for the Beacon Hill studio, fitness-studio schema, and service pages targeting the exact South Seattle neighborhoods, so the studio became the obvious local result for training and fitness intent.",
+      "I focused on the studio’s actual location, training services, and nearby audience. The business profile, website pages, and directory listings needed to give prospective members the same clear information about where the studio was and what it offered.",
     execution: [
-      "Optimized the Google Business Profile with exact studio categories, address, service area, and training services.",
-      "Injected LocalBusiness + HealthClub schema for the studio's Beacon Ave location.",
-      "Created service and neighborhood pages for South Seattle areas the studio serves.",
-      "Built a consistent citation and review footprint to strengthen local relevance signals.",
-      "Structured content so both Google and AI search engines could resolve the studio's training specialties.",
-    ],
+      "Updated the Google Business Profile with studio categories, address, training services, and service areas.",
+      "Added structured business information describing the fitness studio and its location.",
+      "Created pages explaining training services and the South Seattle neighborhoods served.",
+      "Corrected local listings and supported a consistent review-request process.",
+      "Clarified the studio’s training specialties throughout the website."
+],
     results: [
       "Consistently in the top three local results for the studio's target searches.",
       "A steady stream of new members discovering the studio through local search.",
@@ -377,18 +377,18 @@ export const CLIENT_CASE_STUDIES: ClientCaseStudy[] = [
     ownerRole: "Co-founder, Simulithic",
     location: "YC-backed startup",
     industry: "SaaS / AI",
-    challengeShort: "An AI-native product category few people can describe yet — meaning search engines and AI assistants couldn't understand what the company does.",
+    challengeShort: "Clarifying an AI experiment-simulation product through content structure, topic planning, and straightforward product explanations.",
     challenge:
-      "Simulithic is a YC-backed startup building AI-powered experiment simulation — a product category so new that most people can't yet search for it with the right words. The company faced the dual problem of a category that didn't exist in search vocabulary and an AI-first audience discovering products through language models rather than ten blue links.",
+      "Simulithic builds AI-powered experiment simulation. Because the category was unfamiliar, the website needed to explain what the product did and connect it with concepts prospective users already understood, such as experimentation, user simulation, and product analytics.",
     strategy:
-      "Built a semantic SEO foundation for an AI-native category: entity-based content architecture that mapped the product's concepts, unambiguous assertion-style copy engineered for LLM extraction, and schema that let both Google and AI assistants resolve what Simulithic actually does before the category has stable search vocabulary.",
+      "I organized the content around the product’s use cases and related concepts. The goal was to help readers understand the offering and give search systems consistent, descriptive information about the company and its product.",
     execution: [
-      "Mapped the product's concept network — experiment simulation, user simulation, session data, A/B prediction — into a coherent semantic content structure.",
-      "Wrote answer-first, assertion-style copy that language models could extract and cite without ambiguity.",
-      "Injected schema that let engines resolve the product as a distinct entity in a brand-new category.",
-      "Built topical coverage for the adjacent concepts (experimentation, simulation, AI product analytics) that early adopters and AI assistants actually reference.",
-      "Aligned on-page structure with how LLMs interpret intent, future-proofing the site as the category's search vocabulary matures.",
-    ],
+      "Mapped the relationships between experiment simulation, user simulation, session data, and prediction.",
+      "Wrote direct explanations of the product, its use cases, and the questions it addressed.",
+      "Added structured information describing the company and product.",
+      "Planned related content around experimentation, simulation, and product analytics.",
+      "Aligned headings, page relationships, and internal links with that content plan."
+],
     results: [
       "A semantic and geo-focus foundation that gives the brand a competitive edge with AI-first audiences.",
       "Content structured to be surfaced by AI search engines as the category grows search vocabulary.",
