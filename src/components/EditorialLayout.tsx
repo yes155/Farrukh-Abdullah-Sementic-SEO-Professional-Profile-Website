@@ -3,13 +3,14 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import JsonLd from './JsonLd';
 import { getBreadcrumbSchema } from '@/lib/schemas';
-import { EDITORIAL_UPDATED, displayDate } from '@/lib/contentMetadata';
+import { getPageUpdated, displayDate } from '@/lib/contentMetadata';
 
 type EditorialProps = {
   title: string; intro: string; path: string; parent?: { name: string; url: string }; children: ReactNode;
   attributes?: string[]; overview?: { title: string; items: string[] }; action?: { label: string; href: string };
 };
 export default function EditorialLayout({ title, intro, path, parent, children, attributes, overview, action }: EditorialProps) {
+  const updated = getPageUpdated(path);
   const crumbs = [{ name: 'Home', url: '/' }, ...(parent ? [parent] : []), { name: title, url: path }];
   return <div className="site-shell py-10 md:py-16">
     <JsonLd id="page-breadcrumb" data={getBreadcrumbSchema(crumbs)} />
@@ -20,7 +21,7 @@ export default function EditorialLayout({ title, intro, path, parent, children, 
         <p className="text-lg md:text-xl text-neutral-600 max-w-3xl leading-relaxed mt-6">{intro}</p>
         {attributes?.length ? <ul aria-label="Service details" className="flex flex-wrap gap-2 mt-6">{attributes.map(item => <li key={item} className="text-xs font-medium px-3 py-2 border border-neutral-200 bg-neutral-50 text-neutral-700">{item}</li>)}</ul> : null}
         {action && <Link href={action.href} className="inline-flex items-center gap-3 bg-cyan-400 hover:bg-cyan-300 text-black border border-black px-5 py-3 font-semibold text-sm mt-7">{action.label}<ArrowRight size={16} aria-hidden="true" /></Link>}
-        <p className="text-xs text-neutral-500 mt-6">By <Link href="/about" className="underline underline-offset-4">Farrukh Abdullah</Link> · Updated <time dateTime={EDITORIAL_UPDATED}>{displayDate(EDITORIAL_UPDATED)}</time></p>
+        <p className="text-xs text-neutral-500 mt-6">By <Link href="/about" className="underline underline-offset-4">Farrukh Abdullah</Link> · Updated <time dateTime={updated}>{displayDate(updated)}</time></p>
       </div>
       {overview && <aside className="border border-black bg-neutral-50 p-6 md:p-8 shadow-[4px_4px_0px_#00d3f2]" aria-label={overview.title}>
         <h2 className="text-lg font-semibold mb-5">{overview.title}</h2>
@@ -30,8 +31,8 @@ export default function EditorialLayout({ title, intro, path, parent, children, 
     <div className="space-y-10 md:space-y-14">{children}</div>
   </div>;
 }
-export function ContentSection({ title, children }: { title: string; children: ReactNode }) {
-  return <section className="content-section space-y-5">
+export function ContentSection({ title, children, id }: { title: string; children: ReactNode; id?: string }) {
+  return <section id={id} className={`content-section space-y-5${id ? ' scroll-mt-28' : ''}`}>
     <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-black">{title}</h2>
     <div className="text-base text-neutral-700 leading-[1.8] space-y-4">{children}</div>
   </section>;

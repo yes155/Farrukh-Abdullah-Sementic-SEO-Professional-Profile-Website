@@ -364,13 +364,13 @@ export const LOCAL_NICHES: Niche[] = [
       },
       {
         "q": "How will I know whether SEO is bringing useful jobs?",
-        "a": "We compare relevant inquiries, assessments booked, and accepted jobs where your records can connect them to search. Phone-link clicks are reported as interactions; an answered call still needs a service and coverage check before it counts as a qualified lead."
+        "a": "We compare relevant inquiries, assessments, and completed jobs where your records can connect them to search. Phone-link clicks are interactions; calls need a service and coverage check before counting as qualified leads. To assess business value, compare campaign costs with contribution from additional completed and paid work over the same period, accounting for seasonality and other channels."
       }
     ],
     "keywords": [
       {
-        "question": "How is the work scoped and priced?",
-        "answer": "The proposal defines the pages, profiles, measurement, implementation responsibilities, and fees. It follows a review of the actual website and business rather than a universal monthly price."
+        "question": "How much does electrician SEO cost?",
+        "answer": "I quote the work after reviewing your website, profiles, service coverage, and implementation responsibilities. An initial audit, an implementation project, and ongoing support have different deliverables. The proposal identifies the fee, included work, reporting period, and any separate writing, development, or tool costs."
       }
     ],
     "focusKeywords": [

@@ -4,10 +4,11 @@ import argparse, concurrent.futures, json, re, urllib.request, urllib.error, url
 from html.parser import HTMLParser
 class Page(HTMLParser):
  def __init__(self, body):
-  super().__init__(); self.stack=[];self.h1=[];self.title=[];self.headings=[];self.canon=[];self.descriptions=[];self.links=[];self.schemas=[];self.script=None;self.heading=None;self.ids=set();self.dom_text=[];self.main_images=[];self.feed(body)
+  super().__init__(); self.stack=[];self.h1=[];self.title=[];self.headings=[];self.canon=[];self.descriptions=[];self.links=[];self.schemas=[];self.script=None;self.heading=None;self.ids=set();self.dom_text=[];self.main_images=[];self.times=[];self.feed(body)
  def handle_starttag(self,tag,attrs):
   a=dict(attrs)
   if a.get('id'):self.ids.add(a['id'])
+  if tag=='time' and a.get('datetime'):self.times.append(a['datetime'])
   if tag=='img' and 'main' in self.stack:self.main_images.append(a.get('src'))
   if tag=='link' and a.get('rel')=='canonical':self.canon.append(a.get('href'))
   if tag=='meta' and a.get('name')=='description':self.descriptions.append(a.get('content'))
@@ -42,6 +43,10 @@ def run(base):
  assert len(paths)==66,(len(paths),'65 audited pages plus the SEO project planner')
  assert all(e.get('lastmod') for e in entries),'Missing content modification dates'
  assert len(paths)==len(set(paths)),'Duplicate sitemap URLs'
+ modification_dates={urllib.parse.urlparse(e['loc']).path:e['lastmod'] for e in entries}
+ assert modification_dates['/services/seo-for-electricians'].startswith('2026-10-21')
+ assert modification_dates['/services/seo-for-fence-contractors'].startswith('2026-10-19')
+ assert modification_dates['/about'].startswith('2026-10-19')
  results={}
  with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
   for path,result in zip(paths,pool.map(fetch,paths)):
@@ -102,6 +107,17 @@ def run(base):
  for path,p in results.items():
   if path.startswith('/services/seo-for-') and path not in priority:
    assert not any('Public-site walkthrough:' in text for _,text in p.headings),(path,'Wrong industry example leaked onto another service')
+ electrician_path='/services/seo-for-electricians'
+ electrician=results[electrician_path]
+ detail_headings={'Electrician SEO audit checklist','How I choose SEO keywords for electricians','Electrician SEO cost: compare the scope first','A worked example: when does electrician SEO break even?'}
+ assert detail_headings<={text for _,text in electrician.headings},'Missing approved electrician buyer information'
+ assert '2026-10-21' in electrician.times,'Visible electrician revision date differs from sitemap'
+ electrician_text=' '.join(' '.join(electrician.dom_text).split())
+ assert 'Illustrative business example' in electrician_text and 'not my fees or a client result' in electrician_text,'Financial example could be mistaken for pricing or client evidence'
+ for path,p in results.items():
+  if path!=electrician_path:
+   assert not detail_headings.intersection(text for _,text in p.headings),(path,'Electrician-only additions leaked onto another page')
+ assert '2026-10-19' in results['/services/seo-for-fence-contractors'].times,'Unchanged service revision date was advanced'
  planner=results['/tools/seo-project-planner']
  assert {'planner-website','planner-business','planner-goal'}<=planner.ids
  assert any(s.get('@type')=='WebApplication' and s['offers']['price']=='0' for s in planner.schemas)
@@ -117,6 +133,6 @@ def run(base):
   except urllib.error.HTTPError as e:
    assert e.code in (301,308),(old,e.code)
    assert urllib.parse.urlparse(e.headers['Location']).path==new,(old,e.headers['Location'])
- print(json.dumps({'pages':len(paths),'articles':len(articles),'case_studies':len(cases),'faq_and_fragment_checks':'passed','priority_service_walkthroughs':'3/3','primary_sources':'20/20','article_schema':'20/20','missing_routes':'3 paths × 2 user agents return 404','redirects':2,'status':'passed'},indent=2))
+ print(json.dumps({'pages':len(paths),'articles':len(articles),'case_studies':len(cases),'faq_and_fragment_checks':'passed','priority_service_walkthroughs':'3/3','electrician_sections_and_revision_dates':'passed','primary_sources':'20/20','article_schema':'20/20','missing_routes':'3 paths × 2 user agents return 404','redirects':2,'status':'passed'},indent=2))
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('--base-url',default='http://127.0.0.1:4317');run(parser.parse_args().base_url.rstrip('/'))

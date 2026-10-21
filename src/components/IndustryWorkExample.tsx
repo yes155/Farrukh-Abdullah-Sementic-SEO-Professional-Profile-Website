@@ -1,8 +1,11 @@
 import type { PriorityServiceContent } from '@/lib/priorityServiceContent';
 import { ContentSection } from './EditorialLayout';
+import { ElectricianSeoContents, ElectricianSeoAudit, ElectricianKeywordMethod, ElectricianSeoScope, ElectricianSeoBreakEven } from './ElectricianSeoDetails';
 
 export default function IndustryWorkExample({ content }: { content: PriorityServiceContent }) {
+  const isElectrician = content.slug === 'seo-for-electricians';
   return <>
+    {isElectrician && <ElectricianSeoContents />}
     <ContentSection title={content.journeyTitle}>
       <p>These illustrative customer searches show how I would organize your business’s website. Actual query research and service details shape the final plan.</p>
       <div className="overflow-x-auto"><table className="w-full border-collapse text-sm md:text-base"><thead><tr>{['Customer search example', 'Page purpose', 'Useful next step'].map(label => <th scope="col" key={label} className="text-left align-top border border-neutral-300 p-4 bg-neutral-50 font-semibold text-black">{label}</th>)}</tr></thead><tbody>{content.journeys.map(item => <tr key={item.search}><th scope="row" className="text-left align-top border border-neutral-300 p-4 font-medium text-black min-w-44">{item.search}</th><td className="border border-neutral-300 p-4 align-top">{item.destination}</td><td className="border border-neutral-300 p-4 align-top">{item.nextStep}</td></tr>)}</tbody></table></div>
@@ -10,6 +13,7 @@ export default function IndustryWorkExample({ content }: { content: PriorityServ
     <ContentSection title="What I would deliver for your business">
       <div className="grid md:grid-cols-3 gap-7">{content.packages.map((item, index) => <section key={item.title} className="border-t border-neutral-300 pt-5"><span className="text-sm font-mono text-cyan-800">0{index + 1}</span><h3 className="text-xl font-semibold text-black mt-3 mb-4">{item.title}</h3><p>{item.detail}</p></section>)}</div>
     </ContentSection>
+    {isElectrician && <><ElectricianSeoAudit /><ElectricianKeywordMethod /></>}
     <ContentSection title={`Public-site walkthrough: ${content.publicExample.business}`}>
       <p className="text-sm text-neutral-500">Independent public example · Reviewed 19 October 2026 · Not a client case study</p>
       <div className="space-y-6">{content.publicExample.observations.map(item => <section key={item.observed} className="grid md:grid-cols-2 gap-4 md:gap-8 border-t border-neutral-200 pt-5"><div><h3 className="text-sm font-semibold text-black mb-2">Observed on the public site</h3><p>{item.observed}</p></div><div><h3 className="text-sm font-semibold text-black mb-2">How I would apply the idea</h3><p>{item.application}</p></div></section>)}</div>
@@ -28,5 +32,6 @@ export default function IndustryWorkExample({ content }: { content: PriorityServ
       <div className="overflow-x-auto"><table className="w-full border-collapse text-sm md:text-base"><thead><tr>{['Stage', 'Record to use', 'What it tells us'].map(label => <th scope="col" key={label} className="text-left align-top border border-neutral-300 p-4 bg-neutral-50 font-semibold text-black">{label}</th>)}</tr></thead><tbody>{content.measurement.map(item => <tr key={item.stage}><th scope="row" className="text-left align-top border border-neutral-300 p-4 font-medium text-black min-w-36">{item.stage}</th><td className="border border-neutral-300 p-4 align-top">{item.record}</td><td className="border border-neutral-300 p-4 align-top">{item.meaning}</td></tr>)}</tbody></table></div>
       <p>{content.measurementNote}</p>
     </ContentSection>
+    {isElectrician && <><ElectricianSeoScope /><ElectricianSeoBreakEven /></>}
   </>;
 }
