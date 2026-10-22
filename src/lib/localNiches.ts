@@ -385,8 +385,8 @@ export const LOCAL_NICHES: Niche[] = [
     "example": "Separate emergency call routing from planned upgrades. An EV charger page can explain inspection and quote steps without promising installation eligibility.",
     "measurement": "Qualified calls and estimate requests, separated into urgent and planned work.",
     "limitations": "Verify licensing and hours with the contractor. SEO content must not replace electrical safety advice.",
-    "metaTitle": "SEO for Electricians: Local Search & Job Inquiries",
-    "metaDescription": "Local SEO for electrical contractors: service and coverage reviews, EV charger page briefs, practical examples, and qualified-call measurement. Work with Farrukh."
+    "metaTitle": "SEO for Electricians: Local Visibility & Qualified Inquiries",
+    "metaDescription": "SEO for electrical contractors: local visibility, service pages, technical fixes, and inquiry measurement. See a sample audit and work directly with Farrukh."
   },
   {
     "slug": "seo-for-contractors",

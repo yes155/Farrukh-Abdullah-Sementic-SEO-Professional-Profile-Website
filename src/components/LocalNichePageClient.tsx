@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ElectricianLandingPage from './ElectricianLandingPage';
 import EditorialLayout, { ContentSection, ContactAction } from './EditorialLayout';
 import PageQuestions from './PageQuestions';
 import JsonLd from './JsonLd';
@@ -13,6 +14,7 @@ const groups = [
   ['seo-for-salons', 'seo-for-real-estate-agents'],
 ];
 export default function LocalNichePageClient({ niche }: { niche: Niche }) {
+  if (niche.slug === 'seo-for-electricians') return <ElectricianLandingPage niche={niche} />;
   const workExample = getPriorityServiceContent(niche.slug);
   const cities = niche.relatedCities.map(getCityBySlug).filter(city => !!city);
   const group = groups.find(items => items.includes(niche.slug)) || [];

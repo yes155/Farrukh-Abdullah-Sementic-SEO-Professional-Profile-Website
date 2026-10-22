@@ -1,4 +1,5 @@
 import { ContentSection } from './EditorialLayout';
+import styles from './ElectricianLanding.module.css';
 
 const auditChecks = [
   { check: 'Search access and indexing', record: 'Important page status codes, indexing directives, canonical URLs, and available Search Console inspection evidence. Record confirmed barriers and affected URLs.' },
@@ -16,18 +17,6 @@ const engagementTypes = [
   { scope: 'Implementation project', includes: 'The agreed corrections, page briefs, content changes, internal links, and measurement setup, with acceptance checks.', drivers: 'Backlog size, website complexity, evidence or writing needed, and work assigned to your team.' },
   { scope: 'Ongoing support', includes: 'Agreed reporting, query and inquiry review, and a defined allowance for further improvements.', drivers: 'Reporting depth, implementation capacity, service coverage, and the review frequency in the proposal.' },
 ];
-
-export function ElectricianSeoContents() {
-  return <nav aria-label="Electrician SEO page sections" className="border-b border-neutral-200 pb-6">
-    <p className="text-sm font-semibold text-black mb-3">On this page</p>
-    <ul className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-cyan-800">
-      <li><a className="underline underline-offset-4" href="#electrician-seo-audit">Audit checklist</a></li>
-      <li><a className="underline underline-offset-4" href="#electrician-seo-keywords">Keyword selection</a></li>
-      <li><a className="underline underline-offset-4" href="#electrician-seo-cost">Scope and cost</a></li>
-      <li><a className="underline underline-offset-4" href="#electrician-seo-break-even">Break-even example</a></li>
-    </ul>
-  </nav>;
-}
 
 export function ElectricianSeoAudit() {
   return <ContentSection id="electrician-seo-audit" title="Electrician SEO audit checklist">
@@ -58,29 +47,9 @@ export function ElectricianKeywordMethod() {
 export function ElectricianSeoScope() {
   return <ContentSection id="electrician-seo-cost" title="Electrician SEO cost: compare the scope first">
     <p>An audit, an implementation project, and ongoing support involve different work. I prepare a written quote after reviewing your website, service coverage, priorities, and who will carry out the changes.</p>
-    <div className="overflow-x-auto">
-      <table className="w-full border-collapse text-sm md:text-base">
-        <thead><tr>{['Engagement', 'Work to agree', 'What changes the fee'].map(label => <th scope="col" key={label} className="border border-neutral-300 bg-neutral-50 p-4 text-left align-top font-semibold text-black">{label}</th>)}</tr></thead>
-        <tbody>{engagementTypes.map(item => <tr key={item.scope}><th scope="row" className="min-w-40 border border-neutral-300 p-4 text-left align-top font-medium text-black">{item.scope}</th><td className="border border-neutral-300 p-4 align-top">{item.includes}</td><td className="border border-neutral-300 p-4 align-top">{item.drivers}</td></tr>)}</tbody>
-      </table>
-    </div>
+    <div className={styles.scopeGrid}>{engagementTypes.map((item, index) => <section key={item.scope} className={styles.scopeCard}>
+      <span className={styles.stepNumber}>0{index + 1}</span><h3>{item.scope}</h3><p>{item.includes}</p><div><h4>What changes the fee</h4><p>{item.drivers}</p></div>
+    </section>)}</div>
     <p>The proposal identifies the fee, included pages and profiles, deliverables, required access, approval responsibilities, reporting period, and any separate writing, development, or tool costs. We agree how additional work will be priced.</p>
-  </ContentSection>;
-}
-
-export function ElectricianSeoBreakEven() {
-  return <ContentSection id="electrician-seo-break-even" title="A worked example: when does electrician SEO break even?">
-    <p>Use contribution from additional completed and paid jobs to assess campaign cost. Contribution here means collected job revenue minus the direct costs of delivering that job, before campaign cost, fixed overhead, and tax.</p>
-    <div className="border border-neutral-300 bg-neutral-50 p-6 md:p-8 space-y-5">
-      <p className="text-sm font-semibold text-cyan-800">Illustrative business example</p>
-      <p>Suppose the agreed comparison period has $1,500 in total campaign costs. A completed job brings $1,000 in collected revenue and $600 in direct delivery costs, leaving $400 in contribution.</p>
-      <dl className="grid md:grid-cols-2 gap-5">
-        <div><dt className="font-semibold text-black">Contribution per completed job</dt><dd className="mt-2 font-mono text-sm text-black">$1,000 − $600 = $400</dd></div>
-        <div><dt className="font-semibold text-black">Additional jobs needed to cover campaign cost</dt><dd className="mt-2 font-mono text-sm text-black">$1,500 ÷ $400 = 3.75 → 4 jobs</dd></div>
-      </dl>
-      <p>Four additional completed and paid jobs would contribute $1,600, leaving $100 after the $1,500 campaign cost, before fixed overhead and tax.</p>
-      <p className="text-sm text-neutral-500">All amounts are hypothetical business inputs, not my fees or a client result. This example does not predict lead volume, job value, or the time needed to reach break-even.</p>
-    </div>
-    <p>For your review, use the same period for campaign costs and realized job contribution. Include agreed consulting, writing, development, and tracking costs. Compare against the baseline and account for seasonality, capacity, repeat customers, and other marketing channels; search attribution alone does not prove every job is additional.</p>
   </ContentSection>;
 }

@@ -44,7 +44,7 @@ def run(base):
  assert all(e.get('lastmod') for e in entries),'Missing content modification dates'
  assert len(paths)==len(set(paths)),'Duplicate sitemap URLs'
  modification_dates={urllib.parse.urlparse(e['loc']).path:e['lastmod'] for e in entries}
- assert modification_dates['/services/seo-for-electricians'].startswith('2026-10-21')
+ assert modification_dates['/services/seo-for-electricians'].startswith('2026-10-22')
  assert modification_dates['/services/seo-for-fence-contractors'].startswith('2026-10-19')
  assert modification_dates['/about'].startswith('2026-10-19')
  results={}
@@ -109,11 +109,12 @@ def run(base):
    assert not any('Public-site walkthrough:' in text for _,text in p.headings),(path,'Wrong industry example leaked onto another service')
  electrician_path='/services/seo-for-electricians'
  electrician=results[electrician_path]
- detail_headings={'Electrician SEO audit checklist','How I choose SEO keywords for electricians','Electrician SEO cost: compare the scope first','A worked example: when does electrician SEO break even?'}
+ detail_headings={'Electrician SEO audit checklist','How I choose SEO keywords for electricians','Electrician SEO cost: compare the scope first','When does electrician SEO break even?'}
  assert detail_headings<={text for _,text in electrician.headings},'Missing approved electrician buyer information'
- assert '2026-10-21' in electrician.times,'Visible electrician revision date differs from sitemap'
+ assert '2026-10-22' in electrician.times,'Visible electrician revision date differs from sitemap'
  electrician_text=' '.join(' '.join(electrician.dom_text).split())
  assert 'Illustrative business example' in electrician_text and 'not my fees or a client result' in electrician_text,'Financial example could be mistaken for pricing or client evidence'
+ assert {'electrician-inquiry','electrician-sample-audit','electrician-wireframe-caption','electrician-campaign','electrician-revenue','electrician-directCost'}<=electrician.ids,'Missing accessible inquiry, sample, or calculator'
  for path,p in results.items():
   if path!=electrician_path:
    assert not detail_headings.intersection(text for _,text in p.headings),(path,'Electrician-only additions leaked onto another page')
