@@ -1,7 +1,7 @@
 // The substantive revision date, not a build timestamp.
 export const EDITORIAL_UPDATED = "2026-10-19";
 const PAGE_UPDATES: Record<string, string> = {
-  "/services/seo-for-electricians": "2026-10-21",
+  "/services/seo-for-electricians": "2026-10-22",
 };
 export function getPageUpdated(path: string): string {
   return PAGE_UPDATES[path] || EDITORIAL_UPDATED;

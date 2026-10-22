@@ -40,7 +40,8 @@ for(const service of CORE_SERVICES)add('/services/'+service.slug,'Core services'
 for(const niche of LOCAL_NICHES){
  const example=getPriorityServiceContent(niche.slug);
  const headings=example?[example.journeyTitle,'What I would deliver for your business','Public-site walkthrough: '+example.publicExample.business,'An example implementation brief','Measure inquiries and booking outcomes']:['Customer decision'];
- if(niche.slug==='seo-for-electricians')headings.push('Electrician SEO audit checklist','How I choose SEO keywords for electricians','Electrician SEO cost: compare the scope first','A worked example: when does electrician SEO break even?');
+ if(niche.slug==='seo-for-electricians'){headings.splice(1,1,'Electrician SEO services, with tangible deliverables.','A practical sequence. A written scope at each step.');headings.splice(headings.indexOf('An example implementation brief'),1,example.brief.title);}
+ if(niche.slug==='seo-for-electricians')headings.push('Electrician SEO audit checklist','How I choose SEO keywords for electricians','Electrician SEO cost: compare the scope first','When does electrician SEO break even?');
  add('/services/'+niche.slug,'Industry services','Commercial',niche.headline,[...headings,...niche.faqs.map(item=>item.q),...niche.keywords.map(item=>item.question)],'Industry synonyms and narrower wording belong on the existing service page unless they introduce a distinct customer task');
 }
 for(const city of CITIES)add('/locations/'+city.slug,'Service areas','Commercial','Assess remote SEO work for a '+city.name+' business',['Customer area','Planning example','Relevant project','Office and delivery questions'],'Address variants answered by the actual remote-delivery statement; no invented city office');

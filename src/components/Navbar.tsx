@@ -59,7 +59,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden xl:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -73,7 +73,7 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden xl:flex items-center">
             <Link
               href="/contact"
               className="group relative inline-flex items-center justify-center bg-cyan-400 hover:bg-cyan-300 text-black font-sans text-xs font-bold uppercase tracking-wider py-2.5 px-5 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200 cursor-pointer"
@@ -87,7 +87,7 @@ export default function Navbar() {
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-black hover:text-cyan-500 p-2 cursor-pointer"
+            className="xl:hidden text-black hover:text-cyan-500 p-2 cursor-pointer"
             id="nav-mobile-hamburger"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
@@ -105,7 +105,7 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25 }}
-              className="md:hidden bg-white border-b border-neutral-200"
+              className="xl:hidden bg-white border-b border-neutral-200"
             >
               <div id="mobile-navigation" className="px-6 py-6 flex flex-col gap-5">
                 {navItems.map((item) => (

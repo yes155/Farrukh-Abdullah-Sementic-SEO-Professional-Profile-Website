@@ -42,3 +42,13 @@ const content=createProjectBrief('content','online-business');
 assert.equal(content.path,'/services/semantic-seo');assert.match(content.text,/To be supplied/);
 const ai=createProjectBrief('ai','local-service');assert.match(ai.measure,/Search Console/);
 console.log('All nine case records are complete; planner briefs preserve inputs, choose the relevant service, and flag local-profile eligibility.');
+
+const {calculateElectricianBreakEven: breakEven}=load('src/lib/electricianBreakEven.ts');
+let result=breakEven(1500,1000,600);
+assert.equal(result.valid,true);assert.equal(result.jobs,4);assert.equal(result.contribution,400);assert.equal(result.remaining,100);
+assert.equal(breakEven(1200,1000,600).jobs,3);
+assert.equal(breakEven(0,1000,600).jobs,0);
+assert.equal(breakEven(.30,.20,.10).jobs,3); // cents must not round a whole-job threshold up incorrectly
+assert.equal(breakEven(.31,.20,.10).jobs,4);
+for (const amounts of [[1500,600,600],[1500,500,600],[-1,1000,600],[1500,Infinity,600],[NaN,1000,600],[100000001,1000,600]]) assert.equal(breakEven(...amounts).valid,false);
+console.log('Electrician break-even checks passed: contribution, whole-job rounding, cents, zero spending, and invalid inputs.');
