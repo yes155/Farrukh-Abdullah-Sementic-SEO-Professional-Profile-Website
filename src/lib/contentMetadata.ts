@@ -1,9 +1,19 @@
 // The substantive revision date, not a build timestamp.
 export const EDITORIAL_UPDATED = "2026-10-19";
 const PAGE_UPDATES: Record<string, string> = {
-  "/services/seo-for-electricians": "2026-10-22",
+  "/": "2026-10-28",
+  "/about": "2026-10-28",
+  "/evidence": "2026-10-28",
+  "/tools/local-seo-audit-workbook": "2026-10-28",
+  "/services/local-seo": "2026-10-28",
+  "/services/semantic-seo": "2026-10-28",
+  "/services/ai-seo-consulting": "2026-10-28",
+  "/services/seo-for-electricians": "2026-10-28",
+  "/services/seo-for-fence-contractors": "2026-10-28",
+  "/services/seo-for-orthodontists": "2026-10-28",
 };
 export function getPageUpdated(path: string): string {
+  if (path.startsWith("/case-studies/")) return "2026-10-28";
   return PAGE_UPDATES[path] || EDITORIAL_UPDATED;
 }
 export function validISODate(value?: string): string | undefined {

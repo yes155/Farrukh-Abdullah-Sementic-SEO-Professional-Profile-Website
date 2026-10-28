@@ -71,7 +71,7 @@ export default function ElectricianLandingPage({ niche }: { niche: Niche }) {
     </nav>
 
     <section id="electrician-services" className={`${styles.container} ${styles.section}`}>
-      <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>What I work on</p><h2>Electrician SEO services,<br />with tangible deliverables.</h2></div><p>We choose the work around your services, market, capacity, and existing website. Each agreed task has a clear output.</p></div>
+      <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>What I work on</p><h2>Local SEO for electricians,<br />with tangible deliverables.</h2></div><p>My SEO for electrical contractors connects profiles, service pages, technical fixes, and inquiry measurement. We choose tasks around your services, market, and capacity.</p></div>
       <div className={styles.serviceGrid}>{services.map(({ icon: Icon, label, title, detail, output }) => <section key={label} className={styles.serviceCard}><div className={styles.cardTop}><span className={styles.eyebrow}>{label}</span><Icon size={24} aria-hidden="true" /></div><h3>{title}</h3><p>{detail}</p><div className={styles.cardOutput}><strong>You receive</strong><p>{output}</p></div></section>)}</div>
       <p className={styles.referenceNote}>For map-pack visibility, relevance, distance, and prominence matter. Accurate coverage supports a useful profile; adding city names does not create a new location. <a href="https://support.google.com/business/answer/7091?hl=en">Google’s local ranking guidance <span aria-hidden="true">↗</span></a></p>
     </section>
@@ -112,6 +112,7 @@ export default function ElectricianLandingPage({ niche }: { niche: Niche }) {
     </section>
 
     <div className={`${styles.container} ${styles.section} ${styles.supportingDetails}`}>
+      <section className="border border-neutral-300 bg-cyan-50 p-6 md:p-8"><h2>Try the review method on your own site</h2><p className="mt-4">Use the <Link href="/tools/local-seo-audit-workbook" className="underline text-cyan-800">free local SEO audit workbook</Link> to record findings and evidence, then export an action list. Choose the electrical contractor context.</p><p className="mt-4 text-sm"><Link href="/evidence" className="underline text-cyan-800">Inspect the implementation records and project evidence</Link>.</p></section>
       <ElectricianKeywordMethod />
       <details className={styles.auditDetails}><summary>Explore the full electrician SEO audit checklist <span aria-hidden="true">+</span></summary><ElectricianSeoAudit /></details>
       <ElectricianSeoScope />

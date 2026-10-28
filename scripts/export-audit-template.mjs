@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import ts from 'typescript';
+const module={exports:{}};
+const compiled=ts.transpileModule(fs.readFileSync('src/lib/auditWorkbook.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+vm.runInNewContext(compiled,{module,exports:module.exports});
+const {exportAuditCsv,createAuditDraft}=module.exports;
+fs.mkdirSync('public/resources',{recursive:true});
+fs.writeFileSync('public/resources/local-seo-audit-template.csv',exportAuditCsv(createAuditDraft()).replaceAll('\r\n','\n'));
+console.log('Exported blank audit workbook with 16 checks and source references.');

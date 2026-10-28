@@ -4,15 +4,15 @@ import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import JsonLd from './JsonLd';
 import { getCaseContent } from '@/lib/caseContent';
 import { CANONICAL_DOMAIN, PERSON_ID, ORGANIZATION_ID, getBreadcrumbSchema } from '@/lib/schemas';
-import { displayDate, EDITORIAL_UPDATED } from '@/lib/contentMetadata';
+import { displayDate, getPageUpdated } from '@/lib/contentMetadata';
 
-const UPDATED = EDITORIAL_UPDATED;
 
 export default function CaseStudyPage({ slug }: { slug: string }) {
   const study = getCaseContent(slug);
   if (!study) notFound();
+  const UPDATED = getPageUpdated(`/case-studies/${slug}`);
   const url = `${CANONICAL_DOMAIN}/case-studies/${slug}`;
-  const sections = [['challenge', 'The challenge'], ['approach', 'The approach'], ['delivery', 'Work delivered'], ['outcome', 'The outcome']];
+  const sections = [['challenge', 'The challenge'], ['approach', 'The approach'], ['delivery', 'Work delivered'], ['outcome', 'The outcome'], ['evidence', 'Evidence and context']];
 
   return <article className="max-w-7xl mx-auto px-6 py-10 md:py-16">
     <JsonLd id="case-article" data={{ '@context': 'https://schema.org', '@type': 'Article', '@id': `${url}#article`, headline: study.name, description: study.summary, mainEntityOfPage: url, author: { '@id': PERSON_ID, url: `${CANONICAL_DOMAIN}/about` }, publisher: { '@id': ORGANIZATION_ID }, dateModified: UPDATED }} />
@@ -71,9 +71,12 @@ export default function CaseStudyPage({ slug }: { slug: string }) {
             <figcaption className="mt-5 text-sm text-neutral-600">{study.attribution}</figcaption>
           </figure>}
         </section>
-        <div className="border-t border-neutral-200 pt-6 text-sm leading-relaxed text-neutral-500">
-          <p><span className="font-semibold text-neutral-700">About this case study.</span> This account is based on the engagement description{study.quote ? ' and client feedback' : ''}. Campaign dates and analytics exports are not published here; results are specific to this project.{slug === 'simulithic' && ' This case does not publish a quantified ranking, traffic, or citation result.'}{slug === 'local-seo-systems' && ' The portfolio ROI figure has no published calculation or comparison period.'}</p>
-        </div>
+        <section id="evidence" className="scroll-mt-28 border border-neutral-300 bg-neutral-50 p-6 md:p-8">
+          <h2 className="text-2xl font-bold tracking-tight mb-5">Evidence and context</h2>
+          <dl className="space-y-5 text-sm leading-relaxed"><div><dt className="font-semibold text-neutral-900">Source of the account</dt><dd className="text-neutral-600 mt-2">{study.quote ? 'Engagement description and attributed client feedback, including the quotation above.' : 'Engagement description and the reported scope of work.'}</dd></div><div><dt className="font-semibold text-neutral-900">Published with this case</dt><dd className="text-neutral-600 mt-2">The challenge, implementation approach, work delivered, and reported outcomes. Campaign dates and underlying analytics exports are not published with this account.</dd></div></dl>
+          <p className="text-sm text-neutral-600 leading-relaxed mt-5">Results are specific to this project.{slug === 'simulithic' && ' This account does not publish a quantified ranking, traffic, or citation result.'}{slug === 'local-seo-systems' && ' The reported portfolio ROI has no published calculation or comparison period.'}</p>
+          <p className="mt-5 text-sm"><Link href="/evidence#case-evidence" className="underline text-cyan-800">How to assess the project evidence</Link> · <Link href="/tools/local-seo-audit-workbook" className="underline text-cyan-800">Try the audit workbook</Link></p>
+        </section>
       </div>
     </div>
     <section className="bg-neutral-950 text-white p-7 md:p-12 grid md:grid-cols-[minmax(0,1fr)_auto] gap-8 items-center">

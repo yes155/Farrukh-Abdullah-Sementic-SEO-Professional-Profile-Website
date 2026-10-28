@@ -52,3 +52,15 @@ assert.equal(breakEven(.30,.20,.10).jobs,3); // cents must not round a whole-job
 assert.equal(breakEven(.31,.20,.10).jobs,4);
 for (const amounts of [[1500,600,600],[1500,500,600],[-1,1000,600],[1500,Infinity,600],[NaN,1000,600],[100000001,1000,600]]) assert.equal(breakEven(...amounts).valid,false);
 console.log('Electrician break-even checks passed: contribution, whole-job rounding, cents, zero spending, and invalid inputs.');
+
+const {AUDIT_CHECKS,createAuditDraft,restoreAuditDraft,exportAuditCsv}=load('src/lib/auditWorkbook.ts');
+assert.equal(AUDIT_CHECKS.length,16);assert.equal(new Set(AUDIT_CHECKS.map(c=>c.id)).size,16);
+const draft=createAuditDraft();draft.website='https://example.com';draft.entries.eligibility={status:'Needs work',evidence:'https://example.com/profile',notes:'=HYPERLINK("https://example.com")',action:'Agree the owner, then review\nConfirm access'};
+const csv=exportAuditCsv(draft);assert.match(csv,/example.com\/profile/);assert.match(csv,/'=HYPERLINK/);assert.match(csv,/Agree the owner, then review\nConfirm access/);
+assert.equal(restoreAuditDraft({version:1,industry:'__proto__',entries:{}}),null);
+assert.equal(restoreAuditDraft({version:2,industry:'electricians',entries:{}}),null);
+const restored=restoreAuditDraft({...draft,entries:{eligibility:{...draft.entries.eligibility,status:'Unexpected'},unknown:{status:'Checked'}}});
+assert.equal(restored.entries.eligibility.status,'Not reviewed');assert.equal(restored.entries.unknown,undefined);
+assert.equal(restored.website,'https://example.com');assert.equal(restored.entries.eligibility.evidence,'https://example.com/profile');
+assert.equal(fs.readFileSync('public/resources/local-seo-audit-template.csv','utf8'),exportAuditCsv(createAuditDraft()).replaceAll('\r\n','\n'));
+console.log('Audit workbook checks passed: draft recovery, invalid storage, CSV escaping, formula protection, and blank-template consistency.');

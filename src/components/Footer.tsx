@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ArrowUp } from 'lucide-react';
 export default function Footer() {
   const groups = [
-    { title: 'Explore', links: [['About Farrukh', '/about'], ['Case studies', '/case-studies'], ['Insights', '/insights'], ['Project planner', '/tools/seo-project-planner']] },
+    { title: 'Explore', links: [['About Farrukh', '/about'], ['Case studies', '/case-studies'], ['Insights', '/insights'], ['Project planner', '/tools/seo-project-planner'], ['Audit workbook', '/tools/local-seo-audit-workbook'], ['Work and evidence', '/evidence']] },
     { title: 'SEO services', links: [['Semantic SEO', '/services/semantic-seo'], ['Local SEO', '/services/local-seo'], ['AI SEO consulting', '/services/ai-seo-consulting'], ['Services by industry', '/services'], ['Remote service areas', '/locations']] },
   ];
   return <footer className="border-t border-black bg-white">
