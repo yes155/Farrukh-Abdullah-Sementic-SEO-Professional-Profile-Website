@@ -35,20 +35,22 @@ add('/insights','Insights','Directory','Find a practical SEO explanation',['Arti
 add('/contact','Business identity','Conversion','Describe a project and choose a contact route',['Project details','Contact options']);
 add('/privacy','Policies','Policy','Understand data handling',['Inquiry information','Privacy terms']);
 add('/terms','Policies','Policy','Understand advisory terms',['Engagement terms']);
+add('/evidence','Business identity','Trust','Assess public implementation records and source types',['Public implementation','Public client review','Project accounts','Original resources','Source types']);
+add('/tools/local-seo-audit-workbook','Planning tools','Utility','Record a manual local SEO review and export an action list',['Review context','Manual audit workbook','Blank worksheet','Prioritization','Comparison records','Citing the resource']);
 add('/tools/seo-project-planner','Planning tools','Utility','Prepare an SEO project brief',['Business type','Goal','Suggested review priorities','Using the brief']);
 for(const service of CORE_SERVICES)add('/services/'+service.slug,'Core services','Commercial',service.title,['Service fit',...service.deliverables,'Access','Progress','Engagement questions']);
 for(const niche of LOCAL_NICHES){
  const example=getPriorityServiceContent(niche.slug);
  const headings=example?[example.journeyTitle,'What I would deliver for your business','Public-site walkthrough: '+example.publicExample.business,'An example implementation brief','Measure inquiries and booking outcomes']:['Customer decision'];
- if(niche.slug==='seo-for-electricians'){headings.splice(1,1,'Electrician SEO services, with tangible deliverables.','A practical sequence. A written scope at each step.');headings.splice(headings.indexOf('An example implementation brief'),1,example.brief.title);}
+ if(niche.slug==='seo-for-electricians'){headings.splice(1,1,'Local SEO for electricians, with tangible deliverables.','A practical sequence. A written scope at each step.');headings.splice(headings.indexOf('An example implementation brief'),1,example.brief.title);}
  if(niche.slug==='seo-for-electricians')headings.push('Electrician SEO audit checklist','How I choose SEO keywords for electricians','Electrician SEO cost: compare the scope first','When does electrician SEO break even?');
  add('/services/'+niche.slug,'Industry services','Commercial',niche.headline,[...headings,...niche.faqs.map(item=>item.q),...niche.keywords.map(item=>item.question)],'Industry synonyms and narrower wording belong on the existing service page unless they introduce a distinct customer task');
 }
 for(const city of CITIES)add('/locations/'+city.slug,'Service areas','Commercial','Assess remote SEO work for a '+city.name+' business',['Customer area','Planning example','Relevant project','Office and delivery questions'],'Address variants answered by the actual remote-delivery statement; no invented city office');
-for(const slug of CASE_SLUGS){const study=getCaseContent(slug);add('/case-studies/'+slug,'Case studies','Trust','Evaluate the '+study.name+' engagement',['Challenge','Approach','Work delivered','Outcome','Client feedback where supplied']);}
+for(const slug of CASE_SLUGS){const study=getCaseContent(slug);add('/case-studies/'+slug,'Case studies','Trust','Evaluate the '+study.name+' engagement',['Challenge','Approach','Work delivered','Outcome','Client feedback where supplied','Evidence and context']);}
 for(const article of EDITORIAL_ARTICLES)add('/insights/'+article.id,article.category,'Informational',article.title,article.contentMarkdown.split('\n').filter(line=>line.startsWith('## ')).map(line=>line.slice(3)));
-assert.equal(rows.length,66);
-assert.equal(new Set(rows.map(item=>item.url)).size,66);
+assert.equal(rows.length,68);
+assert.equal(new Set(rows.map(item=>item.url)).size,68);
 const columns=Object.keys(rows[0]);const csv=[columns.join(','),...rows.map(row=>columns.map(key=>'"'+String(row[key]).replaceAll('"','""')+'"').join(','))].join('\n')+'\n';
 fs.writeFileSync('docs/CONTENT-MAP.csv',csv);
-console.log('Exported 66 distinct page purposes and their heading/variant decisions.');
+console.log('Exported 68 distinct page purposes and their heading/variant decisions.');

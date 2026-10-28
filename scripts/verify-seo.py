@@ -41,13 +41,13 @@ def run(base):
  status,xml=fetch('/sitemap.xml');assert status==200,status
  entries=[{c.tag.split('}')[-1]:c.text for c in e} for e in ET.fromstring(xml)]
  paths=[urllib.parse.urlparse(e['loc']).path for e in entries]
- assert len(paths)==66,(len(paths),'65 audited pages plus the SEO project planner')
+ assert len(paths)==68,(len(paths),'66 existing pages plus evidence and audit workbook')
  assert all(e.get('lastmod') for e in entries),'Missing content modification dates'
  assert len(paths)==len(set(paths)),'Duplicate sitemap URLs'
  modification_dates={urllib.parse.urlparse(e['loc']).path:e['lastmod'] for e in entries}
- assert modification_dates['/services/seo-for-electricians'].startswith('2026-10-22')
- assert modification_dates['/services/seo-for-fence-contractors'].startswith('2026-10-19')
- assert modification_dates['/about'].startswith('2026-10-19')
+ assert modification_dates['/services/seo-for-electricians'].startswith('2026-10-28')
+ assert modification_dates['/services/seo-for-fence-contractors'].startswith('2026-10-28')
+ assert modification_dates['/about'].startswith('2026-10-28')
  results={}
  with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
   for path,result in zip(paths,pool.map(fetch,paths)):
@@ -70,7 +70,7 @@ def run(base):
     u=urllib.parse.urlparse(href)
     if not u.scheme and not u.netloc and not u.path and u.fragment:assert urllib.parse.unquote(u.fragment) in p.ids,(path,'Broken in-page anchor',href)
     if u.scheme in ('','http','https') and (not u.netloc or u.netloc=='farrukh.top') and u.path and not u.path.startswith('/studio'):
-     assert u.path in paths,(path,'Internal destination absent from sitemap',href)
+     assert u.path in paths or u.path=='/resources/local-seo-audit-template.csv',(path,'Internal destination absent from sitemap',href)
  assert len({''.join(p.title) for p in results.values()})==len(paths),'Duplicate titles'
  articles={k:p for k,p in results.items() if k.startswith('/insights/')}
  assert len(articles)==20
@@ -112,17 +112,26 @@ def run(base):
  electrician=results[electrician_path]
  detail_headings={'Electrician SEO audit checklist','How I choose SEO keywords for electricians','Electrician SEO cost: compare the scope first','When does electrician SEO break even?'}
  assert detail_headings<={text for _,text in electrician.headings},'Missing approved electrician buyer information'
- assert '2026-10-22' in electrician.times,'Visible electrician revision date differs from sitemap'
+ assert '2026-10-28' in electrician.times,'Visible electrician revision date differs from sitemap'
  electrician_text=' '.join(' '.join(electrician.dom_text).split())
  assert 'Illustrative business example' in electrician_text and 'not my fees or a client result' in electrician_text,'Financial example could be mistaken for pricing or client evidence'
  assert {'electrician-inquiry','electrician-sample-audit','electrician-wireframe-caption','electrician-campaign','electrician-revenue','electrician-directCost'}<=electrician.ids,'Missing accessible inquiry, sample, or calculator'
  for path,p in results.items():
   if path!=electrician_path:
    assert not detail_headings.intersection(text for _,text in p.headings),(path,'Electrician-only additions leaked onto another page')
- assert '2026-10-19' in results['/services/seo-for-fence-contractors'].times,'Unchanged service revision date was advanced'
+ assert '2026-10-19' in results['/services/seo-for-dentists'].times,'Unchanged service revision date was advanced'
  planner=results['/tools/seo-project-planner']
  assert {'planner-website','planner-business','planner-goal'}<=planner.ids
  assert any(s.get('@type')=='WebApplication' and s['offers']['price']=='0' for s in planner.schemas)
+ workbook=results['/tools/local-seo-audit-workbook'];evidence=results['/evidence']
+ assert {'audit-industry','audit-website','audit-date','audit-status-eligibility','audit-status-ownership'}<=workbook.ids
+ assert any(schema.get('@type')=='WebApplication' and schema['offers']['price']=='0' for schema in workbook.schemas)
+ assert any(href=='https://clutch.co/profile/farrukh-abdullah-geo-semantic-seo-consultant' and main for href,main in evidence.links)
+ for path in ['/', '/about', '/services/local-seo', '/services/seo-for-electricians', '/services/seo-for-fence-contractors', '/services/seo-for-orthodontists', *cases.keys()]:
+  assert any(href=='/tools/local-seo-audit-workbook' and main for href,main in results[path].links),(path,'Missing contextual workbook link')
+ for path,p in cases.items():
+  assert 'evidence' in p.ids and '2026-10-28' in p.times,(path,'Missing project evidence context')
+ status,template=fetch('/resources/local-seo-audit-template.csv');assert status==200 and 'Review guidance' in template and 'Confirm profile eligibility' in template,'Missing usable audit template'
  expected_identity=json.loads((pathlib.Path(__file__).resolve().parents[1]/'src/lib/identityGraph.json').read_text())
  for path in ['/', '/about']:
   p=results[path]
@@ -146,6 +155,6 @@ def run(base):
   except urllib.error.HTTPError as e:
    assert e.code in (301,308),(old,e.code)
    assert urllib.parse.urlparse(e.headers['Location']).path==new,(old,e.headers['Location'])
- print(json.dumps({'pages':len(paths),'articles':len(articles),'case_studies':len(cases),'identity_graph_head_and_deduplication':'2/2','faq_and_fragment_checks':'passed','priority_service_walkthroughs':'3/3','electrician_sections_and_revision_dates':'passed','primary_sources':'20/20','article_schema':'20/20','missing_routes':'3 paths × 2 user agents return 404','redirects':2,'status':'passed'},indent=2))
+ print(json.dumps({'pages':len(paths),'articles':len(articles),'case_studies':len(cases),'workbook_evidence_and_links':'passed','identity_graph_head_and_deduplication':'2/2','faq_and_fragment_checks':'passed','priority_service_walkthroughs':'3/3','electrician_sections_and_revision_dates':'passed','primary_sources':'20/20','article_schema':'20/20','missing_routes':'3 paths × 2 user agents return 404','redirects':2,'status':'passed'},indent=2))
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('--base-url',default='http://127.0.0.1:4317');run(parser.parse_args().base_url.rstrip('/'))
