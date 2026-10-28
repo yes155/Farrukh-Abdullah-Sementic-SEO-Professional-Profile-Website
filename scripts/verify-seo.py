@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Production HTTP regression checks. Run against a built local server, never a public submit flow."""
-import argparse, concurrent.futures, json, re, urllib.request, urllib.error, urllib.parse, xml.etree.ElementTree as ET
+import argparse, concurrent.futures, json, pathlib, re, urllib.request, urllib.error, urllib.parse, xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 class Page(HTMLParser):
  def __init__(self, body):
-  super().__init__(); self.stack=[];self.h1=[];self.title=[];self.headings=[];self.canon=[];self.descriptions=[];self.links=[];self.schemas=[];self.script=None;self.heading=None;self.ids=set();self.dom_text=[];self.main_images=[];self.times=[];self.feed(body)
+  super().__init__(); self.stack=[];self.h1=[];self.title=[];self.headings=[];self.canon=[];self.descriptions=[];self.links=[];self.schemas=[];self.schema_blocks=[];self.script_location=None;self.script=None;self.heading=None;self.ids=set();self.dom_text=[];self.main_images=[];self.times=[];self.feed(body)
  def handle_starttag(self,tag,attrs):
   a=dict(attrs)
   if a.get('id'):self.ids.add(a['id'])
@@ -13,11 +13,12 @@ class Page(HTMLParser):
   if tag=='link' and a.get('rel')=='canonical':self.canon.append(a.get('href'))
   if tag=='meta' and a.get('name')=='description':self.descriptions.append(a.get('content'))
   if tag=='a' and a.get('href'):self.links.append((a['href'],'main' in self.stack))
-  if tag=='script' and a.get('type')=='application/ld+json':self.script=[]
+  if tag=='script' and a.get('type')=='application/ld+json':self.script=[];self.script_location='head' if 'head' in self.stack else 'body'
   if re.fullmatch('h[1-6]',tag):self.heading=[tag,[]]
   if tag not in ['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr']:self.stack.append(tag)
  def handle_endtag(self,tag):
-  if tag=='script' and self.script is not None:self.schemas.append(json.loads(''.join(self.script)));self.script=None
+  if tag=='script' and self.script is not None:
+   data=json.loads(''.join(self.script));self.schema_blocks.append((self.script_location,data));self.schemas.extend(data.get('@graph',[data]));self.script=None
   if self.heading and tag==self.heading[0]:
    text=' '.join(''.join(self.heading[1]).split());self.headings.append((tag,text))
    if tag=='h1':self.h1.append(text)
@@ -122,6 +123,17 @@ def run(base):
  planner=results['/tools/seo-project-planner']
  assert {'planner-website','planner-business','planner-goal'}<=planner.ids
  assert any(s.get('@type')=='WebApplication' and s['offers']['price']=='0' for s in planner.schemas)
+ expected_identity=json.loads((pathlib.Path(__file__).resolve().parents[1]/'src/lib/identityGraph.json').read_text())
+ for path in ['/', '/about']:
+  p=results[path]
+  graphs=[(location,data) for location,data in p.schema_blocks if '@graph' in data and any(node.get('@id')=='https://farrukh.top/#person' for node in data['@graph'])]
+  assert len(graphs)==1 and graphs[0][0]=='head',(path,'Identity graph must appear once in the server-rendered head')
+  assert graphs[0][1]==expected_identity,(path,'Published graph differs from supplied identity data')
+  for identity in ['https://farrukh.top/#person','https://farrukh.top/#organization']:
+   assert len([node for node in p.schemas if node.get('@id')==identity])==1,(path,'Duplicate identity entity',identity)
+ for path,p in results.items():
+  if path not in ['/', '/about']:
+   assert not any(data.get('@graph')==expected_identity['@graph'] for _,data in p.schema_blocks),(path,'Identity graph leaked onto another route')
  about=results['/about'];assert len([s for s in about.schemas if s.get('@type')=='Person'])==1
  lahore=results['/locations/lahore'];assert len([s for s in lahore.schemas if s.get('@type')=='ProfessionalService'])==1
  assert not any(s.get('geo') for s in lahore.schemas),'Unverified Lahore coordinates'
@@ -134,6 +146,6 @@ def run(base):
   except urllib.error.HTTPError as e:
    assert e.code in (301,308),(old,e.code)
    assert urllib.parse.urlparse(e.headers['Location']).path==new,(old,e.headers['Location'])
- print(json.dumps({'pages':len(paths),'articles':len(articles),'case_studies':len(cases),'faq_and_fragment_checks':'passed','priority_service_walkthroughs':'3/3','electrician_sections_and_revision_dates':'passed','primary_sources':'20/20','article_schema':'20/20','missing_routes':'3 paths × 2 user agents return 404','redirects':2,'status':'passed'},indent=2))
+ print(json.dumps({'pages':len(paths),'articles':len(articles),'case_studies':len(cases),'identity_graph_head_and_deduplication':'2/2','faq_and_fragment_checks':'passed','priority_service_walkthroughs':'3/3','electrician_sections_and_revision_dates':'passed','primary_sources':'20/20','article_schema':'20/20','missing_routes':'3 paths × 2 user agents return 404','redirects':2,'status':'passed'},indent=2))
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('--base-url',default='http://127.0.0.1:4317');run(parser.parse_args().base_url.rstrip('/'))

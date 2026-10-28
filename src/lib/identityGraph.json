@@ -1,0 +1,137 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://farrukh.top/#person",
+      "name": "Farrukh Abdullah",
+      "jobTitle": "Semantic SEO & GEO Consultant",
+      "description": "Farrukh Abdullah is a Semantic SEO and Generative Engine Optimization (GEO) consultant and founder of Farrukh Abdullah Advisory, specializing in entity SEO, knowledge graph architecture, and localized search systems for US service businesses.",
+      "url": "https://farrukh.top/about",
+      "mainEntityOfPage": "https://farrukh.top/about",
+      "image": "https://farrukh.top/farrukh-photo-final.jpg",
+      "email": "mailto:f.abdullah79@gmail.com",
+      "telephone": "+92-334-6536393",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Faisalabad",
+        "addressRegion": "Punjab",
+        "addressCountry": "PK"
+      },
+      "worksFor": {
+        "@id": "https://farrukh.top/#organization"
+      },
+      "knowsAbout": [
+        "Semantic SEO",
+        "Generative Engine Optimization (GEO)",
+        "Entity SEO",
+        "Knowledge Graph Construction",
+        "Answer Engine Optimization (AEO)",
+        "Local SEO Systems",
+        "Schema.org Structured Data",
+        "Google Business Profile Optimization"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Search Engine Optimization and Content Marketing",
+          "credentialCategory": "Certificate",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "IBM (Coursera)"
+          },
+          "identifier": "7JIZ8N7TW3JB"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Search Engine Optimization Professional Certificate",
+          "credentialCategory": "Certificate",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Moz (LinkedIn Learning)"
+          },
+          "identifier": "cabd29ba74e56296"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Marketing Strategy: SEO Content Writing",
+          "credentialCategory": "Certificate",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Moz (LinkedIn Learning)"
+          },
+          "identifier": "82eede6ecba75e86"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "How to Create, Optimize, and Manage Google Business Profiles",
+          "credentialCategory": "Certificate",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "BrightLocal"
+          }
+        }
+      ],
+      "sameAs": [
+        "https://zenodo.org/records/23701870",
+        "https://orcid.org/0009-0001-9570-3897",
+        "https://www.wikidata.org/wiki/Q141886354",
+        "https://farrukh.top/",
+        "https://github.com/yes155",
+        "https://www.crunchbase.com/person/farrukh-abdullah",
+        "https://www.linkedin.com/in/farrukh-abdullah-5a218424/",
+        "https://www.goodfirms.co/company/farrukh-abdullah-geo-semantic-seo-consultant",
+        "https://app.qwoted.com/sources/farrukh-abdullah",
+        "https://www.indiehackers.com/FarrukhSEO",
+        "https://medium.com/@f.abdullah79",
+        "https://dev.to/farrukh_abdullah_seo",
+        "https://hashnode.com/@farrukh-seo",
+        "https://farrukhseo.substack.com/",
+        "https://farrukhseo.blogspot.com/",
+        "https://www.quora.com/profile/Farrukh-Abdullah-1",
+        "https://bsky.app/profile/farrukh79.bsky.social",
+        "https://www.producthunt.com/@farrukh_abdullah",
+        "https://www.reddit.com/user/Farrukh-Writes/",
+        "https://www.patreon.com/c/FarrukhAbdullah",
+        "http://about.me/farrukh_abdullah",
+        "https://www.facebook.com/farukh.abdullah",
+        "https://steamcommunity.com/profiles/76561198662122568/"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://farrukh.top/#organization",
+      "name": "Farrukh Abdullah Advisory",
+      "alternateName": "Farrukh Abdullah — GEO & Semantic SEO Consultant",
+      "url": "https://farrukh.top/",
+      "logo": "https://farrukh.top/farrukh-photo-final.jpg",
+      "founder": {
+        "@id": "https://farrukh.top/#person"
+      },
+      "email": "f.abdullah79@gmail.com",
+      "telephone": "+92-334-6536393",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Faisalabad",
+        "addressRegion": "Punjab",
+        "addressCountry": "PK"
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "United States"
+        },
+        {
+          "@type": "Country",
+          "name": "United Kingdom"
+        }
+      ],
+      "sameAs": [
+        "https://zenodo.org/records/23701870",
+        "https://www.wikidata.org/wiki/Q141886354",
+        "https://www.goodfirms.co/company/farrukh-abdullah-geo-semantic-seo-consultant",
+        "https://github.com/yes155/awesome-geo-seo"
+      ]
+    }
+  ]
+}

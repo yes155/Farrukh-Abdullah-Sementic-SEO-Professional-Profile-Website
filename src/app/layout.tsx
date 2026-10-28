@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
-import { PERSON_SCHEMA, ORGANIZATION_SCHEMA, WEBSITE_SCHEMA } from "@/lib/schemas";
+import IdentitySchema from "@/components/IdentitySchema";
+import { WEBSITE_SCHEMA } from "@/lib/schemas";
 import { Analytics } from '@vercel/analytics/next';
 
 const SITE_URL = "https://farrukh.top";
@@ -47,10 +48,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <IdentitySchema placement="head" />
+      </head>
       <body id="top" className="bg-white text-black min-h-screen font-sans selection:bg-cyan-400 selection:text-black flex flex-col">
         {/* Sitewide / Homepage Core JSON-LD Schemas */}
-        <JsonLd id="schema-person" data={PERSON_SCHEMA} />
-        <JsonLd id="schema-organization" data={ORGANIZATION_SCHEMA} />
+        <IdentitySchema placement="body" />
         <JsonLd id="schema-website" data={WEBSITE_SCHEMA} />
 
         {/* Sticky Translucent Navbar with integrated Top Banner */}
