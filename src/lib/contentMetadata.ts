@@ -3,7 +3,7 @@ export const EDITORIAL_UPDATED = "2026-10-19";
 const PAGE_UPDATES: Record<string, string> = {
   "/": "2026-10-28",
   "/about": "2026-10-28",
-  "/evidence": "2026-10-28",
+  "/evidence": "2026-10-29",
   "/tools/local-seo-audit-workbook": "2026-10-28",
   "/services/local-seo": "2026-10-28",
   "/services/semantic-seo": "2026-10-28",

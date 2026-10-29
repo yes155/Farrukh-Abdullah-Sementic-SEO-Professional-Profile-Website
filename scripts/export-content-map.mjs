@@ -35,7 +35,7 @@ add('/insights','Insights','Directory','Find a practical SEO explanation',['Arti
 add('/contact','Business identity','Conversion','Describe a project and choose a contact route',['Project details','Contact options']);
 add('/privacy','Policies','Policy','Understand data handling',['Inquiry information','Privacy terms']);
 add('/terms','Policies','Policy','Understand advisory terms',['Engagement terms']);
-add('/evidence','Business identity','Trust','Assess public implementation records and source types',['Public implementation','Public client review','Project accounts','Original resources','Source types']);
+add('/evidence','Business identity','Trust','Assess public implementation records and source types',['Public implementation','Public client review','Project accounts','Original resources','How I record AI-search observations','Source types']);
 add('/tools/local-seo-audit-workbook','Planning tools','Utility','Record a manual local SEO review and export an action list',['Review context','Manual audit workbook','Blank worksheet','Prioritization','Comparison records','Citing the resource']);
 add('/tools/seo-project-planner','Planning tools','Utility','Prepare an SEO project brief',['Business type','Goal','Suggested review priorities','Using the brief']);
 for(const service of CORE_SERVICES)add('/services/'+service.slug,'Core services','Commercial',service.title,['Service fit',...service.deliverables,'Access','Progress','Engagement questions']);
