@@ -8,33 +8,34 @@ import { getPageUpdated, displayDate } from '@/lib/contentMetadata';
 type EditorialProps = {
   title: string; intro: string; path: string; parent?: { name: string; url: string }; children: ReactNode;
   attributes?: string[]; overview?: { title: string; items: string[] }; action?: { label: string; href: string };
+  compact?: boolean; headerAside?: ReactNode;
 };
-export default function EditorialLayout({ title, intro, path, parent, children, attributes, overview, action }: EditorialProps) {
+export default function EditorialLayout({ title, intro, path, parent, children, attributes, overview, action, compact = false, headerAside }: EditorialProps) {
   const updated = getPageUpdated(path);
   const crumbs = [{ name: 'Home', url: '/' }, ...(parent ? [parent] : []), { name: title, url: path }];
-  return <div className="site-shell py-10 md:py-16">
+  return <div className={`site-shell ${compact ? 'py-6 md:py-8' : 'py-10 md:py-16'}`}>
     <JsonLd id="page-breadcrumb" data={getBreadcrumbSchema(crumbs)} />
-    <header className={`pb-10 md:pb-14 mb-10 md:mb-14 border-b border-neutral-200 ${overview ? 'grid lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] gap-10 lg:gap-16 items-start' : ''}`}>
+    <header className={`${compact ? 'pb-6 mb-6 md:pb-7 md:mb-7' : 'pb-10 md:pb-14 mb-10 md:mb-14'} border-b border-neutral-200 ${overview || headerAside ? (compact ? 'grid lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-start' : 'grid lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] gap-10 lg:gap-16 items-start') : ''}`}>
       <div>
-        {parent && <Link href={parent.url} className="inline-block text-sm text-cyan-800 hover:underline underline-offset-4 mb-5">{parent.name}</Link>}
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-black max-w-4xl">{title}</h1>
-        <p className="text-lg md:text-xl text-neutral-600 max-w-3xl leading-relaxed mt-6">{intro}</p>
-        {attributes?.length ? <ul aria-label="Service details" className="flex flex-wrap gap-2 mt-6">{attributes.map(item => <li key={item} className="text-xs font-medium px-3 py-2 border border-neutral-200 bg-neutral-50 text-neutral-700">{item}</li>)}</ul> : null}
+        {parent && <Link href={parent.url} className={`inline-block text-sm text-cyan-800 hover:underline underline-offset-4 ${compact ? 'mb-3' : 'mb-5'}`}>{parent.name}</Link>}
+        <h1 className={`${compact ? 'text-3xl md:text-4xl' : 'text-4xl md:text-5xl'} font-bold tracking-tight leading-[1.12] text-black max-w-4xl`}>{title}</h1>
+        <p className={`text-lg md:text-xl text-neutral-600 max-w-3xl leading-relaxed ${compact ? 'mt-4' : 'mt-6'}`}>{intro}</p>
+        {attributes?.length ? <ul aria-label="Service details" className={`flex flex-wrap gap-2 ${compact ? 'mt-4' : 'mt-6'}`}>{attributes.map(item => <li key={item} className="text-xs font-medium px-3 py-2 border border-neutral-200 bg-neutral-50 text-neutral-700">{item}</li>)}</ul> : null}
         {action && <Link href={action.href} className="inline-flex items-center gap-3 bg-cyan-400 hover:bg-cyan-300 text-black border border-black px-5 py-3 font-semibold text-sm mt-7">{action.label}<ArrowRight size={16} aria-hidden="true" /></Link>}
-        <p className="text-xs text-neutral-500 mt-6">By <Link href="/about" className="underline underline-offset-4">Farrukh Abdullah</Link> · Updated <time dateTime={updated}>{displayDate(updated)}</time></p>
+        <p className={compact ? 'text-sm text-neutral-600 mt-4' : 'text-xs text-neutral-500 mt-6'}>By <Link href="/about" className="underline underline-offset-4">Farrukh Abdullah</Link> · Updated <time dateTime={updated}>{displayDate(updated)}</time></p>
       </div>
-      {overview && <aside className="border border-black bg-neutral-50 p-6 md:p-8 shadow-[4px_4px_0px_#00d3f2]" aria-label={overview.title}>
+      {headerAside ?? (overview && <aside className="border border-black bg-neutral-50 p-6 md:p-8 shadow-[4px_4px_0px_#00d3f2]" aria-label={overview.title}>
         <h2 className="text-lg font-semibold mb-5">{overview.title}</h2>
         <ol className="divide-y divide-neutral-200">{overview.items.map((item, i) => <li key={item} className="flex gap-3 py-4 first:pt-0 last:pb-0 text-sm leading-relaxed text-neutral-700"><span className="font-mono text-cyan-800 shrink-0">0{i + 1}</span><span>{item}</span></li>)}</ol>
-      </aside>}
+      </aside>)}
     </header>
-    <div className="space-y-10 md:space-y-14">{children}</div>
+    <div className={compact ? 'space-y-6 md:space-y-8' : 'space-y-10 md:space-y-14'}>{children}</div>
   </div>;
 }
-export function ContentSection({ title, children, id }: { title: string; children: ReactNode; id?: string }) {
-  return <section id={id} className={`content-section space-y-5${id ? ' scroll-mt-28' : ''}`}>
-    <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-black">{title}</h2>
-    <div className="text-base text-neutral-700 leading-[1.8] space-y-4">{children}</div>
+export function ContentSection({ title, children, id, compact = false }: { title: string; children: ReactNode; id?: string; compact?: boolean }) {
+  return <section id={id} className={`content-section ${compact ? 'space-y-4' : 'space-y-5'}${id ? ' scroll-mt-28' : ''}`}>
+    <h2 className={`${compact ? 'text-2xl' : 'text-2xl md:text-3xl'} font-bold tracking-tight text-black`}>{title}</h2>
+    <div className={compact ? 'text-base text-neutral-700 leading-relaxed space-y-3' : 'text-base text-neutral-700 leading-[1.8] space-y-4'}>{children}</div>
   </section>;
 }
 export function ContactAction({ text = 'Discuss your website' }: { text?: string }) {
