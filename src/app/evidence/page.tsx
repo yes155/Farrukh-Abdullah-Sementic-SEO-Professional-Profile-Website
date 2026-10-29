@@ -1,40 +1,85 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import EditorialLayout, { ContentSection } from '@/components/EditorialLayout';
+import EditorialLayout, { ContentSection, ContactAction } from '@/components/EditorialLayout';
 import Certifications from '@/components/Certifications';
 import PublicWorkCards from '@/components/PublicWorkCards';
 import JsonLd from '@/components/JsonLd';
 import { getPublicWorkSchema } from '@/lib/publicWork';
-import { CASE_SLUGS, getCaseContent } from '@/lib/caseContent';
+import { getCaseContent } from '@/lib/caseContent';
+
 export const metadata: Metadata = {
   title: 'Work, Evidence & Public References',
-  description: 'Explore Farrukh Abdullah’s research deposit, authored article, public implementation records, client feedback, professional profiles, and practical SEO resources.',
+  description: 'Explore Farrukh Abdullah’s selected SEO projects, client feedback, research deposit, authored writing, implementation records, and practical resources.',
   alternates: { canonical: '/evidence' },
 };
-const repo='https://github.com/yes155/Farrukh-Abdullah-Sementic-SEO-Professional-Profile-Website';
+
+const selectedCases = ['armadillo-coffee-roasters', 'swag-pro', 'windcave'];
+const sections = [
+  ['case-evidence', 'Selected projects'],
+  ['public-review', 'Client feedback'],
+  ['research-and-writing', 'Research and public work'],
+  ['original-resources', 'Practical resources'],
+  ['credentials', 'Training'],
+  ['profiles', 'Profiles and references'],
+];
+
 export default function Page() {
   return <>
     <JsonLd id="schema-public-work" data={getPublicWorkSchema()} />
-    <EditorialLayout title="Work, evidence, and public references" intro="Assess my approach through research, authored writing, implementation records, project accounts, a public client review, and training records. Each source shows a different part of the picture." path="/evidence" parent={{name:'About Farrukh',url:'/about'}} attributes={['Source links','Clear attribution','Original working resources']}>
-      <ContentSection id="research-and-writing" title="Research, writing, and public work"><PublicWorkCards /><p>The Zenodo record identifies a deposited work by Farrukh Abdullah, issued October 27, 2026. <a href="https://api.datacite.org/dois/10.5281/zenodo.23701870" className="underline text-cyan-800">DataCite’s registry metadata</a> supplies its title, author, ORCID, DOI, and issue date. A repository deposit and DOI establish a publication record; they do not establish peer review or CERN endorsement.</p><p>The Connectively article names Farrukh Abdullah as its author and was published August 27, 2026. It is presented here as an authored contribution, rather than independent reporting about the consultancy. The implementation record concerns this website, with client outcomes assessed separately.</p></ContentSection>
-      <ContentSection id="implementation" title="An implementation you can inspect"><p>This website provides a public example of my implementation approach. The repository records how pages, structured data, and inquiry tools were changed, together with automated checks. It is my own site; the record demonstrates the implementation, without claiming a client outcome.</p><div className="grid md:grid-cols-2 gap-6">{[
-        ['Electrician service page','A service offer, original annotated page outline, contribution-based break-even calculator, and an inquiry flow with an email fallback.',repo+'/pull/9','Inspect the implementation'],
-        ['Identity structured data','A Person and business graph rendered in the homepage and About head, with checks for duplicate identities and client navigation.',repo+'/pull/10','Inspect the schema change']
-      ].map(([title,text,url,label])=><article key={title} className="border border-neutral-300 p-6"><h3 className="text-xl font-semibold text-black">{title}</h3><p className="text-base mt-4 mb-5">{text}</p><a href={url} className="underline text-cyan-800">{label}</a></article>)}</div><p><Link href="/services/seo-for-electricians" className="underline text-cyan-800">View the live electrician page</Link> · <a href={repo+'/actions'} className="underline text-cyan-800">View the repository’s automated checks</a></p></ContentSection>
-      <ContentSection id="public-review" title="Client feedback published on Clutch"><div className="border-l-4 border-cyan-500 bg-cyan-50 p-6 md:p-8"><p className="text-sm text-cyan-800 font-semibold">Public client review · Published August 3, 2026</p><h3 className="text-xl font-semibold text-black mt-3">Market research for Cookie Digital</h3><p className="mt-4">Clutch publishes a client-submitted account of a market-research engagement for an Etsy consulting firm. The reviewer describes demand, pricing, and seasonal research, along with feedback on communication and reporting.</p><p className="mt-4 text-sm">The review concerns that market-research engagement. It does not establish outcomes for the electrical contractor or other service pages on this site.</p><a className="inline-block mt-5 underline text-cyan-800 font-semibold" href="https://clutch.co/profile/farrukh-abdullah-geo-semantic-seo-consultant">Read the full review and context on Clutch</a></div><p className="text-sm text-neutral-500">Source checked October 28, 2026. Review details and any later updates are maintained by Clutch; the profile’s service description is provider-supplied.</p></ContentSection>
-      <ContentSection id="case-evidence" title="Project accounts and their supporting context"><p>The case studies describe the business problem, the work performed, and the outcomes reported in the engagement account or client feedback. Each page explains the evidence available with the account. Campaign exports and project dates are not currently published with these accounts.</p><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">{CASE_SLUGS.map(slug=>{const study=getCaseContent(slug)!;return <article key={slug} className="border border-neutral-300 p-5"><h3 className="text-lg font-semibold text-black"><Link className="hover:underline" href={`/case-studies/${slug}`}>{study.name}</Link></h3><p className="text-sm mt-3">{study.industry}</p><p className="text-xs text-neutral-500 mt-3">{study.quote?'Engagement account + attributed client feedback':'Engagement account'}</p></article>;})}</div></ContentSection>
-      <ContentSection id="original-resources" title="An original resource you can use"><div className="border border-neutral-300 p-6 md:p-8"><h3 className="text-2xl font-semibold text-black">Local SEO audit workbook</h3><p className="mt-4">Review 16 checks across Business Profile information, service pages, technical access, and measurement. Record evidence, assign next actions, and export a CSV. Guidance adapts to electrical contractors, fence contractors, and orthodontic practices.</p><p className="mt-5"><Link href="/tools/local-seo-audit-workbook" className="underline text-cyan-800 font-semibold">Use the free audit workbook</Link></p></div></ContentSection>
-      <ContentSection id="ai-measurement" title="How I record AI-search observations"><p>An accessible page is not evidence that an AI engine has cited it. Use a fixed question set and record the exact engine, product, date, country, language, search mode, and session context. Keep the original response or a private reference so each observation can be checked.</p><ol className="list-decimal pl-6 space-y-3"><li>Choose questions your prospective customers actually ask. The template contains eight unbranded buyer questions and two branded questions; adapt them before establishing a baseline, then keep them consistent.</li><li>Record whether the business is mentioned, whether its description is accurate, and every cited URL. Check that a linked source supports the claim. A mention without a source link is not a citation.</li><li>Repeat under comparable conditions and report the sample size. Separate engines and branded questions from unbranded questions. Label a repeat run rather than selecting only favorable answers.</li><li>Measure referral sessions and qualified inquiries separately in analytics and business records over stated date ranges. An observed answer cannot, by itself, establish traffic, a sale, or which prompt caused an inquiry.</li></ol><p><a href="/resources/ai-search-observation-template.csv" download className="underline text-cyan-800 font-semibold">Download the AI-search observation template (CSV)</a></p><p className="text-sm text-neutral-500">This is a blank recording method, not a report of achieved citations or a universal visibility score. <a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide" className="underline text-cyan-800">Google’s AI-search guidance</a>, <a href="https://developers.openai.com/api/docs/bots" className="underline text-cyan-800">OpenAI’s crawler documentation</a>, and <a href="https://docs.perplexity.ai/docs/resources/perplexity-crawlers" className="underline text-cyan-800">Perplexity’s crawler documentation</a> provide platform-specific reference points.</p><p><Link href="/services/ai-seo-consulting" className="underline text-cyan-800">See the scope of AI-search consulting</Link></p></ContentSection>
-      <ContentSection id="source-types" title="How to read the different source types"><dl className="grid md:grid-cols-2 gap-6">{[
-        ['Client engagement account','A description of the work and reported outcomes. Read the measurement and evidence notes on the case page.'],
-        ['Public client review','Feedback submitted to another platform. Follow the source to review the engagement, attribution, and publication context.'],
-        ['Public implementation record','Source changes and checks that can be inspected. This demonstrates what was implemented; performance requires separate measurement.'],
-        ['Research deposit or authored article','A publication record or contribution with attribution. Check the work itself, its sources, and any stated review process; authorship does not establish independent endorsement.'],
-        ['Training or a maintained profile','Information about study or professional identity. A profile or credential is not an endorsement of every claim or project result.']
-      ].map(([title,text])=><div key={title} className="border-t border-neutral-300 pt-5"><dt className="font-semibold text-black">{title}</dt><dd className="mt-3">{text}</dd></div>)}</dl></ContentSection>
-      <ContentSection id="profiles" title="Professional profiles and company listings"><dl className="grid md:grid-cols-2 gap-6"><div><dt className="font-semibold text-black">Professional identity</dt><dd className="mt-3"><a href="https://www.linkedin.com/in/farrukh-abdullah-5a218424/" className="underline text-cyan-800">LinkedIn profile</a> · <a href="https://orcid.org/0009-0001-9570-3897" className="underline text-cyan-800">ORCID researcher identifier</a> · <a href="https://www.wikidata.org/wiki/Q141886354" className="underline text-cyan-800">Wikidata entry</a></dd></div><div><dt className="font-semibold text-black">Company profile and client feedback</dt><dd className="mt-3"><a href="https://techbehemoths.com/company/farrukh-abdullah-advisory" className="underline text-cyan-800">TechBehemoths company profile</a> · <a href="https://clutch.co/profile/farrukh-abdullah-geo-semantic-seo-consultant" className="underline text-cyan-800">Clutch profile and review</a></dd></div></dl><p>Profiles and identifiers supply professional or business information. The scope of the client review is described <a href="#public-review" className="underline text-cyan-800">above</a>; a listing or identifier alone does not establish a client result.</p></ContentSection>
-      <ContentSection id="resource-curation" title="Resource curation and a submitted contribution"><p><a href="https://github.com/yes155/awesome-geo-seo" className="underline text-cyan-800">My maintained GEO and SEO resource repository</a> provides a public example of resource curation. It is maintained by me, rather than independent coverage of my work.</p><p>I submitted the collection for consideration in SerpApi’s awesome-seo-tools repository through <a href="https://github.com/serpapi/awesome-seo-tools/pull/534" className="underline text-cyan-800">pull request #534</a>. Checked October 29, 2026: the request was open and unmerged. This records a submission, not accepted inclusion or a SerpApi endorsement; follow the pull request for its current status.</p><p>For a project discussion, use the <Link href="/contact" className="underline text-cyan-800">contact page</Link>. If you spot an inaccurate statement on this site, include the page URL, the statement, and a supporting source so I can review it.</p></ContentSection>
+    <EditorialLayout
+      compact
+      title="Work, evidence, and public references"
+      intro="Explore selected project work, client feedback, authored publications, and practical SEO resources."
+      path="/evidence"
+      parent={{ name: 'About Farrukh', url: '/about' }}
+      headerAside={<nav aria-label="Evidence sections" className="border border-neutral-300 bg-neutral-50 p-5 lg:p-6">
+        <h2 className="text-lg font-semibold text-black mb-4">Browse the evidence</h2>
+        <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">{sections.map(([id,label]) => <li key={id}><a href={'#'+id} className="underline underline-offset-4 text-cyan-800">{label}</a></li>)}</ul>
+      </nav>}
+    >
+      <ContentSection compact id="case-evidence" title="Selected projects and client feedback">
+        <p>See the business problem, work delivered, and reported outcomes in each account. Campaign dates and underlying analytics exports are not currently published with these cases.</p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {selectedCases.map((slug,index) => { const study=getCaseContent(slug)!; return <article key={slug} className={`min-w-0 border border-neutral-300 p-5 flex flex-col ${index===2?'md:col-span-2 lg:col-span-1':''}`}>
+            <p className="text-sm text-cyan-800 mb-2">{study.industry}</p>
+            <h3 className="text-xl font-semibold text-black">{study.name}</h3>
+            <p className="text-base text-neutral-700 mt-3 mb-4">{study.summary}</p>
+            <Link href={'/case-studies/'+slug} aria-label={'Read the '+study.name+' case study'} className="mt-auto text-sm font-semibold underline text-cyan-800">Read the case study</Link>
+          </article>; })}
+        </div>
+        <p className="text-sm"><Link href="/case-studies" className="font-semibold underline text-cyan-800">View all nine case studies</Link></p>
+        <article id="public-review" className="scroll-mt-28 border-l-4 border-cyan-500 bg-cyan-50 p-5 md:p-6 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] gap-4 lg:gap-6">
+          <div><p className="text-sm text-cyan-800 font-semibold mb-2">Client feedback on Clutch</p><h3 className="text-xl font-semibold text-black">Market research for Cookie Digital</h3><p className="text-sm text-neutral-600 mt-3">Published August 3, 2026</p></div>
+          <div className="space-y-3"><p>Client-submitted feedback on demand, pricing, and seasonal research for an Etsy consulting firm, including communication and reporting. This review covers that market-research engagement.</p><a href="https://clutch.co/profile/farrukh-abdullah-geo-semantic-seo-consultant" className="inline-block text-sm font-semibold underline text-cyan-800">Read the review and engagement context</a><p className="text-sm text-neutral-600">Source checked October 28, 2026. Clutch maintains the review; the profile’s service description is provider-supplied.</p></div>
+        </article>
+      </ContentSection>
+
+      <ContentSection compact id="research-and-writing" title="Research, writing, and public work">
+        <PublicWorkCards compact implementationLinks />
+        <p className="text-sm text-neutral-600">Publication context: <a href="https://api.datacite.org/dois/10.5281/zenodo.23701870" className="underline text-cyan-800">DataCite’s DOI record</a> identifies the Zenodo deposit’s author and issue date; DOI registration does not establish peer review. The Connectively credit is an authored contribution.</p>
+      </ContentSection>
+
+      <ContentSection compact id="original-resources" title="Practical resources you can use">
+        <div className="grid md:grid-cols-2 gap-4">
+          <article className="min-w-0 border border-neutral-300 p-5 space-y-3"><h3 className="text-xl font-semibold text-black">Local SEO audit workbook</h3><p>Record evidence, findings, and next actions across 16 checks for profiles, service pages, technical access, and measurement. This is a manual workbook.</p><Link href="/tools/local-seo-audit-workbook" className="inline-block text-sm font-semibold underline text-cyan-800">Use the free audit workbook</Link></article>
+          <article id="ai-measurement" className="min-w-0 scroll-mt-28 border border-neutral-300 p-5 space-y-3"><h3 className="text-xl font-semibold text-black">AI-search observation template</h3><p>Track ten starter questions with the engine, date, context, cited URLs, and answer accuracy. Record referrals and qualified inquiries separately.</p><a href="/resources/ai-search-observation-template.csv" download className="inline-block text-sm font-semibold underline text-cyan-800">Download the observation template (CSV)</a><p className="text-sm text-neutral-600">A blank recording method, without claimed citation results or a visibility score.</p>
+            <details className="border-t border-neutral-200 pt-3"><summary className="cursor-pointer text-sm font-semibold text-cyan-800">How to record comparable observations</summary><div className="space-y-3 mt-3 text-sm"><ol className="list-decimal pl-5 space-y-2"><li>Adapt the eight unbranded and two branded questions before establishing a baseline, then keep the questions consistent.</li><li>Record the engine, product, date, country, language, search mode, and session context. Retain a response reference.</li><li>Separate mentions from linked citations, check source support, and report repeat runs and sample size.</li><li>Assess referrals and qualified inquiries in separate analytics and business records over stated date ranges.</li></ol><p>Reference points: <a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide" className="underline text-cyan-800">Google</a>, <a href="https://developers.openai.com/api/docs/bots" className="underline text-cyan-800">OpenAI</a>, and <a href="https://docs.perplexity.ai/docs/resources/perplexity-crawlers" className="underline text-cyan-800">Perplexity</a>.</p><Link href="/services/ai-seo-consulting" className="inline-block underline text-cyan-800">AI-search consulting scope</Link></div></details>
+          </article>
+        </div>
+      </ContentSection>
+
+      <Certifications compact />
+
+      <ContentSection compact id="profiles" title="Profiles and supporting references">
+        <dl className="grid md:grid-cols-2 gap-4">
+          <div className="border-t border-neutral-300 pt-4"><dt className="font-semibold text-black">Professional identity</dt><dd className="mt-2 text-sm"><a href="https://www.linkedin.com/in/farrukh-abdullah-5a218424/" className="underline text-cyan-800">LinkedIn</a> · <a href="https://orcid.org/0009-0001-9570-3897" className="underline text-cyan-800">ORCID</a> · <a href="https://www.wikidata.org/wiki/Q141886354" className="underline text-cyan-800">Wikidata</a></dd></div>
+          <div className="border-t border-neutral-300 pt-4"><dt className="font-semibold text-black">Company listings and client feedback</dt><dd className="mt-2 text-sm"><a href="https://techbehemoths.com/company/farrukh-abdullah-advisory" className="underline text-cyan-800">TechBehemoths company profile</a> · <a href="https://clutch.co/profile/farrukh-abdullah-geo-semantic-seo-consultant" className="underline text-cyan-800">Clutch profile and review</a></dd></div>
+        </dl>
+        <p id="resource-curation" className="text-sm text-neutral-600 scroll-mt-28">I maintain the <a href="https://github.com/yes155/awesome-geo-seo" className="underline text-cyan-800">GEO and SEO resource collection</a> and submitted it through <a href="https://github.com/serpapi/awesome-seo-tools/pull/534" className="underline text-cyan-800">SerpApi pull request #534</a>. Checked October 29, 2026: open and unmerged. This is a submitted contribution; follow the pull request for its current status.</p>
+        <details id="source-types" className="scroll-mt-28 border border-neutral-300 p-4"><summary className="cursor-pointer text-sm font-semibold text-cyan-800">About these sources</summary><div className="mt-4 grid md:grid-cols-2 gap-4 text-sm text-neutral-600"><p><strong className="text-neutral-900">Project accounts and reviews.</strong> Read the work, attribution, and evidence notes for the specific engagement.</p><p><strong className="text-neutral-900">Publications and implementation records.</strong> Authored work and inspectable code show an approach; they do not independently establish client performance.</p><p><strong className="text-neutral-900">Profiles and training.</strong> These supply identity or study information. A listing, identifier, or credential is not an endorsement of every project claim.</p><p><strong className="text-neutral-900">Corrections.</strong> Use the <Link href="/contact" className="underline text-cyan-800">contact page</Link> with the page URL, disputed statement, and a supporting source.</p></div></details>
+      </ContentSection>
+
+      <ContactAction />
     </EditorialLayout>
-    <Certifications />
   </>;
 }
