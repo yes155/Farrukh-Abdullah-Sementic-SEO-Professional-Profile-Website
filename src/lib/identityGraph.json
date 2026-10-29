@@ -40,7 +40,8 @@
             "@type": "Organization",
             "name": "IBM (Coursera)"
           },
-          "identifier": "7JIZ8N7TW3JB"
+          "identifier": "7JIZ8N7TW3JB",
+          "url": "https://coursera.org/share/73cfe74f0d961e405bd0e6c291fa266d"
         },
         {
           "@type": "EducationalOccupationalCredential",
@@ -50,7 +51,8 @@
             "@type": "Organization",
             "name": "Moz (LinkedIn Learning)"
           },
-          "identifier": "cabd29ba74e56296"
+          "identifier": "cabd29ba74e56296",
+          "url": "https://www.linkedin.com/learning/certificates/cabd29ba74e5629692dc3e1e1bfb454a64d01860cef7360594fb6fa7f8fee16d"
         },
         {
           "@type": "EducationalOccupationalCredential",
@@ -69,18 +71,16 @@
           "recognizedBy": {
             "@type": "Organization",
             "name": "BrightLocal"
-          }
+          },
+          "url": "https://academy.brightlocal.com/certificate_v2/66ab42287074f2d15d09e088/user/693af0d22a6d366ba9029353"
         }
       ],
       "sameAs": [
-        "https://zenodo.org/records/23701870",
         "https://orcid.org/0009-0001-9570-3897",
         "https://www.wikidata.org/wiki/Q141886354",
-        "https://farrukh.top/",
         "https://github.com/yes155",
         "https://www.crunchbase.com/person/farrukh-abdullah",
         "https://www.linkedin.com/in/farrukh-abdullah-5a218424/",
-        "https://www.goodfirms.co/company/farrukh-abdullah-geo-semantic-seo-consultant",
         "https://app.qwoted.com/sources/farrukh-abdullah",
         "https://www.indiehackers.com/FarrukhSEO",
         "https://medium.com/@f.abdullah79",
@@ -127,10 +127,8 @@
         }
       ],
       "sameAs": [
-        "https://zenodo.org/records/23701870",
-        "https://www.wikidata.org/wiki/Q141886354",
         "https://www.goodfirms.co/company/farrukh-abdullah-geo-semantic-seo-consultant",
-        "https://github.com/yes155/awesome-geo-seo"
+        "https://clutch.co/profile/farrukh-abdullah-geo-semantic-seo-consultant"
       ]
     }
   ]

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Production HTTP regression checks. Run against a built local server, never a public submit flow."""
-import argparse, concurrent.futures, json, pathlib, re, urllib.request, urllib.error, urllib.parse, xml.etree.ElementTree as ET
+import argparse, concurrent.futures, csv, io, json, pathlib, re, urllib.request, urllib.error, urllib.parse, xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 class Page(HTMLParser):
  def __init__(self, body):
@@ -45,6 +45,7 @@ def run(base):
  assert all(e.get('lastmod') for e in entries),'Missing content modification dates'
  assert len(paths)==len(set(paths)),'Duplicate sitemap URLs'
  modification_dates={urllib.parse.urlparse(e['loc']).path:e['lastmod'] for e in entries}
+ assert modification_dates['/evidence'].startswith('2026-10-29')
  assert modification_dates['/services/seo-for-electricians'].startswith('2026-10-28')
  assert modification_dates['/services/seo-for-fence-contractors'].startswith('2026-10-28')
  assert modification_dates['/about'].startswith('2026-10-28')
@@ -70,7 +71,7 @@ def run(base):
     u=urllib.parse.urlparse(href)
     if not u.scheme and not u.netloc and not u.path and u.fragment:assert urllib.parse.unquote(u.fragment) in p.ids,(path,'Broken in-page anchor',href)
     if u.scheme in ('','http','https') and (not u.netloc or u.netloc=='farrukh.top') and u.path and not u.path.startswith('/studio'):
-     assert u.path in paths or u.path=='/resources/local-seo-audit-template.csv',(path,'Internal destination absent from sitemap',href)
+     assert u.path in paths or u.path in ['/resources/local-seo-audit-template.csv','/resources/ai-search-observation-template.csv'],(path,'Internal destination absent from sitemap',href)
  assert len({''.join(p.title) for p in results.values()})==len(paths),'Duplicate titles'
  articles={k:p for k,p in results.items() if k.startswith('/insights/')}
  assert len(articles)==20
@@ -133,16 +134,41 @@ def run(base):
   assert 'evidence' in p.ids and '2026-10-28' in p.times,(path,'Missing project evidence context')
  status,template=fetch('/resources/local-seo-audit-template.csv');assert status==200 and 'Review guidance' in template and 'Confirm profile eligibility' in template,'Missing usable audit template'
  expected_identity=json.loads((pathlib.Path(__file__).resolve().parents[1]/'src/lib/identityGraph.json').read_text())
- for path in ['/', '/about']:
-  p=results[path]
+ for path,p in results.items():
   graphs=[(location,data) for location,data in p.schema_blocks if '@graph' in data and any(node.get('@id')=='https://farrukh.top/#person' for node in data['@graph'])]
   assert len(graphs)==1 and graphs[0][0]=='head',(path,'Identity graph must appear once in the server-rendered head')
-  assert graphs[0][1]==expected_identity,(path,'Published graph differs from supplied identity data')
+  assert graphs[0][1]==expected_identity,(path,'Published graph differs from shared identity data')
   for identity in ['https://farrukh.top/#person','https://farrukh.top/#organization']:
    assert len([node for node in p.schemas if node.get('@id')==identity])==1,(path,'Duplicate identity entity',identity)
- for path,p in results.items():
-  if path not in ['/', '/about']:
-   assert not any(data.get('@graph')==expected_identity['@graph'] for _,data in p.schema_blocks),(path,'Identity graph leaked onto another route')
+  website=[node for node in p.schemas if node.get('@type')=='WebSite']
+  assert len(website)==1 and website[0]['publisher']['@id']=='https://farrukh.top/#organization',(path,'Disconnected website publisher')
+ status,llms=fetch('/llms.txt');assert status==200 and llms.startswith('# Farrukh Abdullah'),('llms.txt',status)
+ llms_links=re.findall(r'\]\((https://farrukh\.top/[^)]+)\)',llms)
+ assert len(llms_links)==len(set(llms_links)),'Duplicate AI navigation entries'
+ for href in llms_links:
+  path=urllib.parse.urlparse(href).path
+  assert path in paths or path=='/resources/ai-search-observation-template.csv',('AI navigation destination missing',href)
+ for path,p in articles.items():
+  headline=next(s['headline'] for s in p.schemas if s.get('@type')=='Article')
+  assert f'[{headline}](https://farrukh.top{path})' in llms,(path,'AI navigation and live article title disagree')
+ for resource in ['/evidence','/tools/local-seo-audit-workbook','/resources/ai-search-observation-template.csv']:assert resource in llms
+ assert 'Campaign dates and underlying analytics exports are not currently published' in llms
+ for stale in ['+112%','1,200+','340%','secure citations','The Exact Passage Structure']:assert stale not in llms,stale
+ status,observations=fetch('/resources/ai-search-observation-template.csv');assert status==200
+ rows=list(csv.DictReader(io.StringIO(observations)))
+ assert len(rows)==10 and len({row['question_id'] for row in rows})==10,'Missing or duplicate observation questions'
+ assert all(len(row)==15 and row['exact_question'] for row in rows),'Malformed observation template'
+ assert all(not row[key] for row in rows for key in row if key not in ['question_id','exact_question']),'Template contains invented observations'
+ assert 'ai-measurement' in evidence.ids and any(href=='/resources/ai-search-observation-template.csv' and main for href,main in evidence.links)
+ status,robots=fetch('/robots.txt');assert status==200
+ # This site's single wildcard group permits public paths and excludes Studio.
+ # urllib.robotparser uses first-match rules, unlike the longest-match behavior
+ # used by search crawlers, so it misreads Allow: / before Disallow: /studio.
+ rules=[line.strip().lower() for line in robots.splitlines() if line.strip()]
+ assert [line for line in rules if line.startswith('user-agent:')]==['user-agent: *'],'Crawler-specific policy needs an explicit review'
+ assert 'allow: /' in rules and [line for line in rules if line.startswith('disallow:')]==['disallow: /studio'],'Public access or Studio exclusion changed'
+ for ua in ['OAI-SearchBot','PerplexityBot','Googlebot']:
+  status,body=fetch('/',ua);assert status==200 and len(Page(body).h1)==1,(ua,status)
  about=results['/about'];assert len([s for s in about.schemas if s.get('@type')=='Person'])==1
  lahore=results['/locations/lahore'];assert len([s for s in lahore.schemas if s.get('@type')=='ProfessionalService'])==1
  assert not any(s.get('geo') for s in lahore.schemas),'Unverified Lahore coordinates'
@@ -155,6 +181,6 @@ def run(base):
   except urllib.error.HTTPError as e:
    assert e.code in (301,308),(old,e.code)
    assert urllib.parse.urlparse(e.headers['Location']).path==new,(old,e.headers['Location'])
- print(json.dumps({'pages':len(paths),'articles':len(articles),'case_studies':len(cases),'workbook_evidence_and_links':'passed','identity_graph_head_and_deduplication':'2/2','faq_and_fragment_checks':'passed','priority_service_walkthroughs':'3/3','electrician_sections_and_revision_dates':'passed','primary_sources':'20/20','article_schema':'20/20','missing_routes':'3 paths × 2 user agents return 404','redirects':2,'status':'passed'},indent=2))
+ print(json.dumps({'pages':len(paths),'articles':len(articles),'case_studies':len(cases),'workbook_evidence_and_links':'passed','identity_graph_head_and_deduplication':f'{len(paths)}/{len(paths)}','ai_navigation_and_observation_template':'passed','crawler_policy_and_user_agent_responses':'3/3','faq_and_fragment_checks':'passed','priority_service_walkthroughs':'3/3','electrician_sections_and_revision_dates':'passed','primary_sources':'20/20','article_schema':'20/20','missing_routes':'3 paths × 2 user agents return 404','redirects':2,'status':'passed'},indent=2))
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('--base-url',default='http://127.0.0.1:4317');run(parser.parse_args().base_url.rstrip('/'))

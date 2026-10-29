@@ -49,11 +49,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <IdentitySchema placement="head" />
+        <IdentitySchema />
       </head>
       <body id="top" className="bg-white text-black min-h-screen font-sans selection:bg-cyan-400 selection:text-black flex flex-col">
         {/* Sitewide / Homepage Core JSON-LD Schemas */}
-        <IdentitySchema placement="body" />
         <JsonLd id="schema-website" data={WEBSITE_SCHEMA} />
 
         {/* Sticky Translucent Navbar with integrated Top Banner */}

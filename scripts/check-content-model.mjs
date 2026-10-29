@@ -64,3 +64,21 @@ assert.equal(restored.entries.eligibility.status,'Not reviewed');assert.equal(re
 assert.equal(restored.website,'https://example.com');assert.equal(restored.entries.eligibility.evidence,'https://example.com/profile');
 assert.equal(fs.readFileSync('public/resources/local-seo-audit-template.csv','utf8'),exportAuditCsv(createAuditDraft()).replaceAll('\r\n','\n'));
 console.log('Audit workbook checks passed: draft recovery, invalid storage, CSV escaping, formula protection, and blank-template consistency.');
+
+const {buildLlmsText}=load('src/lib/llms.ts');
+const revised={...local,title:'Later CMS title',summary:'Later CMS summary'};
+const llms=buildLlmsText([revised,{...local,id:'hidden-guide',noIndex:true},{...local,id:'external-guide',canonicalUrl:'https://example.com/guide'}]);
+assert.ok(llms.includes('[Later CMS title](')&&llms.includes('Later CMS summary'));
+assert.ok(!llms.includes('/insights/hidden-guide')&&!llms.includes('/insights/external-guide'));
+assert.ok(llms.includes('/evidence')&&llms.includes('/tools/local-seo-audit-workbook'));
+assert.match(llms,/Campaign dates and underlying analytics exports are not currently published/);
+for(const stale of ['+112%','1,200+','340%','secure citations','The Exact Passage Structure'])assert.ok(!llms.includes(stale),stale);
+const identity=JSON.parse(fs.readFileSync('src/lib/identityGraph.json','utf8'));
+const person=identity['@graph'].find(node=>node['@type']==='Person');
+const business=identity['@graph'].find(node=>node['@type']==='ProfessionalService');
+assert.ok(!person.sameAs.includes('https://www.goodfirms.co/company/farrukh-abdullah-geo-semantic-seo-consultant'));
+assert.ok(!business.sameAs.includes('https://www.wikidata.org/wiki/Q141886354'));
+for(const node of [person,business])assert.ok(!node.sameAs.some(url=>url.includes('/records/')||url.includes('/awesome-geo-seo')));
+const {CERTIFICATIONS}=load('src/data.ts');
+for(const cert of CERTIFICATIONS.filter(cert=>cert.credentialUrl))assert.ok(person.hasCredential.some(credential=>credential.name===cert.title&&credential.url===cert.credentialUrl));
+console.log('AI navigation and identity checks passed: revised records, index exclusions, evidence context, entity types, and credential destinations.');
