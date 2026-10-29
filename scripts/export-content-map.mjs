@@ -26,7 +26,7 @@ const {EDITORIAL_ARTICLES}=load('src/lib/articles.ts');
 const rows=[];
 const add=(url,cluster,intent,task,headings,variants='Cover close wording variants within the same page')=>rows.push({url,cluster,intent,page_decision:'QDP: retain distinct page',primary_task:task,heading_decisions:headings.map(x=>'QDH: '+x).join(' | '),variant_decision:'QDS: '+variants});
 add('/','Business identity','Commercial','Choose an SEO consultant',['Services','Selected work','Client feedback','Engagement questions']);
-add('/about','Business identity','Trust','Understand the consultant and relevant experience',['Approach','Research, writing, and public work','Professional experience','Training']);
+add('/about','Business identity','Trust','Understand the consultant and relevant experience',['Approach','Professional experience','Research, writing, and public work','Training','Discuss your website']);
 add('/services','Services','Directory','Choose the right SEO service',['Core services','Industry services']);
 add('/case-studies','Case studies','Directory','Find relevant project experience',['Client projects']);
 add('/locations','Service areas','Directory','Understand remote availability',['US markets','Pakistan','Other locations']);
