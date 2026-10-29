@@ -48,7 +48,7 @@ def run(base):
  assert modification_dates['/evidence'].startswith('2026-10-29')
  assert modification_dates['/services/seo-for-electricians'].startswith('2026-10-28')
  assert modification_dates['/services/seo-for-fence-contractors'].startswith('2026-10-28')
- assert modification_dates['/about'].startswith('2026-10-28')
+ assert modification_dates['/about'].startswith('2026-10-29')
  results={}
  with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
   for path,result in zip(paths,pool.map(fetch,paths)):
@@ -134,6 +134,17 @@ def run(base):
   assert 'evidence' in p.ids and '2026-10-28' in p.times,(path,'Missing project evidence context')
  status,template=fetch('/resources/local-seo-audit-template.csv');assert status==200 and 'Review guidance' in template and 'Confirm profile eligibility' in template,'Missing usable audit template'
  expected_identity=json.loads((pathlib.Path(__file__).resolve().parents[1]/'src/lib/identityGraph.json').read_text())
+ for path in ['/about','/evidence']:
+  p=results[path];visible=' '.join(' '.join(p.dom_text).split())
+  works=[node for node in p.schemas if node.get('@type') in ['CreativeWork','Article','SoftwareSourceCode']]
+  assert len(works)==3,(path,'Missing or duplicate public works')
+  for work in works:
+   assert work['author']['@id']=='https://farrukh.top/#person',(path,'Work author disconnected')
+   assert any(href==work['url'] and main for href,main in p.links),(path,'Work source not linked')
+   assert work['name'] in visible,(path,'Work title absent from visible content')
+   if work.get('datePublished'):assert work['datePublished'] in p.times,(path,'Work date absent from visible content')
+  assert not any('overleaf.com' in href for href,_ in p.links),(path,'Private project-sharing link exposed')
+ assert any(href=='https://techbehemoths.com/company/farrukh-abdullah-advisory' and main for href,main in results['/about'].links),'Existing verification link lost'
  for path,p in results.items():
   graphs=[(location,data) for location,data in p.schema_blocks if '@graph' in data and any(node.get('@id')=='https://farrukh.top/#person' for node in data['@graph'])]
   assert len(graphs)==1 and graphs[0][0]=='head',(path,'Identity graph must appear once in the server-rendered head')
@@ -181,6 +192,6 @@ def run(base):
   except urllib.error.HTTPError as e:
    assert e.code in (301,308),(old,e.code)
    assert urllib.parse.urlparse(e.headers['Location']).path==new,(old,e.headers['Location'])
- print(json.dumps({'pages':len(paths),'articles':len(articles),'case_studies':len(cases),'workbook_evidence_and_links':'passed','identity_graph_head_and_deduplication':f'{len(paths)}/{len(paths)}','ai_navigation_and_observation_template':'passed','crawler_policy_and_user_agent_responses':'3/3','faq_and_fragment_checks':'passed','priority_service_walkthroughs':'3/3','electrician_sections_and_revision_dates':'passed','primary_sources':'20/20','article_schema':'20/20','missing_routes':'3 paths × 2 user agents return 404','redirects':2,'status':'passed'},indent=2))
+ print(json.dumps({'pages':len(paths),'articles':len(articles),'case_studies':len(cases),'workbook_evidence_and_links':'passed','public_work_sources_and_author_relationships':'2/2 pages','identity_graph_head_and_deduplication':f'{len(paths)}/{len(paths)}','ai_navigation_and_observation_template':'passed','crawler_policy_and_user_agent_responses':'3/3','faq_and_fragment_checks':'passed','priority_service_walkthroughs':'3/3','electrician_sections_and_revision_dates':'passed','primary_sources':'20/20','article_schema':'20/20','missing_routes':'3 paths × 2 user agents return 404','redirects':2,'status':'passed'},indent=2))
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('--base-url',default='http://127.0.0.1:4317');run(parser.parse_args().base_url.rstrip('/'))

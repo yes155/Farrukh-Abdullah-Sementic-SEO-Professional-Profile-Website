@@ -1,6 +1,7 @@
 import type { Insight } from '@/types';
 import { CORE_SERVICES } from './serviceContent';
 import { CASE_SLUGS, getCaseContent } from './caseContent';
+import { PUBLIC_WORK } from './publicWork';
 
 const ORIGIN = 'https://farrukh.top';
 const line = (value: string) => value.replace(/[\r\n]+/g, ' ').trim();
@@ -26,10 +27,16 @@ export function buildLlmsText(articles: Insight[]): string {
     '',
     '## Evidence and practical resources',
     '',
-    entry('Work, evidence, and public references', '/evidence', 'Public implementation records, an attributed client review, training links, and the evidence available with project accounts.'),
+    entry('Work, evidence, and public references', '/evidence', 'Research deposit, authored writing, public implementation records, an attributed client review, and project evidence context.'),
     entry('Local SEO audit workbook', '/tools/local-seo-audit-workbook', 'A free manual review with 16 checks, evidence fields, next actions, and CSV export. It is not an automated crawl or SEO score.'),
     entry('SEO project planner', '/tools/seo-project-planner', 'Prepare a project brief around the business, customer task, and measurement needs.'),
     entry('AI-search observation template (CSV)', '/resources/ai-search-observation-template.csv', 'Ten starter buyer questions and blank observation fields. Record engines, context, citations, and accuracy; measure referrals and inquiries separately.'),
+    '',
+    '## Research, writing, and public work',
+    '',
+    ...PUBLIC_WORK.map(work => entry(work.title, work.url, `${work.kind}. ${work.summary}`)),
+    '',
+    'Authored work and owned implementation records are distinct from independent endorsements. Read the evidence page for publication and source context.',
     '',
     '## Project accounts',
     '',
