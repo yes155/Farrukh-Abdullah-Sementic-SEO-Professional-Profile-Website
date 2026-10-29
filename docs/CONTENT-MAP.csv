@@ -1,6 +1,6 @@
 url,cluster,intent,page_decision,primary_task,heading_decisions,variant_decision
 "/","Business identity","Commercial","QDP: retain distinct page","Choose an SEO consultant","QDH: Services | QDH: Selected work | QDH: Client feedback | QDH: Engagement questions","QDS: Cover close wording variants within the same page"
-"/about","Business identity","Trust","QDP: retain distinct page","Understand the consultant and relevant experience","QDH: Approach | QDH: Research, writing, and public work | QDH: Professional experience | QDH: Training","QDS: Cover close wording variants within the same page"
+"/about","Business identity","Trust","QDP: retain distinct page","Understand the consultant and relevant experience","QDH: Approach | QDH: Professional experience | QDH: Research, writing, and public work | QDH: Training | QDH: Discuss your website","QDS: Cover close wording variants within the same page"
 "/services","Services","Directory","QDP: retain distinct page","Choose the right SEO service","QDH: Core services | QDH: Industry services","QDS: Cover close wording variants within the same page"
 "/case-studies","Case studies","Directory","QDP: retain distinct page","Find relevant project experience","QDH: Client projects","QDS: Cover close wording variants within the same page"
 "/locations","Service areas","Directory","QDP: retain distinct page","Understand remote availability","QDH: US markets | QDH: Pakistan | QDH: Other locations","QDS: Cover close wording variants within the same page"
