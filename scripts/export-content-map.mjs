@@ -26,7 +26,7 @@ const {EDITORIAL_ARTICLES}=load('src/lib/articles.ts');
 const rows=[];
 const add=(url,cluster,intent,task,headings,variants='Cover close wording variants within the same page')=>rows.push({url,cluster,intent,page_decision:'QDP: retain distinct page',primary_task:task,heading_decisions:headings.map(x=>'QDH: '+x).join(' | '),variant_decision:'QDS: '+variants});
 add('/','Business identity','Commercial','Choose an SEO consultant',['Services','Selected work','Client feedback','Engagement questions']);
-add('/about','Business identity','Trust','Understand the consultant and relevant experience',['Approach','Professional experience','Training']);
+add('/about','Business identity','Trust','Understand the consultant and relevant experience',['Approach','Research, writing, and public work','Professional experience','Training']);
 add('/services','Services','Directory','Choose the right SEO service',['Core services','Industry services']);
 add('/case-studies','Case studies','Directory','Find relevant project experience',['Client projects']);
 add('/locations','Service areas','Directory','Understand remote availability',['US markets','Pakistan','Other locations']);
@@ -35,7 +35,7 @@ add('/insights','Insights','Directory','Find a practical SEO explanation',['Arti
 add('/contact','Business identity','Conversion','Describe a project and choose a contact route',['Project details','Contact options']);
 add('/privacy','Policies','Policy','Understand data handling',['Inquiry information','Privacy terms']);
 add('/terms','Policies','Policy','Understand advisory terms',['Engagement terms']);
-add('/evidence','Business identity','Trust','Assess public implementation records and source types',['Public implementation','Public client review','Project accounts','Original resources','How I record AI-search observations','Source types']);
+add('/evidence','Business identity','Trust','Assess public implementation records and source types',['Research, writing, and public work','Public implementation','Public client review','Project accounts','Original resources','How I record AI-search observations','Source types','Professional profiles and company listings','Resource curation and a submitted contribution']);
 add('/tools/local-seo-audit-workbook','Planning tools','Utility','Record a manual local SEO review and export an action list',['Review context','Manual audit workbook','Blank worksheet','Prioritization','Comparison records','Citing the resource']);
 add('/tools/seo-project-planner','Planning tools','Utility','Prepare an SEO project brief',['Business type','Goal','Suggested review priorities','Using the brief']);
 for(const service of CORE_SERVICES)add('/services/'+service.slug,'Core services','Commercial',service.title,['Service fit',...service.deliverables,'Access','Progress','Engagement questions']);
