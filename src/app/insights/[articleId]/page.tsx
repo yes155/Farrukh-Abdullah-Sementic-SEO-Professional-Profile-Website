@@ -1,3 +1,4 @@
+import { PageFrame, PageHeader } from '@/components/PageFrame';
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -29,18 +30,13 @@ export default async function InsightPage({ params }: Props) {
  const related = ids.map(id => articles.find(a => a.id === id && !a.noIndex)).filter(a => !!a);
  const headings = getArticleHeadings(article.contentMarkdown || '');
  const niches = (article.relatedIndustrySlugs || []).map(getNicheBySlug).filter(n => !!n);
- return <article className="site-shell py-10 md:py-16 space-y-9">
+ return <PageFrame as="article">
   <JsonLd id="article-schema" data={getArticleSchema(article)} />
   <JsonLd id="article-breadcrumb" data={getBreadcrumbSchema([{name:'Home',url:'/'},{name:'Insights',url:'/insights'},{name:article.title,url:`/insights/${article.id}`}])} />
-  <Link href="/insights" className="text-sm underline">All Insights</Link>
-  <header className="max-w-4xl pb-9 border-b border-neutral-200 space-y-5">
-   <p className="text-xs font-mono text-cyan-800 uppercase">{article.category}</p>
-   <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.12]">{article.title}</h1>
-   <p className="text-sm text-neutral-600">By <Link href="/about" className="underline">Farrukh Abdullah</Link> · Published <time dateTime={validISODate(article.date)}>{displayDate(article.date)}</time>{article.modifiedDate && <> · Updated <time dateTime={validISODate(article.modifiedDate)}>{displayDate(article.modifiedDate)}</time></>}</p>
-   <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">{article.summary}</p>
-  </header>
+  <PageHeader title={article.title} intro={article.summary} eyebrow={article.category} parent={{name:'All Insights',url:'/insights'}}
+    metadata={<>By <Link href="/about" className="underline">Farrukh Abdullah</Link> · Published <time dateTime={validISODate(article.date)}>{displayDate(article.date)}</time>{article.modifiedDate && <> · Updated <time dateTime={validISODate(article.modifiedDate)}>{displayDate(article.modifiedDate)}</time></>}</>} />
   {article.featuredImageUrl && <img src={article.featuredImageUrl} alt={article.featuredImageAlt || article.title} className="w-full h-auto border-2 border-black" />}
-  <div className="grid lg:grid-cols-[210px_minmax(0,1fr)] gap-10 lg:gap-16 items-start">{headings.length > 0 && <nav aria-label="Article contents" className="lg:sticky lg:top-28"><p className="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-4">In this guide</p><ul className="space-y-3">{headings.map(item => <li key={item.id}><a href={`#${item.id}`} className="text-sm text-neutral-600 hover:text-cyan-800 hover:underline">{item.text}</a></li>)}</ul></nav>}<div className="min-w-0 max-w-3xl"><MarkdownContent content={article.contentMarkdown || ''} /></div></div>
+  <div className={headings.length > 0 ? 'reading-layout' : ''}>{headings.length > 0 && <nav aria-label="Article contents" className="reading-nav site-panel"><p className="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-4">In this guide</p><ul className="space-y-3">{headings.map(item => <li key={item.id}><a href={`#${item.id}`} className="text-sm text-neutral-600 hover:text-cyan-800 hover:underline">{item.text}</a></li>)}</ul></nav>}<div className="reading-content"><MarkdownContent content={article.contentMarkdown || ''} /></div></div>
   {niches.length > 0 && <section className="border-t border-neutral-200 pt-8 space-y-3"><h2 className="text-xl font-bold">Related industry services</h2><p className="text-sm text-neutral-700">These services apply the topic to specific customer and inquiry journeys.</p><ul className="space-y-2">{niches.map(n => <li key={n.slug}><Link className="underline text-cyan-800" href={`/services/${n.slug}`}>SEO for {n.industry}</Link></li>)}</ul></section>}
   <section className="border-t border-neutral-200 pt-8 space-y-4">
    <h2 className="text-xl font-bold">Continue with this topic</h2>
@@ -50,5 +46,5 @@ export default async function InsightPage({ params }: Props) {
     {related.map(a => <li key={a.id}><Link href={`/insights/${a.id}`} className="underline text-cyan-800">{a.title}</Link></li>)}
    </ul>
   </section>
- </article>;
+ </PageFrame>;
 }

@@ -1,3 +1,4 @@
+import { PageFrame, PageHeader, PageNavigation } from '@/components/PageFrame';
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import InsightsGrid from "@/components/InsightsGrid";
@@ -35,26 +36,15 @@ export default async function InsightsIndex() {
   ]);
 
   return (
-    <div className="pt-12 pb-20 px-6 max-w-7xl mx-auto space-y-12">
+    <PageFrame>
       <JsonLd id="schema-breadcrumbs-insights" data={listBreadcrumb} />
       <JsonLd id="insights-collection" data={getCollectionSchema("/insights", "SEO and AI search guides", articles.map(a => ({ name:a.title,path:`/insights/${a.id}` })))} />
 
-      {/* Title Block */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-200 pb-9">
-        <div>
-          <span className="text-[10px] font-mono tracking-widest text-cyan-600 uppercase block mb-2 font-bold">
-            Insights and strategy
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
-            SEO and AI-search guides
-          </h1>
-        </div>
-        <p className="text-base text-neutral-600 max-w-sm md:text-right leading-relaxed">
-          Practical explanations, implementation examples, and primary sources.
-        </p>
-      </div>
+      <PageHeader title="SEO and AI-search guides" eyebrow="Insights and strategy"
+        intro="Practical explanations, implementation examples, and primary sources. Explore content planning, local search, and AI-search measurement."
+        aside={<PageNavigation title="Put the guidance to work" items={[{label:'SEO services and deliverables',href:'/services'},{label:'Local SEO audit workbook',href:'/tools/local-seo-audit-workbook'},{label:'Research and implementation evidence',href:'/evidence'}]} />} />
 
       <InsightsGrid articles={articles} />
-    </div>
+    </PageFrame>
   );
 }
