@@ -1,4 +1,5 @@
 "use client";
+import { PageFrame } from "@/components/PageFrame";
 
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/schemas";
@@ -60,14 +61,14 @@ export function PrivacyPolicyContent() {
   ]);
 
   return (
-    <div className="pt-12 pb-20 px-6 max-w-4xl mx-auto space-y-12">
+    <PageFrame>
       <JsonLd id="schema-breadcrumb-privacy" data={breadcrumbs} />
 
-      <div className="border-b-2 border-black pb-10">
-        <span className="text-[10px] font-mono tracking-widest text-cyan-600 font-bold block uppercase mb-2">
+      <div className="page-header">
+        <span className="text-[10px] font-mono tracking-widest text-cyan-800 font-bold block uppercase mb-2">
           Legal & Data Protection
         </span>
-        <h1 className="text-4xl md:text-5xl font-black font-sans text-black tracking-tight uppercase leading-[1.1]">
+        <h1 className="page-title">
           Privacy Policy
         </h1>
         <p className="text-xs font-mono text-neutral-500 uppercase tracking-wider mt-3 font-bold">
@@ -75,17 +76,17 @@ export function PrivacyPolicyContent() {
         </p>
       </div>
 
-      <div className="space-y-10">
+      <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
         {sections.map((section) => (
           <section key={section.heading}>
-            <h2 className="text-sm md:text-base font-black font-sans text-black uppercase tracking-tight border-l-4 border-cyan-600 pl-3 mb-3">
+            <h2 className="text-xl font-semibold tracking-tight mb-3">
               {section.heading}
             </h2>
             <div className="space-y-3">
               {section.body.map((paragraph, idx) => (
                 <p
                   key={idx}
-                  className="text-xs md:text-sm text-neutral-700 leading-relaxed font-sans font-medium"
+                  className="text-base text-neutral-700 leading-relaxed"
                 >
                   {paragraph}
                 </p>
@@ -95,22 +96,22 @@ export function PrivacyPolicyContent() {
         ))}
       </div>
 
-      <div className="bg-neutral-50 border-2 border-black p-6 shadow-[3px_3px_0px_rgba(0,0,0,1)]">
+      <div className="site-panel">
         <p className="text-xs text-neutral-700 leading-relaxed font-sans font-medium">
           Questions about this policy? Contact{" "}
-          <a href="mailto:f.abdullah79@gmail.com" className="text-cyan-600 font-bold underline underline-offset-2">
+          <a href="mailto:f.abdullah79@gmail.com" className="text-cyan-800 font-bold underline underline-offset-2">
             f.abdullah79@gmail.com
           </a>{" "}
           or via{" "}
           <a
             href="https://wa.me/923346536393"
-            className="text-cyan-600 font-bold underline underline-offset-2"
+            className="text-cyan-800 font-bold underline underline-offset-2"
           >
             WhatsApp
           </a>
           .
         </p>
       </div>
-    </div>
+    </PageFrame>
   );
 }

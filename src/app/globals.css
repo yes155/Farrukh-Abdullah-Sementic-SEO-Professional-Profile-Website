@@ -36,8 +36,18 @@ h1, h2, h3, h4, h5, .font-display {
 }
 
 /* Shared reading and interaction styles. */
-:root { --site-reading-width: 76rem; --site-gutter: 1.5rem; --site-section-gap: 3.5rem; }
-.site-shell { max-width: 80rem; margin-inline: auto; padding-inline: var(--site-gutter); }
+/* One scale for every public page family, including the electrician CSS module. */
+:root {
+  --site-width: 80rem; --site-reading-width: 76ch; --site-gutter: 1.25rem;
+  --site-section-gap: 1.5rem; --site-page-padding: 1.5rem; --site-grid-gap: 1.5rem;
+  --site-title-size: 2rem; --site-heading-size: 1.5rem;
+  --site-ink: #171717; --site-muted: #525252; --site-line: #d4d4d4;
+  --site-accent: #155e75; --site-surface: #fafafa; --site-action: #22d3ee;
+}
+@media (min-width: 768px) {
+  :root { --site-gutter: 1.5rem; --site-section-gap: 2rem; --site-page-padding: 2rem; --site-grid-gap: 2rem; --site-title-size: 2.75rem; --site-heading-size: 1.75rem; }
+}
+.site-shell { max-width: var(--site-width); margin-inline: auto; padding-inline: var(--site-gutter); }
 html { scroll-padding-top: 7rem; }
 :focus-visible { outline: 2px solid #0e7490; outline-offset: 4px; }
 .skip-link { position: fixed; inset: .75rem auto auto .75rem; z-index: 100; padding: .75rem 1rem; background: #111; color: white; transform: translateY(-200%); }
@@ -52,3 +62,40 @@ html { scroll-padding-top: 7rem; }
   html { scroll-behavior: auto !important; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+.page-frame { padding-block: var(--site-page-padding); }
+.site-stack > :where(:not(script, style, [hidden])) + :where(:not(script, style, [hidden])) { margin-top: var(--site-section-gap); }
+.page-header { border-bottom: 1px solid var(--site-line); padding-bottom: var(--site-section-gap); }
+.page-header-grid { display: grid; gap: var(--site-grid-gap); align-items: start; }
+.page-title { font-size: var(--site-title-size); font-weight: 700; letter-spacing: -.035em; line-height: 1.12; color: var(--site-ink); overflow-wrap: anywhere; }
+.page-intro { font-size: 1.125rem; line-height: 1.65; color: var(--site-muted); max-width: 76ch; margin-top: 1rem; }
+.page-parent { display: inline-block; font-size: .875rem; color: var(--site-accent); margin-bottom: .75rem; text-underline-offset: 4px; }
+.page-parent:hover { text-decoration: underline; }
+.site-eyebrow { color: var(--site-accent); font: 500 .75rem/1.5 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.page-attributes { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.page-attributes li { border: 1px solid var(--site-line); background: var(--site-surface); padding: .5rem .75rem; color: #404040; font-size: .75rem; }
+.page-meta { font-size: .875rem; line-height: 1.6; color: var(--site-muted); margin-top: 1rem; }
+.section-title { font-size: var(--site-heading-size); line-height: 1.25; letter-spacing: -.025em; font-weight: 700; }
+.site-panel { min-width: 0; border: 1px solid var(--site-line); background: var(--site-surface); padding: 1.25rem; }
+.site-card { min-width: 0; border: 1px solid var(--site-line); padding: 1.25rem; }
+.site-button { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; background: var(--site-action); color: #000; border: 1px solid #000; padding: .875rem 1.25rem; font-size: .875rem; font-weight: 600; line-height: 1.4; text-align: center; }
+.site-button:hover { background: #67e8f9; }
+.contact-action { background: #0a0a0a; color: #fff; padding: 1.5rem; display: grid; gap: 1.5rem; align-items: center; }
+.site-section { padding-block: var(--site-section-gap); }
+.reading-layout { display: grid; gap: var(--site-grid-gap); align-items: start; }
+.reading-content { min-width: 0; }
+.reading-content p, .reading-content li { overflow-wrap: anywhere; }
+.reading-content > section { scroll-margin-top: 7rem; }
+@media (min-width: 768px) {
+  .site-panel, .site-card { padding: 1.5rem; }
+  .contact-action { grid-template-columns: minmax(0,1fr) auto; padding: 2rem; }
+}
+@media (min-width: 1024px) {
+  .page-header-grid { grid-template-columns: minmax(0,1.7fr) minmax(0,1fr); }
+  .page-header-portrait { grid-template-columns: minmax(0,1fr) 16rem; }
+  .reading-layout { grid-template-columns: 14rem minmax(0,1fr); }
+  .reading-nav { position: sticky; top: 7rem; }
+}
+/* Large text fields must stay readable and containers must shrink at 320 CSS px. */
+.site-shell, .site-stack > *, .page-header > *, .reading-layout > * { min-width: 0; }
+.site-shell :where(input, select, textarea) { max-width: 100%; }

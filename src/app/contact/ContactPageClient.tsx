@@ -1,4 +1,5 @@
 "use client";
+import { PageFrame, PageHeader } from '@/components/PageFrame';
 
 import Scheduler from "@/components/Scheduler";
 import JsonLd from "@/components/JsonLd";
@@ -11,24 +12,16 @@ export default function ContactPage() {
   ]);
 
   return (
-    <div className="pt-12 pb-20 px-6 max-w-7xl mx-auto space-y-12">
+    <PageFrame>
       <JsonLd id="schema-breadcrumb-contact" data={breadcrumbs} />
 
-      <div className="mb-12 text-center max-w-3xl mx-auto">
-        <span className="text-[10px] font-mono tracking-widest text-cyan-600 font-bold block uppercase mb-2">
-          Project inquiry
-        </span>
-        <h1 className="text-4xl md:text-5xl font-black font-sans text-black tracking-tight uppercase">
-          Discuss your SEO project
-        </h1>
-        <p className="text-sm text-neutral-600 mt-3 font-semibold leading-relaxed">
-          Share your website, customers, and main goal. We’ll discuss a useful starting point, the work involved, and how to assess progress.
-        </p>
-      </div>
+      <PageHeader title="Discuss your SEO project" eyebrow="Project inquiry"
+        intro="Share your website, customers, and main goal. We’ll discuss a useful starting point, the work involved, and how to assess progress."
+        attributes={['Written scope', 'Remote delivery', 'Direct collaboration']} />
 
-      <div className="max-w-4xl mx-auto">
+      <div>
         <Scheduler />
       </div>
-    </div>
+    </PageFrame>
   );
 }

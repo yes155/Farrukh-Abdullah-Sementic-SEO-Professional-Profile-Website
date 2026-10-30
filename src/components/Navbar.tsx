@@ -4,9 +4,12 @@ import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { STRATEGIST_NAME } from "../data";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const active = (path: string) => path === "/" ? pathname === "/" : pathname === path || pathname.startsWith(path + "/");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -37,7 +40,7 @@ export default function Navbar() {
             : "bg-white/40 backdrop-blur-xs border-b border-transparent py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="site-shell flex items-center justify-between">
           {/* Logo / Branding */}
           <Link
             href="/"
@@ -59,12 +62,13 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-8">
+          <nav aria-label="Primary navigation" className="hidden xl:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
-                className="text-xs uppercase tracking-widest text-neutral-600 hover:text-black cursor-pointer font-bold transition-colors duration-200"
+                aria-current={active(item.path) ? (pathname === item.path ? "page" : "location") : undefined}
+                className={`text-xs uppercase tracking-widest hover:text-black cursor-pointer font-bold transition-colors duration-200 ${active(item.path) ? "text-cyan-800 underline underline-offset-4" : "text-neutral-600"}`}
                 id={`nav-item-${item.name.toLowerCase().replace(" ", "-")}`}
               >
                 {item.name}
@@ -76,10 +80,10 @@ export default function Navbar() {
           <div className="hidden xl:flex items-center">
             <Link
               href="/contact"
-              className="group relative inline-flex items-center justify-center bg-cyan-400 hover:bg-cyan-300 text-black font-sans text-xs font-bold uppercase tracking-wider py-2.5 px-5 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200 cursor-pointer"
+              className="site-button group"
               id="nav-cta-btn"
             >
-              <span>Book Strategy Call</span>
+              <span>Discuss your project</span>
               <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -112,6 +116,7 @@ export default function Navbar() {
                   <Link
                     key={item.path}
                     href={item.path}
+                aria-current={active(item.path) ? (pathname === item.path ? "page" : "location") : undefined}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="text-left text-sm uppercase tracking-widest text-neutral-600 hover:text-black py-2 border-b border-neutral-100 font-bold"
                     id={`nav-mobile-item-${item.name.toLowerCase().replace(" ", "-")}`}
@@ -125,7 +130,7 @@ export default function Navbar() {
                   className="w-full flex items-center justify-center bg-cyan-400 text-black text-xs font-bold uppercase tracking-wider py-3 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                   id="nav-mobile-cta"
                 >
-                  <span>Book Strategy Call</span>
+                  <span>Discuss your project</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-2" />
                 </Link>
               </div>

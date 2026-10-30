@@ -21,6 +21,8 @@ export default function AuditWorkbook() {
   const changes=AUDIT_CHECKS.filter(check=>draft.entries[check.id]?.status==='Needs work').length;
   const industry=AUDIT_INDUSTRIES[draft.industry];
   return <section aria-label="Local SEO audit workbook" className="border border-neutral-300 bg-neutral-50 p-5 md:p-8 min-w-0">
+    <h2 className="section-title mb-3">Start your manual review</h2>
+    <p className="text-sm text-neutral-600 leading-relaxed mb-5">Choose the business type, record evidence, and export your action list. This workbook does not crawl websites or generate an SEO score.</p>
     <noscript><p className="mb-6">Enable JavaScript for the interactive workbook, or <a href="/resources/local-seo-audit-template.csv" className="underline">download the blank CSV template</a>.</p></noscript>
     <div className="grid md:grid-cols-3 gap-5">
       <div><label htmlFor="audit-industry" className="block text-sm font-semibold mb-2">Business type</label><select id="audit-industry" className={control} value={draft.industry} onChange={e=>setDraft({...draft,industry:e.target.value as AuditIndustry})}>{Object.entries(AUDIT_INDUSTRIES).map(([id,item])=><option key={id} value={id}>{item.name}</option>)}</select></div>
